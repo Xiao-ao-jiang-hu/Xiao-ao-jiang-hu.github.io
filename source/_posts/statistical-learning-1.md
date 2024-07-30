@@ -1,9 +1,11 @@
 ---
 title: 统计学习笔记1
 date: 2024-07-29 23:27:40
-tags: statistical learning, notes
+tags: 
+    - statistical learning
+    - notes
+excerpt: 本系列为清华大学《因果与统计学习》课程笔记
 ---
-本系列为清华大学《因果与统计学习》课程笔记
 # Statistical Learning
 统计学习算法是将数据经过特定运算得到一个特定结果的算法。那么我们是否应该相信统计学习算法得到的结果？本课程的目的是从统计学角度分析统计学习到底发生了什么，以及找到一个合理的对统计学习及其结果的解释。
 
