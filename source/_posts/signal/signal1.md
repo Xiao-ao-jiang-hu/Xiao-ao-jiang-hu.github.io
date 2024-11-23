@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Signal Processing 1
-date: 2024-07-30 15:04:15
+date: 2024-11-23 19:00:00
 tags:
     - signal
 excerpt: Signal processing course notes
@@ -9,6 +9,7 @@ excerpt: Signal processing course notes
 
 # 信号的运算
 ## 常规代数运算
+常规运算、微积分运算（电容、电感等系统），波形变换（时移、反褶、压扩）
 
 ## 卷积运算
 
@@ -49,6 +50,7 @@ $\delta(t)=+\infty, t=0$
 $\int_{-\infty}^{+\infty}\delta(t) \mathrm{d}t = 1$
 
 ### 性质
-冲激信号的物理意义是在短时间内输入一个有限能量，通过卷积的意义不难发现，通过对系统直接输入一个瞬时信号，我们可以通过观测响应来得到系统的响应函数
-
+冲激信号的物理意义是在短时间内输入一个有限能量，通过卷积的意义不难发现，通过对系统直接输入一个瞬时能量，我们可以通过观测响应来得到系统的响应函数
 $$f(t)*\delta(t-t_0) = f(t-t_0)$$
+冲激函数还具有采样特性：
+$$x(t_0) = \int_{-\infty}^{+\infty}x(t)\delta(t-t_0)\mathrm{d}t$$
