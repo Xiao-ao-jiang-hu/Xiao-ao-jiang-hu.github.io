@@ -14,7 +14,6 @@ tags:
 ### 安装
 进入[Termux仓库](https://github.com/termux/termux-app)，进入Releases，下载最新的apk安装包
 ![](/img/releases.jpeg)
-{% asset_img img/image.jpg %}
 安装后打开：
 ![](termux.jpeg)
 
