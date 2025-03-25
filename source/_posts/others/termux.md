@@ -13,7 +13,7 @@ tags:
 
 ### 安装
 进入[Termux仓库](https://github.com/termux/termux-app)，进入Releases，下载最新的apk安装包
-![](releases.jpeg)
+![](/img/releases.jpeg)
 安装后打开：
 ![](termux.jpeg)
 
