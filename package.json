@@ -26,7 +26,6 @@
     "hexo-theme-landscape": "^1.0.0"
   },
   "main": "index.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Xiao-ao-jiang-hu/Xiao-ao-jiang-hu.github.io.git"
