@@ -14,9 +14,9 @@ excerpt: 本文将介绍信号的傅里叶分解，包括周期连续函数的�
 ### 三角函数基
 <span>
 如下三角函数构成的集合是$\mathcal{L}^2(\mathcal{C}[-\frac{2\pi}{\omega_0}, -\frac{2\pi}{\omega_0}])$空间的一组可列正交基：
-$$\{ sin n \omega_0, cos n \omega_0, 1|n \in \mathbb{N^+}\}$$
+$$\{ sin n \omega_0, cos n \omega_0, 1|n \in \mathbb{N^+}\} $$
 该空间的内积为标准内积：
-$$\langle f, g \rangle = \int_{ -\frac{2\pi}{\omega_0} }^{\frac{2\pi}{\omega_0}} f(t)g(t)dt$$
+$$\langle f, g \rangle = \int_{ -\frac{2\pi}{\omega_0} }^{\frac{2\pi}{\omega_0}} f(t)g(t)dt $$
 </span>
 
 ### 标准形式
@@ -55,7 +55,7 @@ $$F(\omega) =\frac{d(E(\omega))}{d \omega}$$
 
 ### 傅里叶变换
 若$f(t) \in \mathcal{L}^1$，则可做傅里叶变换：
-$$F(\omega) = \int_{-\infty}^{\infty} f(t)e^{-i\omega t}dt$$
+$$F(\omega) = \int_{-\infty}^{\infty} f(t)e^{-i\omega t}dt $$
 
 ### 傅里叶逆变换
 $$f(t) = \int_{-\infty}^{\infty} F(\omega)e^{i\omega t}d\omega$$

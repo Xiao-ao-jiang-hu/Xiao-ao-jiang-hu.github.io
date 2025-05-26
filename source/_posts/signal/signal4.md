@@ -14,15 +14,15 @@ $$x(t) = f(t)p(t)$$，其中$p$是采样函数
 
 ## 理想时域采样
 ### 采样函数
-$$p(t) = \sum_{n=-\infty}^{\infty} \delta(t-nT_s)$$
+$$p(t) = \sum_{n=-\infty}^{\infty} \delta(t-nT_s) $$
 
 ### 时域表示
-$$x_p(t) = x(t)p(t) = \sum_{n=-\infty}^{\infty} x(n T_s)\delta(t-nT_s)$$
+$$x_p(t) = x(t)p(t) = \sum_{n=-\infty}^{\infty} x(n T_s)\delta(t-nT_s) $$
 
 ### 频域表示
 > **HINT: Fourier变换下乘积和卷积关系**
->$$\mathcal{F}\{x(t)y(t)\} = \mathcal{F}\{x(t)\} *\mathcal{F}\{y(t)\}$$
->$$\mathcal{F}\{x(t)*y(t)\} = \mathcal{F}\{x(t)\} \mathcal{F}\{y(t)\}$$
+> $$\mathcal{F}\{x(t)y(t)\} = \mathcal{F}\{x(t)\} *\mathcal{F}\{y(t)\}$$
+> $$\mathcal{F}\{x(t)*y(t)\} = \mathcal{F}\{x(t)\} \mathcal{F}\{y(t)\}$$
 > 频域下的乘积对应时域下的卷积，频域下的卷积对应时域下的乘积
 
 

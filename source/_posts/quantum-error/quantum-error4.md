@@ -10,10 +10,10 @@ excerpt: t-量子比特信道是量子纠错理论中的重要概念，本文将
 
 ### 核心定义
 - 权重（Weight）：  
-  若作用于$n$个量子比特的线性算子$A$是$n-t$个量子比特上的恒等算子与$t$个量子比特上非平凡算子的张量积，则称$A$的权重为$t$。其支撑（Support）为这$t$个被非平凡作用的量子比特集合（通常取最小集合）。
+  若作用于 $n $个量子比特的线性算子 $A $是 $n-t $个量子比特上的恒等算子与 $t $个量子比特上非平凡算子的张量积，则称 $A $的权重为 $t $。其支撑（Support）为这 $t $个被非平凡作用的量子比特集合（通常取最小集合）。
 
 - t-量子比特错误：  
-  形如$B = \sum_i B_i$的线性算子，其中每个$B_i$的权重至多为$t$，且不同$B_i$的支撑可不同（即作用在不同量子比特集合上）。
+  形如 $B = \sum_i B_i $的线性算子，其中每个 $B_i $的权重至多为 $t $，且不同 $B_i $的支撑可不同（即作用在不同量子比特集合上）。
 
 - t-量子比特错误通道：  
   若量子通道的 Kraus 分解中所有算子均为 t-量子比特错误，则该通道称为 t-量子比特错误通道。
@@ -21,20 +21,20 @@ excerpt: t-量子比特信道是量子纠错理论中的重要概念，本文将
 
 ### 2. 技术要点
 1. 任意操作性与纠缠：  
-   权重为$t$的算子可在其支撑的$t$个量子比特上执行任意操作（包括纠缠操作）。例如，CNOT⊗I 作用于 3 个量子比特时权重为 2（仅在前两个量子比特上非平凡作用）。
+   权重为 $t $的算子可在其支撑的 $t $个量子比特上执行任意操作（包括纠缠操作）。例如，CNOT⊗I 作用于 3 个量子比特时权重为 2（仅在前两个量子比特上非平凡作用）。
 
 2. 多支撑叠加的影响：  
-   t-量子比特错误$B$由不同支撑的$B_i$叠加构成，可能导致超过$t$个量子比特被改变。但由于每个$B_i$的权重至多$t$，整体错误效果可视为多个独立小错误的组合（每个影响不超过$t$个量子比特）。此性质将在量子纠错码设计中进一步分析（如 2.4.3 节）。
+   t-量子比特错误 $B $由不同支撑的 $B_i $叠加构成，可能导致超过 $t $个量子比特被改变。但由于每个 $B_i $的权重至多 $t $，整体错误效果可视为多个独立小错误的组合（每个影响不超过 $t $个量子比特）。此性质将在量子纠错码设计中进一步分析（如 2.4.3 节）。
 
 
 ### 擦除错误（Erasure Errors）
 
 #### 定义
 - t-量子比特擦除错误：  
-  权重为$t$的线性算子，且是其支撑（作用的具体$t$个量子比特）上擦除错误的张量积。擦除错误特指量子比特状态被破坏或丢失（如光子损失）。
+  权重为 $t $的线性算子，且是其支撑（作用的具体 $t $个量子比特）上擦除错误的张量积。擦除错误特指量子比特状态被破坏或丢失（如光子损失）。
 
 - t-量子比特擦除通道：  
-  量子通道的 Kraus 分解中，所有 Kraus 算子均为 s-量子比特擦除错误（$s \leq t$），且不同 Kraus 算子的$s$可以不同（如一个算子擦除 1 个量子比特，另一个擦除 2 个）。
+  量子通道的 Kraus 分解中，所有 Kraus 算子均为 s-量子比特擦除错误（$s \leq t $），且不同 Kraus 算子的 $s $可以不同（如一个算子擦除 1 个量子比特，另一个擦除 2 个）。
 
 #### 关键特性
 1. 支撑的确定性：  
@@ -44,7 +44,7 @@ excerpt: t-量子比特信道是量子纠错理论中的重要概念，本文将
    擦除错误被视为“经典事件”，因为被擦除的量子比特集合可被测量确定（如光子丢失的位置已知），与量子叠加态无关。
 
 3. 权重灵活性：  
-   通道中允许包含不同权重的擦除错误（$s \leq t$），但所有 Kraus 算子的权重总和不超过$t$。例如，一个$t=3$的擦除通道可能包含擦除 1、2 或 3 个量子比特的算子。
+   通道中允许包含不同权重的擦除错误（$s \leq t $），但所有 Kraus 算子的权重总和不超过 $t $。例如，一个 $t=3 $的擦除通道可能包含擦除 1、2 或 3 个量子比特的算子。
 
 #### 意义
 - 纠错策略针对性：  
@@ -56,7 +56,7 @@ excerpt: t-量子比特信道是量子纠错理论中的重要概念，本文将
 - 权重 vs 支撑：  
   权重是错误作用的量子比特数量，支撑是具体的位置集合。
 - 单错误项 vs 总错误：  
-  单个$B_i$最多影响$t$个量子比特，但总错误$B$可影响更多量子比特（因不同$B_i$的支撑可能不同）。
+  单个 $B_i $最多影响 $t $个量子比特，但总错误 $B $可影响更多量子比特（因不同 $B_i $的支撑可能不同）。
 - 允许错误在多个量子比特集合上叠加，同时保持每个错误项的局部性（权重限制）
 
 ## t-量子比特信道近似定理
@@ -69,119 +69,119 @@ excerpt: t-量子比特信道是量子纠错理论中的重要概念，本文将
 
 #### 定理的数学表述
 设：
--$\mathcal{I}$为单量子比特恒等通道（无错误）。
--$\mathcal{E} = \otimes_{i=1}^n \mathcal{E}_i$为n-量子比特独立通道，每个单量子比特通道$\mathcal{E}_i$满足：
- $$
+- $\mathcal{I} $为单量子比特恒等通道（无错误）。
+- $\mathcal{E} = \otimes_{i=1}^n \mathcal{E}_i $为n-量子比特独立通道，每个单量子比特通道 $\mathcal{E}_i $满足：
+  $$
   \| \mathcal{E}_i - \mathcal{I} \|_0 < \epsilon \quad (\epsilon \leq \frac{t+1}{n-t-1}, \ \epsilon \leq 1/3).
- $$
-则存在一个t-量子比特错误映射$\tilde{\mathcal{E}}$，使得：
+  $$
+则存在一个t-量子比特错误映射 $\tilde{\mathcal{E}} $，使得：
 $$
 \| \mathcal{E} - \tilde{\mathcal{E}} \|_0 < 5 \binom{n}{t+1} [(4e + 2)\epsilon]^{t+1}.
 $$
 
 符号说明：
--$\| \cdot \|_0$: 通常指量子通道的诱导范数（如迹范数或算子范数），衡量通道间的差异。
--$\binom{n}{t+1}$: 组合数，表示从n个量子比特中选t+1个的可能方式数。
--$\epsilon$: 单量子比特错误率的上界。
+- $\| \cdot \|_0 $: 通常指量子通道的诱导范数（如迹范数或算子范数），衡量通道间的差异。
+- $\binom{n}{t+1} $: 组合数，表示从n个量子比特中选t+1个的可能方式数。
+- $\epsilon $: 单量子比特错误率的上界。
 
 
 #### 定理的关键点分析
 1. 误差上界的结构：
-   - 组合因子$\binom{n}{t+1}$: 反映系统中可能发生错误的t+1个量子比特的组合数。当n较大时，此值随t指数增长。
-   - ε的幂次项$[(4e + 2)\epsilon]^{t+1}$: 表明高阶小量对误差的抑制作用。当ε足够小时，整体误差主要由高阶项主导。
+   - 组合因子 $\binom{n}{t+1} $: 反映系统中可能发生错误的t+1个量子比特的组合数。当n较大时，此值随t指数增长。
+   - ε的幂次项 $[(4e + 2)\epsilon]^{t+1} $: 表明高阶小量对误差的抑制作用。当ε足够小时，整体误差主要由高阶项主导。
 
 2. 阈值效应：
-   - 当单量子比特错误率ε低于阈值（如$\epsilon \ll 1/(n)$）时，误差上界随n的增长被指数压低。例如，若ε固定且n→∞，只要$t/n$保持常数，近似效果会随n增大而增强。
+   - 当单量子比特错误率ε低于阈值（如$\epsilon \ll 1/(n) $）时，误差上界随n的增长被指数压低。例如，若ε固定且n→∞，只要$t/n $保持常数，近似效果会随n增大而增强。
 
 3. 实际示例：
-   - 当n=5、t=1时，误差上界约为$8286\epsilon^2$。若要求此上界小于1，则需$\epsilon < 0.01$，表明定理在低错误率下有效。
+   - 当n=5、t=1时，误差上界约为$8286\epsilon^2 $。若要求此上界小于1，则需$\epsilon < 0.01 $，表明定理在低错误率下有效。
 
 #### 限制与注意事项
 - 低错误率假设：定理仅在单量子比特错误率ε足够小时成立。若ε较大（如接近1/3），近似效果可能失效。
-- 组合爆炸问题：当t接近n时，组合因子$\binom{n}{t+1}$会急剧增大，导致误差上界失去意义。因此，定理适用于$t \ll n$的场景。
+- 组合爆炸问题：当t接近n时，组合因子$\binom{n}{t+1} $会急剧增大，导致误差上界失去意义。因此，定理适用于$t \ll n $的场景。
 - 范数选择的影响：不同范数的定义可能导致误差上界的具体形式不同，但核心思想不变。
 
 ### 证明
 
 #### 引理1
-若$0 < t < n$, 则
-- a) 对任意$0 \leq \epsilon \leq 1, \sum_{j=t+1}^{n} \binom{n}{j} \epsilon^j (1-\epsilon)^{n-j} \leq  \binom{n}{t+1} \epsilon^{t+1}$
-- b) 当$\mathrm{~}0\leq\epsilon\leq\frac{t+1}{n-t-1}$时，$\sum_{j=t+1}^n\binom{n}{j}\epsilon^j\leq\binom{n}{t+1}(e\epsilon)^{t+1}$
+若 $0 < t < n $, 则
+- a) 对任意$0 \leq \epsilon \leq 1, \sum_{j=t+1}^{n} \binom{n}{j} \epsilon^j (1-\epsilon)^{n-j} \leq  \binom{n}{t+1} \epsilon^{t+1} $
+- b) 当 $\mathrm{~}0\leq\epsilon\leq\frac{t+1}{n-t-1} $时，$\sum_{j=t+1}^n\binom{n}{j}\epsilon^j\leq\binom{n}{t+1}(e\epsilon)^{t+1} $
 
 
 #### 引理1的证明思路与细节
 引理1分为两部分，用于估计多量子比特独立错误模型中高阶错误项的概率上界。
 
 ##### 部分a的证明
-- 目标：证明当每个量子比特独立出错（概率为ε）时，至少出现t+1个错误的概率上界为$\binom{n}{t+1} \epsilon^{t+1}$。
+- 目标：证明当每个量子比特独立出错（概率为ε）时，至少出现t+1个错误的概率上界为 $\binom{n}{t+1} \epsilon^{t+1} $。
 - 方法：使用联合边界（Union Bound）。
-  - 考虑所有可能的t+1个量子比特子集，每个子集发生错误的概率为$\epsilon^{t+1}$。
-  - 共有$\binom{n}{t+1}$个这样的子集，总概率上界为它们的和。
-  - 过度计数问题：当实际错误数$j > t+1$，每个错误组合会被多次计数（如j个错误包含$\binom{j}{t+1}$个子集），但联合边界仍提供有效上界。
+  - 考虑所有可能的t+1个量子比特子集，每个子集发生错误的概率为 $\epsilon^{t+1} $。
+  - 共有 $\binom{n}{t+1} $个这样的子集，总概率上界为它们的和。
+  - 过度计数问题：当实际错误数 $j > t+1 $，每个错误组合会被多次计数（如j个错误包含 $\binom{j}{t+1} $个子集），但联合边界仍提供有效上界。
 
 ##### 部分b的证明
-- 条件：$\epsilon \leq \frac{t+1}{n-t-1}$。
+- 条件：$\epsilon \leq \frac{t+1}{n-t-1} $。
 - 关键步骤：
-  1. 利用不等式$(1-\epsilon)^{n-t-1} \geq e^{-(t+1)}$（通过泰勒展开或不等式$(1-x) \geq e^{-x/(1-x)}$）。
-  2. 将原始求和式转换为含$(1-\epsilon)^{n-j}$的项，并通过部分a的结果上界。
-  3. 最终得到$\sum_{j=t+1}^n \binom{n}{j} \epsilon^j \leq \binom{n}{t+1} \epsilon^{2(t+1)}$。
+  1. 利用不等式 $(1-\epsilon)^{n-t-1} \geq e^{-(t+1)} $（通过泰勒展开或不等式 $(1-x) \geq e^{-x/(1-x)} $）。
+  2. 将原始求和式转换为含 $(1-\epsilon)^{n-j} $的项，并通过部分a的结果上界。
+  3. 最终得到 $\sum_{j=t+1}^n \binom{n}{j} \epsilon^j \leq \binom{n}{t+1} \epsilon^{2(t+1)} $。
 
 #### 引理2
-若$\mathcal{E}$是从$\mathcal{H}_D$到$\mathcal{H}_D$的量子通道，且满足$\|\mathcal{E} - \mathcal{I}\|_0 < \epsilon \leq \frac{1}{3}$，则存在Kraus算子$A_k$使得：
-$\|A_0-I\|_\infty<\sqrt{2D}\left(\epsilon+\epsilon^2\right)+(\epsilon/2+\epsilon^2)$且$\left. \sum_{k\neq0}\|A_k\|_\infty^2\right.< D \epsilon (1/2+\epsilon)$
+若 $\mathcal{E} $是从 $\mathcal{H}_D $到 $\mathcal{H}_D $的量子通道，且满足 $\|\mathcal{E} - \mathcal{I}\|_0 < \epsilon \leq \frac{1}{3} $，则存在Kraus算子 $A_k $使得：
+$\|A_0-I\|_\infty<\sqrt{2D}\left(\epsilon+\epsilon^2\right)+(\epsilon/2+\epsilon^2)$且 $\left. \sum_{k\neq0}\|A_k\|_\infty^2\right.< D \epsilon (1/2+\epsilon) $
 
 #### 引理2的证明思路与细节
 引理2用于分析接近恒等通道的量子通道的Kraus表示性质。
 
 ##### 核心步骤
-1. Choi-Jamiolkowski同构：将通道$\mathcal{E}$映射到纠缠态$\Phi_{\mathcal{E}} = (I \otimes \mathcal{E})(|\Phi^+\rangle\langle\Phi^+|)$，其中$|\Phi^+\rangle = \frac{1}{\sqrt{D}} \sum_a |aa\rangle$。
+1. Choi-Jamiolkowski同构：将通道 $\mathcal{E} $映射到纠缠态 $\Phi_{\mathcal{E}} = (I \otimes \mathcal{E})(|\Phi^+\rangle\langle\Phi^+|) $，其中 $|\Phi^+\rangle = \frac{1}{\sqrt{D}} \sum_a |aa\rangle $。
 2. 迹距离与保真度关系：
-   - 由$\|\mathcal{E} - \mathcal{I}\|_0 < \epsilon$，得$\|\Phi_{\mathcal{E}} - |\Phi^+\rangle\langle\Phi^+|\|_1 < \epsilon$。
-   - 保真度满足$\langle\Phi^+|\Phi_{\mathcal{E}}|\Phi^+\rangle > 1 - \epsilon/2$。
+   - 由 $\|\mathcal{E} - \mathcal{I}\|_0 < \epsilon $，得 $\|\Phi_{\mathcal{E}} - |\Phi^+\rangle\langle\Phi^+|\|_1 < \epsilon $。
+   - 保真度满足 $\langle\Phi^+|\Phi_{\mathcal{E}}|\Phi^+\rangle > 1 - \epsilon/2 $。
 3. 特征值分解：
-   - 将$\Phi_{\mathcal{E}}$分解为特征态$|\phi_i\rangle$，主特征值$\lambda_0 \geq 1 - \epsilon/2 - \epsilon^2$。
-   - 其他特征值总和$\sum_{i\neq0} \lambda_i \leq \epsilon/2 + \epsilon^2$。
+   - 将 $\Phi_{\mathcal{E}} $分解为特征态 $|\phi_i\rangle $，主特征值 $\lambda_0 \geq 1 - \epsilon/2 - \epsilon^2 $。
+   - 其他特征值总和 $\sum_{i\neq0} \lambda_i \leq \epsilon/2 + \epsilon^2 $。
 4. Kraus算子构造：
-   - 通过$A_k |a\rangle = \sqrt{D \lambda_k} (\langle a| \otimes I) |\phi_k \rangle$构造Kraus算子。
-   - 主Kraus算子$A_0$接近恒等算子，误差项$A_{k\neq0}$的范数平方和受限于$D\epsilon(1/2 + \epsilon)$。
+   - 通过 $A_k |a\rangle = \sqrt{D \lambda_k} (\langle a| \otimes I) |\phi_k \rangle $构造Kraus算子。
+   - 主Kraus算子 $A_0 $接近恒等算子，误差项 $A_{k\neq0} $的范数平方和受限于 $D\epsilon(1/2 + \epsilon) $。
 
 ##### 关键不等式
--$\|A_0 - I\|_\infty \leq \sqrt{2D}(\epsilon + \epsilon^2) + (\epsilon/2 + \epsilon^2)$。
--$\sum_{k\neq0} \|A_k\|_\infty^2 \leq D\epsilon(1/2 + \epsilon)$。
+- $\|A_0 - I\|_\infty \leq \sqrt{2D}(\epsilon + \epsilon^2) + (\epsilon/2 + \epsilon^2) $。
+- $\sum_{k\neq0} \|A_k\|_\infty^2 \leq D\epsilon(1/2 + \epsilon) $。
 
 #### 主定理的证明组织与细节
-目标：证明独立通道$\mathcal{E} = \otimes_{i=1}^n \mathcal{E}_i$可被t-量子比特错误通道$\tilde{\mathcal{E}}$近似，误差如定理右侧。
+目标：证明独立通道 $\mathcal{E} = \otimes_{i=1}^n \mathcal{E}_i $可被t-量子比特错误通道 $\tilde{\mathcal{E}} $近似，误差如定理右侧。
 
 ##### 情况1：纯概率模型
-- 假设每个$\mathcal{E}_i$的Kraus算子为$\sqrt{1-\epsilon}I$和概率$\epsilon$的错误项。
-- 应用引理1.2a，总错误数超过t+1的概率上界为$\binom{n}{t+1} \epsilon^{t+1}$。
+- 假设每个 $\mathcal{E}_i $的Kraus算子为 $\sqrt{1-\epsilon}I $和概率 $\epsilon $的错误项。
+- 应用引理1.2a，总错误数超过t+1的概率上界为 $\binom{n}{t+1} \epsilon^{t+1} $。
 
 ##### 情况2：一般情况（利用引理2）
-1. 单量子比特分解：每个$\mathcal{E}_i$的Kraus算子$A_k^i$满足：
-   -$A_0^i \approx I$，误差$\|\delta A^i\|_\infty < 4\epsilon$。
-   - 其他项$A_{k\neq0}^i$的范数平方和$\leq 2\epsilon$。
-2. 构建近似通道$\mathcal{F}$：
+1. 单量子比特分解：每个 $\mathcal{E}_i $的Kraus算子 $A_k^i $满足：
+   - $A_0^i \approx I $，误差 $\|\delta A^i\|_\infty < 4\epsilon $。
+   - 其他项 $A_{k\neq0}^i $的范数平方和 $\leq 2\epsilon $。
+2. 构建近似通道 $\mathcal{F} $：
    - 仅保留最多t个非零错误项的Kraus算子组合。
-   - 误差上界由$\sum_{r=t+1}^n \binom{n}{r}(2\epsilon)^r \leq \binom{n}{t+1}(2\epsilon)^{t+1}$（引理1.2b）。
+   - 误差上界由 $\sum_{r=t+1}^n \binom{n}{r}(2\epsilon)^r \leq \binom{n}{t+1}(2\epsilon)^{t+1} $（引理1.2b）。
 3. 处理高阶误差：
-   - 将$A_0^i = I + \delta A^i$展开，截断超过t个$\delta A^i$的高阶项。
+   - 将 $A_0^i = I + \delta A^i $展开，截断超过t个 $\delta A^i $的高阶项。
    - 通过组合计数和范数乘积上界，得到截断误差项。
 
 ##### 最终误差合成
-1. 近似通道$\mathcal{G}$：截断后的Kraus算子需调整以保证完全正性。
-2. 缩放因子$C$：因截断可能导致迹超过1，需缩放$\mathcal{G}$使得$C\mathcal{G}$完全正且保迹。
+1. 近似通道 $\mathcal{G} $：截断后的Kraus算子需调整以保证完全正性。
+2. 缩放因子 $C $：因截断可能导致迹超过1，需缩放 $\mathcal{G} $使得 $C\mathcal{G} $完全正且保迹。
 3. 总误差界：
    - 结合通道截断误差和缩放调整，最终得：
-    $$
+     $$
      \|\mathcal{E} - \tilde{\mathcal{E}}\|_0 < 5 \binom{n}{t+1} [(4e + 2)\epsilon]^{t+1}.
-    $$
+     $$
 
 
 #### 物理意义与局限性
-- 意义：在低错误率（$\epsilon \ll 1/n$）下，独立通道可近似为局部错误模型，简化纠错码设计。
+- 意义：在低错误率（$\epsilon \ll 1/n $）下，独立通道可近似为局部错误模型，简化纠错码设计。
 - 局限性：
-  - 要求单量子比特错误率$\epsilon$极低，实际系统中可能难以满足。
-  - 组合因子$\binom{n}{t+1}$随n增大快速膨胀，限制了大t场景的应用。
+  - 要求单量子比特错误率 $\epsilon $极低，实际系统中可能难以满足。
+  - 组合因子 $\binom{n}{t+1} $随n增大快速膨胀，限制了大t场景的应用。
 
 #### 总结
 核心在于利用低错误率下高阶项的指数压制效应
