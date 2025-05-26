@@ -24,17 +24,17 @@ Follow集合是在推导过程中可能紧跟某符号的终结符集合。
 ### Select集合
 Select集合是指可能选用该产生式的终结符集合。
 <span>
-$$ \text{Select}(A \rightarrow \alpha) = \begin{align*}
+$$\text{Select}(A \rightarrow \alpha) = \begin{align*}
     \begin{cases}
         \text{First}(\alpha),\epsilon \notin \text{First}(\alpha)\\
         (\text{First}(\alpha) - \{\epsilon\})\cup\text{Follow}(\alpha),\epsilon \in \text{First}(\alpha)
     \end{cases}
-\end{align*} $$
+\end{align*}$$
 </span>
 
 ## LL(1)文法
 我们称满足如下性质的文法为LL(1)文法：
-$$ \text{Select}(A \rightarrow \alpha) \cap \text{Select}(A \rightarrow \beta) = \phi $$
+$$\text{Select}(A \rightarrow \alpha) \cap \text{Select}(A \rightarrow \beta) = \phi$$
 
 ## LL(1)文法分析方法
 ### 递归下降分析

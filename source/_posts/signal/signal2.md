@@ -33,7 +33,7 @@ Hilbert空间内任何函数都可以写成无穷级数的形式，该级数为H
 
 ### 标准正交基下的分解
 设$\{x_n\}$是Hilbert空间$H$的一组可列的标准正交基，则有
-$$\forall x \in H, x = \sum_n \langle x, x_n \rangle x_n $$
+$$\forall x \in H, x = \sum_n \langle x, x_n \rangle x_n$$
 
 ## 周期函数的正交分解
 ### Dirichlet条件
