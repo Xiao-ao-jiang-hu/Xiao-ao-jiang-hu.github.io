@@ -4,7 +4,7 @@ date: 2025-05-27 01:54:16
 tags:
     - mathematics
     - numerical-analysis
-excerpt: 
+excerpt: 本文介绍了函数逼近和插值的基本概念和方法，包括多项式插值、样条插值和最小二乘法，重点讨论了它们在数值分析中的应用和实现方法。
 ---
 ## 函数逼近的基本概念
 
