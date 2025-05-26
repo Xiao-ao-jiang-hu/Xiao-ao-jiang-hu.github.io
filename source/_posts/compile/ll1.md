@@ -4,8 +4,9 @@ title: LL(1) analysis
 date: 2024-12-09 13:32:42
 tags:
     - signal
-excerpt: Signal processing course notes
+excerpt: 本文将介绍自顶向下的LL(1)分析方法，包括First集合、Follow集合、Select集合的计算方法，以及LL(1)文法的定义和分析方法。
 ---
+
 # 自顶向下分析之LL（1）分析
 ## 三个重要集合
 ### First集合

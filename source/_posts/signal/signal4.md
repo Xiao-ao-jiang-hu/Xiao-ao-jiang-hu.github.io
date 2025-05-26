@@ -4,7 +4,7 @@ title: Signal Processing 4
 date: 2024-12-13 23:22:19
 tags:
     - signal
-excerpt: Signal processing course notes
+excerpt: 本文将介绍信号的采样和采样定理，包括采样函数、理想时域采样、采样定理以及连续信号的采样重构等内容。
 ---
 # 信号的采样
 如何从连续时间信号的离散时间样本不失真地恢复成原来的连续时间信号？
