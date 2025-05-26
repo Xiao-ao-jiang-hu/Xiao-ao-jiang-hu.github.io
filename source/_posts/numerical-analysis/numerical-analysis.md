@@ -68,7 +68,7 @@ $$
 由于 $ |\lambda_1| > |\lambda_j| $，当 $ k \to \infty $ 时，高阶项 $ \left(\frac{\lambda_j}{\lambda_1}\right)^k $ 趋近于零，因此 $ v_k $ 的方向趋近于 $ \hat{x}_1 $。进一步，若记录 $ v_k $ 中绝对值最大的分量下标 $ j $，则：  
 $$
 \lim_{k \to \infty} \frac{(v_{k+1})_j}{(v_k)_j} = \lambda_1.
-$
+$$
 
 
 ### 改进：向量规格化
