@@ -916,7 +916,7 @@ discuss:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/bg.png
+  banner_img: /img/archived.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -927,7 +927,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /img/bg.png
+  banner_img: /img/category.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -956,7 +956,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/bg.png
+  banner_img: /img/labels.png
   banner_img_height: 80
   banner_mask_alpha: 0.3
   tagcloud:
@@ -973,7 +973,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/bg.png
+  banner_img: /img/info.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /img/icon.png
