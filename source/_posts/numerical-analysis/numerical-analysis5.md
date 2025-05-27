@@ -1,5 +1,5 @@
 ---
-title: numerical-analysis5
+title: 多项式插值
 date: 2025-05-27 13:10:43
 tags:
     - mathematics
