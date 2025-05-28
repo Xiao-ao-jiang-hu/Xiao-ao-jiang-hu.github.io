@@ -1,6 +1,6 @@
 ---
 title: t-Qubit信道
-date: 2025-05-26 20:13:05
+date: 2025-04-06 20:13:05
 tags:
     - quantum
     - quantum-error

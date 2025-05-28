@@ -1,6 +1,6 @@
 ---
 title: 量子信道的数学描述
-date: 2025-05-23 18:37:16
+date: 2025-03-23 18:37:16
 tags:
     - quantum
     - quantum-error
