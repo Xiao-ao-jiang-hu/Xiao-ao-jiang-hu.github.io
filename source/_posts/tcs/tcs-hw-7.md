@@ -1,8 +1,9 @@
 ---
-title: tcs-hw-7
+title: TCS Homework 7
 date: 2025-05-31 00:02:18
 tags:
-excerpt:
+    - tcs
+excerpt: TCS Homework 7
 ---
 ## 7.1
 ### 题目
