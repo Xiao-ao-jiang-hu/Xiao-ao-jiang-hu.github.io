@@ -7,77 +7,175 @@ excerpt: 本节内容涵盖了私钥加密基础、完美保密性、计算保�
 ---
 
 ### **1. 私钥加密基础 (Private-Key Encryption)**
-* **场景**：Alice 和 Bob 共享密钥 $k$，Alice 用 $k$ 加密明文 $x$ 生成密文 $y$，Bob 用 $k$ 解密密文恢复 $x$。敌手 Eve 窃听信道但不知 $k$。
-* **有效性 (Validity)**：  
-  对任意密钥 $k \in \{0,1\}^n$ 和明文 $x$，需满足 $\text{Dec}(k, \text{Enc}(k,x)) = x$。
-* **密文长度**：  
-  **引理 1**：任何有效加密方案的密文长度至少等于明文长度（$|y| \geq |x|$）。优化目标是支持更长的明文。
+#### **1.1 场景设定**
+- **参与者**：  
+  - Alice（发送方）、Bob（接收方）共享**秘密密钥 $k \in \{0,1\}^*$**。  
+  - Eve（敌手）窃听信道，但无法获取 $k$。  
+- **流程**：  
+  Alice 计算 $y = \text{Enc}_k(x)$ → 发送 $y$ → Bob 计算 $x = \text{Dec}_k(y)$。  
+
+#### **1.2 有效性定义**
+- **定义**：多项式时间算法对 $(\text{Enc}, \text{Dec})$ 是**有效加密方案**，当且仅当：  
+  $$
+  \forall n, k \in \{0,1\}^n, x: \quad \text{Dec}(k, \text{Enc}(k, x)) = x.
+  $$  
+- **密文长度限制**（引理 1）：  
+  **证明**：假设存在 $x$ 使得 $|\text{Enc}_k(x)| < |x|$。由于 $\text{Dec}$ 是确定性算法，其输出仅依赖输入 $(k, y)$。若 $|y| < |x|$，则至多有 $2^{|y|}$ 个可能输出，但明文空间大小 $2^{|x|} > 2^{|y|}$，矛盾。故必有 $|y| \geq |x|$。
 
 
 ### **2. 完美保密性 (Perfect Secrecy)**
-* **安全定义问题**：  
-  早期定义（如恢复密钥或明文）不足。**完美保密性**由 Shannon 提出：  
-  对任意明文 $x_0, x_1$ 和随机密钥 $k$，分布 $\text{Enc}_k(x_0)$ 与 $\text{Enc}_k(x_1)$ **完全相同**。  
-  * 敌手无法从密文中获得任何关于明文的信息（即使拥有无限算力）。
-* **实验分析**：  
-  敌手 $\mathcal{A}$ 选择 $x_0, x_1$，挑战者随机加密其一生成 $y$，$\mathcal{A}$ 猜测加密的是哪个明文。  
-  **完美保密性等价于**：$\Pr[\mathcal{A} \text{ 成功}] = \frac{1}{2}$（与随机猜测无异）。
-* **一次性密码本 (One-Time Pad, OTP)**：  
-  * **构造**：$\text{Enc}_k(x) = k \oplus x$，$\text{Dec}_k(y) = k \oplus y$（要求 $|k|=|x|$）。
-  * **优点**：满足完美保密性，计算高效。  
-  * **缺点**：密钥长度必须等于明文长度，且**密钥不能重用**（否则泄露 $x_1 \oplus x_2$）。
-* **密钥长度限制**：  
-  **定理 1**：任何完美保密加密方案的明文长度满足 $\ell_p(n) \leq n$（密钥长度 $n$ 限制了可加密的明文长度）。
+#### **2.1 定义**
+- **完美保密性**：对任意 $n, x_0, x_1 \in \{0,1\}^{\ell(n)}$，分布 $Y_0 = \text{Enc}_k(x_0)$ 和 $Y_1 = \text{Enc}_k(x_1)$（密钥 $k \leftarrow \{0,1\}^n$）**完全相同**。  
+  - **等价表述**：在以下实验中，敌手 $\mathcal{A}$ 的成功概率为 $\frac{1}{2}$：  
+    1. 采样 $k \leftarrow \{0,1\}^n$.  
+    2. $\mathcal{A}(1^n)$ 输出 $x_0, x_1$.  
+    3. 随机选择 $b \leftarrow \{0,1\}$, 发送 $y = \text{Enc}_k(x_b)$ 给 $\mathcal{A}$.  
+    4. $\mathcal{A}$ 输出 $b'$.  
+    实验输出 $1$ 当且仅当 $b' = b$.  
+
+#### **2.2 完美保密性分析**
+- **关键证明**：  
+  $$
+  \Pr[\mathcal{A} \text{ 成功}] = \Pr[b' = b] = \frac{1}{2}.
+  $$  
+  **推导**：  
+  由完美保密性，$\Pr[Y = y \mid b = 0] = \Pr[Y = y \mid b = 1] = p(y)$.  
+  由全概率公式：  
+  $$
+  \Pr[Y = y] = \Pr[b=0] \cdot p(y) + \Pr[b=1] \cdot p(y) = p(y).
+  $$  
+  故 $Y$ 与 $b$ 独立：  
+  $$
+  \Pr[b=i \mid Y=y] = \frac{\Pr[b=i] \cdot p(y)}{p(y)} = \Pr[b=i] = \frac{1}{2}.
+  $$  
+  因此 $\mathcal{A}$ 无法从 $y$ 获取 $b$ 的信息。
+
+#### **2.3 一次性密码本 (OTP)**
+- **构造**：  
+  - $\text{Enc}_k(x) = k \oplus x$（要求 $|k| = |x| = n$）。  
+  - $\text{Dec}_k(y) = k \oplus y$.  
+- **完美保密性证明**：  
+  对任意 $x_0, x_1, y$：  
+  $$
+  \Pr[\text{Enc}_k(x_0) = y] = \Pr[k = x_0 \oplus y] = 2^{-n},
+  $$  
+  $$
+  \Pr[\text{Enc}_k(x_1) = y] = \Pr[k = x_1 \oplus y] = 2^{-n}.
+  $$  
+  故分布相同。
+
+#### **2.4 密钥长度限制（定理 1）**
+- **定理**：对任意完美保密加密方案，有 $\ell_p(n) \leq n$（明文长度 $\leq$ 密钥长度）。  
+- **证明**：  
+  固定 $n$，设 $\ell = \ell_p(n)$。  
+  1. 取 $x_0 = 0^\ell$，其密文分布 $Y_0$ 的支撑集 $S_0$ 满足 $|S_0| \leq 2^n$（因密钥仅 $2^n$ 种）。  
+  2. 由完美保密性，对任意 $x_1$ 和 $k$，$\text{Enc}_k(x_1) \in S_0$。  
+  3. 对固定 $k$，集合 $I_k = \{ y \mid y = \text{Enc}_k(x) \text{ for some } x \}$ 的大小至少为 $2^\ell$（因明文空间大小为 $2^\ell$）。  
+  4. 因 $I_k \subseteq S_0$，故 $2^\ell \leq |S_0| \leq 2^n$，即 $\ell \leq n$.
 
 
 ### **3. 计算保密性与伪随机生成器 (PRG)**
-* **动机**：克服 OTP 的密钥过长问题，允许短密钥加密长明文（如 AES 用 128 位密钥加密 TB 级数据）。
-* **计算保密性 (Computational Secrecy)**：  
-  放宽安全要求，只针对**多项式时间**敌手。  
-  * **实验**：与完美保密实验相同，但敌手 $\mathcal{A}$ 是 PPT 算法。  
-  * **定义**：对任意 PPT $\mathcal{A}$，存在可忽略函数 $\text{negl}(n)$ 使得：  
-    $$
-    \Pr[\mathcal{A} \text{ 成功}] \leq \frac{1}{2} + \text{negl}(n).
-    $$
-* **伪随机生成器 (Pseudorandom Generator, PRG)**：  
-  * **定义**：多项式时间函数 $G: \{0,1\}^n \to \{0,1\}^{\ell(n)}$（$\ell(n) > n$），满足：  
-    对任意 PPT 区分器 $\mathcal{D}$，有  
-    $$
-    \left| \Pr[\mathcal{D}(G(s)) = 1] - \Pr[\mathcal{D}(r) = 1] \right| \leq \text{negl}(n),
-    $$  
-    其中 $s \leftarrow \{0,1\}^n$，$r \leftarrow \{0,1\}^{\ell(n)}$。  
-  * **密码学 PRG 猜想**：存在 PRG 满足 $\ell(n) = n^a$（任意多项式拉伸）。
-* **基于 PRG 的加密方案**：  
-  * **构造**：$\text{Enc}_k(x) = x \oplus G(k)$，$\text{Dec}_k(y) = y \oplus G(k)$（$|G(k)| = |x|$）。  
-  * **安全性证明**（归约）：  
-    若敌手 $\mathcal{A}$ 攻破加密方案（成功概率显著 $> \frac{1}{2}$），则可构造区分器 $\mathcal{D}_{\text{PRG}}$ 攻破 PRG（区分 $G(s)$ 与真随机串），矛盾。
+#### **3.1 计算保密性定义**
+- **实验**（敌手为 PPT 算法 $\mathcal{A}$)：  
+  1. 采样 $k \leftarrow \{0,1\}^n$.  
+  2. $\mathcal{A}(1^n)$ 输出等长明文 $x_0, x_1$.  
+  3. 随机选择 $b \leftarrow \{0,1\}$，发送 $y = \text{Enc}_k(x_b)$ 给 $\mathcal{A}$.  
+  4. $\mathcal{A}$ 输出 $b'$.  
+  实验输出 $1$ 当且仅当 $b' = b$.  
+- **定义**：方案是**计算保密的**，若 $\forall$ PPT $\mathcal{A}$，$\exists$ 可忽略函数 $\text{negl}$ 使得：  
+  $$
+  \Pr[\mathcal{A} \text{ 成功}] \leq \frac{1}{2} + \text{negl}(n).
+  $$
 
+#### **3.2 伪随机生成器 (PRG)**
+- **定义**：多项式时间函数 $G: \{0,1\}^n \to \{0,1\}^{\ell(n)}$ 是 **PRG**，若：  
+  1. $\forall s \in \{0,1\}^n: |G(s)| = \ell(n)$.  
+  2. $\forall$ PPT 区分器 $\mathcal{D}$，有：  
+  $$
+  \left| \Pr_{s \leftarrow \{0,1\}^n} [\mathcal{D}(G(s)) = 1] - \Pr_{r \leftarrow \{0,1\}^{\ell(n)}} [\mathcal{D}(r) = 1] \right| \leq \text{negl}(n).
+  $$  
+  - **密码学 PRG 猜想**：存在 PRG 满足 $\ell(n) = n^a$（$\forall a \in \mathbb{N}$).
+
+#### **3.3 基于 PRG 的加密方案**
+- **构造**：  
+  - $\text{Enc}_k(x) = x \oplus G(k)$（要求 $|G(k)| = |x|$）。  
+  - $\text{Dec}_k(y) = y \oplus G(k)$.  
+- **安全性证明**（定理 2）：  
+  **假设** PRG 安全。**归约**：若存在 PPT 敌手 $\mathcal{A}$ 攻破加密方案（即 $\Pr[\mathcal{A} \text{成功}] \geq \frac{1}{2} + \frac{1}{\text{poly}(n)}$），则构造区分器 $\mathcal{D}_{\text{PRG}}$ 攻破 PRG：  
+  1. $\mathcal{D}_{\text{PRG}}(w)$：  
+     - 运行 $\mathcal{A}(1^n)$ 获得 $x_0, x_1$.  
+     - 随机选 $b \leftarrow \{0,1\}$，计算 $y = w \oplus x_b$.  
+     - 发送 $y$ 给 $\mathcal{A}$，获其输出 $b'$.  
+     - 若 $b' = b$ 输出 $1$，否则输出 $0$.  
+  **分析**：  
+  - 若 $w \leftarrow \{0,1\}^{\ell(n)}$（真随机）：则 $y$ 是 $x_b$ 的 OTP 密文，故 $\Pr[\mathcal{D}_{\text{PRG}} \text{ 输出 } 1] = \Pr[\mathcal{A} \text{ 成功}] = \frac{1}{2}$.  
+  - 若 $w = G(s)$（PRG 输出）：则 $\Pr[\mathcal{D}_{\text{PRG}} \text{ 输出 } 1] = \Pr[\mathcal{A} \text{ 成功}] \geq \frac{1}{2} + \frac{1}{\text{poly}(n)}$.  
+  **矛盾**：区分优势为 $\frac{1}{\text{poly}(n)}$（非可忽略），与 PRG 安全假设矛盾。
 
 ### **4. CPA 安全与伪随机函数 (PRF)**
-* **选择明文攻击 (Chosen-Plaintext Attack, CPA)**：  
-  敌手可在攻击前**自适应地查询加密预言机**（获取任意明文的密文）。
-* **CPA 安全定义**：  
-  实验允许敌手访问 $\text{Enc}_k(\cdot)$ 预言机，输出挑战明文对 $(x_0, x_1)$ 后获挑战密文 $y = \text{Enc}_k(x_b)$，可继续查询预言机（但不可查 $y$）。要求 $\Pr[\mathcal{A} \text{ 成功}] \leq \frac{1}{2} + \text{negl}(n)$。
-* **关键结论**：  
-  * **确定性加密不可能 CPA 安全**（敌手直接加密 $x_0, x_1$ 并与 $y$ 比较）。  
-  * CPA 安全方案**必须引入随机性**（如随机 IV）。
-* **伪随机函数 (Pseudorandom Function, PRF)**：  
-  * **定义**：函数族 $\{F_k: \{0,1\}^n \to \{0,1\}^n\}$，满足对任意 PPT 区分器 $\mathcal{D}$ 有：  
+#### **4.1 CPA 安全定义**
+- **实验**（敌手可访问加密预言机）：  
+  1. 采样 $k \leftarrow \{0,1\}^n$.  
+  2. $\mathcal{A}^{\text{Enc}_k(\cdot)}(1^n)$ 可自适应查询加密，输出等长明文 $x_0, x_1$.  
+  3. 随机选 $b \leftarrow \{0,1\}$，计算挑战密文 $y^* = \text{Enc}_k(x_b)$ 并发送给 $\mathcal{A}$.  
+  4. $\mathcal{A}$ 可继续查询加密（但不可查 $y^*$），输出 $b'$.  
+  实验输出 $1$ 当且仅当 $b' = b$.  
+- **定义**：方案是 **CPA 安全的**，若 $\forall$ PPT $\mathcal{A}$，$\exists$ $\text{negl}$ 使得：  
+  $$
+  \Pr[\mathcal{A} \text{ 成功}] \leq \frac{1}{2} + \text{negl}(n).
+  $$
+
+#### **4.2 伪随机函数 (PRF)**
+- **定义**：函数族 $F_k: \{0,1\}^n \to \{0,1\}^n$ 是 **PRF**，若 $\forall$ PPT 区分器 $\mathcal{D}$，有：  
+  $$
+  \left| \Pr_{k \leftarrow \{0,1\}^n} \left[ \mathcal{D}^{F_k(\cdot)}(1^n) = 1 \right] - \Pr_{f \leftarrow \text{Rand}(n)} \left[ \mathcal{D}^{f(\cdot)}(1^n) = 1 \right] \right| \leq \text{negl}(n),
+  $$  
+  其中 $\text{Rand}(n)$ 是所有函数 $\{0,1\}^n \to \{0,1\}^n$ 的集合。
+
+#### **4.3 基于 PRF 的 CPA 安全加密**
+- **构造**（随机 IV 模式）：  
+  - $\text{Enc}_k(x)$：  
+    1. 随机选 $r \leftarrow \{0,1\}^n$.  
+    2. 计算 $s = F_k(r) \oplus x$.  
+    3. 输出密文 $y = \langle r, s \rangle$.  
+  - $\text{Dec}_k(\langle r, s \rangle)$：输出 $x = F_k(r) \oplus s$.  
+
+#### **4.4 CPA 安全性证明**
+- **步骤 1：分析真随机函数方案 $\widetilde{\Pi}$**  
+  设敌手 $\mathcal{A}$ 在 CPA 实验中做 $q(n)$ 次加密查询，使用随机数 $r_1, \dots, r_q$。  
+  - **事件 Repeat**：挑战密文中的 $r_c$ 在 $\{r_1, \dots, r_q\}$ 中出现。  
     $$
-    \left| \Pr[\mathcal{D}^{F_k(\cdot)}(1^n)=1] - \Pr[\mathcal{D}^{f(\cdot)}(1^n)=1] \right| \leq \text{negl}(n),
+    \Pr[\text{Repeat}] \leq \frac{q(n)}{2^n}.
     $$  
-    其中 $k \leftarrow \{0,1\}^n$，$f$ 是真随机函数。  
-  * **存在性**：PRF 存在当且仅当 PRG 存在。
-* **基于 PRF 的 CPA 安全加密**：  
-  * **构造**（随机 IV 模式）：  
-    - $\text{Enc}_k(x)$：随机选 $r \leftarrow \{0,1\}^n$，输出 $\langle r, F_k(r) \oplus x \rangle$。  
-    - $\text{Dec}_k(\langle r, s \rangle)$：输出 $F_k(r) \oplus s$。  
-  * **安全性证明思路**：  
-    1. **真随机函数方案 ($\widetilde{\Pi}$) 的分析**：  
-       - 若挑战密文的 $r$ 与历史查询重复（概率 $\leq \frac{q(n)}{2^n}$），敌手可能成功。  
-       - 否则，$F_k(r)$ 相当于一次性密钥，敌手成功概率恰为 $\frac{1}{2}$。  
-       综上：$\Pr[\mathcal{A}_{\widetilde{\Pi}} \text{ 成功}] \leq \frac{1}{2} + \frac{q(n)}{2^n}$。  
-    2. **归约到 PRF 安全**：  
-       若敌手 $\mathcal{A}$ 攻破 $\Pi$（使用 PRF），则可构造区分器 $\mathcal{D}$ 攻破 PRF（通过模拟 CPA 实验）。
+  - **事件 No Repeat**：此时 $F_k(r_c)$ 对敌手完全随机（因 $f$ 是真随机函数），故：  
+    $$
+    \Pr[\mathcal{A} \text{ 成功} \mid \text{No Repeat}] = \frac{1}{2}.
+    $$  
+  - **总成功概率**：  
+    $$
+    \Pr[\mathcal{A}_{\widetilde{\Pi}} \text{ 成功}] \leq \Pr[\text{Repeat}] + \Pr[\mathcal{A} \text{ 成功} \mid \text{No Repeat}] \leq \frac{q(n)}{2^n} + \frac{1}{2}.
+    $$
 
-
+- **步骤 2：归约到 PRF 安全**  
+  **构造区分器 $\mathcal{D}$**：  
+  1. $\mathcal{D}^{\mathcal{O}(\cdot)}(1^n)$：  
+     - 模拟 $\mathcal{A}$ 的 CPA 实验：  
+       - 当 $\mathcal{A}$ 查询 $\text{Enc}(x)$：  
+         选 $r \leftarrow \{0,1\}^n$，查询 $s' = \mathcal{O}(r)$，返回 $\langle r, s' \oplus x \rangle$.  
+       - 当 $\mathcal{A}$ 输出挑战明文 $x_0, x_1$：  
+         选 $b \leftarrow \{0,1\}, r_c \leftarrow \{0,1\}^n$，查询 $s' = \mathcal{O}(r_c)$，返回 $\langle r_c, s' \oplus x_b \rangle$.  
+     - 若 $\mathcal{A}$ 输出 $b' = b$，则输出 $1$；否则输出 $0$.  
+  **分析**：  
+  - 若 $\mathcal{O} = F_k$（伪随机函数）：则 $\mathcal{A}$ 的视图与方案 $\Pi$ 中相同，故：  
+    $$
+    \Pr[\mathcal{D}^{F_k(\cdot)} = 1] = \Pr[\mathcal{A}_{\Pi} \text{ 成功}].
+    $$  
+  - 若 $\mathcal{O} = f$（真随机函数）：则 $\mathcal{A}$ 的视图与方案 $\widetilde{\Pi}$ 中相同，故：  
+    $$
+    \Pr[\mathcal{D}^{f(\cdot)} = 1] = \Pr[\mathcal{A}_{\widetilde{\Pi}} \text{ 成功}] \leq \frac{1}{2} + \frac{q(n)}{2^n}.
+    $$  
+  **矛盾**：若 $\mathcal{A}_{\Pi}$ 成功概率显著 $> \frac{1}{2}$，则：  
+  $$
+  \left| \Pr[\mathcal{D}^{f(\cdot)} = 1] - \Pr[\mathcal{D}^{F_k(\cdot)} = 1] \right| \geq \frac{1}{\text{poly}(n)},
+  $$  
+  与 PRF 安全假设矛盾。
