@@ -98,16 +98,50 @@ $$
 $$ 
 由马尔可夫不等式：$\Pr(X \geq 1) \leq \mathbb{E}[X] \to 0$。  
 
-(b) 对于 $p = \omega(n^{-2/3})$，有 $\mathbb{E}[X] \to \infty$。计算方差：  
+(b) 设 $\mathcal{A}$ 为所有可能的 4-团对应的顶点集（即所有 4-元子集），则：
 $$
-\text{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2.
-$$ 
-$\text{Var}(X)$ 的**主要贡献**来自**重叠的** $4$-团。对于共享 $2$ 个顶点的团，$\mathbb{E}[X^2]$ 项的数量级为 $O(n^6 p^{11})$。此时：  
+X = \sum_{A \in \mathcal{A}} I_A,
 $$
-\frac{\text{Var}(X)}{(\mathbb{E}[X])^2} \approx \frac{n^6 p^{11}}{n^8 p^{12}} = \frac{1}{n^2 p} \to 0.
-$$ 
-由问题 1(b) 的结论：  
-$$
-\Pr(X = 0) \leq \frac{\text{Var}(X)}{(\mathbb{E}[X])^2} \to 0,
-$$ 
-因此 $G$ **几乎必然** 包含一个 $4$-团。
+其中 $I_A$ 是指示变量（当 $A$ 形成 4-团时为 1，否则为 0）。
+
+1. **期望计算**：  
+   $$
+   \mathbb{E}[X] = \binom{n}{4} p^{\binom{4}{2}} = \binom{n}{4} p^6 \approx \frac{n^4}{24} p^6.
+   $$
+   由 $p = \omega(n^{-2/3})$，有 $n^4 p^6 \to \infty$，故 $\mathbb{E}[X] \to \infty$.
+
+2. **方差计算**：  
+   $$
+   \text{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2 = \sum_{A,B \in \mathcal{A}} \left( \mathbb{E}[I_A I_B] - \mathbb{E}[I_A] \mathbb{E}[I_B] \right).
+   $$
+   根据 $|A \cap B| = k$（$k = 0,1,2,3,4$) 分类求和：
+   - **$k=4$（相同团）**：$A=B$，贡献为 $\binom{n}{4} p^6$.
+   - **$k=3$（共享 3 顶点）**：  
+     数量：$\binom{n}{3} \binom{3}{1} \binom{n-4}{1} = O(n^4)$（选 3 个共享顶点，再选 $A$ 中剩余 1 顶点，最后选 $B$ 中剩余 1 顶点）。  
+     概率：$\mathbb{E}[I_A I_B] = p^{9}$（因 $|A \cup B| = 5$ 个顶点，需 $\binom{5}{2} = 10$ 条边，但共享的 3-团已固定，实际需新增 3 条边，共 $\binom{3}{2} + 3 + 3 = 9$ 条边）。  
+     贡献阶：$O(n^4 p^9)$.
+   - **$k=2$（共享 2 顶点）**：  
+     数量：$\binom{n}{2} \binom{n-2}{2} \binom{n-4}{2} = O(n^6)$（选 2 个共享顶点，再选 $A$ 中剩余 2 顶点，最后选 $B$ 中剩余 2 顶点）。  
+     概率：$\mathbb{E}[I_A I_B] = p^{11}$（因 $|A \cup B| = 6$ 个顶点，需 $\binom{6}{2} = 15$ 条边，但共享的 2-团贡献 $\binom{2}{2} = 1$ 条边，且 $A$ 与 $B$ 各自剩余部分无公共边，总边数 $6 + 6 - 1 = 11$）。  
+     贡献阶：$O(n^6 p^{11})$.
+   - **$k=0,1$（低阶项）**：  
+     数量 $O(n^7)$ 或 $O(n^8)$，概率 $p^{12}$，贡献 $o(n^6 p^{11})$（因 $p = o(1)$）。
+
+3. **主导项分析**：  
+   比较各项与 $(\mathbb{E}[X])^2 \approx n^8 p^{12}$:
+   - $k=2$ 项：$\dfrac{O(n^6 p^{11})}{n^8 p^{12}} = O\left( \dfrac{1}{n^2 p} \right)$
+   - $k=3$ 项：$\dfrac{O(n^4 p^9)}{n^8 p^{12}} = O\left( \dfrac{1}{n^4 p^3} \right)$
+   - $k=4$ 项：$\dfrac{\binom{n}{4} p^6}{n^8 p^{12}} = O\left( \dfrac{1}{n^4 p^6} \right)$
+   - $k=0,1$ 项：$o\left( \dfrac{1}{n^2 p} \right)$
+
+   由 $p = \omega(n^{-2/3})$，有 $n^2 p \to \infty$，故：
+   $$
+   \frac{\text{Var}(X)}{(\mathbb{E}[X])^2} = O\left( \frac{1}{n^2 p} \right) + o\left( \frac{1}{n^2 p} \right) \to 0.
+   $$
+
+4. **应用概率界**：  
+   由问题 1(b) 结论：
+   $$
+   \Pr(X = 0) \leq \frac{\text{Var}(X)}{(\mathbb{E}[X])^2} \to 0,
+   $$
+   故 $\lim_{n \to \infty} \Pr(\text{不包含 } 4\text{-团}) = 0$.
