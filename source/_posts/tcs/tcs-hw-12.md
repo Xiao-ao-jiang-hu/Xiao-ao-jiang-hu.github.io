@@ -111,70 +111,57 @@ $$ \text{Dec}_k(c) = \text{后 } n/2 \text{ 位} \text{ 的 } F_k^{-1}(c). $$
 - 解密时，$F_k^{-1}(c) = F_k^{-1}(F_k(r \| x)) = r \| x$。  
 - 提取后 $n/2$ 位直接得到 $x$，故解密正确恢复明文。  
 
-#### (b) 证明加密方案是 CPA 安全的
-CPA 安全性要求：任意多项式时间敌手 $\mathcal{A}$ 在 CPA 游戏中的优势可忽略。CPA 游戏定义如下：  
-1. 挑战者均匀采样密钥 $k$。  
-2. $\mathcal{A}$ 可适应性地查询加密预言机：输入明文 $x$，预言机返回 $\text{Enc}_k(x)$。  
-3. $\mathcal{A}$ 提交两个等长明文 $x_0, x_1 \in \{0, 1\}^{n/2}$。  
-4. 挑战者采样随机比特 $b \leftarrow \{0,1\}$ 和随机数 $r^* \leftarrow \{0,1\}^{n/2}$，计算挑战密文 $c^* = F_k(r^* \| x_b)$，并返回 $c^*$ 给 $\mathcal{A}$。  
-5. $\mathcal{A}$ 可继续查询加密预言机（但不能解密 $c^*$)，最后输出猜测比特 $b'$。  
-敌手的优势定义为：  
-$$ \text{Adv}_{\text{CPA}}(\mathcal{A}) = \left| \Pr[b' = b] - \frac{1}{2} \right|. $$  
+#### (b) 证明加密方案是 CPA 安全的：
+   目标是证明该方案满足 IND-CPA 安全性（选择明文攻击下的密文不可区分性）。假设 $F_k$ 是 PRP，如果存在一个多项式时间敌手 $\mathcal{A}$ 能以不可忽略的优势攻破该加密方案的 CPA 安全，则可以构造一个敌手 $\mathcal{D}$ 来攻破 PRP 的安全性，从而导出矛盾。
 
-**证明**：  
-使用混合论证（Hybrid Argument），基于 $F_k$ 是 PRP 的假设。  
+   **敌手 $\mathcal{D}$ 的构造（用于攻击 PRP）：**  
+   敌手 $\mathcal{D}$ 拥有访问预言机 $\mathcal{O}(\cdot)$ 和 $\mathcal{O}^{-1}(\cdot)$ 的能力，这些预言机要么是 $F_k(\cdot)$ 和 $F_k^{-1}(\cdot)$（真实 PRP），要么是随机置换 $f_n(\cdot)$ 和 $f_n^{-1}(\cdot)$。$\mathcal{D}$ 模拟加密方案的环境给 $\mathcal{A}$，具体步骤如下：  
+   - **步骤 1：模拟加密预言机。**  
+     - 当 $\mathcal{A}$ 查询加密预言机（输入明文 $x \in \{0,1\}^{n/2}$）：  
+       - $\mathcal{D}$ 采样随机数 $r \leftarrow \{0,1\}^{n/2}$。  
+       - 查询自己的预言机 $\mathcal{O}$ 得到 $c = \mathcal{O}(r \| x)$。  
+       - 将 $c$ 返回给 $\mathcal{A}$ 作为密文。  
+     **补充说明：** 这完美模拟了 $\operatorname{Enc}_k(\cdot)$，因为真实方案中 $\operatorname{Enc}_k(x) = F_k(r \| x)$。  
+   - **步骤 2：处理挑战阶段。**  
+     - $\mathcal{A}$ 输出两个等长的明文 $x_0, x_1 \in \{0,1\}^{n/2}$。  
+     - $\mathcal{D}$ 采样随机比特 $b \leftarrow \{0,1\}$ 和随机数 $r \leftarrow \{0,1\}^{n/2}$。  
+     - 查询预言机 $\mathcal{O}$ 得到挑战密文 $c^* = \mathcal{O}(r \| x_b)$。  
+     - 将 $c^*$ 发送给 $\mathcal{A}$。  
+   - **步骤 3：处理 $\mathcal{A}$ 的输出。**  
+     - $\mathcal{A}$ 继续访问加密预言机（但不能查询 $c^*$ 的解密），并最终输出一个猜测比特 $b'$.  
+     - 如果 $b' = b$，则 $\mathcal{D}$ 输出 1（猜测预言机是真实 PRP）；否则输出 0（猜测预言机是随机置换）。  
 
-- **Game 0**：真实 CPA 游戏。  
-  - 加密预言机：对查询 $x$，采样 $r \leftarrow \{0,1\}^{n/2}$，返回 $c = F_k(r \| x)$。  
-  - 挑战阶段：对 $x_0, x_1$，采样 $r^* \leftarrow \{0,1\}^{n/2}$，计算 $c^* = F_k(r^* \| x_b)$。  
+   **分析 $\mathcal{D}$ 的优势：**  
+   - **情况 1：预言机是真实 PRP（即 $\mathcal{O} = F_k$）。**  
+     此时，$\mathcal{D}$ 完美模拟了加密方案的 CPA 游戏。如果 $\mathcal{A}$ 以不可忽略的优势攻破 CPA 安全，则：  
+     $$
+     \Pr\left[\mathcal{D}^{F_k(\cdot),F_k^{-1}(\cdot)}(1^n) = 1\right] = \Pr[\mathcal{A} \text{ 成功}] \geq \frac{1}{2} + \frac{1}{\operatorname{poly}(n)}.
+     $$  
+     其中 $\frac{1}{\operatorname{poly}(n)}$ 是不可忽略的函数（因为 $\mathcal{A}$ 是成功的 CPA 敌手）。  
+   - **情况 2：预言机是随机置换（即 $\mathcal{O} = f_n$）。**  
+     此时，$\mathcal{D}$ 使用随机置换 $f_n$ 模拟加密。设 $\mathcal{A}$ 向加密预言机查询的总次数为 $q(n)$（多项式次），挑战密文为 $c^* = f_n(r \| x_b)$：  
+     - 如果 $\mathcal{A}$ 在查询中曾输入过点 $r \| x_b$ 到预言机，则它可完美计算 $c^*$ 并猜中 $b$（成功概率为 1）。  
+     - 否则，由于 $f_n$ 是随机置换，且 $r$ 在挑战阶段是新鲜随机的（未被查询过），$\mathcal{A}$ 无法获得 $x_b$ 的任何信息（密文 $c^*$ 在 $x_0$ 和 $x_1$ 上分布相同），因此成功概率最多为 $\frac{1}{2}$。  
+     - 敌手 $\mathcal{A}$ 查询到点 $r \| x_b$ 的概率至多为 $\frac{q(n)}{2^{n/2}}$（因为 $r$ 是 $n/2$ 位随机数，空间大小为 $2^{n/2}$)。  
+     因此：  
+     $$
+     \Pr\left[\mathcal{D}^{f_n(\cdot),f_n^{-1}(\cdot)}(1^n) = 1\right] \leq \Pr[\mathcal{A} \text{ 查询 } r \| x_b] \cdot 1 + \Pr[\mathcal{A} \text{ 未查询 } r \| x_b] \cdot \frac{1}{2} \leq \frac{q(n)}{2^{n/2}} + \frac{1}{2}.
+     $$  
+     由于 $q(n)$ 是多项式而 $2^{n/2}$ 是指数函数，$\frac{q(n)}{2^{n/2}}$ 是可忽略函数 $\operatorname{negl}(n)$，故：  
+     $$
+     \Pr\left[\mathcal{D}^{f_n(\cdot),f_n^{-1}(\cdot)}(1^n) = 1\right] \leq \frac{1}{2} + \operatorname{negl}(n).
+     $$  
+   - **比较两种情况：**  
+     $\mathcal{D}$ 作为 PRP 敌手的优势为：  
+     $$
+     \left| \Pr\left[\mathcal{D}^{F_k(\cdot),F_k^{-1}(\cdot)}(1^n) = 1\right] - \Pr\left[\mathcal{D}^{f_n(\cdot),f_n^{-1}(\cdot)}(1^n) = 1\right] \right| \geq \left( \frac{1}{2} + \frac{1}{\operatorname{poly}(n)} \right) - \left( \frac{1}{2} + \operatorname{negl}(n) \right) = \frac{1}{\operatorname{poly}(n)} - \operatorname{negl}(n).
+     $$  
+     该优势是不可忽略的（因为 $\frac{1}{\operatorname{poly}(n)}$ 主导 $\operatorname{negl}(n)$），但这与 $F_k$ 是 PRP 的假设矛盾（PRP 要求优势可忽略）。  
 
-- **Game 1**：将 $F_k$ 替换为随机置换 $\pi$（均匀采样于所有 $\{0,1\}^n \to \{0,1\}^n$ 的置换）。  
-  - 加密预言机：对查询 $x$，采样 $r \leftarrow \{0,1\}^{n/2}$，返回 $c = \pi(r \| x)$。  
-  - 挑战阶段：对 $x_0, x_1$，采样 $r^* \leftarrow \{0,1\}^{n/2}$，计算 $c^* = \pi(r^* \| x_b)$。  
+   **结论：** 不存在多项式时间敌手 $\mathcal{A}$ 能以不可忽略的优势攻破该加密方案的 CPA 安全。因此，该方案是 CPA 安全的。  
 
-**步骤 1：Game 0 和 Game 1 计算不可区分**  
-- 由于 $F_k$ 是 PRP，敌手即使有访问 $F_k$ 和 $F_k^{-1}$ 预言机也无法区分 $F_k$ 与随机置换 $\pi$。  
-- 在 CPA 游戏中，敌手仅访问加密预言机（无逆预言机），因此：  
-  $$
-  \left| \Pr[\mathcal{A} \text{ 在 Game 0 获胜}] - \Pr[\mathcal{A} \text{ 在 Game 1 获胜}] \right| \leq \text{negl}(n).
-  $$  
-  若该差不可忽略，则可构造区分器打破 PRP 假设。
-
-**步骤 2：分析 Game 1 的优势**  
-设敌手最多进行 $q = \text{poly}(n)$ 次加密查询。定义事件 **Coll**（碰撞）：  
-- 挑战输入 $r^* \| x_b$ 等于某个加密查询的输入 $r^{(i)} \| x^{(i)}$（即 $r^* = r^{(i)}$ 且 $x_b = x^{(i)}$ 对某个 $i$)。  
-
-**碰撞概率分析**：  
-- 每个加密查询的 $r^{(i)}$ 独立均匀采样。  
-- 挑战阶段 $r^*$ 独立均匀采样（与历史独立）。  
-- 敌手选择 $x_b$ 时，已知历史查询但未知 $r^*$，故：  
-  $$
-  \Pr[\text{Coll}] \leq \sum_{i=1}^{q} \Pr[r^* = r^{(i)} \land x_b = x^{(i)}] \leq q \cdot 2^{-n/2} \leq \text{negl}(n),
-  $$  
-  因为 $q = \text{poly}(n)$，$2^{-n/2}$ 指数小。
-
-**无碰撞时的安全性**：  
-- 若 ¬Coll 发生，则挑战输入 $r^* \| x_b$ 新鲜（未在加密查询中出现）。  
-- 由于 $\pi$ 是随机置换，且输入点唯一，挑战密文 $c^* = \pi(r^* \| x_b)$ 在 $\{0,1\}^n$ 上均匀随机，且独立于历史视图。  
-- 因此，敌手无法猜测 $b$：  
-  $$
-  \Pr[b' = b \mid \neg \text{Coll}] = \frac{1}{2}.
-  $$  
-
-**Game 1 的总优势**：  
-$$
-\Pr[b' = b] = \underbrace{\Pr[b' = b \mid \text{Coll}]}_{\leq 1} \Pr[\text{Coll}] + \underbrace{\Pr[b' = b \mid \neg \text{Coll}]}_{= \frac{1}{2}} \Pr[\neg \text{Coll}].
-$$  
-代入边界：  
-$$
-\left| \Pr[b' = b] - \frac{1}{2} \right| \leq \Pr[\text{Coll}] \leq \text{negl}(n).
-$$  
-故在 Game 1 中，敌手优势可忽略。
-
-**步骤 3：归结到 Game 0**  
-- Game 0 和 Game 1 计算不可区分，且 Game 1 中优势可忽略，因此在 Game 0 中：  
-  $$
-  \text{Adv}_{\text{CPA}}(\mathcal{A}) \leq \text{negl}(n).
-  $$  
-
-结论：该加密方案是 CPA 安全的。  
+**补充说明：**  
+- 证明中假设 $\mathcal{A}$ 是自适应敌手（可基于之前响应进行后续查询），但模拟依然有效，因为 $\mathcal{D}$ 的预言机访问允许实时响应。  
+- 随机置换 $f_n$ 是理想对象，其安全性分析依赖于信息论论据（而非计算假设）。  
+- 学生解答中误写为 $f_k(\cdot)$，但根据 PRP 定义，应为随机置换 $f_n(\cdot)$，翻译已纠正。  
+- 学生解答略写了 $\mathcal{D}$ 的优势计算和矛盾推导，此处已补充完整。
