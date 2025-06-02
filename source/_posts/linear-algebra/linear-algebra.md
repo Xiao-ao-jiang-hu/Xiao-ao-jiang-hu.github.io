@@ -4,6 +4,9 @@ date: 2025-05-27 01:42:27
 tags:
     - mathematics
     - linear-algebra
+    - 对偶空间
+categories:
+    - linear-algebra
 excerpt: 
 ---
 ## 基变换、对偶空间与张量视角下的行空间、列空间、核空间及转置核空间的关系

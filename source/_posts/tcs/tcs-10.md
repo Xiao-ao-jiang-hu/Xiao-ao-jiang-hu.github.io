@@ -3,6 +3,8 @@ title: TCS Lec10总结
 date: 2025-05-28 23:19:12
 tags:
     - tcs
+categories:
+    - tcs
 excerpt: 本节内容涵盖了非确定性对数空间（NL）与其补集（coNL）的关系、概率论基础、随机变量与期望、集中不等式以及概率方法等重要概念。
 ---
 

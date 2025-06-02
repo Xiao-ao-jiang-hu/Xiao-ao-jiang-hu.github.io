@@ -4,6 +4,8 @@ date: 2024-07-29 23:27:40
 tags: 
     - statistical learning
     - notes
+categories: 
+    - statistical learning
 excerpt: 本系列为清华大学《因果与统计学习》课程笔记
 ---
 # Statistical Learning

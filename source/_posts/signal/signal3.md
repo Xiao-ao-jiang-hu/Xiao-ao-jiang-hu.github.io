@@ -4,6 +4,8 @@ title: Signal Processing 3
 date: 2024-12-09 13:32:42
 tags:
     - signal
+categories:
+    - signal
 excerpt: 本文将介绍信号的傅里叶分解，包括周期连续函数的傅里叶分解、非周期连续函数的傅里叶变换等内容。
 ---
 # 信号的傅里叶分解

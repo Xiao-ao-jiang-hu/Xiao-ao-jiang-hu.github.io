@@ -4,6 +4,8 @@ date: 2025-03-23 20:10:19
 tags:
     - quantum
     - quantum-error
+categories:
+    - quantum
 excerpt: 多量子比特信道是量子信息处理中的重要概念，本文将介绍多量子比特泡利信道和独立/无记忆信道的定义、数学模型及其物理实现。
 ---
 

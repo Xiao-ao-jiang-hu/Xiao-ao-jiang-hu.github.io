@@ -4,7 +4,13 @@ date: 2025-05-27 15:30:24
 tags:
     - architecture
     - cache
-excerpt:
+    - performance-optimization
+    - memory-access
+    - write-strategy
+    - cache-miss
+categories:
+    - architecture
+excerpt: Cache性能优化：从程序行为到写策略的深度解析，分析Cache的写命中与写不命中策略，结合程序访存模式提出优化建议，并探讨Cache性能分析方法。
 --- 
 
 ## Cache性能优化：从程序行为到写策略的深度解析

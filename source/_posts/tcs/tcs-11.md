@@ -3,6 +3,8 @@ title: TCS Lec11总结
 date: 2025-05-28 23:22:56
 tags:
     - tcs
+categories:
+    - tcs
 excerpt: 本节内容涵盖了随机算法的基本概念、BPP 类的定义及其与复杂性理论的关系，以及随机算法在实际问题中的应用案例。
 ---
 

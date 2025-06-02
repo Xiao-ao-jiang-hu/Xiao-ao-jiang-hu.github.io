@@ -3,6 +3,8 @@ title: TCS Homework 12
 date: 2025-05-31 20:37:20
 tags:
     - tcs
+categories:
+    - tcs
 excerpt: TCS Homework 12
 ---
 

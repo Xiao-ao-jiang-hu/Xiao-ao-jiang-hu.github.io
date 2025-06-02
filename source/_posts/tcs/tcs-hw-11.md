@@ -3,6 +3,8 @@ title: TCS Homework 11
 date: 2025-05-31 15:59:45
 tags:
     - tcs
+categories:
+    - tcs
 excerpt: TCS Homework 11
 ---
 ## 11.1

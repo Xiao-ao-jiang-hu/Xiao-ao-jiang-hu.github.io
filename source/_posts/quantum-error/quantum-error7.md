@@ -4,6 +4,8 @@ date: 2025-04-08 01:48:26
 tags:
     - quantum
     - quantum-error
+categories:
+    - quantum
 excerpt: 一般量子纠错码（QECC）是量子信息处理的核心工具，本文将介绍其定义、编码与解码过程、线性性定理及其在纠错中的应用。
 ---
 

@@ -4,6 +4,8 @@ title: Signal Processing 2
 date: 2024-11-24 19:00:00
 tags:
     - signal
+categories:
+    - signal
 excerpt: 本文将介绍信号的分解方法，包括常规分解、脉冲分解、正交分解等，并探讨周期函数的正交分解定理。
 ---
 

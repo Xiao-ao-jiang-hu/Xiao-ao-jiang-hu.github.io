@@ -3,6 +3,8 @@ title: TCS Lec9总结
 date: 2025-05-28 23:06:57
 tags:
     - tcs
+categories:
+    - tcs
 excerpt: 本节内容涵盖了空间复杂度的基础知识、多项式空间（PSPACE）及其完备性、对数空间（Logarithmic Space）以及空间层次定理等重要概念。
 ---
 

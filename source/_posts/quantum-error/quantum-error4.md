@@ -4,6 +4,8 @@ date: 2025-04-06 20:13:05
 tags:
     - quantum
     - quantum-error
+categories:
+    - quantum
 excerpt: t-量子比特信道是量子纠错理论中的重要概念，本文将介绍t-量子比特错误的定义、技术要点及t-量子比特信道近似定理，并分析其在量子纠错中的应用。
 ---
 ## t-量子比特错误的定义与关键点

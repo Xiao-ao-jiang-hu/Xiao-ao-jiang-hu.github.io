@@ -3,6 +3,8 @@ title: TCS Homework 9
 date: 2025-05-31 01:56:48
 tags:
     - tcs
+categories:
+    - tcs
 excerpt: TCS Homework 9
 ---
 ## 9.1

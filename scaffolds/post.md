@@ -2,5 +2,8 @@
 title: {{ title }}
 date: {{ date }}
 tags:
-excerpt: 
+- no tags
+categories:
+- uncategorized
+excerpt: no excerpt
 ---

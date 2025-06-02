@@ -3,6 +3,8 @@ title: TCS Homework 7
 date: 2025-05-31 00:02:18
 tags:
     - tcs
+categories:
+    - tcs
 excerpt: TCS Homework 7
 ---
 ## 7.1

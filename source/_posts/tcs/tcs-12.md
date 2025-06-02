@@ -3,6 +3,8 @@ title: TCS Lec12总结
 date: 2025-05-28 23:25:21
 tags:
     - tcs
+categories:
+    - tcs
 excerpt: 本节内容涵盖了私钥加密基础、完美保密性、计算保密性与伪随机生成器（PRG）、选择明文攻击（CPA）安全与伪随机函数（PRF）等重要概念。
 ---
 
