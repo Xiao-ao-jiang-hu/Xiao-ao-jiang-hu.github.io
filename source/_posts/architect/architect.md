@@ -74,8 +74,8 @@ excerpt: Cache性能优化：从程序行为到写策略的深度解析，分析
   // 数据写入：单次写操作后不再访问  
   volatile uint32_t* debug_port = 0xFFFF0000;  
   *debug_port = 0xDEADBEEF; // 直接写入主存，无需加载到Cache  
+  
 ```  
-
 
 ## 策略组合与访存模式的联合优化  
 
