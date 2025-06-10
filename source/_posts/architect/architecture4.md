@@ -1,9 +1,13 @@
 ---
-title: architecture4
+title: 向量处理器
 tags:
-  - no tags
+  - architecture
+  - vector
+  - vector-processor
+  - vector-architecture
+  - vector-computing
 categories:
-  - uncategorized
+  - architecture
 excerpt: no excerpt
 date: 2025-06-11 06:02:59
 ---
