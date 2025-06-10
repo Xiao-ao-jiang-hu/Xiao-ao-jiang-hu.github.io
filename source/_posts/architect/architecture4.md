@@ -8,7 +8,7 @@ tags:
   - vector-computing
 categories:
   - architecture
-excerpt: no excerpt
+excerpt: 向量处理器是专门设计用于高效处理向量数据的计算机架构。本文将介绍向量处理的基本概念、核心架构、性能提升技术以及相关的性能评价指标。
 date: 2025-06-11 06:02:59
 ---
 

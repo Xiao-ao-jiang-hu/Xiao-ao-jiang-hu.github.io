@@ -1,10 +1,11 @@
 ---
 title: 流水线技术
 tags:
-  - no tags
+  - architecture
+  - pipeline
 categories:
-  - uncategorized
-excerpt: no excerpt
+  - architecture
+excerpt: 流水线技术是现代计算机体系结构的核心设计理念，通过将指令执行过程分解为多个阶段并行处理，显著提高了处理器的吞吐率和性能。本文将介绍流水线的基本概念、性能指标、调度方法以及相关的指令相关性和冲突问题。
 date: 2025-06-11 05:07:18
 ---
 ## **1. 流水线基本概念**
