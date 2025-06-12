@@ -1,9 +1,13 @@
 ---
 title: architecture5
 tags:
-  - no tags
+  - architecture
+  - instruction-level-parallelism
+  - dynamic-scheduling
+  - scoreboarding
+  - tomasulo
 categories:
-  - uncategorized
+  - architecture
 excerpt: no excerpt
 date: 2025-06-11 06:43:38
 ---
