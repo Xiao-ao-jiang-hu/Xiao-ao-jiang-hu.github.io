@@ -67,20 +67,20 @@ $$
 - 分子部分：构造一个多项式，在除 $x_k$ 外的所有节点处取零值。这可以通过乘积形式实现：
 
 $$
-\prod_{\substack{j=0 \\ j \neq k}}^n (x - x_j).
+\prod_{j=0 , j \neq k}^n (x - x_j).
 $$
 
 - 分母部分：确保 $l_k(x_k) = 1$。当 $x = x_k$ 时，分子为：
 
 $$
-\prod_{\substack{j=0 \\ j \neq k}}^n (x_k - x_j),
+\prod_{j=0 , j \neq k}^n (x_k - x_j),
 $$
 
   因此基函数定义为：
 
 
 $$
-l_k(x) = \frac{\prod_{\substack{j=0 \\ j \neq k}}^n (x - x_j)}{\prod_{\substack{j=0 \\ j \neq k}}^n (x_k - x_j)}.
+l_k(x) = \prod_{j=0, j \neq k}^n \frac{(x - x_j)}{(x_k - x_j)}.
 $$
 
 
@@ -92,13 +92,13 @@ $$
 其导数为：
 
 $$
-\omega_{n+1}'(x) = \sum_{m=0}^n \prod_{\substack{j=0 \\ j \neq m}}^n (x - x_j).
+\omega_{n+1}'(x) = \sum_{m=0}^n \prod_{j=0 , j \neq m}^n (x - x_j).
 $$
 
 在节点 $x_k$ 处求导数值：
 
 $$
-\omega_{n+1}'(x_k) = \prod_{\substack{j=0 \\ j \neq k}}^n (x_k - x_j).
+\omega_{n+1}'(x_k) = \prod_{j=0 , j \neq k}^n (x_k - x_j).
 $$
 
 因此，基函数可简化为：
@@ -112,7 +112,7 @@ $$
 将基函数代入线性组合表达式，得到Lagrange插值多项式：
 
 $$
-L_n(x) = \sum_{k=0}^n y_k \cdot \frac{\prod_{\substack{j=0 \\ j \neq k}}^n (x - x_j)}{\prod_{\substack{j=0 \\ j \neq k}}^n (x_k - x_j)}.
+L_n(x) = \sum_{k=0}^n y_k \cdot \frac{\prod_{j=0 , j \neq k}^n (x - x_j)}{\prod_{j=0 , j \neq k}^n (x_k - x_j)}.
 $$
 
 或等价地：
@@ -173,7 +173,7 @@ $$N_n(x) = c_0 + c_1(x - x_0) + c_2(x - x_0)(x - x_1) + \cdots + c_n\prod_{i=0}^
   $$f[x_0, x_1, \ldots, x_k] = f[x_{k}, \ldots, x_1, x_0].$$  
 - **显式公式**：  
 
-  $$f[x_0, \ldots, x_k] = \sum_{j=0}^k \frac{f(x_j)}{\prod_{\substack{i=0 \\ i \neq j}}^k (x_j - x_i)}.$$  
+  $$f[x_0, \ldots, x_k] = \sum_{j=0}^k \frac{f(x_j)}{\prod_{i=0 , i \neq j}^k (x_j - x_i)}.$$  
 
 
 ### 3. 差商表与计算示例  
