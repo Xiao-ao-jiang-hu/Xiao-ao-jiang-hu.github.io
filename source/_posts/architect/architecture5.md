@@ -1,5 +1,5 @@
 ---
-title: architecture5
+title: 动态调度与指令级并行
 tags:
   - architecture
   - instruction-level-parallelism
@@ -8,7 +8,7 @@ tags:
   - tomasulo
 categories:
   - architecture
-excerpt: no excerpt
+excerpt: 动态调度是现代处理器中实现指令级并行（ILP）的关键技术。本文介绍了指令级并行的核心概念、相关性与冲突、动态调度的核心思想，以及记分牌算法、显式寄存器重命名和Tomasulo算法等关键技术。
 date: 2025-06-11 06:43:38
 ---
 
