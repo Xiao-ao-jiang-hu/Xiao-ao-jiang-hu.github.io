@@ -182,10 +182,11 @@ $$
 
 | 名称 | 定义域 | 权函数 $\rho(t)$ | 递推公式 |  
 |---|---|---|---|  
-| 勒让德多项式 | $[-1, 1]$ | $1$ |  $\begin{cases}P_0(t) = 1, \\ (k+1)P_{k+1}(t) = (2k+1)tP_k(t) - kP_{k-1}(t)\end{cases}$|  
-| 切比雪夫多项式 | $[-1, 1]$ | $\frac{1}{\sqrt{1-t^2}}$ |  $\begin{cases} T_0(t) = 1, \\ T_{k+1}(t) = 2tT_k(t) - T_{k-1}(t)\end{cases}$ | 
-| 拉盖尔多项式 | $[0, +\infty)$ | $e^{-t}$ |  $\begin{cases} L_0(t) = 1, \\ L_{k+1}(t) = (1 + 2k - t)L_k(t) - k^2L_{k-1}(t)\end{cases}$ | 
-| 埃尔米特多项式 | $(-\infty, +\infty)$ | $e^{-t^2}$ | $\begin{cases} H_0(t) = 1, \\ H_{k+1}(t) = 2tH_k(t) - 2kH_{k-1}(t)\end{cases}$ | 
+| 勒让德多项式 | $[-1, 1]$ | $1$ |  $\begin{cases}P_0(t) = 1, \\ P_1(t) = t, \\ (k+1)P_{k+1}(t) = (2k+1)tP_k(t) - kP_{k-1}(t)\end{cases}$|  
+| 切比雪夫多项式 | $[-1, 1]$ | $\frac{1}{\sqrt{1-t^2}}$ |  $\begin{cases} T_0(t) = 1, \\ T_1(t) = t, \\ T_{k+1}(t) = 2tT_k(t) - T_{k-1}(t)\end{cases}$ | 
+| 切比雪夫多项式 | $[-1, 1]$ | $\sqrt{1-t^2}$ |  $\begin{cases} T_0(t) = 1, \\ T_1(t) = 2t, \\ T_{k+1}(t) = 2tT_k(t) - T_{k-1}(t)\end{cases}$ | 
+| 拉盖尔多项式 | $[0, +\infty)$ | $e^{-t}$ |  $\begin{cases} L_0(t) = 1, \\ L_1(t) = 1-t, \\ L_{k+1}(t) = (1 + 2k - t)L_k(t) - k^2L_{k-1}(t)\end{cases}$ | 
+| 埃尔米特多项式 | $(-\infty, +\infty)$ | $e^{-t^2}$ | $\begin{cases} H_0(t) = 1, \\ H_1(t) =2t, \\ H_{k+1}(t) = 2tH_k(t) - 2kH_{k-1}(t)\end{cases}$ | 
 
 ### 勒让德多项式递推公式推导
 勒让德多项式的递推公式可以通过其正交性进行推导。以下是详细步骤：

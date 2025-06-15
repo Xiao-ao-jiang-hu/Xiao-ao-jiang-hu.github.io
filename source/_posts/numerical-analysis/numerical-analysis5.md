@@ -65,17 +65,23 @@ $$
 
 ### 1. 基函数的构造
 - 分子部分：构造一个多项式，在除 $x_k$ 外的所有节点处取零值。这可以通过乘积形式实现：
-  $$
-  \prod_{\substack{j=0 \\ j \neq k}}^n (x - x_j).
-  $$
+
+$$
+\prod_{j=0 , j \neq k}^n (x - x_j).
+$$
+
 - 分母部分：确保 $l_k(x_k) = 1$。当 $x = x_k$ 时，分子为：
-  $$
-  \prod_{\substack{j=0 \\ j \neq k}}^n (x_k - x_j),
-  $$
+
+$$
+\prod_{j=0 , j \neq k}^n (x_k - x_j),
+$$
+
   因此基函数定义为：
-  $$
-  l_k(x) = \frac{\prod_{\substack{j=0 \\ j \neq k}}^n (x - x_j)}{\prod_{\substack{j=0 \\ j \neq k}}^n (x_k - x_j)}.
-  $$
+
+
+$$
+l_k(x) = \prod_{j=0, j \neq k}^n \frac{(x - x_j)}{(x_k - x_j)}.
+$$
 
 
 ### 2. 引入符号 $\omega_{n+1}(x)$
@@ -84,14 +90,19 @@ $$
 \omega_{n+1}(x) = \prod_{j=0}^n (x - x_j),
 $$
 其导数为：
+
 $$
-\omega_{n+1}'(x) = \sum_{m=0}^n \prod_{\substack{j=0 \\ j \neq m}}^n (x - x_j).
+\omega_{n+1}'(x) = \sum_{m=0}^n \prod_{j=0 , j \neq m}^n (x - x_j).
 $$
+
 在节点 $x_k$ 处求导数值：
+
 $$
-\omega_{n+1}'(x_k) = \prod_{\substack{j=0 \\ j \neq k}}^n (x_k - x_j).
+\omega_{n+1}'(x_k) = \prod_{j=0 , j \neq k}^n (x_k - x_j).
 $$
+
 因此，基函数可简化为：
+
 $$
 l_k(x) = \frac{\omega_{n+1}(x)}{(x - x_k) \cdot \omega_{n+1}'(x_k)}.
 $$
@@ -99,10 +110,13 @@ $$
 
 ### 3. 插值多项式的最终形式
 将基函数代入线性组合表达式，得到Lagrange插值多项式：
+
 $$
-L_n(x) = \sum_{k=0}^n y_k \cdot \frac{\prod_{\substack{j=0 \\ j \neq k}}^n (x - x_j)}{\prod_{\substack{j=0 \\ j \neq k}}^n (x_k - x_j)}.
+L_n(x) = \sum_{k=0}^n y_k \cdot \frac{\prod_{j=0 , j \neq k}^n (x - x_j)}{\prod_{j=0 , j \neq k}^n (x_k - x_j)}.
 $$
+
 或等价地：
+
 $$
 L_n(x) = \sum_{k=0}^n y_k \cdot \frac{\omega_{n+1}(x)}{(x - x_k) \cdot \omega_{n+1}'(x_k)}.
 $$
@@ -110,13 +124,17 @@ $$
 
 ### 4. 举例验证（线性插值，n=1）
 对于节点 $(x_0, y_0)$ 和 $(x_1, y_1)$，基函数为：
+
 $$
 l_0(x) = \frac{x - x_1}{x_0 - x_1}, \quad l_1(x) = \frac{x - x_0}{x_1 - x_0}.
 $$
+
 插值多项式为：
+
 $$
 L_1(x) = y_0 \cdot \frac{x - x_1}{x_0 - x_1} + y_1 \cdot \frac{x - x_0}{x_1 - x_0}.
 $$
+
 显然，$L_1(x_0) = y_0$ 且 $L_1(x_1) = y_1$，验证了公式的正确性。
 
 
@@ -132,21 +150,29 @@ $$
 ### 1. 基本思想与构造方法  
 **动机**：在逐步增加插值节点时，动态构造插值多项式。例如：  
 - 初始节点 $x_0$，构造零次多项式：  
-  $$P_0(x) = f(x_0).$$  
+  $$
+  P_0(x) = f(x_0).
+  $$  
 - 增加节点 $x_1$，构造一次多项式（点斜式）：  
-  $$P_1(x) = f(x_0) + \frac{f(x_1) - f(x_0)}{x_1 - x_0}(x - x_0).$$  
+  $$
+  P_1(x) = f(x_0) + \frac{f(x_1) - f(x_0)}{x_1 - x_0}(x - x_0).
+  $$  
 
 **推广到高次多项式**：对于 $n$ 个节点，递推公式为：  
-$$P_n(x) = P_{n-1}(x) + c_n(x - x_0)(x - x_1)\cdots(x - x_{n-1}).$$  
+$$
+P_n(x) = P_{n-1}(x) + c_n(x - x_0)(x - x_1)\cdots(x - x_{n-1}).
+$$  
 
 最终形式为**Newton插值多项式**：  
-$$N_n(x) = c_0 + c_1(x - x_0) + c_2(x - x_0)(x - x_1) + \cdots + c_n\prod_{i=0}^{n-1}(x - x_i).$$  
+$$
+N_n(x) = c_0 + c_1(x - x_0) + c_2(x - x_0)(x - x_1) + \cdots + c_n\prod_{i=0}^{n-1}(x - x_i).
+$$  
 
 
 ### 2. 差商的定义与计算  
 **差商**是Newton插值的核心系数，定义为：  
-- **0阶差商**：$$f[x_i] = f(x_i).$$  
-- **1阶差商**：$$f[x_0, x_i] = \frac{f(x_i) - f(x_0)}{x_i - x_0}.$$  
+- **0阶差商**：$f[x_i] = f(x_i).$
+- **1阶差商**：$f[x_0, x_i] = \frac{f(x_i) - f(x_0)}{x_i - x_0}.$ 
 - **k阶差商**（递归定义）：  
   $$f[x_0, x_1, \ldots, x_k] = \frac{f[x_0, \ldots, x_{k-2}, x_k] - f[x_0, \ldots, x_{k-1}]}{x_k - x_{k-1}}.$$  
 
@@ -154,7 +180,8 @@ $$N_n(x) = c_0 + c_1(x - x_0) + c_2(x - x_0)(x - x_1) + \cdots + c_n\prod_{i=0}^
 - **对称性**：差商与节点顺序无关，即  
   $$f[x_0, x_1, \ldots, x_k] = f[x_{k}, \ldots, x_1, x_0].$$  
 - **显式公式**：  
-  $$f[x_0, \ldots, x_k] = \sum_{j=0}^k \frac{f(x_j)}{\prod_{\substack{i=0 \\ i \neq j}}^k (x_j - x_i)}.$$  
+
+  $$f[x_0, \ldots, x_k] = \sum_{j=0}^k \frac{f(x_j)}{\prod_{i=0 , i \neq j}^k (x_j - x_i)}.$$  
 
 
 ### 3. 差商表与计算示例  

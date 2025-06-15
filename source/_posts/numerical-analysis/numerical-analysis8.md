@@ -1,5 +1,5 @@
 ---
-title: 数值积分的概念
+title: ODE的数值解法
 date: 2025-06-02 18:29:20
 tags:
     - mathematics
