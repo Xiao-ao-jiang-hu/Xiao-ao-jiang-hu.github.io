@@ -7,7 +7,7 @@ tags:
   - quantum-measurement
 categories:
   - quantum
-excerpt: no excerpt
+excerpt: 超导量子计算是实现量子计算的主要技术之一。本文介绍超导量子比特的物理实现，包括约瑟夫森结的工作原理、Transmon比特的设计，以及单量子门和双量子门的实现方法。最后，探讨测量技术在超导量子计算中的重要性。
 date: 2025-06-15 23:06:17
 ---
 

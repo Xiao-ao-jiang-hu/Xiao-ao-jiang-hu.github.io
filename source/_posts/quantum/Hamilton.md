@@ -7,7 +7,7 @@ tags:
   - physics
 categories:
   - quantum
-excerpt: no excerpt
+excerpt: 哈密顿量是量子力学的核心算符，描述系统的总能量。本文介绍其构造、能级离散化、对称性与守恒定律，以及在不同物理系统中的应用。
 date: 2025-06-03 09:57:35
 ---
 

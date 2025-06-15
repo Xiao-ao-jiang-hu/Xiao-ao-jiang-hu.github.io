@@ -5,7 +5,7 @@ tags:
   - quantum-information
 categories:
   - quantum
-excerpt: no excerpt
+excerpt: AlphaQubit 是谷歌量子AI团队提出的一种新型解码器架构，旨在提高超导量子计算中的逻辑错误率。本文总结了其核心架构、训练策略、数据处理方法以及评估细节。
 date: 2025-06-16 00:30:36
 ---
 
