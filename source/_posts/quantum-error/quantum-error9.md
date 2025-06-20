@@ -66,9 +66,9 @@ excerpt: 本文将介绍量子纠错码（QECC）的设计原则和核心标准�
 - 逻辑比特数 $k$：由编码子空间维度 $\dim(C) = 2^k$ 决定。酉操作和置换保持维度不变。
 - 距离 $d$：  
   距离 $d$ 定义为最小权重非平凡逻辑操作（见2.4节）：  
-  \[
+  $$
   d = \min \big\{ \text{wt}(E)  \big|  E \in \mathcal{N}(\mathcal{S}) \setminus \mathcal{S} \big\}
-  \]  
+  $$  
   其中 $\mathcal{S}$ 是稳定子群。  
   - 酉操作 $U$ 将错误 $E$ 映射为 $UEU^\dagger$，保持错误权重 $\text{wt}(E)$ 不变。  
   - 置换操作仅改变比特编号，不改变错误权重。  
