@@ -1,6 +1,6 @@
 ---
 title: QECC的设计与核心标准
-date: 2025-04-22 17:31:27
+date: 2025-03-19 17:31:27
 tags:
     - quantum
     - quantum-error

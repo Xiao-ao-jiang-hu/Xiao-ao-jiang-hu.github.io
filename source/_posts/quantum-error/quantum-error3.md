@@ -1,6 +1,6 @@
 ---
 title: 多量子比特信道详解
-date: 2025-03-23 20:10:19
+date: 2025-03-05 20:10:19
 tags:
     - quantum
     - quantum-error

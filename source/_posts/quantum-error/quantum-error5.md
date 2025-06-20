@@ -1,6 +1,6 @@
 ---
 title: 无克隆定理与量子纠错 
-date: 2025-04-06 20:55:22
+date: 2025-03-18 20:55:22
 tags:
     - quantum
     - quantum-error

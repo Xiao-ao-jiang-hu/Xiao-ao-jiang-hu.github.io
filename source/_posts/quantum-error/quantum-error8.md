@@ -1,6 +1,6 @@
 ---
 title: 量子纠错条件和QECC的性质
-date: 2025-04-15 12:53:34
+date: 2025-03-19 12:53:34
 tags:
     - quantum
     - quantum-error

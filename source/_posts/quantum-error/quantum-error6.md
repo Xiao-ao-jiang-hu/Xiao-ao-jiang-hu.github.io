@@ -1,6 +1,6 @@
 ---
 title: 三比特和九比特纠错码
-date: 2025-04-06 21:08:06
+date: 2025-03-18 21:08:06
 tags:
     - quantum
     - quantum-error

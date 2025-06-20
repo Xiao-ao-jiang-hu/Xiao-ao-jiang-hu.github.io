@@ -1,6 +1,6 @@
 ---
 title: 单比特量子信道
-date: 2025-03-23 18:46:26
+date: 2025-03-05 18:46:26
 tags:
     - quantum
     - quantum-error

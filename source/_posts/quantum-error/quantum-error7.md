@@ -1,6 +1,6 @@
 ---
 title: 一般量子纠错码
-date: 2025-04-08 01:48:26
+date: 2025-03-18 01:48:26
 tags:
     - quantum
     - quantum-error
