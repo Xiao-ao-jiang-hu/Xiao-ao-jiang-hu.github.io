@@ -34,7 +34,7 @@ def process_directory(directory):
 
 if __name__ == "__main__":
     # 获取目标目录（命令行参数或当前目录）
-    target_dir = r"source\_posts"
+    target_dir = r"./source/_posts"
 
     if not os.path.isdir(target_dir):
         print(f"错误: 目录不存在 - {target_dir}")
