@@ -9,7 +9,7 @@ def replace_latex_delimiters(file_path):
 
     # 分步执行替换操作
     content = content.replace("\\( ", "$")  # 将 \( 替换为 $
-    content = content.replace("\\) ", "$")  # 将 \) 替换为 $
+    content = content.replace(" \\)", "$")  # 将 \) 替换为 $
     content = content.replace("\\(", "$")  # 将 \( 替换为 $
     content = content.replace("\\)", "$")  # 将 \) 替换为 $
     content = content.replace("\\[", "$$")  # 将 \[ 替换为 $$
