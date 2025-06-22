@@ -69,3 +69,270 @@ date: 2025-04-09 01:14:33
   - 错误 $E$不改变 $M$的本征值（仍为 $+1$），$M$无法检测此类错误。
 
 
+## 稳定子码的纠错能力
+
+### 稳定子码的正规化子与可检测错误
+
+#### 正规化子的定义与性质
+定义稳定子 $\mathsf{S}$的正规化子 $\mathsf{N(S)}$：
+$$
+\mathsf{N(S)} = \{ N \in \mathsf{P}_n \mid NM = MN,  \forall M \in \mathsf{S} \}
+$$
+其中 $\mathsf{P}_n$是 $n$-量子比特的泡利群。需注意：
+1. 术语选择：  
+   数学上此定义对应中心化子（与 $\mathsf{S}$所有元素交换的集合），但因泡利算符的特性（仅对易或反对易，且 $-I \notin \mathsf{S}$)，此处正规化子与中心化子等价。作者选用“正规化子”因其与逻辑操作的关联（见第 3.4.2 节）。
+2. 包含关系：  
+   由于 $\mathsf{S}$是阿贝尔群，必有 $\mathsf{S} \subseteq \mathsf{N(S)}$。此外，$\mathsf{N(S)}$还包含：
+   - 负稳定子 $-\mathsf{S}$
+   - 虚数相位项 $\pm i\mathsf{S}$
+3. 相位处理：  
+   在错误检测场景中，全局相位不影响物理态，故实际使用商群 $\hat{\mathsf{N}}(\mathsf{S})$（忽略 $\pm 1, \pm i$相位）。
+
+### 稳定子码不可检测错误与距离定理
+
+#### 定理 3.4
+定理 3.4 完整刻画了稳定子码的不可检测错误和码距：
+- 不可检测错误集：$\hat{\mathsf{N}}(\mathsf{S})\setminus\hat{\mathsf{S}}$ 
+  （即正规化子商群中排除稳定子本身的元素）
+- 码距定义：  
+  $d = \min\{\mathrm{wt}\,E \mid \hat{E} \in \hat{\mathsf{N}}(\mathsf{S})\setminus\hat{\mathsf{S}}\}$ 
+  （不可检测错误的最小权重）
+
+- 证明
+通过定义 2.7（可检测错误需满足 $\langle \psi|E|\phi \rangle = c(E)\langle \psi|\phi \rangle$）分析三类错误：
+
+1. $\hat{E} \in \hat{\mathsf{S}}$（稳定子内错误） 
+   - 存在相位选择使 $E \in \mathsf{S}$，满足 $E|\phi\rangle = |\phi\rangle$ 
+   - 矩阵元：$\langle \psi|E|\phi \rangle = \langle \psi|\phi \rangle$ 
+   - 满足 $c(E)=1$，属于可检测错误（实际无影响）
+
+2. $\hat{E} \notin \hat{\mathsf{N}}(\mathsf{S})$（正规化子外错误）  
+   - 存在 $M \in \mathsf{S}$与 $E$反对易：$\{M,E\}=0$ 
+   - 利用 $M^2=I$推导：  
+     $$
+     \langle \psi|E|\phi \rangle = -\langle \psi|E|\phi \rangle \implies \langle \psi|E|\phi \rangle = 0
+     $$  
+   - 满足 $c(E)=0$，属于可检测错误
+
+3. $\hat{E} \in \hat{\mathsf{N}}(\mathsf{S}) \setminus \hat{\mathsf{S}}$（关键情况）  
+   - $E$与 $\mathsf{S}$交换，故 $E|\phi\rangle$仍是码字  
+   - 但 $E \notin \mathsf{S}$，存在码字 $|\phi\rangle$使 $E|\phi\rangle \neq |\phi\rangle$ 
+   - 计算矩阵元：  
+     - $\langle \psi|E|\phi \rangle = 1$（当 $|\psi\rangle = E|\phi\rangle$)  
+     - $\langle \phi|E|\phi \rangle = \langle \phi|\psi \rangle$ 
+   - 若要求可检测，需 $|\langle \phi|\psi \rangle|=1$（即 $E|\phi\rangle = e^{i\theta}|\phi\rangle$)，但此条件无法对所有 $|\phi\rangle$一致成立  
+   - 故属于不可检测错误
+
+#### 分析
+1. 不可检测错误的本质：
+   正规化子中非稳定子元素对应逻辑操作，会改变编码信息但保持码空间结构，故无法被稳定子测量察觉。
+
+2. 码距的含义：  
+   - 码距 $d$是最小非平凡逻辑操作的权重  
+   - 直接决定纠错能力：可检测所有权重 $<d$的错误，可纠正所有权重 $<\lfloor d/2 \rfloor$的错误
+
+
+### 纠错条件与符号体系
+
+#### 定理 3.5：纠错条件的代数刻画
+定理 3.5 给出稳定子码 $\mathsf{S}$纠正错误集 $\mathcal{E} \subseteq \mathsf{P}_n$的充要条件：
+$$
+\forall E,F \in \mathcal{E},\quad \hat{E}^\dagger \hat{F} \notin \hat{\mathsf{N}}(\mathsf{S}) \setminus \hat{\mathsf{S}}
+$$
+
+由定理 3.4 和量子纠错一般理论（定理 2.7）直接导出。关键利用量子码的线性特性（推论 2.5）：分析泡利错误即可完全确定码的纠错能力。
+1. 物理意义：  
+   条件确保任意两个错误 $E,F$的组合 $\hat{E}^\dagger \hat{F}$：
+   - 要么在 $\hat{\mathsf{S}}$中（等效恒等操作）
+   - 要么在 $\hat{\mathsf{N}}(\mathsf{S})$外（可检测错误）  
+   从而满足错误区分条件（定义 2.7）。
+
+#### 稳定子码的符号体系：$[[n,k,d]]$
+区别于一般量子码的 $((n,K,d))$符号，稳定子码采用专用符号：
+- 符号定义：$[[n,k,d]]$ 
+  - $n$：物理量子比特数  
+  - $k$：逻辑量子比特数（编码信息量）  
+  - $d$：码距（定义见定理 3.4）  
+- 维度特性：  
+  编码空间维度恒为 $2^k$（源于稳定子结构的阿贝尔性质）。
+- 简化表示：  
+  当码距未知或不重要时，简写为 $[[n,k]]$。
+
+#### 典型码例与距离分析
+1. 九量子比特码：  
+   - 参数：$[[9,1,3]]$ 
+   - 性质：可纠正单量子比特错误（距离 ≥3）  
+   - 精确距离验证：存在权重 3 的泡利算子（如 $X_1X_2X_3$) 属于 $\hat{\mathsf{N}}(\mathsf{S}) \setminus \hat{\mathsf{S}}$
+
+2. 五量子比特码：  
+   - 参数：$[[5,1,3]]$ 
+   - 地位：已知最小距离 3 码（证明见第 7 章）
+
+3. 距离 2 码的价值：  
+   - 虽不能纠错，但可检测单错误或纠正单擦除错误  
+   - 最小实例：$[[4,2,2]]$码（生成元 ZZZZ, XXXX）
+     - 生成元设计：单量子比特泡利算符必与至少一个生成元反对易  
+     - 距离验证：存在权重 2 的泡利算子（如 $X \otimes X \otimes I \otimes I$) 与所有生成元交换
+
+
+## 稳定子码的简并性
+
+### 简并性的代数刻画（命题 3.6）
+从定理 3.4 证明中的矩阵 $C_{ab} $分析可得结论：  
+稳定子码 $\mathsf{S}$对错误集 $\mathcal{E}$是简并的，当且仅当  
+$$
+\exists E_1, E_2 \in \mathcal{E} \quad \text{使得} \quad E_1^\dagger E_2 \in \mathsf{S}
+$$
+其机制为：
+1. 矩阵 $C_{ab} $的秩缺陷：  
+   - 若 $E_1^\dagger E_2 \in \mathsf{S} $，则 $E_1^\dagger F \in \mathsf{S} \Leftrightarrow E_2^\dagger F \in \mathsf{S} $ 
+   - 导致 $C_{ab} $中 $E_1 $和 $E_2 $对应的行完全相同（线性相关）
+2. 错误不可区分性：  
+   当 $E_1^\dagger E_2 \in \mathsf{S} $，两错误在编码空间作用等效，无法通过症状测量区分
+
+### 距离视角的简并性定义（定义 3.9）
+脱离具体错误集，从码的固有属性定义：  
+距离为 $d $的稳定子码 $\mathsf{S}$是简并的，若存在非平凡稳定子元素  
+$$
+M \in \mathsf{S},  M \neq I,  \quad \mathrm{wt}(M) < d
+$$
+
+#### 关键说明：
+1. 与一般量子码的区别：  
+   - 此定义专用于稳定子码，比一般量子码的简并性概念更广泛  
+   - 对偶数距离码（如 $d=2t+2 $），只要 $\mathsf{S}$含权重 $\leq 2t+1 $的元素即属简并
+2. 物理内涵：  
+   低权重稳定子元素揭示编码空间的对称性，使不同错误产生相同症状
+
+### 典型码例分析
+1. 九量子比特码（[9,1,3]）
+   - 简并性证据：稳定子含多个权重 2 的生成元（如 $Z_1Z_2, X_1X_2 $）  
+   - 矛盾现象：存在权重 2 的可检测错误（因 $\mathrm{wt}=2 < d=3 $)，但实际是稳定子元素（非真正错误）
+
+2. 五量子比特码（[5,1,3]）
+   - 非简并性证明：  
+     - 所有生成元权重为 4（如 $XZZXI, IXZZX $等）  
+     - 稳定子元素的任意乘积权重 ≥4 > $d=3 $（需验证生成元乘积无低权重项）
+   - 深层含义：不存在权重 < 3 的非平凡稳定子元素
+
+
+## 稳定子码的错误症状与陪集结构
+
+### 错误症状的代数定义与性质
+
+#### 定义 3.10(错误症状)
+- 错误症状：对稳定子码 $\mathsf{S}$（生成元 $M_1,\dots,M_r$），态 $|\psi\rangle$的错误症状是 $r$-比特串：
+  $$
+  \sigma(|\psi\rangle)_i = \begin{cases} 
+  0 & \text{若 } M_i|\psi\rangle = |\psi\rangle \\
+  1 & \text{若 } M_i|\psi\rangle = -|\psi\rangle 
+  \end{cases}
+  $$
+- 泡利错误的症状：$\sigma(E) = \sigma(E|\phi\rangle)$（与码字 $|\phi\rangle$选择无关）
+- 对易函数：定义泡利算符的对易关系：
+  $$
+  c(P,Q) = \begin{cases} 
+  0 & P,Q\text{ 对易} \\
+  1 & P,Q\text{ 反对易}
+  \end{cases}
+  $$
+  关键等式：$\sigma(E)_i = c(E, M_i)$
+
+#### 希尔伯特空间分解
+- 正交子空间结构：
+  - 存在 $2^r = 2^{n-k}$个症状子空间（$r = n-k$）
+  - 每个子空间维数 $2^k$（同构于编码空间）
+  - 不同症状子空间相互正交（因本征值不同）
+- 症状调整技巧：  
+  对症状 $\sigma$的子空间，可通过符号变换 $M_i \to (-1)^{\sigma_i}M_i$转化为标准稳定子码
+
+#### 命题 3.7(泡利错误的症状性质)
+1. 对易函数的线性性：  
+   $c(P_1P_2, Q) = c(P_1, Q) + c(P_2, Q)$
+2. 对称性：  
+   $c(P, Q) = c(Q, P)$
+3. 症状的加性：  
+   $\sigma(EF) = \sigma(E) + \sigma(F)$ 
+   （模 2 加法）
+
+### 陪集结构与症状等价性
+
+#### 命题 3.8(泡利错误的陪集分解)
+两个泡利错误 $E,F$有相同症状当且仅当它们属于 $\mathsf{N(S)}$的同一陪集：
+$$
+\sigma(E) = \sigma(F) \iff F \in E \cdot \mathsf{N(S)}
+$$
+
+证明：
+1. 陪集 ⇒ 同症状：  
+   若 $F = EN$（$N \in \mathsf{N(S)}$），则  
+   $$
+   c(F,M_i) = c(E,M_i) + \underbrace{c(N,M_i)}_{=0} = c(E,M_i)
+   $$
+2. 同症状 ⇒ 陪集：  
+   令 $N = E^\dagger F$，同症状蕴含 $\forall i, c(N,M_i)=0$，故 $N \in \mathsf{N(S)}$
+
+#### 泡利群的陪集分解
+- 整体结构：泡利群 $\mathsf{P}_n$被划分为 $2^{n-k}$个 $\mathsf{N(S)}$的陪集
+- 陪集大小均等：每个陪集阶相同
+- 正规化子阶公式（命题 3.9）：
+  $$
+  |\mathsf{N(S)}| = 4 \cdot 2^{n+k}
+  $$
+  推导：  
+  泡利群阶 $|\mathsf{P}_n| = 4^{n+1} = 2^{2n+2}$，陪集数 $2^{n-k}$，故  
+  $$
+  |\mathsf{N(S)}| = \frac{2^{2n+2}}{2^{n-k}} = 2^{n+k+2} = 4 \cdot 2^{n+k}
+  $$
+
+
+
+#### 命题3.10（陪集等价性与逻辑操作）
+设 $S$是稳定子，$\mathsf{N}(S)$是其正规化子。对任意 $N_1, N_2 \in \mathsf{N}(S)$，二者属于 $S$的同一陪集当且仅当对所有编码态 $|\psi\rangle$满足 $N_1|\psi\rangle = N_2|\psi\rangle$。
+
+证明：  
+- $N_1|\psi\rangle = N_2|\psi\rangle$等价于 $M = N_1^\dagger N_2$是 $|\psi\rangle$的 $+1$本征态。  
+- 若该条件对所有编码态成立，则 $M \in S$，此时 $N_2 = N_1 M$即表明二者在同一陪集中。  
+
+由于 $\mathsf{N}(S)$中的元素将编码态映射到编码态（可能不同），它们被称为逻辑操作。同一陪集中的元素在编码态上作用相同，因此代表同一逻辑操作。商群 $\mathsf{N}(S)/S$即对应所有独立的逻辑操作。
+
+#### 定理 3.11（逻辑泡利群的结构）
+若 $S$作用于 $n$个物理量子比特且编码 $k$个逻辑量子比特，则：  
+$$
+\mathsf{N}(S)/S \cong \mathbb{P}_k
+$$  
+即商群同构于 $k$量子比特的逻辑泡利群，其元素表示对逻辑量子比特的泡利操作（证明见 3.5 节）。
+
+#### 错误综合征与陪集关联
+考虑泡利群 $\mathsf{P}_n$中 $S$的陪集：  
+- $\mathsf{N}(S)$的每个陪集可分解为 $S$的陪集。  
+- 每个 $S$的陪集关联一个错误综合征（由其所属的 $\mathsf{N}(S)$陪集决定）。  
+- 若固定 $\mathsf{N}(S)$陪集的代表元 $E$，则 $S$的陪集可标识为逻辑操作 $\overline{P} \in \mathsf{N}(S)/S$。此时陪集对应错误 $E$与逻辑操作 $\overline{P}$的组合。  
+
+在解码过程中：  
+1. 对每个综合征 $s$指定代表错误 $E_s$（满足 $\sigma(E_s) = s$）。  
+2. 若测得 $s$，则假设错误为 $E_s$并纠正。  
+3. 若真实错误 $E'$与 $E_s$不属于同一 $S$陪集，则发生逻辑泡利错误（对应 $E'$的实际陪集）。
+
+#### 定理 3.12（简并性与错误纠正）
+- 非简并码：可纠正错误集 $\mathcal{E}$中所有错误的综合征互异。  
+- 简并码：$E, F \in \mathcal{E}$有相同综合征当且仅当 $\hat{E}^\dagger \hat{F} \in \hat{S}$。  
+  （证明：由命题 3.8，相同综合征等价于 $E^\dagger F \in \mathsf{N}(S)$；结合定理 3.5 的可纠正条件，得 $E^\dagger F \in \mathsf{N}(S) \iff \hat{E}^\dagger \hat{F} \in \hat{S}$。）  
+
+五量子比特码示例：  
+- 15 个单量子比特错误（$X,Y,Z$× 5 量子比特）加恒等操作共 16 个错误。  
+- 4 个生成元给出 $2^4 = 16$个互异综合征，无冗余，故为完美码（perfect code）且非简并。
+
+#### 陪集代表元的选取与逻辑泡利群实现
+为方便计算，需选取 $\mathsf{N}(S)/S$的陪集代表元：  
+- 因 $\mathsf{N}(S)/S$是群，只需为生成元（如 $\overline{X}_i, \overline{Z}_i$）选代表元，其余由乘法导出。  
+  *例*：五量子比特码的 $\overline{Y} = i\overline{X}\overline{Z} = Y \otimes Y \otimes Y \otimes Y \otimes Y$。  
+- 关键约束：代表元需满足逻辑泡利的对易关系：  
+  - $\overline{X}_i$与 $\overline{Z}_i$的代表元必须反对易。  
+  - $\overline{X}_i$与 $\overline{X}_j$或 $\overline{Z}_j$（$j \neq i$）的代表元必须对易。  
+
+#### 错误代表元选取的权衡
+对 $\mathsf{P}_n/\mathsf{N}(S)$的陪集（对应错误综合征）：  
+- 理论上可为基综合征选代表错误，再通过乘法导出其他错误。  
+- 实践限制：若目标是纠正最多 $t$个错误，应选每个陪集中权重最低的错误作代表元。  
+- 若依赖乘法导出代表元，可能得到高权重错误，导致部分低权重错误无法被正确纠正。  
