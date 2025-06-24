@@ -115,7 +115,7 @@ runuser -l {your_username} -c \
 5. `DISPLAY=:1 dbus-launch --exit-with-session xfce4-session`  
    向系统宣告把所有图形订单发给 `:1` 号显示（对接 termux-x11），然后拉起 D-Bus 消息总线，最后点火启动 XFCE4 桌面引擎，五菱宏光准备发车
 
-
+随后再次打开termux-x11应用，你会看到一个XFCE4的桌面环境（记得给termux留个小窗，笔者的机器上如果直接给termux挂后台桌面会直接卡死）：
 ![发车实录](/img/xfce4.jpg)
 
 ## VSCode+SSH
