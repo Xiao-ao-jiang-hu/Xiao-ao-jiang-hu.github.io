@@ -82,7 +82,7 @@ Firefox对GTK库说：“在坐标(50,100)画个800x600的窗口，内容是我�
 - 精准刀法：只实现 “看得见、用得着” 的视觉效果，不做硬件杀手。 `xfwm4` 身兼窗口管理+合成，无需额外合成器进程。内存占用堪比记事本，是GNOME/KDE的几分之一，老设备/安卓容器选手的五菱宏光。
 
 ### 实操
-首先我们安装（ https://github.com/termux/termux-x11/releases ）并打开termux提供的termux-x11应用（相当于接个虚拟屏幕来捕获图形输出）。在启动x11-server之前长这样：
+首先我们安装 [termux-x11](https://github.com/termux/termux-x11/releases) 并打开termux提供的termux-x11应用（相当于接个虚拟屏幕来捕获图形输出）。在启动x11-server之前长这样：
 
 ![](/img/termux-x11.jpg)
 
