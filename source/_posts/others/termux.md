@@ -118,7 +118,7 @@ runuser -l {your_username} -c \
 
 ![发车实录](/img/xfce4.jpg)
 
-## vscode+ssh
+## VSCode+SSH
 
 ### 安全性导致的锅
 Linux通过内核级隔离技术构建程序沙盒环境，核心是命名空间和权限控制。命名空间为进程提供虚拟化视图：文件系统挂载点被隔离，网络接口独立配置，进程树被重新映射。同时cgroups限制资源使用，seccomp过滤危险系统调用。这种机制让占领世界的Electron应用能在受限环境中安全运行。但在Android的proot容器里启动VSCode时就会发生大爆炸：Electron要求创建新的mount命名空间实现文件系统隔离，但proot本身通过ptrace模拟环境，无法提供真正的内核级命名空间。Android系统拒绝此操作，导致经典错误：
@@ -147,7 +147,6 @@ code --no-sandbox
 ```bash
 adb shell "/system/bin/device_config put activity_manager max_phantom_processes 2147483647"
 ```
-
 
 ### 关于 VSCode 的 SSH Config 路径问题
 在某些情况下，vscode实际使用的 ssh config 路径可能与预期不符。我们可以通过Remote SSH: Config File 设置手动修改config文件路径
