@@ -86,7 +86,7 @@ Firefox对GTK库说：“在坐标(50,100)画个800x600的窗口，内容是我�
 
 ![](/img/termux-x11.jpg)
 
-随后进入我们proot出来的 Linux发行版安装xfce4：
+随后进入我们proot出来的Linux发行版安装xfce4：
 ```bash
 apt install xfce4 xfce4-goodies sudo
 ```
