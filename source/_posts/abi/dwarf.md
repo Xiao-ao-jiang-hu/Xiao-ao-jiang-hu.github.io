@@ -406,3 +406,286 @@ Contents of the .eh_frame section:
   – 在函数序言后 4 字节处，通过 DW_CFA_def_cfa rsp, 8 将帧基址切换为 rsp+8，实现无帧指针回溯。  
 
 调试器或异常运行时，若采样到地址 0x7（位于 add 函数中部），即可按上述规则恢复前一栈帧的 rbp、rip，从而生成可信的回溯链。
+
+
+### .debug_loc —— 变量位置列表（Location Lists）
+
+#### 该段的作用  
+.debug_loc 为同一变量在不同代码区间提供寄存器位置信息。每条记录包含起始地址、结束地址及对应的位置表达式，调试器据此在单步或回溯时显示正确的变量值。
+
+#### 示例程序  
+```c
+/* loc.c */
+int foo(int x) {
+    int a = x;          /* a 在寄存器 edi */
+    int b = a + 1;      /* a 被溢出到栈 [rbp-4]，b 在寄存器 eax */
+    return b;
+}
+```
+编译：  
+```bash
+gcc -g -O2 -c loc.c -o loc.o
+```
+
+#### 解析命令和解析结果  
+```bash
+readelf --debug-dump=loc loc.o
+```
+输出：
+```
+Contents of the .debug_loc section:
+
+    Offset   Begin            End              Expression
+
+    00000000 v000000000000001 v000000000000000 location view pair
+
+    00000002 v000000000000001 v000000000000000 views at 00000000 for:
+             0000000000000004 0000000000000008 (DW_OP_reg5 (rdi))
+    00000015 <End of list>
+
+    00000025 v000000000000002 v000000000000000 location view pair
+    00000027 v000000000000000 v000000000000000 location view pair
+
+    00000029 v000000000000002 v000000000000000 views at 00000025 for:
+             0000000000000004 0000000000000007 (DW_OP_breg5 (rdi): 1; DW_OP_stack_value)
+    0000003e v000000000000000 v000000000000000 views at 00000027 for:
+             0000000000000007 0000000000000008 (DW_OP_reg0 (rax))
+    00000051 <End of list>
+```
+
+#### 分析
+- 第一条记录：  
+  - 起始地址 0x4，结束地址 0x8，表示 a 在寄存器 rdi（edi）。  
+  - 这意味着在函数 foo 的前半段，a 的值直接存储在寄存器中。
+- 第二条记录：  
+  - 起始地址 0x7，结束地址 0x8，表示 a 在栈 [rbp-4]。  
+  - 这意味着在函数 foo 的后半段，由于编译器优化，a 的值被溢出到栈上，而不再使用寄存器 edi。
+- 第三条记录：  
+  - 起始地址 0x7，结束地址 0x8，表示 b 在寄存器 rax（eax）。  
+  - 这意味着在函数 foo 的后半段，b 的值被计算并存储在寄存器中。
+
+
+调试器在地址 0x7 处暂停时，会按第二条记录到栈 [rbp-4] 读取 a，而不是继续去寄存器 edi；若用户尝试打印超出 0xf 后的 a，调试器会报告“变量已被优化掉”。
+
+## DIE 类型详解
+### 第一类：作用域与容器类
+
+#### 1. DW_TAG_compile_unit  
+   - 描述整个翻译单元（一个 .c/.cpp 文件及其包含的所有代码与数据）。包含语言类型、编译器版本、源码路径、低/高 PC 范围、行号表偏移等全局信息。  
+   - 例子：  
+   ```c
+   /* file: main.c */
+   int main() { return 0; }
+   ```
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_compile_unit
+     DW_AT_name        ("main.c")
+     DW_AT_language    (DW_LANG_C99)
+     DW_AT_producer    ("GNU C17 12.2.0")
+     DW_AT_low_pc      (0x0)
+     DW_AT_high_pc     (0x5)
+   ```
+
+#### 2. DW_TAG_subprogram  
+   - 描述一个函数或成员函数，记录函数名、返回值类型、入口地址范围、帧基址计算方式、形参列表等。  
+   - 例子：  
+   ```c
+   int add(int a, int b) { return a + b; }
+   ```
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_subprogram
+     DW_AT_name        ("add")
+     DW_AT_type        (reference to DW_TAG_base_type int)
+     DW_AT_low_pc      (0x10)
+     DW_AT_high_pc     (0x1f)
+     DW_AT_frame_base  (DW_OP_call_frame_cfa)
+   ```
+
+#### 3. DW_TAG_inlined_subroutine  
+   - 描述被内联展开的函数实例，保留其原函数名、调用点文件/行号、内联后的地址范围，用于调试器正确回溯内联代码。  
+   - 例子：  
+   ```cpp
+   inline int max(int a, int b) { return a > b ? a : b; }
+   int foo() { return max(3, 4); }   // 实际调用点
+   ```
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_inlined_subroutine
+     DW_AT_name        ("max")
+     DW_AT_call_file   (1)
+     DW_AT_call_line   (3)
+     DW_AT_low_pc      (0x30)
+     DW_AT_high_pc     (0x37)
+   ```
+
+#### 4. DW_TAG_structure_type  
+   - 描述 C 结构体或 C++ POD 结构，记录名称、字节大小、成员列表与每个成员的偏移。  
+   - 例子：  
+   ```c
+   struct Point { int x; int y; };
+   ```
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_structure_type  "Point"
+     DW_AT_byte_size   (8)
+     DW_TAG_member     "x"  DW_AT_data_member_location(0)
+     DW_TAG_member     "y"  DW_AT_data_member_location(4)
+   ```
+
+#### 5. DW_TAG_class_type  
+   - 描述 C++ 类（含成员函数、继承信息等）。与 DW_TAG_structure_type 类似，但可附加 DW_TAG_inheritance、DW_TAG_subprogram 子 DIE。  
+   - 例子：  
+   ```cpp
+   class Counter { int value; public: void inc(); };
+   ```
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_class_type  "Counter"
+     DW_AT_byte_size   (4)
+     DW_TAG_member     "value"  DW_AT_data_member_location(0)
+     DW_TAG_subprogram "inc"
+   ```
+
+#### 6. DW_TAG_union_type  
+   - 描述联合体，列出各成员及其在联合体中的起始偏移（均为 0）。  
+   - 例子：  
+   ```c
+   union Data { int i; float f; };
+   ```
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_union_type  "Data"
+     DW_AT_byte_size   (4)
+     DW_TAG_member     "i"  DW_AT_data_member_location(0)
+     DW_TAG_member     "f"  DW_AT_data_member_location(0)
+   ```
+
+### 第二类：数据对象类
+
+#### 1. DW_TAG_variable  
+   - 描述全局或静态变量、常量、线程局部变量等。记录变量名、类型、作用域、存储位置（寄存器、栈偏移、绝对地址等）。  
+   - 例子：  
+   ```c
+   /* file: var.c */
+   static int counter = 42;
+   ```  
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_variable
+     DW_AT_name        ("counter")
+     DW_AT_type        (reference to DW_TAG_base_type int)
+     DW_AT_location    (DW_OP_addr 0x2000)
+     DW_AT_linkage_name ("counter")
+   ```
+
+#### 2. DW_TAG_formal_parameter  
+   - 描述函数形参。记录参数名、类型、所在寄存器或栈偏移。  
+   - 例子：  
+   ```c
+   int add(int a, int b) { return a + b; }
+   ```  
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_subprogram  "add"
+     ...
+     DW_TAG_formal_parameter
+       DW_AT_name      ("a")
+       DW_AT_type      (reference to DW_TAG_base_type int)
+       DW_AT_location  (DW_OP_reg5)   ; edi
+     DW_TAG_formal_parameter
+       DW_AT_name      ("b")
+       DW_AT_type      (reference to DW_TAG_base_type int)
+       DW_AT_location  (DW_OP_reg4)   ; esi
+   ```
+
+#### 3. DW_TAG_enumerator  
+   - 描述枚举中的单个常量成员。记录常量名及其数值。  
+   - 例子：  
+   ```c
+   enum Color { RED = 0, GREEN = 1, BLUE = 2 };
+   ```  
+   - 对应 DIE 片段：  
+   ```
+   DW_TAG_enumeration_type "Color"
+     ...
+     DW_TAG_enumerator
+       DW_AT_name  ("RED")
+       DW_AT_const_value (0)
+     DW_TAG_enumerator
+       DW_AT_name  ("GREEN")
+       DW_AT_const_value (1)
+     DW_TAG_enumerator
+       DW_AT_name  ("BLUE")
+       DW_AT_const_value (2)
+   ```
+
+### 第三类：类型描述类
+
+#### 1. DW_TAG_typedef  
+- 为已有类型定义新的别名，记录别名名、底层类型。  
+- 例子：  
+  ```c
+  typedef unsigned int uint32_t;
+  ```  
+- 对应 DIE 片段：  
+  ```
+  DW_TAG_typedef
+    DW_AT_name        ("uint32_t")
+    DW_AT_type        (reference to DW_TAG_base_type "unsigned int")
+  ```
+
+#### 2. DW_TAG_pointer_type  
+- 描述指针类型本身，记录指针大小及所指向的类型。  
+- 例子：  
+  ```c
+  int *p;
+  ```  
+- 对应 DIE 片段：  
+  ```
+  DW_TAG_pointer_type
+    DW_AT_byte_size   (8)
+    DW_AT_type        (reference to DW_TAG_base_type int)
+  ```
+
+#### 3. DW_TAG_array_type  
+- 描述数组类型，记录元素类型及维度信息（通过 DW_TAG_subrange_type 子 DIE）。  
+- 例子：  
+  ```c
+  int arr[4];
+  ```  
+- 对应 DIE 片段：  
+  ```
+  DW_TAG_array_type
+    DW_AT_type        (reference to DW_TAG_base_type int)
+    DW_TAG_subrange_type
+      DW_AT_upper_bound (3)
+  ```
+
+#### 4. DW_TAG_subrange_type  
+- 描述数组维度或切片范围，给出上下界。  
+- 例子：  
+  ```c
+  int matrix[2][3];
+  ```  
+- 对应 DIE 片段（第二维）：  
+  ```
+  DW_TAG_subrange_type
+    DW_AT_upper_bound (2)
+  ```
+
+#### 5. DW_TAG_enumeration_type  
+- 描述枚举类型本身，记录名称、底层整数类型及所有枚举常量列表。  
+- 例子：  
+  ```c
+  enum Status { OK = 0, ERROR = 1 };
+  ```  
+- 对应 DIE 片段：  
+  ```
+  DW_TAG_enumeration_type
+    DW_AT_name        ("Status")
+    DW_AT_type        (reference to DW_TAG_base_type "int")
+    DW_TAG_enumerator ("OK")    DW_AT_const_value (0)
+    DW_TAG_enumerator ("ERROR") DW_AT_const_value (1)
+  ```
