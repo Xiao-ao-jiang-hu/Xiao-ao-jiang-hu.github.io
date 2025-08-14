@@ -133,36 +133,8 @@ Key to Flags:
 
    除非显式使用 `--build-id` 与 `.note.gnu.build-id` 机制，将调试信息单独存放并通过 `.gnu_debuglink` 引用，否则生产环境的可执行文件往往通过 `strip` 移除 `.debug_*` section，以减小体积。
 
-3. DWARF section 概览  
-   依照 DWARF 标准，调试信息可划分为以下主要类别：
-
-   a) 核心调试描述  
-      .debug_info      —— 调试信息条目（DIE）的主要容器  
-      .debug_abbrev    —— 对应 DIE 的缩写表（Abbreviation Table）  
-      .debug_line      —— 行号与地址映射表  
-      .debug_frame     —— 调用帧信息（Call Frame Information, CFI）  
-      .debug_loc       —— 位置列表（Location Lists）  
-      .debug_ranges    —— 地址范围列表  
-      .debug_str       —— 字符串池（String Table）
-
-   b) 索引与加速访问  
-      .debug_aranges   —— 地址与编译单元（CU）的映射  
-      .debug_pubnames  —— 全局对象名称索引（已逐步被 DWARF5 取代）  
-      .debug_pubtypes  —— 全局类型名称索引  
-      .debug_names     —— DWARF5 引入的统一名称索引  
-      .gdb_index       —— GNU 扩展，为 gdb 提供启动加速
-
-   c) 分离式调试（Split DWARF）  
-      .debug_types     —— DWARF4 类型单元（已合并至 DWARF5 的 .debug_info）  
-      .debug_cu_index  —— DWARF5 编译单元索引  
-      .debug_tu_index  —— DWARF5 类型单元索引  
-      .dwo             —— 单独的调试对象文件（DWARF Object）
-
-   这些 section 通过标签化、索引化、压缩化等机制，共同构成一套层次清晰、可扩展、可剪裁的调试信息体系。下一部分将逐一对每个 section 的语法结构与语义细节展开剖析。
-
-
 ## DWARF 语法与语义详解
-### .debug_abbrev
+### debug_abbrev
 
 #### 该段的作用  
 .debug_abbrev 为 .debug_info 中所有调试信息条目（DIE）提供“模板”。它只存放结构：每个 DIE 属于什么类型（tag）、是否包含子节点、拥有哪些属性、这些属性以何种数据格式（form）存放。如此可避免在 .debug_info 中重复描述字段。
@@ -237,7 +209,7 @@ Contents of the .debug_abbrev section:
 .debug_abbrev 不直接存放上述字符串或地址，而是规定“此处应有一个 DW_FORM_strp 的字符串，此处应有一个 DW_FORM_addr 的地址”，真正的数据全部放在 .debug_info 中，解析器只需按“模板”顺序读取即可。
 
 
-### .debug_info
+### debug_info
 
 #### 该段的作用  
 .debug_info 存放构成调试信息树的所有 DIE（Debugging Information Entry）。每个 DIE 由 abbrev code 指向 .debug_abbrev 中的模板，随后按模板给出的属性顺序和格式，依次存储属性值。通过这些 DIE，调试器可在运行时把机器地址映射到源文件位置、变量名、类型描述及作用域层级。
@@ -322,7 +294,7 @@ readelf --debug-dump=info demo.o
     • DW_AT_location 使用 DW_OP_fbreg 操作码，表示该参数在帧基址下偏移 -20 字节。
 
 
-### .debug_line
+### debug_line
 
 #### 该段的作用  
 .debug_line 以状态机方式记录“机器地址 ↔ 源文件行列”的精确对应关系，并提供语句边界、基本块、函数序言/结尾等标记。调试器借此在断点、崩溃或单步时，将任意指令地址转换为人类可读的源位置，反之亦然。
@@ -352,7 +324,7 @@ demo.c                                     -                0x18
 - 第三条记录：demo.c 第 3 列 0x16 → 地址 0x16，is_stmt 标记说明这是“推荐断点”位置（函数体结束）。  
 - 第四条记录：demo.c 第 3 列 - → 地址 0x18，is_stmt 标记为 false，表示这是函数结尾（return 语句）位置，不建议设置断点。
 
-### .debug_frame / .eh_frame
+### debug_frame / eh_frame
 
 #### 该段的作用  
 .debug_frame 与 .eh_frame 以统一的 CIE/FDE 表格式描述“如何在运行时从任意指令地址回退到上一栈帧”。  
@@ -408,7 +380,7 @@ Contents of the .eh_frame section:
 调试器或异常运行时，若采样到地址 0x7（位于 add 函数中部），即可按上述规则恢复前一栈帧的 rbp、rip，从而生成可信的回溯链。
 
 
-### .debug_loc —— 变量位置列表（Location Lists）
+### debug_loc —— 变量位置列表（Location Lists）
 
 #### 该段的作用  
 .debug_loc 为同一变量在不同代码区间提供寄存器位置信息。每条记录包含起始地址、结束地址及对应的位置表达式，调试器据此在单步或回溯时显示正确的变量值。
