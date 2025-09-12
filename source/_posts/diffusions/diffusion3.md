@@ -241,29 +241,29 @@ $$
 
 在去噪扩散模型（Denoising Diffusion Models, DDMs）中，我们采用高斯概率路径：
 
-\[
+$$
 p_t(x|x_0) = \mathcal{N}(x;\, \alpha_t x_0,\, \beta_t^2 I),
-\]
+$$
 
-其中 \(\alpha_t, \beta_t\) 为时间相关的系数，满足 \(\alpha_t^2 + \beta_t^2 = 1\)（VP 路径）。这种模型有一个非常特殊的性质：得分函数（score）与速度场（vector field）可以互相线性转换，而无需额外训练。
+其中 $\alpha_t, \beta_t$ 为时间相关的系数，满足 $\alpha_t^2 + \beta_t^2 = 1$（VP 路径）。这种模型有一个非常特殊的性质：得分函数（score）与速度场（vector field）可以互相线性转换，而无需额外训练。
 
 具体地，条件得分函数为：
 
-\[
+$$
 \nabla_x \log p_t(x|x_0) = -\frac{x - \alpha_t x_0}{\beta_t^2},
-\]
+$$
 
 而条件速度场为：
 
-\[
+$$
 u_t(x|x_0) = \frac{x_0 - x}{1 - t} \quad (\text{OT 路径}) \quad \text{或更一般地} \quad u_t(x|x_0) = \frac{\alpha_t'}{\alpha_t}(x_0 - x) - \frac{\beta_t'}{\beta_t}x.
-\]
+$$
 
-关键在于，这两个量都是 \(x\) 与 \(x_0\) 的加权平均，因此它们之间可以通过线性组合互相表示。例如，我们可以将得分函数表示为速度场的函数：
+关键在于，这两个量都是 $x$ 与 $x_0$ 的加权平均，因此它们之间可以通过线性组合互相表示。例如，我们可以将得分函数表示为速度场的函数：
 
-\[
+$$
 \nabla_x \log p_t(x|x_0) = \frac{\alpha_t}{\beta_t^2} u_t(x|x_0) + \left( \frac{\alpha_t'}{\alpha_t} - \frac{\beta_t'}{\beta_t} \right) x.
-\]
+$$
 
 这意味着：
 
