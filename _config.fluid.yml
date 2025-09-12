@@ -973,7 +973,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/info.jpg
+  banner_img: /img/info.png
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /img/icon.png
