@@ -1,10 +1,12 @@
 ---
-title: diffusion3
+title: 流模型与扩散模型的训练目标
 tags:
-  - no tags
+  - generative models
+  - flow matching
+  - score matching
 categories:
-  - uncategorized
-excerpt: no excerpt
+  - machine learning
+excerpt: 本文深入探讨流模型与扩散模型的训练目标推导，重点介绍流匹配与得分匹配的等价性定理及其证明，帮助理解如何通过条件与边缘视角构建有效的训练损失。
 date: 2025-09-13 14:45:29
 ---
 ## 流匹配

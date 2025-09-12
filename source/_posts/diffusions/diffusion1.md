@@ -1,10 +1,12 @@
 ---
-title: diffusion1
+title: 流模型与扩散模型基础
 tags:
-  - no tags
+  - generative models
+  - flow models
+  - diffusion models
 categories:
-  - uncategorized
-excerpt: no excerpt
+  - machine learning
+excerpt: 本文介绍生成模型的基本概念，流模型与扩散模型的数学基础，以及它们如何通过神经网络参数化向量场或漂移项来实现数据分布的建模与采样。
 date: 2025-09-13 11:24:56
 ---
 
