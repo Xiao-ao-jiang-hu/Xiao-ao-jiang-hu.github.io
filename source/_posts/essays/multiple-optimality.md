@@ -1,5 +1,5 @@
 ---
-title: Optimal Routing Protocols to Routing on Multiple Optimality Criteria 论文阅读
+title: 论文阅读
 tags:
   - optimality
   - routing
@@ -8,7 +8,7 @@ categories:
   - paper-reading
   - network
   - research
-excerpt: none
+excerpt: Optimal Routing Protocols to Routing on Multiple Optimality Criteria 
 date: 2025-09-12 22:49:09
 ---
 {% pdf From_Non-Optimal_Routing_Protocols_to_Routing_on_Multiple_Optimality_Criteria.pdf %}
