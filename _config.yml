@@ -128,7 +128,8 @@ markdown_it_plus:
     quotes: “”‘’
     pre_class: highlight
 
-
+seo:
+  auto_description: true
 
 hexo_seo_autopush:
   cron: "0 4 * * *"
