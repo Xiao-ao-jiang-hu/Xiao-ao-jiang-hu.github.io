@@ -133,7 +133,7 @@ hexo_seo_autopush:
   cron: "0 4 * * *"
   bing:
     enable: true
-    count: 20
+    count: 200
   google:
     enable: true
-    count: 20
+    count: 200
