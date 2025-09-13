@@ -15,7 +15,10 @@ timezone: 'Asia/Shanghai'
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://Xiao-ao-jiang-hu.github.io
 root: /Xiao-ao-jiang-hu.github.io/
-permalink: :year/:month/:day/:title/
+permalink: posts/:abbrlink.html
+abbrlink:
+  alg: crc32
+  rep: hex
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -73,7 +76,8 @@ tag_map:
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
 meta_generator: true
-
+sitemap:
+  path: sitemap.xml
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -121,3 +125,13 @@ markdown_it_plus:
     typographer:
     quotes: “”‘’
     pre_class: highlight
+
+
+hexo_seo_autopush:
+  cron: "0 4 * * *"
+  bing:
+    enable: true
+    count: 10
+  google:
+    enable: true
+    count: 10
