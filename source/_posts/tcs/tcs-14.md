@@ -1,11 +1,12 @@
 ---
 title: TCS Lec14总结
-date: 2025-05-28 23:33:02
 tags:
-    - tcs
+  - tcs
 categories:
-    - tcs
+  - tcs
 excerpt: 本节内容涵盖了逻辑与计算的关联、直觉主义逻辑与自然演绎、命题即类型的对应（Curry-Howard Isomorphism）等重要概念。
+abbrlink: a0b4093a
+date: 2025-05-28 23:33:02
 ---
 ### **1. 逻辑与计算的关联**
 - **逻辑在计算机科学中的重要性**  

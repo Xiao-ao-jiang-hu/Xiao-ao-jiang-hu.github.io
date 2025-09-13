@@ -33,6 +33,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - "google9c5af19c410f9aef.html"
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -127,11 +128,12 @@ markdown_it_plus:
     pre_class: highlight
 
 
+
 hexo_seo_autopush:
   cron: "0 4 * * *"
   bing:
     enable: true
-    count: 10
+    count: 20
   google:
     enable: true
-    count: 10
+    count: 20

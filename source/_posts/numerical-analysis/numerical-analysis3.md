@@ -1,16 +1,18 @@
 ---
 title: 函数逼近
-date: 2025-05-27 01:54:16
 tags:
-    - mathematics
-    - numerical-analysis
-    - function-approximation
-    - best-approximation
-    - orthogonal-polynomials
-    - Gram-matrix
+  - mathematics
+  - numerical-analysis
+  - function-approximation
+  - best-approximation
+  - orthogonal-polynomials
+  - Gram-matrix
 categories:
-    - numerical-analysis
-excerpt: 本文介绍了函数逼近的基本概念，包括函数空间、常用范数、内积、Cauchy-Schwarz不等式、Gram矩阵、权函数与加权内积等。重点讨论了最佳平方逼近的求解方法及其在实际应用中的重要性。
+  - numerical-analysis
+excerpt: >-
+  本文介绍了函数逼近的基本概念，包括函数空间、常用范数、内积、Cauchy-Schwarz不等式、Gram矩阵、权函数与加权内积等。重点讨论了最佳平方逼近的求解方法及其在实际应用中的重要性。
+abbrlink: 14a50411
+date: 2025-05-27 01:54:16
 ---
 
 ## 函数逼近的基本概念

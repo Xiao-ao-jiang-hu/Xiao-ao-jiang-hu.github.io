@@ -1,14 +1,15 @@
 ---
 title: 量子信道的数学描述
-date: 2025-03-05 18:37:16
 tags:
-    - quantum
-    - quantum-error
-    - CPTP-mapping
-    - quantum-channel
+  - quantum
+  - quantum-error
+  - CPTP-mapping
+  - quantum-channel
 categories:
-    - quantum
+  - quantum
 excerpt: 量子信道的数学描述是量子信息理论的核心内容之一。本文将介绍CPTP映射的定义及其在量子信道中的重要性。
+abbrlink: 4d8408e4
+date: 2025-03-05 18:37:16
 ---
 CPTP（Completely Positive Trace-Preserving）映射是量子信息理论中描述量子信道的基本数学工具，其必须满足两个关键性质：完全正定性（Completely Positive, CP）和保迹性（Trace-Preserving, TP）。
 

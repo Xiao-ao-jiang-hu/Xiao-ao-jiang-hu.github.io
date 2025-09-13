@@ -5,6 +5,7 @@ tags:
 categories:
   - uncategorized
 excerpt: no excerpt
+abbrlink: b42d4101
 date: 2025-08-14 16:05:24
 ---
 ## 为什么ELF中需要这一段

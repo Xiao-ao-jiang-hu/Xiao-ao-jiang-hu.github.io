@@ -1,11 +1,12 @@
 ---
 title: TCS Homework 7
-date: 2025-05-31 00:02:18
 tags:
-    - tcs
+  - tcs
 categories:
-    - tcs
+  - tcs
 excerpt: TCS Homework 7
+abbrlink: 1b3d0898
+date: 2025-05-31 00:02:18
 ---
 ## 7.1
 ### 题目

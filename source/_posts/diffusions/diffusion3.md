@@ -7,6 +7,7 @@ tags:
 categories:
   - machine learning
 excerpt: 本文深入探讨流模型与扩散模型的训练目标推导，重点介绍流匹配与得分匹配的等价性定理及其证明，帮助理解如何通过条件与边缘视角构建有效的训练损失。
+abbrlink: eb49a4aa
 date: 2025-09-13 14:45:29
 ---
 ## 流匹配

@@ -1,11 +1,12 @@
 ---
 title: TCS Homework 10
-date: 2025-05-31 15:22:21
 tags:
-    - tcs
+  - tcs
 categories:
-    - tcs
+  - tcs
 excerpt: TCS Homework 10
+abbrlink: 5c4e5ed9
+date: 2025-05-31 15:22:21
 ---
 ## 10.1
 

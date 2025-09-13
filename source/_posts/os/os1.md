@@ -8,6 +8,7 @@ tags:
 categories:
   - os
 excerpt: 进程调度算法概述，包括FCFS、SJF、SRT、HRRN、RR等。
+abbrlink: 38adf97d
 date: 2025-06-12 10:33:08
 ---
 ## 比较准则

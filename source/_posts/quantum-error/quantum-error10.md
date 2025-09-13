@@ -1,12 +1,13 @@
 ---
 title: 稳定化子纠错码
-date: 2025-03-25 17:31:27
 tags:
-    - quantum
-    - quantum-error
+  - quantum
+  - quantum-error
 categories:
-    - quantum
+  - quantum
 excerpt: 稳定化子纠错码是量子纠错的核心技术之一，本文将介绍其设计原理、数学框架及关键机制，并回顾9比特码的核心机制和稳定子形式化。
+abbrlink: b5083f60
+date: 2025-03-25 17:31:27
 ---
 
 ## 9bit码回顾

@@ -8,7 +8,8 @@ categories:
   - paper-reading
   - network
   - research
-excerpt: Optimal Routing Protocols to Routing on Multiple Optimality Criteria 
+excerpt: Optimal Routing Protocols to Routing on Multiple Optimality Criteria
+abbrlink: 3a868304
 date: 2025-09-12 22:49:09
 ---
 {% pdf From_Non-Optimal_Routing_Protocols_to_Routing_on_Multiple_Optimality_Criteria.pdf %}

@@ -1,11 +1,12 @@
 ---
 title: TCS Homework 6
-date: 2025-05-30 22:01:43
-tags: 
-    - tcs
+tags:
+  - tcs
 categories:
-    - tcs
+  - tcs
 excerpt: TCS Homework 6
+abbrlink: 6c3a380e
+date: 2025-05-30 22:01:43
 ---
 
 ## 6.1

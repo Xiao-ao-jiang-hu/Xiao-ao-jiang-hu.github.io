@@ -5,6 +5,7 @@ tags:
 categories:
   - uncategorized
 excerpt: no excerpt
+abbrlink: c9266a98
 date: 2025-07-05 14:55:15
 ---
 ## ABI概念

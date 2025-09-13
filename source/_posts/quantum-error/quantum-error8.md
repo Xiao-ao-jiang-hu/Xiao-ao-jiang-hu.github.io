@@ -1,12 +1,13 @@
 ---
 title: 量子纠错条件和QECC的性质
-date: 2025-03-19 12:53:34
 tags:
-    - quantum
-    - quantum-error
+  - quantum
+  - quantum-error
 categories:
-    - quantum
+  - quantum
 excerpt: 量子纠错码（QECC）的充分条件和充要条件是量子信息处理中的重要理论基础。本文将介绍九QECC的充分条件、充要条件以及退化码的性质，以及纠错条件的等价表述。
+abbrlink: 7d007f06
+date: 2025-03-19 12:53:34
 ---
 ## QECC的充分条件
 ### 九量子比特码的启示  

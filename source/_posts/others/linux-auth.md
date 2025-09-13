@@ -4,7 +4,10 @@ tags:
   - linux
 categories:
   - linux
-excerpt: 从最基础的文件权限 rwx 到容器安全，Linux 的权限控制经历了几十年演进。这篇文章梳理了 Unix DAC、Capabilities、Namespace、Cgroup、SELinux 这五套机制，重点讲内核实现和实际应用场景。
+excerpt: >-
+  从最基础的文件权限 rwx 到容器安全，Linux 的权限控制经历了几十年演进。这篇文章梳理了 Unix
+  DAC、Capabilities、Namespace、Cgroup、SELinux 这五套机制，重点讲内核实现和实际应用场景。
+abbrlink: 2bfb17a9
 date: 2025-08-20 00:37:07
 ---
 

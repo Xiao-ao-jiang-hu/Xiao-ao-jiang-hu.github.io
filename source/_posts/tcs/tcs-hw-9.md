@@ -1,11 +1,12 @@
 ---
 title: TCS Homework 9
-date: 2025-05-31 01:56:48
 tags:
-    - tcs
+  - tcs
 categories:
-    - tcs
+  - tcs
 excerpt: TCS Homework 9
+abbrlink: fc85259f
+date: 2025-05-31 01:56:48
 ---
 ## 9.1
 ### 题目

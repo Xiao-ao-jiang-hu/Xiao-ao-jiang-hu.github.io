@@ -9,6 +9,7 @@ tags:
 categories:
   - os
 excerpt: 多处理机调度算法概述，包括SQMS、MQMS、Linux O(1)调度器等。
+abbrlink: 576b5615
 date: 2025-06-12 11:08:02
 ---
 ## 多处理机调度算法概述

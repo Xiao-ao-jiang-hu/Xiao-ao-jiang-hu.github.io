@@ -1,16 +1,17 @@
 ---
 title: 分段插值
-date: 2025-05-27 14:37:19
 tags:
-    - numerical-analysis
-    - mathematics
-    - interpolation
-    - piecewise-interpolation
-    - Hermite-interpolation
-    - spline-interpolation
+  - numerical-analysis
+  - mathematics
+  - interpolation
+  - piecewise-interpolation
+  - Hermite-interpolation
+  - spline-interpolation
 categories:
-    - numerical-analysis
+  - numerical-analysis
 excerpt: 本文介绍了分段插值的基本概念，包括分段线性插值、分段埃尔米特插值和样条插值。重点讨论了各类插值方法的构造原理、误差估计及其在实际应用中的优势与局限性。
+abbrlink: bbe3f187
+date: 2025-05-27 14:37:19
 ---
 ## 高次多项式插值的局限性  
 

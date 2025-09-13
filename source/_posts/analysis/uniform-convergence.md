@@ -6,6 +6,7 @@ tags:
 categories:
   - analysis
 excerpt: no excerpt
+abbrlink: f082b2bb
 date: 2025-04-02 16:31:30
 ---
 在数学分析中，函数序列的收敛性是一个核心概念。点态收敛（Pointwise Convergence）是基础，但**一致收敛**（Uniform Convergence）才是真正强大的收敛形式。它保证了极限函数的连续性、积分与极限的可交换性等重要性质。本文将深入探讨一致收敛的本质，并通过经典例子揭示其与点态收敛的关键区别。

@@ -1,16 +1,17 @@
 ---
 title: 矩阵的QR分解
-date: 2025-05-27 01:07:32
 tags:
-    - mathematics
-    - numerical-analysis
-    - QR-decomposition
-    - Householder-transformation
-    - Givens-rotation
-    - matrix-factorization
+  - mathematics
+  - numerical-analysis
+  - QR-decomposition
+  - Householder-transformation
+  - Givens-rotation
+  - matrix-factorization
 categories:
-    - numerical-analysis
+  - numerical-analysis
 excerpt: 本文介绍了矩阵的QR分解，包括Householder变换和Givens旋转，重点讨论了它们在数值计算中的应用和实现方法。
+abbrlink: 6f72a8b5
+date: 2025-05-27 01:07:32
 ---
 
 ## QR分解

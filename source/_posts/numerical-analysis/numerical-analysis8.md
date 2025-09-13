@@ -1,16 +1,18 @@
 ---
 title: ODE的数值解法
-date: 2025-06-02 18:29:20
 tags:
-    - mathematics
-    - numerical-analysis
-    - ODE
-    - numerical-ODE
-    - numerical-integration
-    - ODE-methods
+  - mathematics
+  - numerical-analysis
+  - ODE
+  - numerical-ODE
+  - numerical-integration
+  - ODE-methods
 categories:
-    - numerical-analysis
-excerpt: 本文介绍了ODE数值解法的基本概念，包括常微分方程的基础知识、数值解法的分类、单步法和多步法的具体实现，以及稳定性和收敛性的分析。重点讨论了欧拉法、向后欧拉法、梯形法、Runge-Kutta方法和多步法的特点和应用。
+  - numerical-analysis
+excerpt: >-
+  本文介绍了ODE数值解法的基本概念，包括常微分方程的基础知识、数值解法的分类、单步法和多步法的具体实现，以及稳定性和收敛性的分析。重点讨论了欧拉法、向后欧拉法、梯形法、Runge-Kutta方法和多步法的特点和应用。
+abbrlink: 5160c0e9
+date: 2025-06-02 18:29:20
 ---
 ## **一、常微分方程（ODE）基础概念**
 1. **ODE定义**  

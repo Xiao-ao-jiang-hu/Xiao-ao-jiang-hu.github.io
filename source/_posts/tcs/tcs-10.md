@@ -1,11 +1,12 @@
 ---
 title: TCS Lec10总结
-date: 2025-05-28 23:19:12
 tags:
-    - tcs
+  - tcs
 categories:
-    - tcs
+  - tcs
 excerpt: 本节内容涵盖了非确定性对数空间（NL）与其补集（coNL）的关系、概率论基础、随机变量与期望、集中不等式以及概率方法等重要概念。
+abbrlink: 54fb2d29
+date: 2025-05-28 23:19:12
 ---
 
 ### **第一部分：NL = coNL (Immerman-Szelepcsényi 定理)**

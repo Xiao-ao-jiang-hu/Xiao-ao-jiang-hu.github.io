@@ -7,6 +7,7 @@ tags:
 categories:
   - quantum
 excerpt: no excerpt
+abbrlink: b0fda5d6
 date: 2025-06-28 20:04:54
 ---
 

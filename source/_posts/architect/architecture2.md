@@ -8,6 +8,7 @@ tags:
 categories:
   - architecture
 excerpt: 指令系统是计算机体系结构的核心部分，本文将介绍指令系统的基础概念、演化历程、寻址技术、指令优化设计等内容，并以RISC-V为例进行深入分析。
+abbrlink: a78497ca
 date: 2025-06-10 16:29:07
 ---
 

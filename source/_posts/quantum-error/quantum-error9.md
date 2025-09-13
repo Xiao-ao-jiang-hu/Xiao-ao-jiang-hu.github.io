@@ -1,12 +1,13 @@
 ---
 title: QECC的设计与核心标准
-date: 2025-03-19 17:31:27
 tags:
-    - quantum
-    - quantum-error
+  - quantum
+  - quantum-error
 categories:
-    - quantum
+  - quantum
 excerpt: 本文将介绍量子纠错码（QECC）的设计原则和核心标准，包括纠错能力、编码效率、实用性等方面的要求，以及量子码的等价性和参数权衡问题。
+abbrlink: 2ec34a37
+date: 2025-03-19 17:31:27
 ---
 ## 优秀QECC的核心标准
 ### 1. 纠错能力（核心参数：距离 $d$）
