@@ -7,7 +7,7 @@ tags:
 categories:
   - machine learning
 excerpt: 本文我们将深入探讨构建流模型（Flow Models）与扩散模型（Diffusion Models）的核心——训练目标的推导。不同于传统的监督学习任务，这里我们没有明确的标签（label），因此必须从模型本身的动态出发，推导出合适的训练目标。重点是理解六个关键概念：条件概率路径（Conditional Probability Path）、条件向量场（Conditional Vector Field）、条件得分函数（Conditional Score Function），以及它们对应的边缘（Marginal）版本。
-date: 2025-09-13 11:51:56
+date: 2025-08-25 11:51:56
 ---
 
 ## 概率路径
