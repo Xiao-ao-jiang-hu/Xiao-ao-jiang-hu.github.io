@@ -14,10 +14,10 @@ date: 2025-05-27 01:42:27
 
 ### 1.1 对偶空间的基本关系图示
 
-{% asset_img ../dual-space.png %}
+<img src="/<%= post.abbrlink %>/dual-space.png" alt="From " width="100%">
 
 - 原空间与对偶空间：  
-  原空间 $U, V$（粉色）和对偶空间 $U^*, V^*$（蓝色）通过自然配对 $\langle \cdot, \cdot \rangle$ 关联。  
+  原空间 $U, V$和对偶空间 $U^*, V^*$通过自然配对 $\langle \cdot, \cdot \rangle$ 关联。  
   自然配对是线性泛函的作用，例如 $\langle \phi, u \rangle = \phi(u)$（$\phi \in U^*$, $u \in U$）。
 
 - 线性映射与对偶映射：  
