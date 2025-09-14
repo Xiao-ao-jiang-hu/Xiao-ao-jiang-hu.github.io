@@ -8,8 +8,9 @@ tags:
     - Gaussian Splatting
     - Gaussian Cube
 categories:
-    - 杂物
+    - others
 excerpt: Gaussian Splatting & Gaussian Cube代码阅读
+abbrlink: 02f372e6
 ---
 3DGS论文附带代码仓库提供了论文算法的实现。主要使用的类为GaussianModel和Scene。渲染时构建Scene传入render函数进行训练集和测试集上的渲染。
 # Gaussian Splatting
