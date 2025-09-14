@@ -1,42 +1,20 @@
 ---
 title: 基变换、对偶空间与张量视角下的行空间、列空间、核空间及转置核空间的关系
-date: 2025-05-27 01:42:27
 tags:
-    - mathematics
-    - linear-algebra
-    - 对偶空间
+  - mathematics
+  - linear-algebra
+  - 对偶空间
 categories:
-    - linear-algebra
+  - linear-algebra
 excerpt: 本文从对偶空间的视角出发，探讨线性映射及其矩阵表示下的行空间、列空间、核空间和转置核空间之间的关系。通过引入对偶基的概念，我们揭示了这些空间之间的深刻联系，并分析了基变换对它们的影响。最后，我们从张量的角度统一理解这些空间的结构和相互关系。
+abbrlink: df235080
+date: 2025-05-27 01:42:27
 ---
 ## 1. 关系图示与核心概念
 
 ### 1.1 对偶空间的基本关系图示
 
-```mermaid
-graph LR
-    %% 定义四个节点位置（通过不可见连接强制布局）
-    U((U)) -->|"线性映射 L"| V((V))
-    V*((V*)) -->|"对偶映射 L*"| U*((U*))
-    U -->|"自然配对 ⟨·,·⟩_U"| U*
-    V -->|"自然配对 ⟨·,·⟩_V"| V*
-
-    %% 不可见连接强制矩形布局
-    U ~~~ V*
-    V ~~~ U*
-    U* ~~~ V*
-    style U fill:#f9f,stroke:#333
-    style V fill:#f9f,stroke:#333
-    style U* fill:#ccf,stroke:#333
-    style V* fill:#ccf,stroke:#333
-    linkStyle 0 stroke:#333,stroke-width:2px
-    linkStyle 1 stroke:#333,stroke-width:2px
-    linkStyle 2 stroke:#999,stroke-dasharray:5
-    linkStyle 3 stroke:#999,stroke-dasharray:5
-    linkStyle 4 stroke-width:0px
-    linkStyle 5 stroke-width:0px
-    linkStyle 6 stroke-width:0px
-```
+{% img dual-space.png alt="对偶空间关系图示" width="600" %}
 
 - 原空间与对偶空间：  
   原空间 $U, V$（粉色）和对偶空间 $U^*, V^*$（蓝色）通过自然配对 $\langle \cdot, \cdot \rangle$ 关联。  
