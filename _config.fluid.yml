@@ -746,14 +746,16 @@ post:
   # Comment plugin
   comments:
     enable: true
+    # 指定的插件，需要同时设置对应插件的必要参数
+    # The specified plugin needs to set the necessary parameters at the same time
+    # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
     type: utterances
-
+    
   utterances:
-    repo: Xiao-ao-jiang-hu/Xiao-ao-jiang-hu.github.io        # 例：Xiao-ao-jiang-hu/Xiao-ao-jiang-hu.github.io
-    issue_term: pathname                 # 用页面路径作为 Issue 标题
-    label: utterances                    # 给 Issue 打的标签
-    theme: github-dark                  # 可选 github-dark
-
+    repo: Xiao-ao-jiang-hu/Xiao-ao-jiang-hu.github.io
+    issue_term: pathname
+    label: utterances
+    theme: github-light
   image_path:
     enable: false
 
