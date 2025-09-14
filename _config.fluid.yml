@@ -750,12 +750,7 @@ post:
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
     type: utterances
-    
-  utterances:
-    repo: Xiao-ao-jiang-hu/Xiao-ao-jiang-hu.github.io
-    issue_term: pathname
-    label: utterances
-    theme: github-light
+
   image_path:
     enable: false
 
@@ -772,7 +767,7 @@ post:
 # Based on GitHub Issues
 # See: https://utteranc.es
 utterances:
-  repo:
+  repo: Xiao-ao-jiang-hu/Xiao-ao-jiang-hu.github.io
   issue_term: pathname
   label: utterances
   theme: github-light

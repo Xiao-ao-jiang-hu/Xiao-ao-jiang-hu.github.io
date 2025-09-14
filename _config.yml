@@ -140,3 +140,6 @@ hexo_seo_autopush:
   google:
     enable: true
     count: 200
+  baidu:
+    enable: false
+    count: 200
