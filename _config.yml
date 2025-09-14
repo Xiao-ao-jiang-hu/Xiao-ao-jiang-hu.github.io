@@ -115,7 +115,7 @@ deploy:
   branch: gh-pages
 
 marked:
-  prependRoot: true
+  prependRoot: false
   postAsset: true
 
 markdown_it_plus:
