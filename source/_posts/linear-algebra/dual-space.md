@@ -14,7 +14,7 @@ date: 2025-05-27 01:42:27
 
 ### 1.1 对偶空间的基本关系图示
 
-![对偶空间关系图(from Gilber Strang)](dual-space.png)
+![From Gilbert Strang](dual-space.png)
 
 - 原空间与对偶空间：  
   原空间 $U, V$（粉色）和对偶空间 $U^*, V^*$（蓝色）通过自然配对 $\langle \cdot, \cdot \rangle$ 关联。  
