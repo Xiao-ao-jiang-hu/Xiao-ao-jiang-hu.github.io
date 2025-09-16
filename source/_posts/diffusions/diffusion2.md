@@ -4,8 +4,10 @@ tags:
   - generative models
   - flow models
   - diffusion models
+  - math
 categories:
   - machine learning
+  - math
 excerpt: >-
   本文我们将深入探讨构建流模型（Flow Models）与扩散模型（Diffusion
   Models）的核心——训练目标的推导。不同于传统的监督学习任务，这里我们没有明确的标签（label），因此必须从模型本身的动态出发，推导出合适的训练目标。重点是理解六个关键概念：条件概率路径（Conditional

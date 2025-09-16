@@ -7,8 +7,10 @@ tags:
   - best-approximation
   - orthogonal-polynomials
   - Gram-matrix
+  - math
 categories:
   - numerical-analysis
+  - math
 excerpt: >-
   本文介绍了函数逼近的基本概念，包括函数空间、常用范数、内积、Cauchy-Schwarz不等式、Gram矩阵、权函数与加权内积等。重点讨论了最佳平方逼近的求解方法及其在实际应用中的重要性。
 abbrlink: 14a50411

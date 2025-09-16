@@ -7,8 +7,10 @@ tags:
   - numerical-ODE
   - numerical-integration
   - ODE-methods
+  - math
 categories:
   - numerical-analysis
+  - math
 excerpt: >-
   本文介绍了ODE数值解法的基本概念，包括常微分方程的基础知识、数值解法的分类、单步法和多步法的具体实现，以及稳定性和收敛性的分析。重点讨论了欧拉法、向后欧拉法、梯形法、Runge-Kutta方法和多步法的特点和应用。
 abbrlink: 5160c0e9

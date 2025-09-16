@@ -1,10 +1,11 @@
 ---
 title: 实对称矩阵：从对偶基、自伴算子到特征向量的正交性
 tags:
-  - mathematics
   - linear-algebra
+  - math
 categories:
   - linear-algebra
+  - math
 excerpt: >-
   本文深入探讨实对称矩阵的核心性质，重点分析其特征向量的正交性及其与对偶基、自伴算子之间的关系。通过几何直观和代数证明相结合的方法，揭示实对称矩阵在内积空间中的独特地位，并阐述其在数学和物理中的广泛应用。
 abbrlink: dc219a49

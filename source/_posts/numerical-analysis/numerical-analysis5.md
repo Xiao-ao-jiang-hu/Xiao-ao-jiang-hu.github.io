@@ -6,8 +6,10 @@ tags:
   - polynomial-interpolation
   - Lagrange-interpolation
   - Newton-interpolation
+  - math
 categories:
   - numerical-analysis
+  - math
 excerpt: 本文介绍了多项式插值的基本概念，包括Lagrange插值和Newton插值的构造方法、差商的定义与计算、以及插值余项的推导。
 abbrlink: 3b7117ff
 date: 2025-05-27 13:10:43

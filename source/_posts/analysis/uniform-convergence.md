@@ -3,8 +3,10 @@ title: 一致收敛：全局一致性
 tags:
   - 一致收敛
   - 数学分析
+  - math
 categories:
   - analysis
+  - math
 excerpt: no excerpt
 abbrlink: f082b2bb
 date: 2025-04-02 16:31:30

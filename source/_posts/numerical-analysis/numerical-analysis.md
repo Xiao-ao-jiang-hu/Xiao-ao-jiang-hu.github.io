@@ -8,6 +8,7 @@ tags:
   - power-method
 categories:
   - numerical-analysis
+  - math
 excerpt: 本文介绍了矩阵特征值的计算方法，包括Gerschgorin圆盘定理和幂法，重点讨论了特征值分布的几何定位及其在数值分析中的应用。
 abbrlink: 791898db
 date: 2025-05-27 00:44:35

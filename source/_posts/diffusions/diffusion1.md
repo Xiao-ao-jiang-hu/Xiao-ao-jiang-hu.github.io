@@ -4,8 +4,10 @@ tags:
   - generative models
   - flow models
   - diffusion models
+  - math
 categories:
   - machine learning
+  - math
 excerpt: 本文介绍生成模型的基本概念，流模型与扩散模型的数学基础，以及它们如何通过神经网络参数化向量场或漂移项来实现数据分布的建模与采样。
 abbrlink: 1b64e8ba
 date: 2025-08-13 11:24:56
