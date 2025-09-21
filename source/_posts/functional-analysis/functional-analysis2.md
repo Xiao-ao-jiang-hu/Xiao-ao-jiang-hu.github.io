@@ -138,10 +138,34 @@ date: 2025-09-16 15:26:19
    即 $\exists c_1, c_2 > 0$，$\forall x \in X$，$c_1 \|x\|_1 \leq \|x\|_2 \leq c_2 \|x\|_1$
 
 **证明**：
-1. 首先证明 2. 
-    取 $X$ 中的一组基 $e_1, \cdots, e_n$ ($\dim X = n$)
-    则 $\forall x \in X$，$x = \sum_{j=1}^n y_j e_j$，记 $\|x\|_2 \triangleq \left( \sum_{j=1}^n |y_j|^2 \right)^{\frac{1}{2}}$
+1. 定义2-范数： $\forall x \in X$，$x = \sum_{j=1}^n y_j e_j$，记 $\|x\|_2 \triangleq \left( \sum_{j=1}^n |y_j|^2 \right)^{\frac{1}{2}}$
+  $(X, +, \cdot, \mathbb{R}) ~= \mathbb{R}^n $
+2. 取 $X$ 中的一组基 $e_1, \cdots, e_n$ ($\dim X = n$)
     假设 $(X, \|\cdot\|_1)$ 是赋范空间
     1. 由 $x = \sum_{j=1}^n y_j e_j$，⇒ $\|x\|_1 \leq \sum_{j=1}^n |y_j| \|e_j\|_1 \leq \left( \sum_{j=1}^n \|e_j\|_1^2 \right)^{\frac{1}{2}} \|x\|_2$
     2. 首先 $S = \{ x \in X \mid \|x\|_2 = 1 \}$ 是紧集，因为 $(X, \|\cdot\|_2)$ 与 $(\mathbb{R}^n, \|\cdot\|_2)$ 等距同构
     （这里 $\|x\|_2 = \left( \sum_{j=1}^n |y_j|^2 \right)^{\frac{1}{2}}$ 与 $\mathbb{R}^n$ 中的欧几里得范数等价）
+  $|F(x)-F(y)| = |\|x\|_1 - \|y\|_1| \leq \|x-y\| \leq C\|x-y\|_2$
+    $\Rightarrow F$ 是 $(X, \|\cdot\|_1)$ 的连续映射，由连续函数在紧集上有极值定理，$\exists x_0 \in S$，$s.t.\ F(x_0) = \min_{x \in S} F(x)$
+    $\Rightarrow \forall x \in X \setminus \{0\}$，$x/\|x\|_2 \in S$，$\Rightarrow \|x\|_1 = \|x\|_2 \|x/\|x\|_2\|_1 \geq \|x\|_2 F(x_0)$
+    综上，$c_1 = F(x_0)$, $c_2 = \left( \sum_{j=1}^n \|e_j\|_1^2 \right)^{\frac{1}{2}}$
+
+#### 推论
+1. 若$(X, \|\cdot\|_1)$满足$\dim X < +\infty$
+
+
+### 无穷维Banach空间（球面不是紧集）
+#### Reisz定理
+- 设 $(X, \|\cdot\|)$ 是赋范空间，$\dim X = +\infty$. 假设$Y$是$X$的闭子空间，且$Y \subsetneq X$， 则$\forall 0 < \delta < 1$, $\exists x \in S, \|x\|_1 = 1, s.t. \inf_{y \in Y} \|x - y\| \geq 1-\delta$
+
+#### 定理
+- 设 $(X, \|\cdot\|)$ 是赋范空间，$\dim X = +\infty$. $B=\{x \in X \mid \|x\| \leq 1\}$, $S = \{ x \in X \mid \|x\| = 1 \}$ ，则下列等价：
+  1. $B$ 是紧集
+  2. $S$ 是紧集
+  3. $(X, \|\cdot\|)$ 是有限维赋范空间
+
+**证明**：
+- (3) $\Leftrightarrow$ (1)
+思路：找一个列$\{x_n\}$，两两之间距离大于某个正数，被球集族覆盖，但找不到有限覆盖
+
+### 有界线性算子及有界线性算子空间
