@@ -10,8 +10,8 @@ tags:
   - orthogonal-transformation
   - math
 categories:
-  - numerical-analysis
   - math
+  - numerical-analysis
 excerpt: >-
   本文介绍了最小二乘法的基本原理和应用，包括线性最小二乘问题的矩阵表述、法方程法求解、正交变换法（QR分解）以及非线性问题的线性化处理。重点讨论了如何通过正交变换提升数值稳定性，并提供了具体的例子来说明方法的实现。
 abbrlink: 6b330b18

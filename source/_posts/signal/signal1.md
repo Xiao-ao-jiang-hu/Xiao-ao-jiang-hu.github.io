@@ -6,8 +6,8 @@ tags:
     - signal
   - math
 categories:
-    - signal
     - math
+    - signal
 excerpt: 本文将介绍信号的基本概念、运算以及奇异信号的性质。
 ---
 

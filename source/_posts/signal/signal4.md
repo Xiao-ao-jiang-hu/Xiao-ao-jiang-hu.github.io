@@ -6,8 +6,8 @@ tags:
     - signal
   - math
 categories:
-    - signal
     - math
+    - signal
 excerpt: 本文将介绍信号的采样和采样定理，包括采样函数、理想时域采样、采样定理以及连续信号的采样重构等内容。
 ---
 # 信号的采样

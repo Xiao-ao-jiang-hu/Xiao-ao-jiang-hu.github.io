@@ -6,8 +6,8 @@ tags:
     - signal
   - math
 categories:
-    - signal
     - math
+    - signal
 excerpt: 本文将介绍信号的分解方法，包括常规分解、脉冲分解、正交分解等，并探讨周期函数的正交分解定理。
 ---
 

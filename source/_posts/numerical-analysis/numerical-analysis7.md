@@ -11,8 +11,8 @@ tags:
   - composite-integration
   - math
 categories:
-  - numerical-analysis
   - math
+  - numerical-analysis
 excerpt: >-
   本文介绍了数值积分的基本概念，包括数值积分的基本思想、插值型求积公式、复合求积公式以及高斯求积公式。重点讨论了各类求积公式的收敛性、稳定性和代数精度，并提供了具体的例子来说明方法的实现。
 abbrlink: 19ca0049
