@@ -1,10 +1,11 @@
 ---
-title: Financial Accounting Class 1:Introduction
+title: 'Financial Accounting Class 1:Introduction'
 tags:
   - no tags
 categories:
   - uncategorized
 excerpt: no excerpt
+abbrlink: 3829288f
 date: 2025-09-19 08:34:44
 ---
 # Chapter 1: Financial Statements and Business Decisions
