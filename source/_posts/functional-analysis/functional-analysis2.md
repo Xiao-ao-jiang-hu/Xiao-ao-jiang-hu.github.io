@@ -276,10 +276,10 @@ $$
 1. 线性显然，且 $\|\pi(x)\| = \|[x]\| \leq \|x\|$，故 $\pi$ 有界且 $\|\pi\| \leq 1$. 显然 $\pi$ 是满射.
 2. 交换图：
     ```mermaid
-    graph TD;
-        A[X] -- π --> B[X/Y];
-        A -- T --> C[Z];
-        B -- T₀ --> C;
+    graph TD
+      A[X] -- π --> B[X/Y]
+      A -- T --> C[Z]
+      B -- T₀ --> C
     ```
     由 $Y \subseteq \ker T$ 可知 $\forall x_1, x_2 \in X$，若 $[x_1] = [x_2]$，则 $x_1 - x_2 \in Y \Rightarrow T x_1 = T x_2$，从而可定义 $T_0([x]) := T x$，且 $T = T_0 \circ \pi$. 
 
