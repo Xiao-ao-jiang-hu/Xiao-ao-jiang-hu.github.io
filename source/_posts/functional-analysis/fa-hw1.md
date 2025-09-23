@@ -1,9 +1,12 @@
 ---
 title: 泛函分析第一次作业
 tags:
-  - no tags
+  - math
+  - homework
+  - functional-analysis
 categories:
-  - uncategorized
+  - math
+  - functional-analysis
 excerpt: no excerpt
 abbrlink: 88c391a1
 date: 2025-09-22 12:44:41
@@ -237,18 +240,18 @@ $$
 综上，赋范线性空间 $X$ 不是完备的，其完备化空间是 $l^2$。
 
 ## 1.5
-设 \((X, M, \mu)\) 是一个复测度空间，即 \(\mu : M \to \mathbb{C}\) 满足：
-(1) \(\mu(\emptyset) = 0\);
-(2) 若 \(\{E_j\}_{j \geq 1} \subset M\) 且互不相交，则 \(\mu\left(\bigcup_{j=1}^{\infty} E_j\right) = \sum_{j=1}^{\infty} \mu(E_j)\).
+设 $(X, M, \mu)$ 是一个复测度空间，即 $\mu : M \to \mathbb{C}$ 满足：
+(1) $\mu(\emptyset) = 0$;
+(2) 若 $\{E_j\}_{j \geq 1} \subset M$ 且互不相交，则 $\mu\left(\bigcup_{j=1}^{\infty} E_j\right) = \sum_{j=1}^{\infty} \mu(E_j)$.
 
 则：
-1. 对任意 \(E \in M\)，定义
-\[
+1. 对任意 $E \in M$，定义
+$$
 |\mu|(E) := \sup \left\{ \sum_{j=1}^{\infty} |\mu(E_j)| : \{E_j\}_{j \geq 1} \text{ 是 } E \text{ 的可测分割} \right\},
-\]
-其中上确界取遍所有 \(E\) 的可数可测分割（即 \(E = \bigcup_{j=1}^{\infty} E_j\)，且 \(E_j\) 互不相交）。证明 \(|\mu|\) 是 \((X, M)\) 上的正测度，且 \(|\mu|(X) < \infty\)，即 \(|\mu|\) 是有限测度。
+$$
+其中上确界取遍所有 $E$ 的可数可测分割（即 $E = \bigcup_{j=1}^{\infty} E_j$，且 $E_j$ 互不相交）。证明 $|\mu|$ 是 $(X, M)$ 上的正测度，且 $|\mu|(X) < \infty$，即 $|\mu|$ 是有限测度。
 
-2. 记 \(C_m := \{ (X, M) \text{ 上的复测度} \}\)，且对任意 \(\mu \in C_m\)，定义 \(\|\mu\| = |\mu|(X)\)。证明 \((C_m, \|\cdot\|)\) 是 Banach 空间。
+2. 记 $C_m := \{ (X, M) \text{ 上的复测度} \}$，且对任意 $\mu \in C_m$，定义 $\|\mu\| = |\mu|(X)$。证明 $(C_m, \|\cdot\|)$ 是 Banach 空间。
 ### 证明
 
 #### 1. 
