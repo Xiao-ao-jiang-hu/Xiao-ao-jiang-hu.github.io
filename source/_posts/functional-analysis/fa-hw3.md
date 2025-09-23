@@ -8,6 +8,7 @@ categories:
   - math
   - functional-analysis
 excerpt: no excerpt
+abbrlink: 74d6ba6b
 date: 2025-09-23 12:10:51
 ---
 ## 3.1
