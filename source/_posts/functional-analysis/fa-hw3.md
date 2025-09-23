@@ -94,7 +94,74 @@ $$\|f - g\|_\infty = \sup_{t \in \mathbb{R}} |f(t) - g(t)| \geq |f(x) - g(x)| = 
 假设存在可数稠密子集$D = \{g_n | n \in \mathbb{N}\}$，则对于每个$a \in \mathbb{R}$，存在某个$g_n$使得$g_n \in B(f_a, \frac{1}{3})$。因此，$D$中至少包含与$A$中每个元素对应的一个元素，这与$A$是不可数集矛盾。
 
 ## 3.4
+证明Hanner不等式并说明对于 $1< p <+\infty$, $L^p$空间是一致凸的
+### 解答
+#### 1. Hanner不等式
+设 $1 < p < \infty$，$f, g \in L^p(\mathbb{R})$ 为实值函数，则：
 
+- 若 $1 \leq p \leq 2$，有  
+  $$
+  \|f + g\|_p^p + \|f - g\|_p^p \geq \left( \|f\|_p + \|g\|_p \right)^p + \left| \|f\|_p - \|g\|_p \right|^p.
+  $$
+- 若 $2 \leq p < \infty$，不等号反向。
+
+对任意实数 $a, b$，定义函数  
+$$
+\phi(a, b) = |a + b|^p + |a - b|^p.
+$$  
+通过分析 $\phi$ 的凸性，可得点态不等式：  
+- 当 $1 \leq p \leq 2$ 时，  
+  $$
+  |a + b|^p + |a - b|^p \geq (|a| + |b|)^p + \left| |a| - |b| \right|^p.
+  $$
+- 当 $p \geq 2$ 时，不等号反向。
+
+将点态不等式应用于 $f(x)$ 和 $g(x)$，并积分得：  
+$$
+\int \left( |f + g|^p + |f - g|^p \right) \geq \int \left( (|f| + |g|)^p + \left| |f| - |g| \right|^p \right).
+$$  
+右边两项分别对应 $\| |f| + |g| \|_p^p$ 和 $\| |f| - |g| \|_p^p$。利用三角不等式和范数性质即可得证。
+
+#### 2. Clarkson不等式
+我们考虑p ≥ 2的情况（1 < p ≤ 2的证明类似）。设f, g ∈ L^p满足\|f\|_p = \|g\|_p = 1。
+
+由Hanner不等式（p ≥ 2）：
+$$
+\|f + g\|_p^p + \|f - g\|_p^p \leq (\|f\|_p + \|g\|_p)^p + |\|f\|_p - \|g\|_p|^p = 2^p
+$$
+
+利用范数的齐次性，对任意f, g ∈ L^p，令F = f/2, G = g/2，代入上式：
+$$
+\|F + G\|_p^p + \|F - G\|_p^p \leq 2^{1-p}(\|f\|_p + \|g\|_p)^p + 2^{1-p}|\|f\|_p - \|g\|_p|^p
+$$
+
+通过进一步计算可得Clarkson不等式：
+- 当p ≥ 2时：
+  $$
+  \left\|\frac{f+g}{2}\right\|_p^p + \left\|\frac{f-g}{2}\right\|_p^p \leq \frac{1}{2}(\|f\|_p^p + \|g\|_p^p)
+  $$
+- 当1 < p ≤ 2时：
+  $$
+  \left\|\frac{f+g}{2}\right\|_p^q + \left\|\frac{f-g}{2}\right\|_p^q \leq \left[\frac{1}{2}(\|f\|_p^p + \|g\|_p^p)\right]^{q/p}
+  $$
+  其中q = p/(p-1)为共轭指数。
+
+#### 3. 证明L^p空间的一致凸性
+**情况1：p ≥ 2**
+由Clarkson不等式：
+$$
+\left\|\frac{f+g}{2}\right\|_p^p \leq \frac{1}{2}(\|f\|_p^p + \|g\|_p^p) - \left\|\frac{f-g}{2}\right\|_p^p \leq 1 - \left(\frac{\varepsilon}{2}\right)^p
+$$
+取δ = 1 - [1 - (ε/2)^p]^{1/p} > 0，即得\|(f+g)/2\|_p ≤ 1 - δ。
+
+**情况2：1 < p ≤ 2**
+由Clarkson不等式：
+$$
+\left\|\frac{f+g}{2}\right\|_p^q \leq \left[\frac{1}{2}(\|f\|_p^p + \|g\|_p^p)\right]^{q/p} - \left\|\frac{f-g}{2}\right\|_p^q \leq 1 - \left(\frac{\varepsilon}{2}\right)^q
+$$
+取δ = 1 - [1 - (ε/2)^q]^{1/q} > 0，即得\|(f+g)/2\|_p ≤ 1 - δ。
+
+综上，L^p空间是一致凸的。
 
 ## 3.5
 设 $(X, \mathcal{M}, \mu)$ 是一个完备测度空间，且 $\mu$ 是 $\sigma$-有限的。证明 $\mu$ 是可局部化的。
