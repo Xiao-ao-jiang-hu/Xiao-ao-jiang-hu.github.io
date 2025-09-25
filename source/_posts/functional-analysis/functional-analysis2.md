@@ -335,3 +335,110 @@ $$X^* = \mathcal{L}(X, \mathbb{F}) = \text{span}\{\ell_1, \cdots, \ell_n\}$$
     $\Rightarrow \forall g_1, \cdots, g_n$ 是 $X$ 的坐标轴，$\Phi^{-1}(\{g_1^*, \cdots, g_n^*\})$ 是 $X$ 中的基底，且 $g_i(\Phi^{-1}(g_j^*)) = \delta_{ij}$。
 
     > 实际上，$\Rightarrow \forall g^* \in (X^*)^* \quad g^*(e) = \Phi(\Phi^{-1}(g^*)) \Rightarrow g_i(\Phi^{-1}(g_j^*)) = g_i^*(g_i) = \delta_{ij}$.
+
+#### 例子（“测度与积分”中有详细的证明）。
+
+##### 例1
+
+假设 $(X, \mathcal{M}, \mu)$ 是完备测度空间。则
+$$
+\left(L^p(d\mu)\right)^* = \left(L^q(d\mu)\right) \quad \text{如果} \frac{1}{p} + \frac{1}{q} = 1, \quad 1 < p, q < +\infty.
+$$
+
+**两点说明**：
+1. 关于“等号”的数学表述，实质上是在“等距同构”下相等。即
+$\exist \phi :(L^p(d\mu))^* \longrightarrow L^q(d\mu)$ 是等距同构映射。s.t. $\forall T \in (L^p(d\mu))^*$,
+$$
+\|T\| = \|\Phi(T)\|_{L^q(d\mu)} \quad \text{且} \quad \forall f \in L^p(d\mu), \quad T(f) = \int_X f \cdot \Phi(T) d\mu.
+$$
+（算子范数）
+
+2. 证明过程，通过凸投影定理以及 “$L^p$ 空间的一致凸性”。
+
+##### 例2
+
+若 $(X, \mathcal{M}, \mu)$ 是完备测度空间且 $\mu$ 是 $\sigma$-有限的，则
+$$
+\left(L^1(d\mu)\right)^* = L^\infty(d\mu).
+$$
+同例1。一般情形下，
+$$
+L^\infty(d\mu) \subseteq L^1(d\mu)^*.
+$$
+
+假设 $\Phi: L^\infty(d\mu) \longrightarrow \left(L^1(d\mu)\right)^*$，$\forall f \in L^\infty(d\mu), \; \forall g \in L^1(d\mu)$，
+$$
+\Phi(f)(g) \overset{\text{定义}}{=} \int_X f g \, d\mu.
+$$
+
+$\Rightarrow |\Phi(f)(g)| \le \|f\|_{L^\infty(X)} \|g\|_{L^1(d\mu)} \quad \Rightarrow \quad \Phi(f) \in \left(L^1(d\mu)\right)^*$.
+
+> **定义**：
+> 1. $\Phi$ 是单射 $\iff (X, \mathcal{M}, \mu)$ 是半有限的。
+> 2. $\Phi$ 是满射 $\iff (X, \mathcal{M}, \mu)$ 是 $\sigma$-局部化的。
+> - 称 $(X, \mathcal{M}, \mu)$ 是半有限的，如果 $\exists E \in \mathcal{M}$ 且 $\mu(E) = +\infty$，则 $\exists F \subseteq E$ 且 $F \in \mathcal{M}$，s.t. $\mu(F) < +\infty$。
+> - 称 $(X, \mathcal{M}, \mu)$ 是 $\sigma$-局部化的，如果 $(X, \mathcal{M}, \mu)$ 是半有限且 $\forall E \subseteq \mathcal{M}$，$\exists H \in \mathcal{M}$，(满足) ① $\mu(E \setminus H) = 0$，$\forall E \in \mathcal{E}$。② 若 $G \in \mathcal{M}$ 满足 ①，则 $\mu(H \setminus G) = 0$。
+
+
+##### 例3
+假设 $X$ 是局部紧的 Hausdorff 空间（LCH 空间），$\mu$ 是 $\mathcal{B}(X)$ 上的复测度。
+$$
+C_0(X) = \overline{C_c(X)}^{\|\cdot\|_\infty}.
+$$
+
+记 $\mathcal{C}_m(X)$：$\mathcal{B}(X)$ 上复测度全体。则
+$$
+\left(C_0(X)\right)^* = \mathcal{C}_m(X).
+$$
+
+
+即 $\forall L \in (C_0(X))^*$, $\forall f \in C_0(X)$, $\exists \mu \in \mathcal{C}_m(X)$, s.t. $L(f) = \int_X f \, d\mu,$且 $\|L\| = \|\mu\|$.
+
+
+##### 例4
+
+$1 \le p \le +\infty$.  
+定义：
+$$
+\ell^p(\mathbb{N}) \overset{\text{定义}}{=} 
+\begin{cases}
+\left\{ (x_n)_{n \ge 1} \,\middle|\, \left( \sum\limits_{i=1}^\infty |x_n|^p \right)^{\frac{1}{p}} < +\infty \right\}, & \| (x_n)_{n \ge 1} \|_{\ell^p} \overset{\text{定义}}{=} \left( \sum\limits_{i=1}^\infty |x_n|^p \right)^{\frac{1}{p}} \\
+\left\{ (x_n)_{n \ge 1} \,\middle|\, \sup\limits_{n \ge 1} |x_n| < +\infty \right\}, & \| (x_n)_{n \ge 1} \|_{\ell^\infty} \overset{\text{定义}}{=} \sup\limits_{n \ge 1} |x_n|
+\end{cases}
+$$
+
+**可以验证**：
+1. $(\ell^p)^* = \ell^q$，其中 $\frac{1}{p} + \frac{1}{q} = 1$, $1 \le p < +\infty$。
+
+2. 若 $c_0 = \left\{ (x_n)_{n \ge 1} \,\middle|\, \lim\limits_{n \to \infty} |x_n| = 0 \right\} \subseteq \ell^\infty$，则 $(c_0)^* = \ell^1$。
+
+3. $\ell^1 \ne (\ell^\infty)^*$ （这是 Hahn-Banach 定理的应用）。
+
+
+##### 例5：空间的可分性
+
+> **定义**：  
+> $X = (X, \mathcal{T})$ 为拓扑空间。称 $S \subseteq X$ 是 $X$ 中的稠密子集，如果 $\forall U \subseteq X$，$U$ 开集且 $U \ne \emptyset$，则 $U \cap S \ne \emptyset$。  
+> 称 $X$ 是可分的，如果存在稠密子集 $S$ 是可数的。
+
+> **等价定义**：  
+> $X = (X, \|\cdot\|)$，称 $X$ 是可分的，如果 $X$ 有可数稠密子集。
+
+
+##### 例6
+
+$\Omega \subseteq \mathbb{R}^n$ 开集。$(\mathbb{R}^n, \mathcal{M}, \mu)$ 是完备测度空间，$\mu$ 是 Radon 测度。  
+则 $L^p(\Omega)$ ($1 \le p < +\infty$) 是可分的。
+
+> **注**：  
+> ① 若 $X$ 是 LCH 空间，$\mu$ 是 $(X, \mathcal{M})$ 上 Radon 测度，则 $C_c(X)$ 在 $L^p(X; d\mu)$ 上稠密。  
+> ② 由 Stone-Weierstrass 定理，在紧集上 $\Omega_m$，有理系数的多项式在 $C(\Omega_m)$ 上稠密。  
+> 其中：  
+> $$
+\Omega_m := \left\{ x \in \Omega \,\middle|\, |x| \le m, \; \text{dist}(x, \partial \Omega) \ge \frac{1}{m} \right\}.
+$$
+
+
+##### 例7
+
+$\ell^\infty(\Omega)$ 不是可分的。
