@@ -327,6 +327,20 @@ $$
 ## 4.7
 设 $\{x_n : n \in \mathbb{N}\}$ 为 Hilbert 空间中的标准正交基，证明 $\sum_{n=1}^\infty \frac{x_n}{n}$ 无条件收敛但不绝对收敛。
 
+### 解答
+由于调和级数发散，故不绝对收敛。
+
+由于 $\{x_n\}$ 是标准正交基，级数 $\sum_{n=1}^\infty \frac{x_n}{n}$ 收敛当且仅当 $\sum_{n=1}^\infty \left\| \frac{x_n}{n} \right\|^2 < \infty$。计算得 $\sum_{n=1}^\infty \left\| \frac{x_n}{n} \right\|^2 = \sum_{n=1}^\infty \frac{1}{n^2} < \infty$（因为 $p$-级数 $p=2>1$ 收敛）。令 $s = \sum_{n=1}^\infty \frac{x_n}{n}$，则 $s$ 存在且 $\|s\|^2 = \sum_{n=1}^\infty \frac{1}{n^2}$。
+
+对于任意置换 $\pi$，考虑部分和 $T_M = \sum_{m=1}^M \frac{x_{\pi(m)}}{\pi(m)}$。需证明 $T_M$ 收敛于 $s$。给定 $\epsilon > 0$，由于 $\sum_{n=1}^\infty \frac{1}{n^2} < \infty$，存在 $N$ 使得 $\sum_{n=N+1}^\infty \frac{1}{n^2} < \epsilon$。由于 $\pi$ 是双射，存在 $M_0$ 使得当 $M \geq M_0$ 时，$\{ \pi(1), \dots, \pi(M) \} \supseteq \{1, 2, \dots, N\}$。于是，当 $M \geq M_0$ 时，有：
+$$
+\|s - T_M\|^2 = \sum_{n \notin \{\pi(1), \dots, \pi(M)\}} \left| \frac{1}{n} \right|^2 \leq \sum_{n=N+1}^\infty \frac{1}{n^2} < \epsilon.
+$$
+故 $T_M$ 收敛于 $s$，即级数无条件收敛。
+
+综上，级数 $\sum_{n=1}^\infty \frac{x_n}{n}$ 无条件收敛但不绝对收敛。
+
+
 ## 4.8
 证明：Hilbert空间是可分度量空间当且仅当它有可数标准正交基。
 
@@ -359,3 +373,7 @@ $$
   由三角不等式，$\|x - \sum q_n e_n\| < \epsilon$，故 $S$ 在 $H$ 中稠密。
 
 因此，$H$ 可分。
+
+
+## 4.9
+若 $\mathcal{M}$ 是可分Hilbert空间 $\mathcal{H}$ 的稠密线性子空间，则 $\mathcal{H}$ 有一族由 $\mathcal{M}$ 中元素组成的标准正交基；若 $\mathcal{M}$ 是 $\mathcal{H}$ 的任意稠密子集，结论是否仍然成立？
