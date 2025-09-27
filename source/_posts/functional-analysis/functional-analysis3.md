@@ -391,7 +391,7 @@ $$
 
 #### 定理5：设 $H = (H, (\cdot, \cdot))$ 是 Hilbert 空间，$\forall A, B \subseteq H$。
 
-1. $A^\perp$ 是闭子集
+1. $A^\perp$ 是闭子空间
 2. 若 $A \subset B$，则 $B^\perp \subseteq A^\perp$。
 3. $(\operatorname{span} A)^\perp = A^\perp$。
 4. $\overline{A} = (A^\perp)^\perp$，如果 $A$ 是线性子空间。

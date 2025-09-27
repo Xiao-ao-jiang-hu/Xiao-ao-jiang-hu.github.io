@@ -146,7 +146,7 @@ $$
   $$
   其中q = p/(p-1)为共轭指数。
 
-#### 3. 证明L^p空间的一致凸性
+#### 3. 证明$L^p$空间的一致凸性
 **情况1：p ≥ 2**
 由Clarkson不等式：
 $$
@@ -159,9 +159,9 @@ $$
 $$
 \left\|\frac{f+g}{2}\right\|_p^q \leq \left[\frac{1}{2}(\|f\|_p^p + \|g\|_p^p)\right]^{q/p} - \left\|\frac{f-g}{2}\right\|_p^q \leq 1 - \left(\frac{\varepsilon}{2}\right)^q
 $$
-取δ = 1 - [1 - (ε/2)^q]^{1/q} > 0，即得\|(f+g)/2\|_p ≤ 1 - δ。
+取$\delta = 1 - [1 - (\epsilon/2)^q]^{1/q} > 0$，即得$\|(f+g)/2\|_p ≤ 1 - \delta$。
 
-综上，L^p空间是一致凸的。
+综上，$L^p$空间是一致凸的。
 
 ## 3.5
 设 $(X, \mathcal{M}, \mu)$ 是一个完备测度空间，且 $\mu$ 是 $\sigma$-有限的。证明 $\mu$ 是可局部化的。
