@@ -377,3 +377,22 @@ $$
 
 ## 4.9
 若 $\mathcal{M}$ 是可分Hilbert空间 $\mathcal{H}$ 的稠密线性子空间，则 $\mathcal{H}$ 有一族由 $\mathcal{M}$ 中元素组成的标准正交基；若 $\mathcal{M}$ 是 $\mathcal{H}$ 的任意稠密子集，结论是否仍然成立？
+
+### 解答
+设 $\mathcal{H}$ 为可分 Hilbert 空间，$\mathcal{M}$ 是其稠密线性子空间。由于 $\mathcal{H}$ 可分，存在可数稠密子集 $D = \{d_1, d_2, d_3, \ldots\} \subseteq \mathcal{H}$。因为 $\mathcal{M}$ 在 $\mathcal{H}$ 中稠密，对于每个 $d_i \in D$，存在 $m_i \in \mathcal{M}$ 使得 $\|d_i - m_i\| < \frac{1}{i}$。令 $S = \{m_1, m_2, m_3, \ldots\}$，则 $S \subseteq \mathcal{M}$ 且可数。
+
+证明 $S$ 在 $\mathcal{H}$ 中稠密：对任意 $x \in \mathcal{H}$ 和 $\epsilon > 0$，存在 $d_k \in D$ 使得 $\|x - d_k\| < \frac{\epsilon}{2}$。取 $k > \frac{2}{\epsilon}$，则 $\|d_k - m_k\| < \frac{1}{k} < \frac{\epsilon}{2}$。因此，
+$$
+\|x - m_k\| \leq \|x - d_k\| + \|d_k - m_k\| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon,
+$$
+故 $\overline{S} = \mathcal{H}$。
+
+令 $V = \operatorname{span}(S)$。由于 $\mathcal{M}$ 是线性子空间且 $S \subseteq \mathcal{M}$，有 $V \subseteq \mathcal{M}$。又因 $\overline{S} = \mathcal{H}$，有 $\overline{V} = \mathcal{H}$。由 $\mathcal{H}$ 可分且无限维（有限维 Hilbert 空间也满足，但此处一般处理)，$V$ 无限维。从 $S$ 中提取线性无关集 $B = \{b_1, b_2, b_3, \ldots\}$ 使得 $\operatorname{span}(B) = V$。
+
+对 $B$ 应用 Gram-Schmidt 正交化：
+- 令 $u_1 = \frac{b_1}{\|b_1\|}$。
+- 对 $k \geq 2$，令 $v_k = b_k - \sum_{j=1}^{k-1} \langle b_k, u_j \rangle u_j$，则 $u_k = \frac{v_k}{\|v_k\|}$。
+
+序列 $\{u_1, u_2, u_3, \ldots\}$ 为标准正交系，且 $u_k \in V \subseteq \mathcal{M}$。由于 $\overline{\operatorname{span}\{u_n\}} = \overline{V} = \mathcal{H}$，故 $\{u_n\}$ 是 $\mathcal{H}$ 的标准正交基，且所有元素属于 $\mathcal{M}$。
+
+反例：取 $\mathcal{M} = \{x \in \mathcal{H} : \|x\| \neq 1\}$。
