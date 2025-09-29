@@ -4,7 +4,7 @@ title: Signal Processing 2
 date: 2024-11-24 19:00:00
 tags:
     - signal
-  - math
+    - math
 categories:
     - math
     - signal

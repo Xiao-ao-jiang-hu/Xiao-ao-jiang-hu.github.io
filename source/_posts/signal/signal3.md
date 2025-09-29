@@ -4,7 +4,7 @@ title: Signal Processing 3
 date: 2024-12-09 13:32:42
 tags:
     - signal
-  - math
+    - math
 categories:
     - math
     - signal
