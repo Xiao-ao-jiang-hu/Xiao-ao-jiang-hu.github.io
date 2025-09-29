@@ -10,12 +10,19 @@ excerpt: no excerpt
 abbrlink: 74d1d102
 date: 2025-09-24 19:30:03
 ---
-## Ex1
-<img src="/posts/74d1d102/m1.png" alt="a>1" width="100%">
+## 习题 1 
+设 $ c \in \mathbb{R} $，定义  
+$$
+\varphi_c(t) := \frac{ce^t}{1 - c + ce^t}.
+$$  
+画出函数 $ \varphi_c $ 的图像，并研究函数 $ \varphi_c $ 的凸凹性。
 
-<img src="/posts/74d1d102/01.png" alt="0<a<1" width="100%">
+### 解答
+<img src="ode-hw2/m1.png" alt="a>1" width="100%">
 
-<img src="/posts/74d1d102/l0.png" alt="a<0" width="100%">
+<img src="ode-hw2/01.png" alt="0<a<1" width="100%">
+
+<img src="ode-hw2/l0.png" alt="a<0" width="100%">
 
 $$
 \varphi_c'(t) = \frac{ce_t(1-c+ce^t)-c^2e^{2t}}{(1-c+ce^t)^2}
@@ -32,10 +39,21 @@ $c<0$时，$\varphi_c''(t)<0$，$\varphi_c(t)$在$t\in(-\infty,+\infty)$上为�
 $c>1$或$0<c<1$时，$\varphi_c''(t)>0$，$\varphi_c(t)$在$t\in(-\infty,+\infty)$上为凸函数。
 $c=0/1$时，$\varphi_c''(t)=0$，$\varphi_c(t)$在$t\in(-\infty,+\infty)$上为驻点。
 
-## Ex2
-### 1）
+---
 
-### 2）
+## 习题 2 
+考虑 Logistic 系统 $ \dot{x} = x(1 - x) $。  
+1) 画出系统的方向场。  
+2) 对 $ c > 1, 0 < c < 1, c < 0 $ 分别求解初值问题  
+$$
+\dot{x} = x(1 - x); \quad x(0) = c.
+$$  
+3) 根据解的表达式对方向场作出解释。
+
+### 解答
+#### 1.
+
+#### 2.
 分离变量：
 $$
 \frac{1}{x(1-x)}dx = dt \Rightarrow (\frac{1}{x}+\frac{1}{1-x})dx = dt \\
@@ -47,17 +65,66 @@ $$
 c=\frac{C}{1+C} \Rightarrow C=\frac{c}{1-c} \Rightarrow x(t)=\frac{\frac{c}{1-c}e^t}{1+\frac{c}{1-c}e^t}=\frac{ce^t}{1-c+ce^t}
 $$
 
-### 3）
+#### 3.
+---
+
+## 习题 3 
+设 $ p \geq 0 $。考虑系统族  
+$$
+\dot{x} = x(1 - x) - px.
+$$  
+画出这一族系统的相图分岔图，并对其分岔行为给出解释。
+
+### 解答
+
+<img src="ode-hw2/3.png" alt="相图分岔图" width="100%">
+
+该系统发生在参数 $p = 1$ 处发生分岔：
+
+- 两个平衡点 $x = 0$ 和 $x = 1 - p$ 相交；
+- 它们在交点处交换稳定性：
+  - 当 $p < 1$：$x = 1 - p > 0$ 稳定，$x = 0$ 不稳定；
+  - 当 $p > 1$：$x = 0$ 稳定，$x = 1 - p < 0$ 不稳定。
+
+分岔不产生或消灭平衡点，仅改变其稳定性。
+
+---
+
+## 习题 4 
+设 $ a \in \mathbb{R} $。考虑系统族  
+$$
+\dot{x} = x^3 - x + a.
+$$  
+画出这一族系统的相图分岔图，并对其分岔行为给出解释。
+
+### 解答
+
+<img src="ode-hw2/4.png" alt="相图分岔图" width="100%">
+
+该系统在 $a = \pm \frac{2\sqrt{3}}{9}$ 处发生分岔：
+- 当 $|a| < \frac{2\sqrt{3}}{9}$：系统有三个平衡点（稳定-不稳定-稳定交替，实际为 不稳-稳-不稳）；
+- 当 $|a| = \frac{2\sqrt{3}}{9}$：两个平衡点碰撞并湮灭（或产生）；
+- 当 $|a| > \frac{2\sqrt{3}}{9}$：仅剩一个不稳定平衡点。
+
+因此，随着 $|a|$ 增大，系统从多稳态变为单稳态，经历平衡点对的产生/消失。
+
+---
+
+## 习题 5 
+考虑如下 3 个一阶二维系统  
+$$
+\dot{X} = \begin{bmatrix} 1 \\ 2 \end{bmatrix} X; \quad
+\dot{X} = \begin{bmatrix} 1 \\ -2 \end{bmatrix} X; \quad
+\dot{X} = \begin{bmatrix} -1 \\ -2 \end{bmatrix} X.
+$$  
+1) 分别画出三个系统的相图。  
+2) 求解三个系统，并根据解的表达式对相图作出解释。
 
 
-## Ex3
+### 解答
+#### 1.
 
-## Ex4
-
-## Ex5
-### 1）
-
-### 2）
+#### 2.
 - System 1
 $$
 x = \frac{dx}{dt} \Rightarrow \frac{1}{x}dx = dt \Rightarrow \ln|x|=t+C_1 \Rightarrow x=C_1e^t
@@ -89,10 +156,21 @@ y = -2\frac{dy}{dt} \Rightarrow \frac{1}{-2y}dy = dt \Rightarrow \ln|y|/(-2)=t+C
 $$
 $$\Rightarrow X(t) = \begin{bmatrix}C_1e^{-t} \\ C_2e^{-2t}\end{bmatrix}$$ 
 
-## Ex6
-### 1）
+---
 
-### 2）
+## 习题 6 
+考虑如下 2 个一阶二维系统  
+$$
+\dot{X} = \begin{bmatrix} 1 & 1 \\ -2 & 1 \end{bmatrix} X; \quad
+\dot{X} = \begin{bmatrix} 1 & 1 \\ 2 & 1 \end{bmatrix} X.
+$$  
+1) 分别画出 2 个系统的相图。  
+2) 将系统转化为一个等价的二阶 ODE，假设其有形如 $ \phi(t) = e^{\lambda t} $ 的解，并由此求解方程。  
+3) 根据解的表达式对相图作出解释。
+
+### 解答
+#### 2.
+
 $$
 \begin{cases}
   \frac{dx}{dt} = y \\
@@ -118,13 +196,20 @@ $$\Rightarrow X(t) = \begin{bmatrix}
 C_1\cos(\sqrt{2}t) + C_2\sin(\sqrt{2}t) \\ 
 -\sqrt{2}C_1\sin(\sqrt{2}t) + \sqrt{2}C_2\cos(\sqrt{2}t)
 \end{bmatrix}$$
-### 3）
 
+---
 
-## Ex7
-### 1）
+## 习题 7 
+设 $ \lambda \in \mathbb{R} $。考虑如下一阶二维系统  
+$$
+\dot{X} = \begin{bmatrix} \lambda & 1 \\ 1 & \lambda \end{bmatrix} X.
+$$  
+1) 分 $ \lambda > 0, \lambda = 0, \lambda < 0 $ 画出系统的相图。  
+2) 求解此方程（先求解 $ y $ 分量，然后代入 $ x $ 分量满足的方程，进而求解 $ x $ 分量）。  
+3) 根据解的表达式对相图作出解释。
 
-### 2）
+### 解答
+#### 2.
 $$
 \begin{cases}
   \frac{dx}{dt} = \lambda x+y \\
@@ -152,5 +237,3 @@ $$\Rightarrow X(t) = \begin{bmatrix}
 (C_1t + C_3)e^{\lambda t} \\
 C_1e^{\lambda t}
 \end{bmatrix}$$
-
-### 3）
