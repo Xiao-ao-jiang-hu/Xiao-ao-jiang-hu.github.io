@@ -1,5 +1,5 @@
 ---
-title: Hilbert 空间
+title: Ch 1.2 Hilbert 空间
 tags:
   - functional-analysis
   - math
@@ -622,3 +622,93 @@ $$
 [U] \overset{\text{定义}}{=} \left\{ \sum_{u \in U} c_u u \,\middle|\, c_u \in \mathbb{F}, \; \sum_{u \in U} c_u u \text{ 是无条件收敛} \right\},
 $$
 其中 $U \subseteq H$（Hilbert 空间）。
+
+**命题9**：若 $U = \{ u_\alpha | \alpha \in I \}$ 是 Hilbert 空间 $H$ 的规范正交集。
+
+则
+1. 
+$$
+[U] = \left\{ \sum_{\alpha \in I} c_\alpha u_\alpha \,\middle|\, c_\alpha \in \mathbb{F} \text{ 且 } \sum_{\alpha \in I} |c_\alpha|^2 < +\infty \right\} \text{ 且 } [U] \text{ 是闭子空间}.
+$$
+
+2. 若记 $\chi_U = \sum_{\alpha \in I} (x, u_\alpha) u_\alpha$. **则**
+$$
+\| x - \chi_U \| = \min_{u \in [U]} \| x - u \|
+$$
+
+**定理10** 假设 $U = \{ u_\alpha | \alpha \in I \}$ 是 Hilbert 空间的规范正交组。则下列命题等价：
+
+1. $U$ 是 $H$ 的规范正交基。
+2. $\forall x \in H$, $x = \sum_{\alpha \in I} (x, u_\alpha) u_\alpha$
+3. $\forall x \in H$, $\| x \|^2 = \sum_{\alpha \in I} |(x, u_\alpha)|^2$
+4. $[U] = H$
+
+**证明**：
+- 1 ⇒ 2 记 $\chi_U = \sum_{\alpha \in I} (x, u_\alpha) u_\alpha$ ⇒ $x - \chi_U \in U^\perp$. 由 ④ ⇒ $x = \chi_U$
+- 2 ⇒ 3 由引理 8 初知。
+- 3 ⇒ 4 由定理 Bessel③ $x - \chi_U \in U^\perp = [U]^\perp$  
+  由 $x = \underbrace{x - \chi_U}_{[U]^\perp} + \underbrace{\chi_U}_{[U]}$ ⇒ $\| x \|^2 = \| x - \chi_U \|^2 + \| \chi_U \|^2$ ⇒ $x = \chi_U$ ⇒ $[U] = H$
+- 4 ⇒ 1 由定义，假设 $\varphi$ 满足 $\forall \alpha \in I$ $(\varphi, u_\alpha) = 0$. 则由④ ⇒ $\varphi \perp U^\perp = [U]^\perp$  
+  而 $\varphi \perp H$ ⇒ $\varphi = 0$ ⇒ ③.
+
+**定理11 (Parseval 等式)**. 假设 $U = \{ u_\alpha | \alpha \in I \}$ 是 $H$ 的规范正交基。则  
+$\forall x, y \in H$.
+$$
+(x, y) = \sum_{\alpha \in I} (x, u_\alpha) \overline{(y, u_\alpha)}
+$$
+
+**证明**：由定理10. $x = \sum_{\alpha \in I} (x, u_\alpha) u_\alpha$ ⇒ $(x, y) = \sum_{\alpha \in I} (x, u_\alpha) (u_\alpha, y)$ ⇒ 结论.  
+(由定理 Bessel③中④式)
+
+
+### $L^2$ 空间中的规范正交基
+
+**例1** $L^2[-\pi, \pi]$, $\left\{ \frac{1}{\sqrt{2\pi}}, \frac{1}{\sqrt{\pi}} \cos n x, \frac{1}{\sqrt{\pi}} \sin n x \,\middle|\, n \in \mathbb{N} \right\}$ 为 $L^2[-\pi, \pi]$ 规范正交基
+
+
+**例2** 有限区间 $[-1, 1]$ 上的 $L^2$ 规范正交基可以通过 Gram-Schmidt 正交化过程得到
+
+针对 $(1, x, x^2, \cdots, x^n, \cdots) = \{ f_n(x) \}_{n \ge 0}$
+
+若记 $\{ \widehat{f}_n(x) \}_{n=1}^\infty$ 是由 $\{ f_n(x) \}_{n \ge 1}$ Gram-Schmidt 正交化得到。即
+
+$$
+\ell_{n+1} = f_{n+1} - \sum_{j=1}^n (\ell_{n+1}, \widehat{f}_n(x)) \widehat{f}_n(x), \quad \widehat{f}_{n+1} \overset{\text{定义}}{=} \frac{\ell_{n+1}}{\| \ell_{n+1} \|}
+$$
+
+可以证明 $\{ \widehat{f}_n(x) \}_{n \ge 1}$ 是 Legendre 多项式。即 $\widehat{f}_n(x)$ 满足
+
+$$
+\frac{d}{dx} \left( (1-x^2) \frac{d}{dx} \widehat{f}_n \right) + \left( n(n+1) \right) \widehat{f}_n = 0
+\quad \text{且} \quad
+\widehat{f}_n = \frac{(-1)^n}{2^n n!} \frac{d^n}{dx^n} \left( (1-x^2)^n \right)
+$$
+
+
+**例3** 记 $H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} (e^{-x^2})$ （是 n 阶 Hermite 多项式 且 $\int_{\mathbb{R}} H_m(x) H_n(x) e^{-x^2} dx = \delta_{mn} 2^n n! \sqrt{\pi}$）
+
+则 $\left\{ \widehat{H}_n(x) = \frac{(-1)^n}{\sqrt{n! \cdot 2^n \sqrt{\pi}}} e^{\frac{x^2}{2}} \frac{d^n}{dx^n} (e^{-x^2}) \,\middle|\, n \ge 0 \right\}$ 是 $L^2(\mathbb{R})$ 上的一组规范正交基
+
+其中 $\widehat{H}_n(x)$ 满足
+$$
+-u'' + x^2 u^2 = (2n+1) u
+\quad \text{Schrödinger 谐振子}
+$$
+
+（即证明：若 $\int_{\mathbb{R}} \varphi \cdot e^{-\frac{x^2}{2}} x^n dx = 0$  
+则 $\varphi = 0$）
+
+
+**例4** 记 $L_n(x) = \frac{e^x}{n!} \frac{d^n}{dx^n} (x^n e^{-x})$ —— （Laguerre 多项式）
+
+则 $\left\{ e^{-\frac{x}{2}} L_n(x) \,\middle|\, n \ge 0 \right\}$ 是 $L^2([0, +\infty))$ 上的规范正交基。
+
+其中，$L_n(x)$ 满足
+$$
+x y'' + (1-x) y' + n y = 0
+$$
+
+
+> **注 Rodrigues formula**: 假设 $\{ P_n \}_{n \ge 0}$ 满足 $\int_a^b P_n(x) w(x) dx = \delta_{nm} k_n$ 且$w(x)$ 满足 $\frac{w'(x)}{w} = \frac{A}{B}$
+> 其中 $A$ 至多是 1 次多项式，$B$ 至多是 2 次多项式，$\lim_{x \to a} w(x) B(x) = 0$ , $\lim_{x \to b} w(x) B(x) = 0$
+> 则 $P_n(x) = \frac{C_n}{w(x)} \frac{d^n}{dx^n} (B(x)^n w(x))$, 其中 $C_n$ 是常数。

@@ -1,5 +1,5 @@
 ---
-title: Banach、Hilbert空间以及线性算子理论初步
+title: Ch 1.1 Banach空间理论
 tags:
   - math
   - functional-analysis
