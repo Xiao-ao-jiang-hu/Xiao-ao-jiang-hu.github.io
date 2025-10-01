@@ -6,7 +6,7 @@ tags:
 categories:
   - math
   - functional-analysis
-excerpt: no excerpt
+excerpt: 泛函分析课程笔记
 abbrlink: '51673413'
 date: 2025-09-25 14:44:40
 ---

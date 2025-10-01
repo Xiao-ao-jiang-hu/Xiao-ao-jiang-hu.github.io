@@ -1,10 +1,13 @@
 ---
 title: Ch 2.1 泛函分析原理
 tags:
-  - no tags
+  - math
+  - functional analysis
 categories:
-  - uncategorized
-excerpt: no excerpt
+  - math
+  - functional analysis
+excerpt: 泛函分析课程笔记
+abbrlink: cd27c0e5
 date: 2025-10-01 18:38:26
 ---
 # §1 Baire纲集定理
