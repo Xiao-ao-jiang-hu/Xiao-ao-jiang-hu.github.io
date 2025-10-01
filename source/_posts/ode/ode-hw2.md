@@ -18,11 +18,11 @@ $$
 画出函数 $ \varphi_c $ 的图像，并研究函数 $ \varphi_c $ 的凸凹性。
 
 ### 解答
-<img src="ode-hw2/m1.png" alt="a>1" width="100%">
+<img src="/posts/74d1d102/m1.png" alt="a>1" width="100%">
 
-<img src="ode-hw2/01.png" alt="0<a<1" width="100%">
+<img src="/posts/74d1d102/01.png" alt="0<a<1" width="100%">
 
-<img src="ode-hw2/l0.png" alt="a<0" width="100%">
+<img src="/posts/74d1d102/l0.png" alt="a<0" width="100%">
 
 $$
 \varphi_c'(t) = \frac{ce_t(1-c+ce^t)-c^2e^{2t}}{(1-c+ce^t)^2}
@@ -77,7 +77,7 @@ $$
 
 ### 解答
 
-<img src="ode-hw2/3.png" alt="相图分岔图" width="100%">
+<img src="/posts/74d1d102/3.png" alt="相图分岔图" width="100%">
 
 该系统发生在参数 $p = 1$ 处发生分岔：
 
@@ -99,7 +99,7 @@ $$
 
 ### 解答
 
-<img src="ode-hw2/4.png" alt="相图分岔图" width="100%">
+<img src="/posts/74d1d102/4.png" alt="相图分岔图" width="100%">
 
 该系统在 $a = \pm \frac{2\sqrt{3}}{9}$ 处发生分岔：
 - 当 $|a| < \frac{2\sqrt{3}}{9}$：系统有三个平衡点（稳定-不稳定-稳定交替，实际为 不稳-稳-不稳）；

@@ -7,6 +7,7 @@ categories:
   - math
   - functional-analysis
 excerpt: no excerpt
+abbrlink: '51673413'
 date: 2025-09-25 14:44:40
 ---
 # §2. Hilbert 空间
