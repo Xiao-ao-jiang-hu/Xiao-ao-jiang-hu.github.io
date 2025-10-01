@@ -313,12 +313,12 @@ $$
 **（投影定理）**：假设 $H = (H, (\cdot, \cdot))$ 是 Hilbert 空间，$K$ 是 $H$ 中的闭子集，$x \notin K$。  
 则 $\exists! z_0 \in K$，s.t. $\forall z \in K$，
 $$
-\|x - z_0\| = \inf_{z \in K} \|x - z\| \quad \text{且} \quad \operatorname{Re}(z - z_0, x - z_0) \le 0. \quad \text{(※2)}
+\|x - z_0\| = \inf_{z \in K} \|x - z\| \quad \text{且} \quad \operatorname{Re}(z - z_0, x - z_0) \le 0.
 $$
 
 若 $K$ 是 $H$ 的闭子空间，则 $\forall z \in K$，
 $$
-(z, x - z_0) = 0 \quad \text{(※3)} \quad \Rightarrow \quad x - z_0 \perp K.
+(z, x - z_0) = 0  \quad \Rightarrow \quad x - z_0 \perp K.
 $$
 
 #### 证明：
@@ -541,7 +541,7 @@ $$
 
 若两者之一收敛，有
 $$
-\left\| \sum_{\alpha \in I} c_\alpha u_\alpha \right\|^2 = \sum_{\alpha \in I} |c_\alpha|^2. \quad \text{(※)}
+\left\| \sum_{\alpha \in I} c_\alpha u_\alpha \right\|^2 = \sum_{\alpha \in I} |c_\alpha|^2.
 $$
 
 **证明**：
@@ -593,7 +593,7 @@ $$
 
 **③** 首先证明：$\forall u \in H$，
 $$
-\langle x_U, u \rangle = \sum_{\alpha \in I} \langle x, u_\alpha \rangle \langle u_\alpha, u \rangle. \quad \text{(※)}
+\langle x_U, u \rangle = \sum_{\alpha \in I} \langle x, u_\alpha \rangle \langle u_\alpha, u \rangle.
 $$
 
 由于 $\sum_{\alpha \in I} |\langle x, u_\alpha \rangle|^2$ 和 $\sum_{\alpha \in I} |\langle u_\alpha, u \rangle|^2$ 均收敛，由 Cauchy-Schwarz 不等式，

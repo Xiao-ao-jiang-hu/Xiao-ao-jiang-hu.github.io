@@ -186,7 +186,7 @@ date: 2025-05-28 23:22:56
 
 - **有限函数计算**：
   - 对每个输入长度n，函数 $f_n: \{0,1\}^n \to \{0,1\}$
-  - $f_n \in \text{SIZE}_n(s)$ 当存在大小≤s的电路计算 $f_n$
+  - $f_n \in \text{SIZE}_n(s)$ 当存在大小 $\leq$ s的电路计算 $f_n$
 
 #### 1.2 扩展到无限语言
 - **语言 $L \subseteq \{0,1\}^*$**：
@@ -208,12 +208,12 @@ date: 2025-05-28 23:22:56
   多项式大小电路族计算的语言类
 
 #### 1.3 P与P/poly的关系
-| 特性          | P类                          | P/poly类                          |
-|---------------|------------------------------|----------------------------------|
-| 计算模型      | 单一图灵机                   | 电路族（每个输入长度不同电路）    |
-| 均匀性        | 是（同一机器处理所有输入）    | 否（不同尺寸输入用不同电路）      |
-| 包含关系      | $\text{P} \subseteq \text{P/poly}$ | $\text{P} \subsetneq \text{P/poly}$ |
-| 非可计算问题  | 不包含                       | 包含（如硬编码不可判定问题的答案）|
+| 特性         | P类                                | P/poly类                            |
+| ------------ | ---------------------------------- | ----------------------------------- |
+| 计算模型     | 单一图灵机                         | 电路族（每个输入长度不同电路）      |
+| 均匀性       | 是（同一机器处理所有输入）         | 否（不同尺寸输入用不同电路）        |
+| 包含关系     | $\text{P} \subseteq \text{P/poly}$ | $\text{P} \subsetneq \text{P/poly}$ |
+| 非可计算问题 | 不包含                             | 包含（如硬编码不可判定问题的答案）  |
 
 **反例说明严格包含**：
 定义语言：
@@ -305,8 +305,8 @@ $$
   - 若 NP-难问题 $\in \text{BPP}$，则 $\text{NP} \subseteq \text{BPP}$。  
   - 若 $\text{P} = \text{NP}$，则 $\text{P} = \text{BPP}$（Sipser-Gács 定理）。  
 - **可能的世界观**：  
-  | 情形              | 关系                                      |
-  |-------------------|------------------------------------------|
-  | 预期              | $\text{P} = \text{BPP} \subsetneq \text{NP} \subseteq \text{EXP}$ |
-  | BPP 极大         | $\text{P} \subsetneq \text{NP} \subseteq \text{BPP} = \text{EXP}$ |
-  | P 极大           | $\text{P} = \text{NP} = \text{BPP} \subsetneq \text{EXP}$ |
+  | 情形     | 关系                                                              |
+  | -------- | ----------------------------------------------------------------- |
+  | 预期     | $\text{P} = \text{BPP} \subsetneq \text{NP} \subseteq \text{EXP}$ |
+  | BPP 极大 | $\text{P} \subsetneq \text{NP} \subseteq \text{BPP} = \text{EXP}$ |
+  | P 极大   | $\text{P} = \text{NP} = \text{BPP} \subsetneq \text{EXP}$         |

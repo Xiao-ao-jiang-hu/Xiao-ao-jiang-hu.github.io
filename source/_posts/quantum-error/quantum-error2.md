@@ -47,7 +47,7 @@ $$
   $$
   e^{-i\omega t Z \otimes Z} |\psi_0\rangle \otimes |+\rangle = \frac{1}{\sqrt{2}} \left( \alpha e^{-i\omega t}|00\rangle + \alpha e^{+i\omega t}|01\rangle + \beta e^{+i\omega t}|10\rangle + \beta e^{-i\omega t}|11\rangle \right).
   $$
-- 部分迹操作：对环境求迹后，系统态的非对角项出现 $\cos(2\omega t)$的衰减，对应消相干信道 $\mathcal{R}_{(1-\cos(2\omega t))/2}$。
+- 部分迹操作：对环境求迹后，系统态的非对角项出现 $\cos(2\omega t)$ 的衰减，对应消相干信道 $\mathcal{R}_{(1-\cos(2\omega t))/2}$。
 
 #### 退相干时间 $T_2$
 在真实系统中，环境通常包含多个自由度（如多个量子比特），且相互作用具有马尔可夫性（环境快速重置）。此时，相干项随时间指数衰减：

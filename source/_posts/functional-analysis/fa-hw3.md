@@ -123,7 +123,7 @@ $$
 右边两项分别对应 $\| |f| + |g| \|_p^p$ 和 $\| |f| - |g| \|_p^p$。利用三角不等式和范数性质即可得证。
 
 #### 2. Clarkson不等式
-我们考虑p ≥ 2的情况（1 < p ≤ 2的证明类似）。设f, g ∈ L^p满足\|f\|_p = \|g\|_p = 1。
+我们考虑p ≥ 2的情况（1 < p  $\leq$  2的证明类似）。设f, g ∈ L^p满足\|f\|_p = \|g\|_p = 1。
 
 由Hanner不等式（p ≥ 2）：
 $$
@@ -140,7 +140,7 @@ $$
   $$
   \left\|\frac{f+g}{2}\right\|_p^p + \left\|\frac{f-g}{2}\right\|_p^p \leq \frac{1}{2}(\|f\|_p^p + \|g\|_p^p)
   $$
-- 当1 < p ≤ 2时：
+- 当1 < p  $\leq$  2时：
   $$
   \left\|\frac{f+g}{2}\right\|_p^q + \left\|\frac{f-g}{2}\right\|_p^q \leq \left[\frac{1}{2}(\|f\|_p^p + \|g\|_p^p)\right]^{q/p}
   $$
@@ -152,14 +152,14 @@ $$
 $$
 \left\|\frac{f+g}{2}\right\|_p^p \leq \frac{1}{2}(\|f\|_p^p + \|g\|_p^p) - \left\|\frac{f-g}{2}\right\|_p^p \leq 1 - \left(\frac{\varepsilon}{2}\right)^p
 $$
-取δ = 1 - [1 - (ε/2)^p]^{1/p} > 0，即得\|(f+g)/2\|_p ≤ 1 - δ。
+取δ = 1 - [1 - (ε/2)^p]^{1/p} > 0，即得\|(f+g)/2\|_p  $\leq$  1 - δ。
 
-**情况2：1 < p ≤ 2**
+**情况2：1 < p  $\leq$  2**
 由Clarkson不等式：
 $$
 \left\|\frac{f+g}{2}\right\|_p^q \leq \left[\frac{1}{2}(\|f\|_p^p + \|g\|_p^p)\right]^{q/p} - \left\|\frac{f-g}{2}\right\|_p^q \leq 1 - \left(\frac{\varepsilon}{2}\right)^q
 $$
-取$\delta = 1 - [1 - (\epsilon/2)^q]^{1/q} > 0$，即得$\|(f+g)/2\|_p ≤ 1 - \delta$。
+取$\delta = 1 - [1 - (\epsilon/2)^q]^{1/q} > 0$，即得$\|(f+g)/2\|_p  $\leq$  1 - \delta$。
 
 综上，$L^p$空间是一致凸的。
 
