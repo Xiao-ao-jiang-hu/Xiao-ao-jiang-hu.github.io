@@ -47,7 +47,7 @@ date: 2025-09-25 14:44:40
    - 若 $\chi \ne 0$，令 $P_\chi \varphi = \left( \varphi, \frac{\chi}{|\chi|} \right) \frac{\chi}{|\chi|}$，则  
      $$
      (\varphi - P_\chi \varphi, \chi) = 0 \quad \Rightarrow \quad |\varphi|^2 = |\varphi - P_\chi \varphi|^2 + |P_\chi \varphi|^2 = \left| \left( \varphi, \frac{\chi}{|\chi|} \right) \right|^2.
-     $$  
+     $$
      即 $|(\varphi, \chi)|^2 + |\chi|^2 |\varphi - P_\chi \varphi|^2 = |\varphi|^2 |\chi|^2$，从而得证。
 
 3. **范数诱导**：若 $\|\varphi\| = \sqrt{(\varphi, \varphi)}$，则 $(H, \|\cdot\|)$ 是赋范空间。
