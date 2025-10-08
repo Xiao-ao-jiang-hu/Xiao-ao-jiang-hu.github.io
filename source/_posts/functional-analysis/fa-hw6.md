@@ -7,6 +7,7 @@ categories:
   - math
   - functional-analysis
 excerpt: 泛函分析第六次作业
+abbrlink: 4a3b53b5
 date: 2025-10-06 11:38:10
 ---
 ## 6.1
@@ -357,26 +358,26 @@ $$
 
 ### 解答
 
-设 \(X\) 是一个可分非空完备度量空间，\(\{U_n\}_{n=1}^\infty\) 是一系列稠密开集。需要证明 \(\bigcap_{n=1}^\infty U_n\) 是稠密的，即对于任何非空开集 \(V \subseteq X\)，有 \(V \cap \bigcap_{n=1}^\infty U_n \neq \emptyset\)。
+设 $X$ 是一个可分非空完备度量空间，$\{U_n\}_{n=1}^\infty$ 是一系列稠密开集。需要证明 $\bigcap_{n=1}^\infty U_n$ 是稠密的，即对于任何非空开集 $V \subseteq X$，有 $V \cap \bigcap_{n=1}^\infty U_n \neq \emptyset$。
 
-由于 \(X\) 是可分的，存在一个可数稠密子集 \(D\)，并且 \(X\) 有一个可数基 \(\mathcal{B} = \{B_k\}_{k=1}^\infty\)，其中每个 \(B_k\) 是以 \(D\) 中点为圆心、有理数为半径的开球。这个基满足：对于任何非空开集 \(W\) 和任何 \(\epsilon > 0\)，存在 \(B_k \in \mathcal{B}\) 使得 \(\overline{B_k} \subseteq W\) 且 \(\text{diameter}(B_k) < \epsilon\)（其中 \(\overline{B_k}\) 表示 \(B_k\) 的闭包）。
+由于 $X$ 是可分的，存在一个可数稠密子集 $D$，并且 $X$ 有一个可数基 $\mathcal{B} = \{B_k\}_{k=1}^\infty$，其中每个 $B_k$ 是以 $D$ 中点为圆心、有理数为半径的开球。这个基满足：对于任何非空开集 $W$ 和任何 $\epsilon > 0$，存在 $B_k \in \mathcal{B}$ 使得 $\overline{B_k} \subseteq W$ 且 $\text{diameter}(B_k) < \epsilon$（其中 $\overline{B_k}$ 表示 $B_k$ 的闭包）。
 
-定义选择函数 \(f\)：对于任何非空开集 \(W\) 和 \(\epsilon > 0\)，令 \(f(W, \epsilon)\) 为最小的索引 \(k\) 使得 \(\overline{B_k} \subseteq W\) 且 \(\text{diameter}(B_k) < \epsilon\)。由于 \(\mathcal{B}\) 是可数的，且对于任何非空开集 \(W\) 和 \(\epsilon > 0\)，满足条件的 \(B_k\) 存在，因此 \(f\) 是良定义的，且不需要选择公理。
+定义选择函数 $f$：对于任何非空开集 $W$ 和 $\epsilon > 0$，令 $f(W, \epsilon)$ 为最小的索引 $k$ 使得 $\overline{B_k} \subseteq W$ 且 $\text{diameter}(B_k) < \epsilon$。由于 $\mathcal{B}$ 是可数的，且对于任何非空开集 $W$ 和 $\epsilon > 0$，满足条件的 $B_k$ 存在，因此 $f$ 是良定义的，且不需要选择公理。
 
-1. 从非空开集 \(V\) 开始，令 \(W_0 = V\)。
-2. 对于 \(n = 1, 2, 3, \ldots\)，执行以下步骤：
-   - 令 \(k_n = f(W_{n-1} \cap U_n, 1/n)\)。
-   - 令 \(B_n = B_{k_n}\)（即基开球）。
-   - 令 \(C_n = \overline{B_n}\)（闭包）。
-   根据 \(f\) 的定义，有：
-   - \(C_n \subseteq W_{n-1} \cap U_n\)，
-   - \(\text{diameter}(C_n) = \text{diameter}(B_n) < 1/n\)。
-3. 注意到 \(C_n\) 是非空闭集，且 \(C_n \subseteq C_{n-1}\)（因为 \(C_n \subseteq W_{n-1} = B_{n-1} \subseteq \overline{B_{n-1}} = C_{n-1}\))。
-4. 由于 \(X\) 是完备的，且 \(\{C_n\}\) 是递减的非空闭集序列，直径趋于零，因此 \(\bigcap_{n=1}^\infty C_n\) 非空，且包含唯一一点 \(x\)。
-5. 对于每个 \(n\)，有 \(x \in C_n \subseteq U_n\)，所以 \(x \in \bigcap_{n=1}^\infty U_n\)。
-6. 同时，\(x \in C_1 \subseteq V \cap U_1 \subseteq V\)，所以 \(x \in V \cap \bigcap_{n=1}^\infty U_n\)。
+1. 从非空开集 $V$ 开始，令 $W_0 = V$。
+2. 对于 $n = 1, 2, 3, \ldots$，执行以下步骤：
+   - 令 $k_n = f(W_{n-1} \cap U_n, 1/n)$。
+   - 令 $B_n = B_{k_n}$（即基开球）。
+   - 令 $C_n = \overline{B_n}$（闭包）。
+   根据 $f$ 的定义，有：
+   - $C_n \subseteq W_{n-1} \cap U_n$，
+   - $\text{diameter}(C_n) = \text{diameter}(B_n) < 1/n$。
+3. 注意到 $C_n$ 是非空闭集，且 $C_n \subseteq C_{n-1}$（因为 $C_n \subseteq W_{n-1} = B_{n-1} \subseteq \overline{B_{n-1}} = C_{n-1}$)。
+4. 由于 $X$ 是完备的，且 $\{C_n\}$ 是递减的非空闭集序列，直径趋于零，因此 $\bigcap_{n=1}^\infty C_n$ 非空，且包含唯一一点 $x$。
+5. 对于每个 $n$，有 $x \in C_n \subseteq U_n$，所以 $x \in \bigcap_{n=1}^\infty U_n$。
+6. 同时，$x \in C_1 \subseteq V \cap U_1 \subseteq V$，所以 $x \in V \cap \bigcap_{n=1}^\infty U_n$。
 
-因此，\(V \cap \bigcap_{n=1}^\infty U_n \neq \emptyset\)，证明了 \(\bigcap_{n=1}^\infty U_n\) 是稠密的。
+因此，$V \cap \bigcap_{n=1}^\infty U_n \neq \emptyset$，证明了 $\bigcap_{n=1}^\infty U_n$ 是稠密的。
 
 
 ## 6.7

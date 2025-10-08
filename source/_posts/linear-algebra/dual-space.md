@@ -15,8 +15,7 @@ date: 2025-05-27 01:42:27
 ## 1. 关系图示与核心概念
 
 ### 1.1 对偶空间的基本关系图示
-
-<img src="/posts/df235080/dual-space.png" alt="图1" width="100%">
+![](./dual-space/dual-space.png)
 
 - 原空间与对偶空间：  
   原空间 $U, V$和对偶空间 $U^*, V^*$通过自然配对 $\langle \cdot, \cdot \rangle$ 关联。  

@@ -7,6 +7,7 @@ categories:
   - math
   - functional-analysis
 excerpt: 泛函分析第五次作业
+abbrlink: feea09f2
 date: 2025-10-02 14:27:02
 ---
 ## 5.1
