@@ -111,9 +111,10 @@ $$
 
 
 ### 注：
-
+#### 依赖选择公理
 - 证明用到了“依赖选择公理”：
   若 $A: X \to 2^X$（$\Rightarrow \forall x \in X, A(x) \subseteq X$ 且 $A(x)$ 非空），则 $\exists \{x_k\}_{k \ge 1} \subseteq X$，s.t. $x_{k+1} \in A(x_k), \quad \forall k \ge 1$。
+  只要从每个点出发都有“下一步可走”（即映射 $A(x)$ 非空），那么就一定能无限地走下去，构造出一条无限长的路径。
 
 - 对于上述选取过程：假定
   $$
@@ -124,3 +125,73 @@ $$
   $$
   A(k, x, \varepsilon) := \left\{ (\tilde{k}, \tilde{x}, \tilde{\varepsilon}) \in X \mid \tilde{k} = k+1, B(\tilde{x}; \tilde{\varepsilon}) \subseteq B(x; \varepsilon) \right\}
   $$
+  从而由依赖选择公理得到选取的无穷序列的存在性
+
+#### 与选择依赖公理的关系
+Baire纲集定理可以推出“依赖选择”公理。
+
+#### 子空间度量不要求完备
+若 $(X, d)$ 是完备度量空间. $M \subseteq X$ 非空开集，则 $(M, d_M \stackrel{\text{定义}}{=} d|_{M \times M})$ 是度量空间且 (Baire纲定理) 成立。此时 $(M, d_M)$ 不要求是完备的。（4的证明过程可知）
+
+#### 剩余集性质
+“$\mathbb{R}$”的剩余集可以是零测集（也就是第一纲集的测度可以是全测度）。
+
+#### 完备性要求
+Baire纲定理对于不完备度量空间不成立。例 $(\Omega, d), d(x,y) = |x-y| \quad \forall x,y \in \Omega$
+
+取 $\chi \in \Omega$. 则 $\{\chi\}$ 是无处稠密集. $\Rightarrow \Omega$ 是第一纲集. $\Rightarrow \Omega$ 中的任何集合是第一纲集且是稀疏集
+
+#### 可分性弱化条件
+对于可分的非空完备度量空间，“Baire纲定理”证明不需要“依赖选择公理”。
+
+### 应用
+
+#### 命题
+若 $C[0,1]$ 中处处不可微的函数集合记为 $E$, 则 $E$ 是非空的且是剩余集（第二纲集）。
+
+##### 证明：
+令 $A_n \stackrel{\text{定义}}{=} \left\{ f \in C[0,1] \mid \exists s \in [0,1], \quad \text{使} |h| \leq \frac{1}{n}, \quad 0 \leq s+h \leq 1 \right.$
+
+有 $\left. |f(s+h) - f(s)| \leq n|h| \right\}$, 即 $A_n$ 中函数至少在一点可微且导数的绝对值 $\leq n$
+
+从而 $$ C[0,1] \setminus E \subseteq \bigcup_{n \geq 1} A_n $$ 
+
+因此 $\text{结论} \iff A_n \text{ 是无处稠密的}$
+
+- Step 1. 
+
+  $A_n$ 是 $(C[0,1], \| \cdot \|_{L^\infty})$ 下的闭集。即 $C[0,1] \setminus A_n$ 是开集。
+
+  $\forall f \in C[0,1] \setminus A_n$, $f$ 满足 $\forall s \in [0,1], \exists h_s \text{ s.t. } |h_s| \leq \frac{1}{n} \text{ 且 } \underset{0 \leq s+h_s \leq 1}{|f(s+h_s) - f(s)| \geq (n + \delta_s) |h_s|}$
+
+  由 $f$ 的连续性， $\exist \eta_s > 0$. s.t. $\forall t \in [s - \eta_s, s + \eta_s] \cap [0,1]$, 有
+
+  $$ |f(t + h_s) - f(t)| \geq \left(n + \frac{\delta_s}{2}\right) |h_s| $$
+
+  由 $[0,1] \subset \bigcup_{S \in [0,1]} ([s - \eta_s, s + \eta_s] \cap [0,1]) \quad \Rightarrow \quad [0,1] \subseteq \bigcup_{i=1}^N [s_i - \eta_{s_i}, s_i + \eta_{s_i}] \cap [0,1]$
+
+  记 $\delta_0 = \min \left\{ \delta_{s_1}, \cdots, \delta_{s_N} \right\} / 2 \quad h_0 = \min \left\{ |h_{s_1}|, \cdots, |h_{s_N}| \right\}$
+
+  若 $\|g - f\|_\infty \leq \frac{\delta_0}{4} h_0$, 且 $\forall t \in [s_i - \eta_{s_i}, s_i + \eta_{s_i}] \cap [0,1)$
+
+  $$
+  \begin{aligned}
+  |g(t + h_{s_i}) - g(t)| &\geq |f(t + h_{s_i}) - f(t)| - 2 \times \frac{\delta_0}{4} h_0 \\
+  &\geq (n + \delta_0) |h_{s_i}| - \frac{\delta_0}{2} h_0 \geq (n + \frac{\delta_0}{2}) |h_{s_i}|
+  \end{aligned}
+  $$
+
+  $\Rightarrow g \in C[0,1] \setminus A_n \quad \Rightarrow$ 闭集。
+
+- Step 2. 
+  $A_n$ 无内点, $\forall f \in A_n$. $\forall \varepsilon > 0$. 于多项式函数 $P(x)$, s.t. $\|f - P\|_\infty \leq \varepsilon/2$
+
+  $P \in C^p([0,1]) \Rightarrow \exists M > 0$. s.t. $|P(x+h) - P(x)| \leq M |h|$
+
+  构造分段函数 $g$. s.t. $\|g\|_\infty \leq \varepsilon/2$
+
+  且线段的斜率绝对值 $\geq M + n + 1$
+
+  则 $g + P \in B(f; \varepsilon)$ 但是 $g + P \notin A_n$. $\Rightarrow$ 由 $\epsilon$ 的原子性得到结论
+
+  由于 $(C[0,1]; l^\infty)$ 是完备的. 由 Baire纲集知 $\bigcup_{n \geq 1} A_n$ 是第一纲集 $\Rightarrow E$ 是剩余集。
