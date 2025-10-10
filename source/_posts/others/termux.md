@@ -19,7 +19,7 @@ abbrlink: d27ecd38
 
 ### 安装
 进入[Termux仓库](https://github.com/termux/termux-app)，进入Releases，下载最新的apk安装包，安装后打开：
-![](/img/termux.jpg)
+![](./termux/termux.jpg)
 
 ## Proot
 ### 为何套娃永动机
@@ -85,7 +85,7 @@ Firefox对GTK库说：“在坐标(50,100)画个800x600的窗口，内容是我�
 ### 实操
 首先我们安装并打开termux提供的 [termux-x11](https://github.com/termux/termux-x11/releases) 应用（相当于接个虚拟屏幕来捕获图形输出）。在启动x11-server之前长这样：
 
-![](/img/termux-x11.jpg)
+![](./termux/termux-x11.jpg)
 
 随后进入我们proot出来的Linux发行版安装xfce4：
 ```bash
@@ -117,7 +117,7 @@ runuser -l {your_username} -c \
    向系统宣告把所有图形订单发给 `:1` 号显示（对接 termux-x11），然后拉起 D-Bus 消息总线，最后点火启动 XFCE4 桌面引擎，五菱宏光准备发车
 
 随后再次打开termux-x11应用，你会看到一个XFCE4的桌面环境（记得给termux留个小窗，笔者的机器上如果直接给termux挂后台桌面会直接卡死）：
-![发车实录](/img/xfce4.jpg)
+![发车实录](./termux/xfce4.jpg)
 
 ## VSCode+SSH
 
@@ -135,7 +135,7 @@ code --no-sandbox
 
 ### SSH远程开发
 现在我们获得了一个满血Debian环境加一个完整的本地VSCode客户端。对于一般的开发者来说，这已经足够了。但考虑到超过90%的同学似乎都有模型训练的需求，我们显然不能让他们在平板上跑模型。自然地，我们需要通过SSH连接远程服务器。于是乎，在完整本地VSCode客户端的加持下我们终于连上了我们忠实的远程服务器：
-![](/img/ssh.jpg)
+![](./termux/ssh.jpg)
 世界完整了。
 
 
