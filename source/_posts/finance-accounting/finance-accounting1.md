@@ -1,10 +1,10 @@
 ---
 title: 'Financial Accounting Class 1:Introduction'
 tags:
-  - no tags
+  - finance
 categories:
-  - uncategorized
-excerpt: no excerpt
+  - finance
+excerpt: 本节课介绍财务会计的基本概念和四大财务报表
 abbrlink: 3829288f
 date: 2025-09-19 08:34:44
 ---
