@@ -7,7 +7,7 @@ categories:
   - uncategorized
 excerpt: no excerpt
 abbrlink: 44480d54
-date: 2025-09-19 08:34:44
+date: 2025-10-10 20:16:31
 ---
 
 ## **1. 核心框架：会计恒等式与假设**
