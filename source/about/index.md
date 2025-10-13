@@ -1,6 +1,9 @@
 ---
 title: about
 date: 2024-07-29 21:58:41
+banner_img: /img/info.jpg
+banner_img_height: 60
+banner_mask_alpha: 0.3
 ---
 ## About Me
 
