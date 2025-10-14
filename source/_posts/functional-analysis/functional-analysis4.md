@@ -24,8 +24,8 @@ $(X, d)$ 是度量空间。
 
 1. $A$ 是无处稠密的 $\Leftrightarrow A^c$ 是包含开的稠密集；
 2. 若 $B$ 是第一纲集，$A \subseteq B$，则 $A$ 是第一纲集（即第一纲集的子集是第一纲集）；
-3. 若 $A$ 是第二纲集，$A \subseteq B \subseteq X$，则 $B$ 是第二纲集（即包含第一纲集的集合仍是第二纲集）；
-4. 可数并的第一纲集是第一纲集，可数交的剩余集是剩余集；
+3. 若 $A$ 是第二纲集，$A \subseteq B \subseteq X$，则 $B$ 是第二纲集（即包含第二纲集的集合仍是第二纲集）；
+4. 第一纲集的可数并是第一纲集，剩余集的可数交是剩余集；
 5. $R$ 是剩余集 $\Leftrightarrow R$ 含有可数个开的稠密集的交。
 
 
@@ -154,7 +154,10 @@ Baire纲定理对于不完备度量空间不成立。例 $(\Omega, d), d(x,y) = 
 
 有 $\left. |f(s+h) - f(s)| \leq n|h| \right\}$, 即 $A_n$ 中函数至少在一点可微且导数的绝对值 $\leq n$
 
-从而 $$ C[0,1] \setminus E \subseteq \bigcup_{n \geq 1} A_n $$ 
+从而
+$$
+C[0,1] \setminus E \subseteq \bigcup_{n \geq 1} A_n
+$$ 
 
 因此 $\text{结论} \iff A_n \text{ 是无处稠密的}$
 
@@ -191,6 +194,7 @@ Baire纲定理对于不完备度量空间不成立。例 $(\Omega, d), d(x,y) = 
   构造分段函数 $g$. s.t. $\|g\|_\infty \leq \varepsilon/2$
 
   且线段的斜率绝对值 $\geq M + n + 1$
+  ![](./functional-analysis4/image.png)
 
   则 $g + P \in B(f; \varepsilon)$ 但是 $g + P \notin A_n$. $\Rightarrow$ 由 $\epsilon$ 的原子性得到结论
 
