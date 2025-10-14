@@ -2,10 +2,10 @@
 title: 泛函分析的起源
 tags:
   - math
-  - functional-analysis
+  - functional analysis
 categories:
   - math
-  - functional-analysis
+  - functional analysis
 excerpt: 泛函分析课程笔记
 abbrlink: 45a5a42
 date: 2025-09-16 12:43:44

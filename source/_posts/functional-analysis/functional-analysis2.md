@@ -2,10 +2,10 @@
 title: Ch 1.1 Banach空间理论
 tags:
   - math
-  - functional-analysis
+  - functional analysis
 categories:
   - math
-  - functional-analysis
+  - functional analysis
 excerpt: 泛函分析课程笔记
 abbrlink: 3b3eb9f1
 date: 2025-09-16 15:26:19

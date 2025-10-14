@@ -2,10 +2,10 @@
 title: 泛函分析第五次作业
 tags:
   - math
-  - functional-analysis
+  - functional analysis
 categories:
   - math
-  - functional-analysis
+  - functional analysis
 excerpt: 泛函分析第五次作业
 abbrlink: feea09f2
 date: 2025-10-02 14:27:02

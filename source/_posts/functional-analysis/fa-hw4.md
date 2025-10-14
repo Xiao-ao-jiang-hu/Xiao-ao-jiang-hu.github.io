@@ -2,10 +2,10 @@
 title: 泛函分析第四次作业
 tags:
   - math
-  - functional-analysis
+  - functional analysis
 categories:
   - math
-  - functional-analysis
+  - functional analysis
 excerpt: no excerpt
 abbrlink: d3564e07
 date: 2025-09-26 16:17:36

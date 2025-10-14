@@ -293,3 +293,154 @@ date: 2025-10-13 14:13:11
 - **SE** 表示股东权益（Stockholders’ Equity）  
 - **NCA** 表示非流动资产（Noncurrent Asset）  
 - **NCL** 表示非流动负债（Noncurrent Liability）
+
+## M2-10
+**Completing T-Accounts**
+
+For each transaction in M2-6 (including the sample), post the effects to the appropriate T-accounts and determine ending account balances. Beginning balances are provided.
+
+**Transactions from M2-6:**
+a. (Sample) Borrowed $30,000 from a local bank; the loan is due in nine months.
+b. Lent $10,000 to an affiliate; accepted a note due in one year.
+c. Sold to investors 100 additional shares of stock with a par value of $0.10 per share and a market price of $5 per share; received cash.
+d. Purchased $15,000 of equipment, paying $5,000 cash and signing a note for the rest due in one year.
+e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
+
+**Beginning Balances:**
+
+| Account                    | Debit (Left)     | Credit (Right)   |
+| -------------------------- | ---------------- | ---------------- |
+| Cash                       | Beg. bal. 900    |                  |
+| Notes Receivable           | Beg. bal. 1,000  |                  |
+| Equipment                  | Beg. bal. 15,100 |                  |
+| Notes Payable              |                  | Beg. bal. 3,000  |
+| Dividends Payable          |                  | Beg. bal. 0      |
+| Common Stock               |                  | Beg. bal. 1,000  |
+| Additional Paid-in Capital |                  | Beg. bal. 3,000  |
+| Retained Earnings          |                  | Beg. bal. 10,000 |
+
+### T-Accounts过账过程
+
+#### Cash (Debit Balance)
+- **Beginning Balance**: $900 (Debit)
+- **Transaction a**: Borrowed $30,000 → Increase Cash → Debit $30,000
+- **Transaction b**: Lent $10,000 → Decrease Cash → Credit $10,000
+- **Transaction c**: Sold shares for cash → Increase Cash → Debit $500
+- **Transaction d**: Purchased equipment, paid cash → Decrease Cash → Credit $5,000
+
+**T-Account for Cash:**
+| Debit (Left)         | Credit (Right) |
+| -------------------- | -------------- |
+| Beg. bal. 900        |                |
+| a. 30,000            | b. 10,000      |
+| c. 500               | d. 5,000       |
+| **End. bal. 16,400** |                |
+
+**期末余额**: $16,400 (Debit)
+
+#### Notes Receivable (Debit Balance)
+- **Beginning Balance**: $1,000 (Debit)
+- **Transaction b**: Lent $10,000, accepted note → Increase Notes Receivable → Debit $10,000
+
+**T-Account for Notes Receivable:**
+| Debit (Left)         | Credit (Right) |
+| -------------------- | -------------- |
+| Beg. bal. 1,000      |                |
+| b. 10,000            |                |
+| **End. bal. 11,000** |                |
+
+**期末余额**: $11,000 (Debit)
+
+#### Equipment (Debit Balance)
+- **Beginning Balance**: $15,100 (Debit)
+- **Transaction d**: Purchased equipment → Increase Equipment → Debit $15,000
+
+**T-Account for Equipment:**
+| Debit (Left)         | Credit (Right) |
+| -------------------- | -------------- |
+| Beg. bal. 15,100     |                |
+| d. 15,000            |                |
+| **End. bal. 30,100** |                |
+
+**期末余额**: $30,100 (Debit)
+
+#### Notes Payable (Credit Balance)
+- **Beginning Balance**: $3,000 (Credit)
+- **Transaction a**: Borrowed $30,000 → Increase Notes Payable → Credit $30,000
+- **Transaction d**: Signed note for equipment → Increase Notes Payable → Credit $10,000
+
+**T-Account for Notes Payable:**
+| Debit (Left) | Credit (Right)       |
+| ------------ | -------------------- |
+|              | Beg. bal. 3,000      |
+|              | a. 30,000            |
+|              | d. 10,000            |
+|              | **End. bal. 43,000** |
+
+**期末余额**: $43,000 (Credit)
+
+#### Dividends Payable (Credit Balance)
+- **Beginning Balance**: $0 (Credit)
+- **Transaction e**: Declared cash dividends → Increase Dividends Payable → Credit $2,000
+
+**T-Account for Dividends Payable:**
+| Debit (Left) | Credit (Right)      |
+| ------------ | ------------------- |
+|              | Beg. bal. 0         |
+|              | e. 2,000            |
+|              | **End. bal. 2,000** |
+
+**期末余额**: $2,000 (Credit)
+
+#### Common Stock (Credit Balance)
+- **Beginning Balance**: $1,000 (Credit)
+- **Transaction c**: Sold shares → Increase Common Stock → Credit $10 (100 shares × $0.10 par value)
+
+**T-Account for Common Stock:**
+| Debit (Left) | Credit (Right)      |
+| ------------ | ------------------- |
+|              | Beg. bal. 1,000     |
+|              | c. 10               |
+|              | **End. bal. 1,010** |
+
+**期末余额**: $1,010 (Credit)
+
+#### Additional Paid-in Capital (Credit Balance)
+- **Beginning Balance**: $3,000 (Credit)
+- **Transaction c**: Sold shares → Increase Additional Paid-in Capital → Credit $490 (100 shares × $5 market price - $10 par value)
+
+**T-Account for Additional Paid-in Capital:**
+| Debit (Left) | Credit (Right)      |
+| ------------ | ------------------- |
+|              | Beg. bal. 3,000     |
+|              | c. 490              |
+|              | **End. bal. 3,490** |
+
+**期末余额**: $3,490 (Credit)
+
+#### Retained Earnings (Credit Balance)
+- **Beginning Balance**: $10,000 (Credit)
+- **Transaction e**: Declared cash dividends → Decrease Retained Earnings → Debit $2,000
+
+**T-Account for Retained Earnings:**
+| Debit (Left) | Credit (Right)      |
+| ------------ | ------------------- |
+| e. 2,000     | Beg. bal. 10,000    |
+|              | **End. bal. 8,000** |
+
+**期末余额**: $8,000 (Credit)
+
+## M2-11
+Complete M2-10 and then prepare a trial balance for JonesSpa Corporation as of January 31.
+
+| Account                    | Debit ($)  | Credit ($) |
+| -------------------------- | ---------- | ---------- |
+| Cash                       | 16,400     |            |
+| Notes Receivable           | 11,000     |            |
+| Equipment                  | 30,100     |            |
+| Notes Payable              |            | 43,000     |
+| Dividends Payable          |            | 2,000      |
+| Common Stock               |            | 1,010      |
+| Additional Paid-in Capital |            | 3,490      |
+| Retained Earnings          |            | 8,000      |
+| **Total**                  | **57,500** | **57,500** |

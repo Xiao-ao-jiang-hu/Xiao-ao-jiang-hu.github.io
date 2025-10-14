@@ -3,10 +3,10 @@ title: 泛函分析第三次作业
 tags:
   - math
   - homework
-  - functional-analysis
+  - functional analysis
 categories:
   - math
-  - functional-analysis
+  - functional analysis
 excerpt: no excerpt
 abbrlink: 74d6ba6b
 date: 2025-09-23 12:10:51

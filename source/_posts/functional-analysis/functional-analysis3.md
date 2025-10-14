@@ -1,11 +1,11 @@
 ---
 title: Ch 1.2 Hilbert 空间
 tags:
-  - functional-analysis
+  - functional analysis
   - math
 categories:
   - math
-  - functional-analysis
+  - functional analysis
 excerpt: 泛函分析课程笔记
 abbrlink: '51673413'
 date: 2025-09-25 14:44:40
