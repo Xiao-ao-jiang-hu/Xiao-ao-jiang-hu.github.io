@@ -1,5 +1,5 @@
 ---
-title: Ch 2.1 泛函分析原理
+title: Ch 2.1 Baire纲集定理
 tags:
   - math
   - functional analysis
