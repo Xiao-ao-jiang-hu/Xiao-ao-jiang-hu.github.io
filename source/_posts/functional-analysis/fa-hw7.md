@@ -220,3 +220,75 @@ $$
 因此，$\operatorname{Ker} \Lambda$ 在 $X$ 中稠密，与假设矛盾。
 
 ## 7.4
+假设 $\{x_n\} _{n\geq 1}$ 具有如下性质：对任意 $\{ y_n\} _{n\geq 1}$ 满足 $\lim _{n\to \infty }y_n= 0$ , 总有 $\sum _{n\geq 1}x_ny_n$ 收敛，则 $\sum_{n\geq1}|x_n|$ 收敛。
+
+### 解答
+假设其不收敛，于是存在正整数列 $\{n_k\}$ 满足
+$$
+\sum_{n = n_{k-1}}^{n_k-1} |x_n| > 1 ,\quad \forall k \in \mathbb{n}
+$$
+
+令
+$$
+y_n = \frac{\text{sign}(x_{n})}{k}, \,\, n \in [n_{k-1}, n_k)
+$$
+
+于是
+$$
+\sum_{n\geq 1} x_n y_n = \sum_{k\geq 1} \frac{1}{k} \sum_{n=n_{k-1}}^{n_k-1} |x_n| \geq \sum_{k\geq 1} \frac{1}{k} = +\infty
+$$
+
+矛盾，因此 $\sum_{n\geq1}|x_n|$ 收敛。
+
+## 7.5
+(本题强调讲义 45 页共轭双线性定理中 “X 是 Banach 空间” 条件不可去除)
+假设 $X$ 是 $[0, 1]$ 上实系数多项式函数的全体。考虑 $(X, L^1(0,1))$ 空间上的双线性泛函
+$$
+B(f,g) := \int_0^1 f(t)g(t)dt, \forall f,g \in X.
+$$
+试证明：
+1. $\forall x \in X$，$B(x, \cdot)$ 是共轭线性的；$\forall y \in X$，$B(\cdot, y) \in \mathcal{L}(X, \mathbb{R})$  且连续。
+2. B 不是有界的。
+
+### 解答
+#### 1
+由于 $X$ 是实系数多项式空间，共轭线性即线性。
+- **对于所有 $f \in X$，$B(f, \cdot)$ 是线性的**：  
+  对于任意 $g_1, g_2 \in X$ 和 $\alpha, \beta \in \mathbb{R}$，有
+  $$
+  B(f, \alpha g_1 + \beta g_2) = \int_0^1 f(t) (\alpha g_1(t) + \beta g_2(t)) \, dt =\\ \alpha \int_0^1 f(t) g_1(t) \, dt + \beta \int_0^1 f(t) g_2(t) \, dt = \alpha B(f, g_1) + \beta B(f, g_2).
+  $$
+  因此，$B(f, \cdot)$ 是线性的。
+
+- **对于所有 $g \in X$，$B(\cdot, g)$ 是线性的且连续**：  
+  对于任意 $f_1, f_2 \in X$ 和 $\alpha, \beta \in \mathbb{R}$，有
+  $$
+  B(\alpha f_1 + \beta f_2, g) = \int_0^1 (\alpha f_1(t) + \beta f_2(t)) g(t) \, dt =\\ \alpha \int_0^1 f_1(t) g(t) \, dt + \beta \int_0^1 f_2(t) g(t) \, dt = \alpha B(f_1, g) + \beta B(f_2, g).
+  $$
+  因此，$B(\cdot, g)$ 是线性的。  
+  现在证明连续性。对于任意 $f \in X$，有
+  $$
+  |B(f, g)| = \left| \int_0^1 f(t) g(t) \, dt \right| \leq \int_0^1 |f(t)| |g(t)| \, dt \leq \|g\|_\infty \int_0^1 |f(t)| \, dt = \|g\|_\infty \|f\|_1,
+  $$
+  其中 $\|g\|_\infty = \sup_{t \in [0,1]} |g(t)|$。由于 $g$ 是多项式，在 $[0,1]$ 上连续，故 $\|g\|_\infty < \infty$。因此，存在常数 $C = \|g\|_\infty$ 使得 $|B(f, g)| \leq C \|f\|_1$，即 $B(\cdot, g)$ 是连续线性泛函。  
+  故 $B(\cdot, g) \in \mathcal{L}(X, \mathbb{R})$ 且连续。
+
+#### 2
+
+双线性泛函 $B$ 有界是指存在常数 $M > 0$ 使得对于所有 $f, g \in X$，有
+$$
+|B(f, g)| \leq M \|f\|_1 \|g\|_1.
+$$
+我们证明不存在这样的 $M$。
+
+考虑序列 $f_n(t) = t^n$ , $n \in \mathbb{N}$。则 $\|f_n\|_1 = \int_0^1 t^n \, dt = \frac{1}{n+1}$, $B(f_n, f_n) = \int_0^1 t^{2n} \, dt = \frac{1}{2n+1}$.
+因此
+$$
+\frac{|B(f_n, f_n)|}{\|f_n\|_1 \|f_n\|_1} = \frac{\frac{1}{2n+1}}{\left( \frac{1}{n+1} \right)^2} = \frac{(n+1)^2}{2n+1}.
+$$
+当 $n \to \infty$ 时，
+$$
+\frac{(n+1)^2}{2n+1} \sim \frac{n}{2} \to \infty.
+$$
+
+因此，对于任意 $M > 0$，存在 $n$ 使得 $\frac{|B(f_n, f_n)|}{\|f_n\|_1 \|f_n\|_1} > M$，故 $B$ 不是有界的。
