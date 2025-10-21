@@ -1,5 +1,5 @@
 ---
-title: Ch 2.2 一致有界原理
+title: Ch 2.1 Baire纲集定理
 tags:
   - math
   - functional analysis
@@ -7,166 +7,195 @@ categories:
   - math
   - functional analysis
 excerpt: 泛函分析课程笔记
-abbrlink: 67625fea
-date: 2025-10-10 18:19:05
+abbrlink: cd27c0e5
+date: 2025-10-01 18:38:26
 ---
-# §2. 一致有界原理
+# §1 Baire纲集定理
+用于说明可数开稠子集的交仍然是稠密的。
 
-## 定义
-假设 $\{f_i\}_{i \in I}$ 满足 $\forall i \in I$, $f_i: X \to Y_i$，称 $\{f_i\}_{i \in I}$ 是点态有界的，如果
+## 定义：Baire 纲集
+$(X, d)$ 是度量空间。
+1. 若 $A \subseteq X$ 满足 $\overline{A}$ 没有内点（即 $\forall x \in \overline{A}, \forall \varepsilon > 0, B(x, \varepsilon) \cap \overline{A}^C \neq \varnothing$），称 $A$ 是无处稠密的。
+2. 若 $A = \bigcup_{i=1}^{\infty} A_i$，$A_i$ 是无处稠密的，则称 $A$ 是第一纲集。
+3. 不是第一纲集的集合称为第二纲集。因若 $A^c$ 是第一纲集，则称 $A$ 是剩余集。
+
+
+### 引理1（纲集的性质）：设 $(X, d)$ 是度量空间，则下列结论成立。
+
+1. $A$ 是无处稠密的 $\Leftrightarrow A^c$ 是包含开的稠密集；
+2. 若 $B$ 是第一纲集，$A \subseteq B$，则 $A$ 是第一纲集（即第一纲集的子集是第一纲集）；
+3. 若 $A$ 是第二纲集，$A \subseteq B \subseteq X$，则 $B$ 是第二纲集（即包含第二纲集的集合仍是第二纲集）；
+4. 第一纲集的可数并是第一纲集，剩余集的可数交是剩余集；
+5. $R$ 是剩余集 $\Leftrightarrow R$ 含有可数个开的稠密集的交。
+
+
+#### 证明：
+
+1: 
+首先，不难验证 $X \setminus \overline{A} = \text{int}(X \setminus A)$，其中 $\text{int}(A) = \left\{ x \in A \mid \exists \delta > 0, \text{ s.t. } B(x, \delta) \subseteq A \right\}$。
+
+从而
 $$
-\sup_{i \in I} \|f_i(x)\|_{Y_i} < +\infty \quad \forall x \in X
-$$
-
-## 定理（一致有界原理）
-假设 $X$ 是 Banach 空间。$\{A_i\}_{i \in I}$ 满足
-1. $A_i: X \to Y_i$ 是有界线性算子，$Y_i = (Y_i, \|\cdot\|)$ 赋范空间。
-2. $\{A_i\}_{i \in I}$ 是点态有界的。
-则 $\sup_{i \in I} \|A_i\| < +\infty$。
-
-（即 算子族的点态有界性 $\Longrightarrow$ 算子族（在算子范数下）的一致有界性。）
-$X$ 是 Banach 空间
-
-## 推论
-若 $(X, d)$ 是非空完备度量空间，$\{f_i\}_{i \in I}$ 满足
-1. $f_i: X \mapsto \mathbb{R}$ 是连续函数
-2. $\{f_i\}_{i \in I}$ 点态有界。
-则 $\exists x_0 \in X$ 以及 $\varepsilon > 0$，s.t.
-$$
-\sup_{i \in I} \sup_{x \in B(x_0; \varepsilon)} |f_i(x)| < +\infty
-$$
-
-## 证明
-引入 $F_{n,i} \overset{\text{定义}}{=} \left\{ x \in X \mid |f_i(x)| \le n \right\}$，由 $f_i$ 的连续性 $\Rightarrow F_{n,i}$ 是闭集。
-$$
-F_n \overset{\text{定义}}{=} \bigcap_{i \in I} F_{n,i} = \left\{ x \in X \mid \sup_{i \in I} |f_i(x)| \le n \right\} \text{（闭集）}.
-$$
-由条件2知，$X = \bigcup_{n \ge 1} F_n$，由 Baire 纲定理 $\Rightarrow X$ 是第二纲集。
-从而 $\exists n_0 \in \mathbb{N}$，s.t. $F_{n_0}$ 不是无处稠密的。$\Rightarrow \exists x_0 \in X$，$\varepsilon > 0$，
-s.t. $B(x_0; \varepsilon) \subseteq F_{n_0}$。$\Rightarrow$ (得证)
-
-> 回忆经典结论：若 $\{f_n\}_{n \ge 1} \subset C([a,b])$，满足点态有界，则 $\exists x_0 \in [a,b]$ 以及 $\delta > 0$。
-> s.t. $\forall x \in B(x_0; \delta)$ 且 $\forall n \ge 1$，$|f_n(x)| \le M < +\infty$.
-
-
-
-## 一致有界证明
-利用线性性质将“一点附近有界”推导为“零点附近有界”，令 $f_i(x) = \|A_i x\|_{Y_i}$，$\forall x \in X$
-
-由条件2： $\Rightarrow \{f_i\}_{i \in I}$ 是点态有界的。$\Rightarrow \exists x_0 \in X$，$\varepsilon > 0$，s.t.
-$$
-M \overset{\text{定义}}{=} \sup_{i \in I} \sup_{x \in B(x_0; \varepsilon)} \|A_i x\|_{Y_i} < +\infty
-$$
-从而 $\forall i \in I$，$\forall x \in X$ 满足 $\|x\|=1$，有
-$$
-\|A_i (x_0 \pm \frac{\varepsilon}{2} x)\|_{Y_i} \le M < +\infty
-$$
-$$
-\Rightarrow \|A_i x\|_{Y_i} = \frac{1}{\varepsilon} \|A_i (x_0 + \frac{\varepsilon}{2} x) - A_i (x_0 - \frac{\varepsilon}{2} x)\|_{Y_i} \le \frac{1}{\varepsilon} \times 2M = \frac{2M}{\varepsilon}
-$$
-即 $\sup_{i \in I} \|A_i\| \le \frac{2M}{\varepsilon} < +\infty$。（得证）
-
-
-
-### 注
-条件 “$X$ 是完备的”不可移除。考虑
-$$
-X \overset{\text{定义}}{=} \left\{ x = \{x_i\}_{i \in \mathbb{N}} \mid \exists N \in \mathbb{N} \text{ s.t. } \forall i \ge N \text{ 且 } i \ne N, \text{ 有 } x_i = 0 \right\}, \quad \|x\| = \sup_{i \ge 1} |x_i| = \|x\|_\infty
-$$
-则 $(X, \|\cdot\|)$ 是不完备的。且 $\overline{X}^{\|\cdot\|_{\ell^\infty}} = c_0 = \left\{ x \in \ell^\infty \mid \lim_{n \to \infty} x_n = 0, \, x = \{x_n\}_{n \ge 1} \right\}$
-
-$A_n: X \mapsto X$，s.t. $A_n x = (x_1, \, 2x_2, \, \cdots, \, n x_n; \, 0, \, \cdots, \, 0, \, \cdots)$
-
-$A: X \mapsto X$，s.t. $A x = \{n x_n\}_{n \ge 1}$。
-
-不难验证：
-固定 $x \in X$，$\lim_{n \to \infty} \|A_n x - A x\| = 0$。（同为 $X$ 中只有有限项不为零）。
-
-- $\|A_n x\| \le n \|x\|_{\ell^\infty}$ 且 $\|A_n e_n\|_{\ell^\infty} = n$ $\Rightarrow \|A_n\| = n$。
-
-$\Rightarrow \sup_{n \ge 1} \|A_n\| = +\infty$。且 $\|A e_n\|_{\ell^\infty} = n$ $\Rightarrow A \notin \mathcal{L}(X, X)$。（得证）
-
-
-## 算子强收敛
-假设 $X, Y$ 是 Banach 空间。$\forall i \in \mathbb{N}$，$A_i, A \in \mathcal{L}(X, Y)$。称 $A_i$ 强收敛至 $A$，如果 $\forall x \in X$，$A_i x \to A x$。
-
-## 定理（Banach-Steinhaus）
-$X, Y$ 是 Banach 空间。$\{A_i\}_{i \in \mathbb{N}} \subset \mathcal{L}(X, Y)$。则下列等价：
-① $\forall x \in X$，$\{A_i x\}_{i \in \mathbb{N}}$ 是 $Y$ 中的 Cauchy 列。
-② $\sup_{i \in \mathbb{N}} \|A_i\| < +\infty$ 且于稠密子集 $D \subset X$ s.t. $\forall x \in D$，s.t. $\{A_i x\}_{i \in \mathbb{N}}$ 是 $Y$ 中的 Cauchy 列。
-③ $\sup_{i \in \mathbb{N}} \|A_i\| < +\infty$ 且 $\exists A \in \mathcal{L}(X, Y)$，s.t. $A_i \xrightarrow{\text{强}} A$，且 $\|A\| \le \lim_{i \to \infty} \|A_i\|$。
-
-### 特别
-当 $X$ 不是完备时，例 ⑥ $\Leftrightarrow$ ⑦；当 $Y$ 不是完备时，⑥ $\Leftrightarrow$ ⑦。
-
-### 证明
-1 $\Leftrightarrow$ 3：
-只需证明 1 $\Rightarrow$ 3。
-首先 ⑥ $\Longrightarrow \sup_{i \in \mathbb{N}} \|A_i\| < +\infty$。
-定义 $A: X \to Y$
-$$
-\text{s.t. } A x = \lim_{i \to \infty} A_i x \quad \forall x \in X
-$$
-$\Rightarrow \|A x\| \le (\lim_{i \to \infty} \|A_i\|) \|x\|$ $\Rightarrow \|A\| \le \lim_{i \to \infty} \|A_i\| < +\infty$
-
-2 $\Leftarrow$ 3：
-只需证明 2 $\Rightarrow$ 3。
-设 $M = \sup_{i \in \mathbb{N}} \|A_i\|$。
-$\forall x \in X$，$\forall \varepsilon > 0$。
-由 $D$ 的稠密性，$\exists \xi \in D$，s.t. $\|x - \xi\| \le \frac{\varepsilon}{M}$，此时
-$$
-\|A_i x - A_j x\| \le \|A_i (x - \xi)\| + \|A_j (x - \xi)\| + \underbrace{\|A_i \xi - A_j \xi\|}_{\substack{\text{因}\{A_i \xi\}_{i \in \mathbb{N}} \\ \text{是Cauchy列}}} \le 2M \cdot \frac{\varepsilon}{M}
-$$
-$\Rightarrow \{A_i x\}_{i \in \mathbb{N}}$ 是 Cauchy 列。$\Longrightarrow \{A_i x\}$ 是收敛列。
-由1 $\Rightarrow$ 3 的证明过程，结论成立。
-
-
-
-### 推论（共轭双线性映射）
-若 $X$ 是 Banach 空间，$Y, Z$ 是赋范空间。$B: X \times Y \mapsto Z$ 满足：
-$\forall x_i, y_i$ ($i=1,2$),
-$$
-\begin{cases}
-B(\alpha_1 x_1 + \alpha_2 x_2, \, y) = \sum_{i=1}^{2} \alpha_i \cdot B(x_i, y) \\
-B(x, \, \beta_1 y_1 + \beta_2 y_2) = \sum_{i=1}^{2} \overline{\beta_i} \cdot B(x, y_i)
-\end{cases}
+X \setminus \text{int}(\overline{A}) = \overline{X \setminus \overline{A}} = \overline{\text{int}(X \setminus A)}
 $$
 
-则下列说法等价：
+“$\Rightarrow$”：若 $\text{int}(\overline{A}) = \varnothing$，$\Rightarrow X = \overline{\text{int}(X \setminus A)}$，即 $X \setminus A$ 是开稠集。由于 $\text{int}(X \setminus A) \subseteq A^c$，$\Rightarrow$ 结论。
 
-1. $B$ 是有界的。（即 $\exists c > 0$，$\forall x \in X$，$\forall y \in Y$，$\|B(x,y)\|_Z \le c \|x\|_X \|y\|_Y$）
+“$\Leftarrow$”：若 $A^c$ 包含开稠集，则 $\underbrace{\text{int}(X \setminus A)}_{\text{开}} \supseteq \text{开稠集}$，$\Rightarrow X = \overline{\text{int}(X \setminus A)} = X \setminus \text{int}(\overline{A})$，$\Rightarrow \text{int}(\overline{A}) = \varnothing$，$\Rightarrow$ 依定义。
 
-2. $B$ 是连续的。
+2, 3, 4 可由定义验证。
 
-3. $\forall x \in X$，$B(x, \cdot)$ 是其线性性；$\forall y \in X$，$B(\cdot, y) \in \mathcal{L}(X, Z)$ 且连续。
+5：
 
-## 证明
-1 $\Rightarrow$ 2：
+“$\Rightarrow$” 若 $R \subseteq X$ 是剩余集，$A = X \setminus R$ 是第一纲集 $\xRightarrow{\text{定义}} A = \bigcup_{j=1}^{\infty} A_j$, $A_j$ 是无处稠密集。
+
+记 $U_i = X \setminus \overline{A_i} = \text{int}(X \setminus A_i)$，从而 $\overline{U_i} = \overline{\text{int}(X \setminus A_i)} = X \setminus \text{int}(\overline{A_i}) = X$ $\Rightarrow U_i$ 是开稠集。
+
 $$
-\|B(x,y) - B(\hat{x}, \hat{y})\|_Z \le \|B(x, y - \hat{y})\|_Z + \|B(x - \hat{x}, \hat{y})\|_Z \quad \text{（得证）}
+\bigcap_{i=1}^{\infty} U_i = X \setminus \bigcup_{i=1}^{\infty} \overline{A_i} \subseteq X \setminus \bigcup_{i=1}^{\infty} A_i = R \quad \Rightarrow \text{结论}.
 $$
 
-2 $\Rightarrow$ 3 显然。
+“$\Leftarrow$” 若 $\bigcap_{i=1}^{\infty} U_i \subseteq R$，其中 $U_i$ 是开稠集。记 $A_i = X \setminus U_i$ $\xRightarrow{\text{引理1①}} A_i$ 是无处稠密集，
 
-3 $\Rightarrow$ 1：
-令 $S_Y \overset{\text{定义}}{=} \{ y \in Y \mid \|y\|_Y = 1 \}$。
-$\forall y \in S_Y$，$A_y(x) \overset{\text{定义}}{=} B(x, y)$。$\Rightarrow$ 
-1. $A_y \in \mathcal{L}(X, Z)$。
+$\Rightarrow A = \bigcup_{i=1}^{\infty} A_i$ 是第一纲集，$X \setminus R \subseteq X \setminus \bigcap_{i=1}^{\infty} U_i = \bigcup_{i=1}^{\infty} A_i = A$ $\Rightarrow$ 结论。
 
-2. 利用 $B(x, 0) = 0$
 
-$\Rightarrow$ 固定 $x \in X$，$\exists \delta_x > 0$，$\forall y \in B(0, \delta_x)$，有 $\|B(x, y) - B(x, 0)\|_Z \le 1$
-$\Rightarrow \|B(x, y)\|_Z = \frac{2\|y\|}{\delta_x} \|B(x, \frac{\delta_x y}{2\|y\|})\|_Z \le \frac{2}{\delta_x} \|y\|$
-$\Rightarrow \|A_y(x)\|_Z = \|B(x, y)\|_Z \le \frac{2}{\delta_x} \|y\| \le \frac{2}{\delta_x}$
-$\Rightarrow \{A_y\}_{y \in Y}$ 是点态有界的。
+## Baire纲定理
+若 $(X, d)$ 是非空完备度量空间，则下列结论成立。
+1. 剩余集是稠密的；
+2. $U \subseteq X$ 是非空开集，则 $U$ 是第二纲集；
+3. 若 $A_i \subseteq X$ 是闭集且无内点，则 $\bigcup_{i=1}^{\infty} A_i$ 也无内点；
+4. 若 $U_i \subseteq X$ 开集且稠密，则 $\bigcap_{i=1}^{\infty} U_i$ 是稠密的；
+5. 剩余集是第二纲集。
 
-由一致有界原理 $\Rightarrow \sup_{y \in Y} \|A_y\| \le M < +\infty$。
-$\Rightarrow \|B(x, y)\|_Z = \|y\| \cdot \|B(x, \frac{y}{\|y\|})\|$
-$\le \|A_{\frac{y}{\|y\|}}(x)\|_Z \cdot \|y\| \le M \|x\| \|y\|$ $\Rightarrow$ 结论
 
-### 例
-$\forall 1 < p < +\infty$。若 $f_n \xrightarrow{\text{弱}} f$ （即 $\forall g \in L^q(d\mu)$，$\int_X f_n g \, d\mu \xrightarrow[n \to +\infty]{} \int_X f g \, d\mu$）
+### 命题：若 $(X, d)$ 是度量空间，则 1 $\Leftrightarrow$ 2 $\Leftrightarrow$ 3 $\Leftrightarrow$ 4
 
-则 $\|f\|_{L^p} \le \lim_{n \to \infty} \|f_n\|_{L^p}$
+#### 证明：
 
-（其中 $T_n(g) = \int_X f_n g \, d\mu$，且此时 $\|T_n\| = \|f_n\|_{L^p}^*$，$\|T\| = \|f\|_{L^p}^*$）
+- 1 $\Rightarrow$ 2：由于 $U$ 是开集 $\Rightarrow X \setminus U$ 不是稠密的 $\Rightarrow X \setminus U$ 不是剩余集 $\Rightarrow U$ 不是第一纲集。
+- 2 $\Rightarrow$ 3：由定义知 $\bigcup_{i=1}^{\infty} A_i$ 是第一纲集。（反证法）若 $\bigcup_{i=1}^{\infty} A_i$ 会有内点，即 $\bigcup_{i=1}^{\infty} A_i$ 包含一开集 $\Longrightarrow \bigcup_{i=1}^{\infty} A_i$ 是第二纲集，这与 $\bigcup_{i=1}^{\infty} A_i$ 是第一纲集矛盾，$\Rightarrow$ 结论。
+- 3 $\Rightarrow$ 4：记 $A_i = X \setminus U_i$；$\xRightarrow{\text{由引理1①}} A_i$ 是无处稠密的且是闭集 $\xRightarrow{\text{③}} \bigcup_{i=1}^{\infty} A_i$ 无内点。由于 $\left( \bigcup_{i=1}^{\infty} A_i \right)^C = \bigcap_{i=1}^{\infty} U_i$，从而 $\bigcap_{i=1}^{\infty} U_i$ 是稠密的。否则若 $\bigcap_{i=1}^{\infty} U_i$ 不稠，$\exists x_0 \in X$ 以及 $\varepsilon > 0$，s.t. $B(x_0; \varepsilon) \cap \bigcap_{i=1}^{\infty} U_i = \varnothing$，由上式，有 $B(x_0; \varepsilon) \subseteq \bigcup_{i=1}^{\infty} A_i$，这与条件矛盾。
+- 4 $\Rightarrow$ 1：假设 $R$ 是剩余集，由引理1⑤，$R$ 是稠密的。
+
+### Baire 纲定理的证明
+#### 首先 2 $\Rightarrow$ 5：
+
+假设 $R$ 是剩余集 $\Rightarrow X \setminus R$ 是第一纲集。若 $R$ 是第一纲集，$\Rightarrow X = (X \setminus R) \cup R$ 是第一纲集，这与②矛盾 $\Rightarrow R$ 是第二纲集。（$X$ 是非空开集）。
+
+
+#### 4的证明：
+假设 $U_i$ 是开稠集。则：
+$$
+\bigcap_{i=1}^{\infty} U_i \text{ 是稠密的} \Longleftrightarrow \forall x_0 \in X, \forall \varepsilon_0 > 0, \quad B(x_0; \varepsilon_0) \cap \left( \bigcap_{i=1}^{\infty} U_i \right) \neq \varnothing
+$$
+
+由于 $U_i$ ($i \ge 1$) 是开稠集，$\Rightarrow B(x_0; \varepsilon_0) \cap U_1 \neq \varnothing$，即 $\exists x_1 \in U_1 \cap B(x_0; \varepsilon_0)$。
+
+选取$\epsilon_n$：
+$$
+\varepsilon_1 < \frac{1}{2} \varepsilon_0, \quad \overline{B(x_1; \varepsilon_1)} \subset U_1 \cap B(x_0; \varepsilon_0)\\
+......\\
+\varepsilon_k < 2^{-k} \varepsilon_0, \quad B(x_k; \varepsilon_k) \subset U_k \cap B(x_{k+1}; \varepsilon_{k+1})
+$$
+
+$\Rightarrow d(x_k, x_{k+1}) < 2^{-(k+1)} \Rightarrow \{x_k\}_{k \ge 1}$ 是 $X$ 中的 Cauchy 列。
+
+由完备性，$\exists x^* \in X$，s.t. $d(x_k, x^*) \to 0$，当 $k \to +\infty$。
+
+$\Rightarrow \forall k \ge k_0, \quad x_k \in B(x_k; \varepsilon_k) \Rightarrow x^* \in \overline{B(x_k, \varepsilon_k)} \subset U_k$
+
+$$
+\Rightarrow x^* \in B(x_0; \varepsilon_0) \cap \left( \bigcap_{j \ge 1} U_j \right) \quad \Rightarrow \bigcap_{j \ge 1} U_j \text{ 是稠密的}.
+$$
+
+
+### 注：
+#### 依赖选择公理
+- 证明用到了“依赖选择公理”：
+  若 $A: X \to 2^X$（$\Rightarrow \forall x \in X, A(x) \subseteq X$ 且 $A(x)$ 非空），则 $\exists \{x_k\}_{k \ge 1} \subseteq X$，s.t. $x_{k+1} \in A(x_k), \quad \forall k \ge 1$。
+  只要从每个点出发都有“下一步可走”（即映射 $A(x)$ 非空），那么就一定能无限地走下去，构造出一条无限长的路径。
+
+- 对于上述选取过程：假定
+  $$
+  X \overset{\text{记}}{=} \left\{ (k, x, \varepsilon) \mid k \ge 1, x \in X, 0 < \varepsilon < 2^{-k}, \overline{B(x; \varepsilon)} \subset U_k \cap B(x_0; \varepsilon_0) \right\}
+  $$
+
+  且
+  $$
+  A(k, x, \varepsilon) := \left\{ (\tilde{k}, \tilde{x}, \tilde{\varepsilon}) \in X \mid \tilde{k} = k+1, B(\tilde{x}; \tilde{\varepsilon}) \subseteq B(x; \varepsilon) \right\}
+  $$
+  从而由依赖选择公理得到选取的无穷序列的存在性
+
+#### 与选择依赖公理的关系
+Baire纲集定理可以推出“依赖选择”公理。
+
+#### 子空间度量不要求完备
+若 $(X, d)$ 是完备度量空间. $M \subseteq X$ 非空开集，则 $(M, d_M \stackrel{\text{定义}}{=} d|_{M \times M})$ 是度量空间且 (Baire纲定理) 成立。此时 $(M, d_M)$ 不要求是完备的。（4的证明过程可知）
+
+#### 剩余集性质
+“$\mathbb{R}$”的剩余集可以是零测集（也就是第一纲集的测度可以是全测度）。
+
+#### 完备性要求
+Baire纲定理对于不完备度量空间不成立。例 $(\Omega, d), d(x,y) = |x-y| \quad \forall x,y \in \Omega$
+
+取 $\chi \in \Omega$. 则 $\{\chi\}$ 是无处稠密集. $\Rightarrow \Omega$ 是第一纲集. $\Rightarrow \Omega$ 中的任何集合是第一纲集且是稀疏集
+
+#### 可分性弱化条件
+对于可分的非空完备度量空间，“Baire纲定理”证明不需要“依赖选择公理”。
+
+### 应用
+
+#### 命题
+若 $C[0,1]$ 中处处不可微的函数集合记为 $E$, 则 $E$ 是非空的且是剩余集（第二纲集）。
+
+##### 证明：
+令 $A_n \stackrel{\text{定义}}{=} \left\{ f \in C[0,1] \mid \exists s \in [0,1], \quad \text{使} |h| \leq \frac{1}{n}, \quad 0 \leq s+h \leq 1 \right.$
+
+有 $\left. |f(s+h) - f(s)| \leq n|h| \right\}$, 即 $A_n$ 中函数至少在一点可微且导数的绝对值 $\leq n$
+
+从而
+$$
+C[0,1] \setminus E \subseteq \bigcup_{n \geq 1} A_n
+$$ 
+
+因此 $\text{结论} \iff A_n \text{ 是无处稠密的}$
+
+- Step 1. 
+
+  $A_n$ 是 $(C[0,1], \| \cdot \|_{L^\infty})$ 下的闭集。即 $C[0,1] \setminus A_n$ 是开集。
+
+  $\forall f \in C[0,1] \setminus A_n$, $f$ 满足 $\forall s \in [0,1], \exists h_s \text{ s.t. } |h_s| \leq \frac{1}{n} \text{ 且 } \underset{0 \leq s+h_s \leq 1}{|f(s+h_s) - f(s)| \geq (n + \delta_s) |h_s|}$
+
+  由 $f$ 的连续性， $\exist \eta_s > 0$. s.t. $\forall t \in [s - \eta_s, s + \eta_s] \cap [0,1]$, 有
+
+  $$ |f(t + h_s) - f(t)| \geq \left(n + \frac{\delta_s}{2}\right) |h_s| $$
+
+  由 $[0,1] \subset \bigcup_{S \in [0,1]} ([s - \eta_s, s + \eta_s] \cap [0,1]) \quad \Rightarrow \quad [0,1] \subseteq \bigcup_{i=1}^N [s_i - \eta_{s_i}, s_i + \eta_{s_i}] \cap [0,1]$
+
+  记 $\delta_0 = \min \left\{ \delta_{s_1}, \cdots, \delta_{s_N} \right\} / 2 \quad h_0 = \min \left\{ |h_{s_1}|, \cdots, |h_{s_N}| \right\}$
+
+  若 $\|g - f\|_\infty \leq \frac{\delta_0}{4} h_0$, 且 $\forall t \in [s_i - \eta_{s_i}, s_i + \eta_{s_i}] \cap [0,1)$
+
+  $$
+  \begin{aligned}
+  |g(t + h_{s_i}) - g(t)| &\geq |f(t + h_{s_i}) - f(t)| - 2 \times \frac{\delta_0}{4} h_0 \\
+  &\geq (n + \delta_0) |h_{s_i}| - \frac{\delta_0}{2} h_0 \geq (n + \frac{\delta_0}{2}) |h_{s_i}|
+  \end{aligned}
+  $$
+
+  $\Rightarrow g \in C[0,1] \setminus A_n \quad \Rightarrow$ 闭集。
+
+- Step 2. 
+  $A_n$ 无内点, $\forall f \in A_n$. $\forall \varepsilon > 0$. 于多项式函数 $P(x)$, s.t. $\|f - P\|_\infty \leq \varepsilon/2$
+
+  $P \in C^p([0,1]) \Rightarrow \exists M > 0$. s.t. $|P(x+h) - P(x)| \leq M |h|$
+
+  构造分段函数 $g$. s.t. $\|g\|_\infty \leq \varepsilon/2$
+
+  且线段的斜率绝对值 $\geq M + n + 1$
+  ![](./functional-analysis4/image.png)
+
+  则 $g + P \in B(f; \varepsilon)$ 但是 $g + P \notin A_n$. $\Rightarrow$ 由 $\epsilon$ 的原子性得到结论
+
+  由于 $(C[0,1]; l^\infty)$ 是完备的. 由 Baire纲集知 $\bigcup_{n \geq 1} A_n$ 是第一纲集 $\Rightarrow E$ 是剩余集。

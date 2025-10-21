@@ -1,201 +1,200 @@
 ---
-title: Ch 2.1 Baire纲集定理
+title: Ch 1.3 度量空间的紧性原理
 tags:
-  - math
   - functional analysis
+  - math
 categories:
   - math
   - functional analysis
 excerpt: 泛函分析课程笔记
-abbrlink: cd27c0e5
-date: 2025-10-01 18:38:26
+date: 2025-09-27 18:06:33
 ---
-# §1 Baire纲集定理
-用于说明可数开稠子集的交仍然是稠密的。
+## Ch 1.3 度量空间的紧性原理
 
-## 定义：Baire 纲集
-$(X, d)$ 是度量空间。
-1. 若 $A \subseteq X$ 满足 $\overline{A}$ 没有内点（即 $\forall x \in \overline{A}, \forall \varepsilon > 0, B(x, \varepsilon) \cap \overline{A}^C \neq \varnothing$），称 $A$ 是无处稠密的。
-2. 若 $A = \bigcup_{i=1}^{\infty} A_i$，$A_i$ 是无处稠密的，则称 $A$ 是第一纲集。
-3. 不是第一纲集的集合称为第二纲集。因若 $A^c$ 是第一纲集，则称 $A$ 是剩余集。
+### 几个概念
 
-
-### 引理1（纲集的性质）：设 $(X, d)$ 是度量空间，则下列结论成立。
-
-1. $A$ 是无处稠密的 $\Leftrightarrow A^c$ 是包含开的稠密集；
-2. 若 $B$ 是第一纲集，$A \subseteq B$，则 $A$ 是第一纲集（即第一纲集的子集是第一纲集）；
-3. 若 $A$ 是第二纲集，$A \subseteq B \subseteq X$，则 $B$ 是第二纲集（即包含第二纲集的集合仍是第二纲集）；
-4. 第一纲集的可数并是第一纲集，剩余集的可数交是剩余集；
-5. $R$ 是剩余集 $\Leftrightarrow R$ 含有可数个开的稠密集的交。
-
-
-#### 证明：
-
-1: 
-首先，不难验证 $X \setminus \overline{A} = \text{int}(X \setminus A)$，其中 $\text{int}(A) = \left\{ x \in A \mid \exists \delta > 0, \text{ s.t. } B(x, \delta) \subseteq A \right\}$。
-
-从而
-$$
-X \setminus \text{int}(\overline{A}) = \overline{X \setminus \overline{A}} = \overline{\text{int}(X \setminus A)}
-$$
-
-“$\Rightarrow$”：若 $\text{int}(\overline{A}) = \varnothing$，$\Rightarrow X = \overline{\text{int}(X \setminus A)}$，即 $X \setminus A$ 是开稠集。由于 $\text{int}(X \setminus A) \subseteq A^c$，$\Rightarrow$ 结论。
-
-“$\Leftarrow$”：若 $A^c$ 包含开稠集，则 $\underbrace{\text{int}(X \setminus A)}_{\text{开}} \supseteq \text{开稠集}$，$\Rightarrow X = \overline{\text{int}(X \setminus A)} = X \setminus \text{int}(\overline{A})$，$\Rightarrow \text{int}(\overline{A}) = \varnothing$，$\Rightarrow$ 依定义。
-
-2, 3, 4 可由定义验证。
-
-5：
-
-“$\Rightarrow$” 若 $R \subseteq X$ 是剩余集，$A = X \setminus R$ 是第一纲集 $\xRightarrow{\text{定义}} A = \bigcup_{j=1}^{\infty} A_j$, $A_j$ 是无处稠密集。
-
-记 $U_i = X \setminus \overline{A_i} = \text{int}(X \setminus A_i)$，从而 $\overline{U_i} = \overline{\text{int}(X \setminus A_i)} = X \setminus \text{int}(\overline{A_i}) = X$ $\Rightarrow U_i$ 是开稠集。
-
-$$
-\bigcap_{i=1}^{\infty} U_i = X \setminus \bigcup_{i=1}^{\infty} \overline{A_i} \subseteq X \setminus \bigcup_{i=1}^{\infty} A_i = R \quad \Rightarrow \text{结论}.
-$$
-
-“$\Leftarrow$” 若 $\bigcap_{i=1}^{\infty} U_i \subseteq R$，其中 $U_i$ 是开稠集。记 $A_i = X \setminus U_i$ $\xRightarrow{\text{引理1①}} A_i$ 是无处稠密集，
-
-$\Rightarrow A = \bigcup_{i=1}^{\infty} A_i$ 是第一纲集，$X \setminus R \subseteq X \setminus \bigcap_{i=1}^{\infty} U_i = \bigcup_{i=1}^{\infty} A_i = A$ $\Rightarrow$ 结论。
-
-
-## Baire纲定理
-若 $(X, d)$ 是非空完备度量空间，则下列结论成立。
-1. 剩余集是稠密的；
-2. $U \subseteq X$ 是非空开集，则 $U$ 是第二纲集；
-3. 若 $A_i \subseteq X$ 是闭集且无内点，则 $\bigcup_{i=1}^{\infty} A_i$ 也无内点；
-4. 若 $U_i \subseteq X$ 开集且稠密，则 $\bigcap_{i=1}^{\infty} U_i$ 是稠密的；
-5. 剩余集是第二纲集。
-
-
-### 命题：若 $(X, d)$ 是度量空间，则 1 $\Leftrightarrow$ 2 $\Leftrightarrow$ 3 $\Leftrightarrow$ 4
-
-#### 证明：
-
-- 1 $\Rightarrow$ 2：由于 $U$ 是开集 $\Rightarrow X \setminus U$ 不是稠密的 $\Rightarrow X \setminus U$ 不是剩余集 $\Rightarrow U$ 不是第一纲集。
-- 2 $\Rightarrow$ 3：由定义知 $\bigcup_{i=1}^{\infty} A_i$ 是第一纲集。（反证法）若 $\bigcup_{i=1}^{\infty} A_i$ 会有内点，即 $\bigcup_{i=1}^{\infty} A_i$ 包含一开集 $\Longrightarrow \bigcup_{i=1}^{\infty} A_i$ 是第二纲集，这与 $\bigcup_{i=1}^{\infty} A_i$ 是第一纲集矛盾，$\Rightarrow$ 结论。
-- 3 $\Rightarrow$ 4：记 $A_i = X \setminus U_i$；$\xRightarrow{\text{由引理1①}} A_i$ 是无处稠密的且是闭集 $\xRightarrow{\text{③}} \bigcup_{i=1}^{\infty} A_i$ 无内点。由于 $\left( \bigcup_{i=1}^{\infty} A_i \right)^C = \bigcap_{i=1}^{\infty} U_i$，从而 $\bigcap_{i=1}^{\infty} U_i$ 是稠密的。否则若 $\bigcap_{i=1}^{\infty} U_i$ 不稠，$\exists x_0 \in X$ 以及 $\varepsilon > 0$，s.t. $B(x_0; \varepsilon) \cap \bigcap_{i=1}^{\infty} U_i = \varnothing$，由上式，有 $B(x_0; \varepsilon) \subseteq \bigcup_{i=1}^{\infty} A_i$，这与条件矛盾。
-- 4 $\Rightarrow$ 1：假设 $R$ 是剩余集，由引理1⑤，$R$ 是稠密的。
-
-### Baire 纲定理的证明
-#### 首先 2 $\Rightarrow$ 5：
-
-假设 $R$ 是剩余集 $\Rightarrow X \setminus R$ 是第一纲集。若 $R$ 是第一纲集，$\Rightarrow X = (X \setminus R) \cup R$ 是第一纲集，这与②矛盾 $\Rightarrow R$ 是第二纲集。（$X$ 是非空开集）。
-
-
-#### 4的证明：
-假设 $U_i$ 是开稠集。则：
-$$
-\bigcap_{i=1}^{\infty} U_i \text{ 是稠密的} \Longleftrightarrow \forall x_0 \in X, \forall \varepsilon_0 > 0, \quad B(x_0; \varepsilon_0) \cap \left( \bigcap_{i=1}^{\infty} U_i \right) \neq \varnothing
-$$
-
-由于 $U_i$ ($i \ge 1$) 是开稠集，$\Rightarrow B(x_0; \varepsilon_0) \cap U_1 \neq \varnothing$，即 $\exists x_1 \in U_1 \cap B(x_0; \varepsilon_0)$。
-
-选取$\epsilon_n$：
-$$
-\varepsilon_1 < \frac{1}{2} \varepsilon_0, \quad \overline{B(x_1; \varepsilon_1)} \subset U_1 \cap B(x_0; \varepsilon_0)\\
-......\\
-\varepsilon_k < 2^{-k} \varepsilon_0, \quad B(x_k; \varepsilon_k) \subset U_k \cap B(x_{k+1}; \varepsilon_{k+1})
-$$
-
-$\Rightarrow d(x_k, x_{k+1}) < 2^{-(k+1)} \Rightarrow \{x_k\}_{k \ge 1}$ 是 $X$ 中的 Cauchy 列。
-
-由完备性，$\exists x^* \in X$，s.t. $d(x_k, x^*) \to 0$，当 $k \to +\infty$。
-
-$\Rightarrow \forall k \ge k_0, \quad x_k \in B(x_k; \varepsilon_k) \Rightarrow x^* \in \overline{B(x_k, \varepsilon_k)} \subset U_k$
-
-$$
-\Rightarrow x^* \in B(x_0; \varepsilon_0) \cap \left( \bigcap_{j \ge 1} U_j \right) \quad \Rightarrow \bigcap_{j \ge 1} U_j \text{ 是稠密的}.
-$$
-
-
-### 注：
-#### 依赖选择公理
-- 证明用到了“依赖选择公理”：
-  若 $A: X \to 2^X$（$\Rightarrow \forall x \in X, A(x) \subseteq X$ 且 $A(x)$ 非空），则 $\exists \{x_k\}_{k \ge 1} \subseteq X$，s.t. $x_{k+1} \in A(x_k), \quad \forall k \ge 1$。
-  只要从每个点出发都有“下一步可走”（即映射 $A(x)$ 非空），那么就一定能无限地走下去，构造出一条无限长的路径。
-
-- 对于上述选取过程：假定
+- **紧集**：假设 $(X, \tau)$ 是拓扑空间。称 $K$ 是紧集，如果  
   $$
-  X \overset{\text{记}}{=} \left\{ (k, x, \varepsilon) \mid k \ge 1, x \in X, 0 < \varepsilon < 2^{-k}, \overline{B(x; \varepsilon)} \subset U_k \cap B(x_0; \varepsilon_0) \right\}
+  K \subseteq \bigcup_{U \in \mathcal{U}} U,\quad \mathcal{U} \subseteq \tau
+  $$  
+  则 $\exists\ \{U_1, \cdots, U_m\} \subseteq \mathcal{U},\ \text{s.t.}\ K \subseteq \bigcup_{i=1}^m U_i$。
+
+- **列紧集**：称度量空间 $(X, d)$ 是列紧的，如果  
   $$
+  \forall\ \{x_n\}_{n=1}^\infty \subseteq X,\ \exists\ \{x_{n_k}\}_{k=1}^\infty \subseteq \{x_n\}_{n=1}^\infty
+  \text{，使得 } \{x_{n_k}\} \text{ 是 } X \text{ 中的收敛列。}
+  $$  
+  若 $K \subseteq X$，称 $K$ 是列紧集，如果 $(K, d_K)$ 是列紧的，其中 $d_K = d|_{K \times K}$。
 
-  且
+- **预紧集**：若 $K \subseteq X = (X, d)$，称 $K$ 是预紧集，如果 $(K, d_K)$ 是列紧的。  
+  称 $K$ 是相对紧集，如果 $\overline{K}$ 是紧集。
+
+- **完全有界集**：$K \subseteq X = (X, d)$，称 $K$ 是完全有界集，如果 $K = \emptyset$ 或者 $\forall\ \varepsilon > 0$，  
+  $\exists\ x_1, \cdots, x_m \in K,\ \text{s.t.}\ K \subseteq \bigcup_{i=1}^m B(x_i; \varepsilon) \overset{\text{def}}{=} \left\{ y \in X \mid d(y, x_i) < \varepsilon \right\}$。
+
+### 定理1（度量空间紧集的刻画）
+
+设 $(X, d)$ 是度量空间，$K \subseteq X$，则下列论断等价：
+
+- **(a)** $K$ 是列紧集  
+- **(b)** $K$ 是完备的且是完全有界集  
+  （注：$(K, d_K)$ 是完备的）  
+- **(c)** $K$ 是紧集
+
+> **注**：
+> 1. 这表明“紧”与“列紧”在度量空间中的等价性。作为应用，“紧”的定义可以由“序列有收敛子列”替代。也表明**预紧与预列紧是等价的**。
+> 2. 在“弱拓扑”与“弱*拓扑”下，“紧”与“列紧”不是等价的。
+
+### 引理2
+
+若 $(X,d)$ 是度量空间, $K \subseteq X$, 则下面论断等价：
+
+1. $K$ 中的任何点列都存在 Cauchy 子列  
+2. $K$ 是完全有界集
+
+**证明**：
+
+- **1 $\Rightarrow$ 2**：（反证法）假设 $\exists \varepsilon_0 > 0$，$\forall n \in \mathbb{N}$，$\forall \{x_j\}_{j=1}^n \subseteq K$，有 $K \not\subseteq \bigcup_{j=1}^n B(x_j; \varepsilon_0)$。  
+  则 $K$ 是无限集。取定 $x_1 \in K$，$\Rightarrow \exists x_2 \in K \setminus B(x_1; \varepsilon)$，$\Rightarrow \exists x_3 \in K \setminus (B(x_1; \varepsilon) \cup B(x_2; \varepsilon))$。  
+  由此可以得到序列 $\{x_m\}_{m \geq 1}$ 满足 $d(x_i, x_j) \geq \varepsilon$（$i \ne j$），这与1矛盾。
+
+- **2 $\Rightarrow$ 1**：不妨假设 $\{x_n\}_{n \geq 1} \subseteq K$。由 $K$ 是完全有界的，取 $\varepsilon = 1$，$\Rightarrow \{x_n\}_{n \geq 1} \subseteq \bigcup_{j=1}^m B(y_j; 1)$。  
+  $\Rightarrow \exists y_1 \in \{\xi_1, \cdots, \xi_m\}$ 以及子列 $\{x_n^{(1)}\}_{n \geq 1} \subseteq \{x_n\}_{n \geq 1}$，s.t. $\{x_n^{(1)}\}_{n \geq 1} \subseteq B(y_k; 1)$（至少有一个 $B(\xi_j; 1)$ 包含 $\{x_n\}_{n \geq 1}$ 中无限个元素）。  
+  同理，对于 $\{x_n^{(1)}\}$，$\exists \{x_n^{(2)}\}_{n \geq 1} \subseteq \{x_n^{(1)}\}_{n \geq 1}$ 以及 $y_2 \in K$，s.t. $\{x_n^{(2)}\}_{n \geq 1} \subseteq B(y_2; \frac{1}{2})$。  
+  $\Rightarrow \exists \{x_n^{(k)}\}$ 以及 $y_k \in K$，s.t. $\{x_n^{(k)}\} \subseteq \{x_n^{(k-1)}\}$ 且 $\{x_n^{(k)}\}_{n \geq 1} \subseteq B(y_k; \frac{1}{k})$。  
+  取对角线序列 $\{x_n^{(n)}\}_{n \geq 1}$，则  
   $$
-  A(k, x, \varepsilon) := \left\{ (\tilde{k}, \tilde{x}, \tilde{\varepsilon}) \in X \mid \tilde{k} = k+1, B(\tilde{x}; \tilde{\varepsilon}) \subseteq B(x; \varepsilon) \right\}
+  \forall i,j \geq 1 \, , d(x_i^{(i)}, x_j^{(j)}) \leq 2 \max \left\{ \frac{1}{i}, \frac{1}{j} \right\}
+  $$  
+  故 $\{x_n^{(n)}\}$ 是 Cauchy 列。
+
+### 定理1的证明
+
+- **1 $\Leftrightarrow$ 2**：由引理2可知。
+
+- **1 $\Leftrightarrow$ 3**（即“列紧”$\Leftrightarrow$“紧”）：
+
+  - **1 $\Rightarrow$ 3**：（反证法）假设开覆盖 $\bigcup_{\lambda \in \Lambda} G_{\lambda} \supseteq K$ 不能取出有限子覆盖。  
+    由于 $K$ 是列紧（$\Rightarrow$ 完全有界），$\forall n \in \mathbb{N}$，存在有限集 $N_n = \{x_1^{(n)}, \cdots, x_{k_n}^{(n)}\} \subseteq K$，s.t. $K \subseteq \bigcup_{x \in N_n} B(x; \frac{1}{n})$。  
+    $\Rightarrow \exists y_n \in N_n \subseteq K$ s.t. $K \cap B(y_n; \frac{1}{n})$ 不能被有限个 $G_\lambda$ 覆盖。  
+    此时 $\{y_n\} \subseteq K$ 且 $K$ 是列紧的，$\Rightarrow \exists \{y_{n_k}\}$ s.t $y_{n_k} \to y_0 \in K$。  
+    于是 $\Rightarrow \exists \lambda_0 \in \Lambda$ s.t. $y_0 \in G_{\lambda_0}$，$\Rightarrow \exists \delta = \delta(y_0)$，s.t. $B(y_0; \delta) \cap K \subseteq G_{\lambda_0}$。  
+    当 $n_k \gg 1$ 时，$d(y_{n_k}, y_0) < \delta/2$，$\Rightarrow \forall x \in B(y_{n_k}; \frac{1}{n_k}) \cap K$，  
+    $$
+    d(x, y_0) < d(x, y_{n_k}) + d(y_{n_k}, y_0) < \frac{1}{n_k} + \frac{\delta}{2} < \delta
+    $$  
+    即 $B(y_{n_k}; \frac{1}{n_k}) \cap K \subset G_{\lambda_0}$，这与不能有限覆盖矛盾。
+
+  - **3 $\Rightarrow$ 1**：  
+    - **Step1**：若 $K$ 是紧集，则 $K$ 是闭集。  
+      任取 $x_0 \in K^c$，则 $K \subseteq \bigcup_{x \in K} B(x; \frac{1}{2}d(x_0, x))$。由于 $K$ 是紧集，存在有限子覆盖 $K \subseteq \bigcup_{i=1}^{N} B(x_i; \frac{1}{2}d(x_0, x_i))$。  
+      取 $\delta = \min_{1 \le i \le N} \frac{1}{4}d(x_0; x_i)$，则任取 $x \in B(x_0; \delta)$，有  
+      $$
+      d(x, x_i) \ge d(x_i, x_0) - d(x, x_0) \ge \frac{3}{4}d(x_i, x_0) \quad \forall 1 \le i \le N
+      $$  
+      $\Rightarrow B(x_0; \delta) \cap K = \emptyset$，$\Rightarrow B(x_0; \delta) \subseteq K^c$，故 $K^c$ 是开集，$K$ 是闭集。
+
+    - **Step2**：（反证法）假设 $K$ 中存在序列 $\{x_n\}_{n \ge 1}$ 不含有 Cauchy 子列，不妨设 $\{x_n\}_{n \ge 1}$ 互异。  
+      记 $S_n \overset{\text{定义}}{=} \{x_n\}_{n \ge 1}^\infty \setminus \{x_n\}$，则 $S_n$ 是闭集，故 $X \setminus S_n^c$ 是开集。  
+      $K \subseteq X = \bigcup_{n=1}^{\infty} (X \cap S_n^c)$，由紧性 $\Rightarrow \exists N \in \mathbb{N}$ s.t. $K \subset \bigcup_{n=1}^{N} (X \cap S_n^c)$。  
+      但 $\{x_n\}_{n > 1} \cap K \subseteq \bigcup_{n=1}^{N} \{x_n\}$，矛盾。  
+      结合 Step1 和 Step2，$K$ 是列紧集。
+
+### 推论
+
+#### 推论1
+任意紧度量空间是可分的。（由完备有界集 $\Rightarrow$ 可数稠密子集）
+
+#### 推论2
+$(X, d)$ 是度量空间，$K \subseteq X$。则下列等价：
+
+1. $K$ 是预紧集  
+2. $K$ 中的序列存在 $X$ 中的收敛子列  
+3. $K$ 是完备有界集且 $K$ 中的 Cauchy 列是 $X$ 中的收敛列
+
+### Arzelà-Ascoli 定理
+
+#### 定义
+$C(X, Y) \overset{\text{定义}}{=} \{ f: (X, d_X) \to (Y, d_Y) \mid f \text{连续} \}$。  
+$\forall f, g \in C(X, Y)$，定义 $d(f, g) \overset{\text{定义}}{=} \sup_{x \in X} d_Y(f(x), g(x))$。
+
+#### 命题4
+$(C(X, Y), d(\cdot, \cdot))$ 是完备的当且仅当 $(Y, d_Y)$ 是完备的。
+
+#### 等度连续的定义
+称 $\mathcal{F} \subseteq C(X, Y)$ 是等度连续的，如果 $\forall \varepsilon > 0$，$\exists \delta > 0$，s.t. $\forall x, x' \in X$ 以及 $f \in \mathcal{F}$，如果 $d(x, x') < \delta$，则 $d_Y(f(x), f(x')) < \varepsilon$。
+
+#### Arzelà-Ascoli定理
+假设 $(X, d_X), (Y, d_Y)$ 是度量空间，$X$ 是紧的，$\mathcal{F} \subset C(X, Y)$，则  
+1. $\mathcal{F}$ 是预紧集  
+2. $\mathcal{F}$ 是等度连续的且 $\forall x \in X$，$\mathcal{F}(x) \overset{\text{定义}}{=} \{f(x) \mid x \in X\}$ 是 $Y$ 中的预紧集（也称 $\mathcal{F}$ 是点态列紧）
+
+**证明**：
+
+- **1 $\Rightarrow$ 2**：  
+  记 $T_x: C(X; Y) \to Y$ s.t. $\forall f \in C(X; Y)$，$T_x(f) = f(x)$。  
+  则  
   $$
-  从而由依赖选择公理得到选取的无穷序列的存在性
-
-#### 与选择依赖公理的关系
-Baire纲集定理可以推出“依赖选择”公理。
-
-#### 子空间度量不要求完备
-若 $(X, d)$ 是完备度量空间. $M \subseteq X$ 非空开集，则 $(M, d_M \stackrel{\text{定义}}{=} d|_{M \times M})$ 是度量空间且 (Baire纲定理) 成立。此时 $(M, d_M)$ 不要求是完备的。（4的证明过程可知）
-
-#### 剩余集性质
-“$\mathbb{R}$”的剩余集可以是零测集（也就是第一纲集的测度可以是全测度）。
-
-#### 完备性要求
-Baire纲定理对于不完备度量空间不成立。例 $(\Omega, d), d(x,y) = |x-y| \quad \forall x,y \in \Omega$
-
-取 $\chi \in \Omega$. 则 $\{\chi\}$ 是无处稠密集. $\Rightarrow \Omega$ 是第一纲集. $\Rightarrow \Omega$ 中的任何集合是第一纲集且是稀疏集
-
-#### 可分性弱化条件
-对于可分的非空完备度量空间，“Baire纲定理”证明不需要“依赖选择公理”。
-
-### 应用
-
-#### 命题
-若 $C[0,1]$ 中处处不可微的函数集合记为 $E$, 则 $E$ 是非空的且是剩余集（第二纲集）。
-
-##### 证明：
-令 $A_n \stackrel{\text{定义}}{=} \left\{ f \in C[0,1] \mid \exists s \in [0,1], \quad \text{使} |h| \leq \frac{1}{n}, \quad 0 \leq s+h \leq 1 \right.$
-
-有 $\left. |f(s+h) - f(s)| \leq n|h| \right\}$, 即 $A_n$ 中函数至少在一点可微且导数的绝对值 $\leq n$
-
-从而
-$$
-C[0,1] \setminus E \subseteq \bigcup_{n \geq 1} A_n
-$$ 
-
-因此 $\text{结论} \iff A_n \text{ 是无处稠密的}$
-
-- Step 1. 
-
-  $A_n$ 是 $(C[0,1], \| \cdot \|_{L^\infty})$ 下的闭集。即 $C[0,1] \setminus A_n$ 是开集。
-
-  $\forall f \in C[0,1] \setminus A_n$, $f$ 满足 $\forall s \in [0,1], \exists h_s \text{ s.t. } |h_s| \leq \frac{1}{n} \text{ 且 } \underset{0 \leq s+h_s \leq 1}{|f(s+h_s) - f(s)| \geq (n + \delta_s) |h_s|}$
-
-  由 $f$ 的连续性， $\exist \eta_s > 0$. s.t. $\forall t \in [s - \eta_s, s + \eta_s] \cap [0,1]$, 有
-
-  $$ |f(t + h_s) - f(t)| \geq \left(n + \frac{\delta_s}{2}\right) |h_s| $$
-
-  由 $[0,1] \subset \bigcup_{S \in [0,1]} ([s - \eta_s, s + \eta_s] \cap [0,1]) \quad \Rightarrow \quad [0,1] \subseteq \bigcup_{i=1}^N [s_i - \eta_{s_i}, s_i + \eta_{s_i}] \cap [0,1]$
-
-  记 $\delta_0 = \min \left\{ \delta_{s_1}, \cdots, \delta_{s_N} \right\} / 2 \quad h_0 = \min \left\{ |h_{s_1}|, \cdots, |h_{s_N}| \right\}$
-
-  若 $\|g - f\|_\infty \leq \frac{\delta_0}{4} h_0$, 且 $\forall t \in [s_i - \eta_{s_i}, s_i + \eta_{s_i}] \cap [0,1)$
-
+  d_Y(T_x(f), T_x(g)) = d_Y(f(x), g(x)) \le d(f, g) \Rightarrow T_x \in C(C(X; Y); Y)
+  $$  
+  连续映射将预列紧集映射至预列紧集，故 $\mathcal{F}$ 是点态列紧。  
+  假设 $\mathcal{F}$ 非空。对于固定的 $\varepsilon > 0$，根据预紧性，存在有限集 $\{f_1, \cdots, f_m\} \subseteq \mathcal{F}$，使得  
+  $$
+  \mathcal{F} \subset \bigcup_{i=1}^{m} B\left(f_i; \frac{\varepsilon}{3}\right)
+  $$  
+  由于 $X$ 是紧集，每个 $f_i$（$1 \le i \le m$）是一致连续的。因此，存在 $\delta > 0$，使得对任意 $x, x' \in X$，若 $d(x, x') < \delta$，则  
+  $$
+  d_Y(f_i(x), f_i(x')) < \frac{\varepsilon}{3} \quad (\forall 1 \le i \le m)
+  $$  
+  现在，对任意 $f \in \mathcal{F}$，存在 $1 \le i \le m$，使得 $d(f_i, f) < \frac{\varepsilon}{3}$。于是，对任意 $x, x' \in X$ 满足 $d(x, x') < \delta$，有  
   $$
   \begin{aligned}
-  |g(t + h_{s_i}) - g(t)| &\geq |f(t + h_{s_i}) - f(t)| - 2 \times \frac{\delta_0}{4} h_0 \\
-  &\geq (n + \delta_0) |h_{s_i}| - \frac{\delta_0}{2} h_0 \geq (n + \frac{\delta_0}{2}) |h_{s_i}|
+  d_Y(f(x), f(x')) &\le d_Y(f(x), f_i(x)) + d_Y(f_i(x), f_i(x')) + d_Y(f_i(x'), f(x')) \\
+  &\le 2d(f_i, f) + d_Y(f_i(x), f_i(x')) \\
+  &< 2 \cdot \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon
   \end{aligned}
+  $$  
+  因此，$\mathcal{F}$ 是等度连续的。
+
+- **2 $\Rightarrow$ 1**：  
+  假设 $\mathcal{F}$ 是等度连续的，且对每个 $x \in X$，$\mathcal{F}(x)$ 是 $Y$ 中的预紧集。需要证明 $\mathcal{F}$ 是预紧集。  
+  由于 $X$ 是紧度量空间，可取可数稠密子集 $\{x_k\}_{k \in \mathbb{N}}$。设 $\{f_m\}_{m \ge 1} \subseteq \mathcal{F}$。  
+  由点态列紧性，使用对角线法则构造子列 $\{g_j := f_{m_j}\}_{j \ge 1} \subseteq \mathcal{F}$，使得对每个 $k \ge 1$，序列 $\{f_{m_j}(x_k)\}$ 在 $Y$ 中收敛。  
+  固定 $\varepsilon > 0$。  
+  - 由等度连续性，存在 $\delta > 0$，使得对任意 $x, x' \in X$，若 $d(x, x') < \delta$，则  
+    $$
+    d_Y(f(x), f(x')) < \frac{\varepsilon}{3} \quad \forall f \in \mathcal{F}
+    $$  
+  - 由于 $X$ 是紧集且 $\{x_k\}$ 稠密，存在有限子覆盖：  
+    $$
+    X = \bigcup_{k=1}^{N} B(x_k; \delta)
+    $$  
+  - 由于对每个 $1 \le k \le N$，序列 $\{f_{m_j}(x_k)\}$ 收敛，存在 $J > 0$，使得对任意 $1 \le k \le N$，  
+    $$
+    d_Y(f_{m_j}(x_k), f_{m_i}(x_k)) < \frac{\varepsilon}{3} \quad \forall i \ge j \ge J
+    $$  
+  现在，对任意 $x \in X$，存在 $1 \le \hat{k} \le N$，使得 $x \in B(x_{\hat{k}}; \delta)$。于是，对任意 $i \ge j \ge J$，  
   $$
+  \begin{aligned}
+  d_Y(f_{m_i}(x), f_{m_j}(x)) &\le d_Y(f_{m_i}(x), f_{m_i}(x_{\hat{k}})) + d_Y(f_{m_i}(x_{\hat{k}}), f_{m_j}(x_{\hat{k}})) + d_Y(f_{m_j}(x_{\hat{k}}), f_{m_j}(x)) \\
+  &< \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} = \varepsilon
+  \end{aligned}
+  $$  
+  因此，$\{f_{m_j}\}$ 是 $C(X; Y)$ 中的 Cauchy 列。  
+  由预紧性，$\{f_{m_j}\}$ 在 $C(X; Y)$ 中收敛，故 $\mathcal{F}$ 是预紧集。
 
-  $\Rightarrow g \in C[0,1] \setminus A_n \quad \Rightarrow$ 闭集。
+### 推论5
 
-- Step 2. 
-  $A_n$ 无内点, $\forall f \in A_n$. $\forall \varepsilon > 0$. 于多项式函数 $P(x)$, s.t. $\|f - P\|_\infty \leq \varepsilon/2$
+$(X, d)$ 是紧度量空间，$\mathcal{F} \subset C(X; \mathbb{R}^n)$，则
 
-  $P \in C^p([0,1]) \Rightarrow \exists M > 0$. s.t. $|P(x+h) - P(x)| \leq M |h|$
+1. $\mathcal{F}$ 是预紧的 $\Leftrightarrow$ $\mathcal{F}$ 是有界的（即 $\sup_{f \in \mathcal{F}} \sup_{x \in X} |f(x)| < +\infty$）且等度连续。  
+2. $\mathcal{F}$ 是紧 $\Leftrightarrow$ $\mathcal{F}$ 有界、闭且等度连续。
 
-  构造分段函数 $g$. s.t. $\|g\|_\infty \leq \varepsilon/2$
-
-  且线段的斜率绝对值 $\geq M + n + 1$
-  ![](./functional-analysis4/image.png)
-
-  则 $g + P \in B(f; \varepsilon)$ 但是 $g + P \notin A_n$. $\Rightarrow$ 由 $\epsilon$ 的原子性得到结论
-
-  由于 $(C[0,1]; l^\infty)$ 是完备的. 由 Baire纲集知 $\bigcup_{n \geq 1} A_n$ 是第一纲集 $\Rightarrow E$ 是剩余集。
+> **注**：Arzelà-Ascoli定理中以下条件缺一不可：
+> 1. 条件 “$(X, d)$ 是紧的”  
+> 2. 条件 “$\mathcal{F}$ 是点态紧”  
+> 3. 条件 “等度连续”  
+> 
+> **例10**：$X = [0, 1]$，$\{f_n(x) := x^n\}_{n \ge 1}$ 满足1、2，但不满足3。  
+> **例11**：$X = \mathbb{R}$（不满足1），$f_n(x) = \begin{cases} 0 & x \in [n, n+1] \\ 2(x-n) & x \in [n, n+\frac{1}{2}] \\ 2 - 2(x-n) & x \in [n+\frac{1}{2}, n+1] \end{cases}$ 满足2、3，但 $\|f_n - f_m\|_\infty = 1$（$\forall n \ne m$）。  
+> **例12**：$X = [0, 1]$，$f_n(x) = n$ 满足1、3，但不满足2。

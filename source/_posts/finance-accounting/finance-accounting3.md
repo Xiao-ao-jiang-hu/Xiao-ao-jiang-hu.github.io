@@ -308,7 +308,7 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 
 **Beginning Balances:**
 
-| Account                    | Debit (Left)     | Credit (Right)   |
+| Account                    | Debit            | Credit           |
 | -------------------------- | ---------------- | ---------------- |
 | Cash                       | Beg. bal. 900    |                  |
 | Notes Receivable           | Beg. bal. 1,000  |                  |
@@ -319,7 +319,7 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 | Additional Paid-in Capital |                  | Beg. bal. 3,000  |
 | Retained Earnings          |                  | Beg. bal. 10,000 |
 
-### T-Accounts过账过程
+### Answers
 
 #### Cash (Debit Balance)
 - **Beginning Balance**: $900 (Debit)
@@ -329,12 +329,12 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 - **Transaction d**: Purchased equipment, paid cash → Decrease Cash → Credit $5,000
 
 **T-Account for Cash:**
-| Debit (Left)         | Credit (Right) |
-| -------------------- | -------------- |
-| Beg. bal. 900        |                |
-| a. 30,000            | b. 10,000      |
-| c. 500               | d. 5,000       |
-| **End. bal. 16,400** |                |
+| Debit                | Credit    |
+| -------------------- | --------- |
+| Beg. bal. 900        |           |
+| a. 30,000            | b. 10,000 |
+| c. 500               | d. 5,000  |
+| **End. bal. 16,400** |           |
 
 **期末余额**: $16,400 (Debit)
 
@@ -343,11 +343,11 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 - **Transaction b**: Lent $10,000, accepted note → Increase Notes Receivable → Debit $10,000
 
 **T-Account for Notes Receivable:**
-| Debit (Left)         | Credit (Right) |
-| -------------------- | -------------- |
-| Beg. bal. 1,000      |                |
-| b. 10,000            |                |
-| **End. bal. 11,000** |                |
+| Debit                | Credit |
+| -------------------- | ------ |
+| Beg. bal. 1,000      |        |
+| b. 10,000            |        |
+| **End. bal. 11,000** |        |
 
 **期末余额**: $11,000 (Debit)
 
@@ -356,11 +356,11 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 - **Transaction d**: Purchased equipment → Increase Equipment → Debit $15,000
 
 **T-Account for Equipment:**
-| Debit (Left)         | Credit (Right) |
-| -------------------- | -------------- |
-| Beg. bal. 15,100     |                |
-| d. 15,000            |                |
-| **End. bal. 30,100** |                |
+| Debit                | Credit |
+| -------------------- | ------ |
+| Beg. bal. 15,100     |        |
+| d. 15,000            |        |
+| **End. bal. 30,100** |        |
 
 **期末余额**: $30,100 (Debit)
 
@@ -370,12 +370,12 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 - **Transaction d**: Signed note for equipment → Increase Notes Payable → Credit $10,000
 
 **T-Account for Notes Payable:**
-| Debit (Left) | Credit (Right)       |
-| ------------ | -------------------- |
-|              | Beg. bal. 3,000      |
-|              | a. 30,000            |
-|              | d. 10,000            |
-|              | **End. bal. 43,000** |
+| Debit | Credit               |
+| ----- | -------------------- |
+|       | Beg. bal. 3,000      |
+|       | a. 30,000            |
+|       | d. 10,000            |
+|       | **End. bal. 43,000** |
 
 **期末余额**: $43,000 (Credit)
 
@@ -384,11 +384,11 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 - **Transaction e**: Declared cash dividends → Increase Dividends Payable → Credit $2,000
 
 **T-Account for Dividends Payable:**
-| Debit (Left) | Credit (Right)      |
-| ------------ | ------------------- |
-|              | Beg. bal. 0         |
-|              | e. 2,000            |
-|              | **End. bal. 2,000** |
+| Debit | Credit              |
+| ----- | ------------------- |
+|       | Beg. bal. 0         |
+|       | e. 2,000            |
+|       | **End. bal. 2,000** |
 
 **期末余额**: $2,000 (Credit)
 
@@ -397,11 +397,11 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 - **Transaction c**: Sold shares → Increase Common Stock → Credit $10 (100 shares × $0.10 par value)
 
 **T-Account for Common Stock:**
-| Debit (Left) | Credit (Right)      |
-| ------------ | ------------------- |
-|              | Beg. bal. 1,000     |
-|              | c. 10               |
-|              | **End. bal. 1,010** |
+| Debit | Credit              |
+| ----- | ------------------- |
+|       | Beg. bal. 1,000     |
+|       | c. 10               |
+|       | **End. bal. 1,010** |
 
 **期末余额**: $1,010 (Credit)
 
@@ -410,11 +410,11 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 - **Transaction c**: Sold shares → Increase Additional Paid-in Capital → Credit $490 (100 shares × $5 market price - $10 par value)
 
 **T-Account for Additional Paid-in Capital:**
-| Debit (Left) | Credit (Right)      |
-| ------------ | ------------------- |
-|              | Beg. bal. 3,000     |
-|              | c. 490              |
-|              | **End. bal. 3,490** |
+| Debit | Credit              |
+| ----- | ------------------- |
+|       | Beg. bal. 3,000     |
+|       | c. 490              |
+|       | **End. bal. 3,490** |
 
 **期末余额**: $3,490 (Credit)
 
@@ -423,15 +423,17 @@ e. Declared $2,000 in cash dividends to stockholders, to be paid in February.
 - **Transaction e**: Declared cash dividends → Decrease Retained Earnings → Debit $2,000
 
 **T-Account for Retained Earnings:**
-| Debit (Left) | Credit (Right)      |
-| ------------ | ------------------- |
-| e. 2,000     | Beg. bal. 10,000    |
-|              | **End. bal. 8,000** |
+| Debit    | Credit              |
+| -------- | ------------------- |
+| e. 2,000 | Beg. bal. 10,000    |
+|          | **End. bal. 8,000** |
 
 **期末余额**: $8,000 (Credit)
 
 ## M2-11
 Complete M2-10 and then prepare a trial balance for JonesSpa Corporation as of January 31.
+
+### Answers
 
 | Account                    | Debit ($)  | Credit ($) |
 | -------------------------- | ---------- | ---------- |
@@ -444,3 +446,450 @@ Complete M2-10 and then prepare a trial balance for JonesSpa Corporation as of J
 | Additional Paid-in Capital |            | 3,490      |
 | Retained Earnings          |            | 8,000      |
 | **Total**                  | **57,500** | **57,500** |
+
+
+## E2-14
+**Recording Journal Entries**
+Alphabet Inc. is the parent company for a collection of businesses—the largest of which is Google. The following activities were adapted from a recent annual report of Alphabet Inc. Dollars are in millions; shares are as shown.
+
+a. Issued 8,000 shares of $0.001 par value stock for $202.  
+b. Ordered $6,540 of equipment.  
+c. Collected $1,419 cash on a note receivable.  
+d. Borrowed $4,291 from banks, signing long-term notes.  
+e. Sold short-term investments at their cost of $73,959.  
+f. Received equipment ordered in (b); paid cash.  
+g. Repurchased its common stock for $4,846 cash.  
+h. Repaid $4,377 cash on bank borrowings (ignore interest).
+
+**Required:**  
+Prepare journal entries for transactions (a) through (h). Show your answers in millions of dollars. Be sure to use good referencing and categorize each account as an asset (A), liability (L), or stockholders’ equity (SE) item. If a transaction does not require a journal entry, explain the reason.
+
+### Answers
+**(a) Issued 8,000 shares of $0.001 par value stock for $202.**
+- 现金增加，股本按面值增加，溢价部分计入资本公积。
+- 计算：
+    - 面值 = 8,000 股 × $0.001百万/股 = $8
+    - 资本公积 = $202 - $8 = $194
+- **日记账分录：**
+  借：现金 (A) 202
+  贷：股本 (SE) 8
+  贷：资本公积 (SE) 194
+
+**(b) Ordered $6,540 of equipment.**
+- 不需要日记账分录。
+- **原因：** 这只是一个采购订单，尚未产生具有约束力的支付义务或导致资产所有权的转移。在收到货物之前，不记录任何会计交易。
+
+**(c) Collected $1,419 cash on a note receivable.**
+- 一项资产（现金）增加，另一项资产（应收票据）减少。
+- **日记账分录：**
+  借：现金 (A) 1,419
+  贷：应收票据 (A) 1,419
+
+**(d) Borrowed $4,291 from banks, signing long-term notes.**
+- 现金和长期负债同时增加。
+- **日记账分录：**
+  借：现金 (A) 4,291
+  贷：长期应付票据 (L) 4,291
+
+**(e) Sold short-term investments at their cost of $73,959.**
+- 按成本价出售，没有产生收益或损失。
+- **日记账分录：**
+  借：现金 (A) 73,959
+  贷：短期投资 (A) 73,959
+
+**(f) Received equipment ordered in (b); paid cash.**
+- 资产（设备）增加，资产（现金）减少。
+- **日记账分录：**
+  借：设备 (A) 6,540
+  贷：现金 (A) 6,540
+
+**(g) Repurchased its common stock for $4,846 cash.**
+- 库存股是股东权益的备抵科目（ contra-SE account）。
+- **日记账分录：**
+  借：库存股 (SE) 4,846
+  贷：现金 (A) 4,846
+
+**(h) Repaid $4,377 cash on bank borrowings (ignore interest).**
+- 现金和负债同时减少。由于未指明是短期还是长期，使用“应付票据”通用账户。
+- **日记账分录：**
+  借：应付票据 (L) 4,377
+  贷：现金 (A) 4,377
+
+
+## E3-1
+E3-1 Matching Definitions with Terms  
+Match each definition with its related term by entering the appropriate letter in the space provided. There should be only one definition per term (that is, there are more definitions than terms).
+
+| Term                                                                                                | Definition                                                                                                                               |
+| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| **K** (1) Expenses                                                                                  | A. Report the long life of a company in shorter periods.                                                                                 |
+| **E** (2) Gains                                                                                     | B. Record expenses in the same time period as incurred in earning revenue.                                                               |
+| **G** (3) Revenue recognition principle                                                             | C. The time it takes to purchase goods or services from suppliers, sell goods or services to customers, and collect cash from customers. |
+| **I** (4) Cash basis accounting                                                                     | D. Record revenues when earned and expenses when incurred.                                                                               |
+| **M** (5) Unearned revenue                                                                          | E. Result primarily from the disposal of assets for more than their cost minus the amount of cost depreciated in the past.               |
+| **C** (6) Operating cycle                                                                           | F. An asset account used to record cash paid before expenses have been incurred.                                                         |
+| **D** (7) Accrual basis accounting                                                                  | G. Revenues are recognized when the company transfers promised goods or services to customers in the amount it expects to receive.       |
+| **F** (8) Prepaid expenses                                                                          | H. Result primarily from the disposal of assets for less than their cost minus the amount of cost depreciated in the past.               |
+| **J** (9) Revenues – Expenses = Net Income                                                          | I. Record revenues when received and expenses when paid.                                                                                 |
+| **L** (10) Ending Retained Earnings = Beginning Retained Earnings + Net Income – Dividends Declared | J. The income statement equation.                                                                                                        |
+|                                                                                                     | K. The costs of operating the business that are incurred to generate revenues during the period.                                         |
+|                                                                                                     | L. The retained earnings equation.                                                                                                       |
+|                                                                                                     | M. A liability account used to record cash received before revenues have been earned.                                                    |
+
+
+## E3-2
+Revenues are normally recognized when the company transfers promised goods or services in the amount the company expects to be entitled to receive. Assume that the following transactions occurred in **September**:
+
+a. A popular ski magazine company receives a total of $12,345 today from subscribers. The subscriptions begin in the next fiscal year. Answer from the magazine company's standpoint.
+
+b. On September 1 of the current year, a bank lends $15,000 to a company; the note principal and $1,500 ($15,000 × 10 percent) annual interest are due in one year. Answer from the bank's standpoint.
+
+c. Fucillo Automotive Group (offering a wide variety of car and truck brands) sells a Ford F-150 truck with a list, or “sticker,” price of $34,050 for $32,000 cash.
+
+d. Macy’s department store orders 1,000 men’s shirts for $21 each for future delivery from PVH Corp., manufacturer of IZOD, ARROW, Van Heusen, Calvin Klein, and Tommy Hilfiger and other brand-name apparel. The terms require payment in full within 30 days of delivery. Answer from PVH Corp.’s standpoint.
+
+e. PVH Corp. completes production of the shirts described in (d) and delivers the order. Answer from PVH’s standpoint.
+
+f. PVH Corp. receives payment from Macy’s for the events described in (d) and (e). Answer from PVH’s standpoint.
+
+g. A customer purchases a ticket from American Airlines for $780 cash to travel the following January. Answer from American Airlines’s standpoint.
+
+h. Ford Motor Company issues $15 million in new common stock.
+
+i. Michigan State University receives $27,440,000 cash for 80,000 seven-game season football tickets to be played in the upcoming season.
+
+j. Michigan State plays the first football game referred to in (i).
+
+k. Precision Builders signs a contract with a customer for the construction of a new $1,500,000 warehouse. At the signing, Precision receives a check for $200,000 as a deposit on the future construction. Answer from Precision’s standpoint.
+
+l. Best Buy receives inventory of 100 laptop computers from Dell; Best Buy promises to pay $60,000 within three months. Answer from Dell’s standpoint.
+
+m. Amazon.com delivers a $300 lamp to a customer who charges the purchase on his Amazon Store Card. Answer from Amazon’s standpoint.
+
+*Required:*  
+For each of the transactions, if revenue is to be recognized in September, indicate the revenue account title and amount. If revenue is not to be recognized in September, explain why.
+
+### Answers
+a. 不在9月确认收入。原因：公司在9月尚未转移承诺的服务（杂志交付）。收到的现金记录为未实现收入（一项负债）。
+
+b. 在9月确认收入。收入账户标题：利息收入，金额：125美元。
+
+c. 在9月确认收入。收入账户标题：销售收入，金额：32,000美元。
+
+d. 不在9月确认收入。原因：货物在9月尚未交付。这只是一个订单，尚未发生货物转移。
+
+e. 在9月确认收入（假设交付发生在9月）。收入账户标题：销售收入，金额：21,000美元。
+
+f. 不在9月确认收入。原因：收入已在交易(e)中的交付时确认。收到付款只是应收账款的回收。
+
+g. 不在9月确认收入。原因：航班服务（旅行）将在1月提供，因此在9月尚未转移服务。收到的现金记录为未实现收入。
+
+h. 不在9月确认收入。原因：发行股票是融资活动，不是收入生成活动。它增加权益，但不代表来自商品或服务的收入。
+
+i. 不在9月确认收入。原因：足球比赛在9月尚未进行，因此尚未提供服务。收到的现金记录为未实现收入。
+
+j. 在9月确认收入（假设比赛在9月进行）。收入账户标题：门票收入，金额：3,920,000美元。
+
+k. 不在9月确认收入。原因：在9月尚未进行建筑施工。定金记录为未实现收入（一项负债），直到工作开始。
+
+l. 在9月确认收入。收入账户标题：销售收入，金额：60,000美元。
+
+m. 在9月确认收入。收入账户标题：销售收入，金额：300美元。
+
+## E3-3
+Revenues are normally recognized when a company transfers promised goods or services to customers in the amount the company expects to be entitled to receive. Expense recognition is guided by an attempt to match the costs associated with the generation of those revenues to the same time period. Assume that the following transactions occurred in January:
+
+a. McGraw-Hill Education uses $3,800 worth of electricity and natural gas in its headquarters building for which it has not yet been billed.
+
+b. At the beginning of January, Turner Construction Company pays $1,350 for magazine advertising to run in monthly publications each of the first three months of the year.
+
+c. Dell pays its computer service technicians $403,000 in salaries for the two weeks ended January 7. Answer from Dell’s standpoint.
+
+d. Iowa State University orders 200,000 football tickets from its printer and prepays $8,340 for the custom printing. The first game will be played in September. Answer from the university’s standpoint.
+
+e. The campus bookstore receives 500 accounting texts at a cost of $210 each. The terms indicate that payment is due within 30 days of delivery.
+
+f. During the last week of January, the campus bookstore sold 400 accounting texts received in (e) at a sales price of $280 each.
+
+g. Fucillo Automotive Group pays its salespersons $63,800 in commissions related to December automobile sales. Answer from Fucillo’s standpoint.
+
+h. On January 31, Fucillo Automotive Group determines that it will pay its salespersons $55,560 in commissions related to January sales. The payment will be made in early February. Answer from Fucillo’s standpoint.
+
+i. A new grill is received and installed at a Wendy’s restaurant at the end of the day on January 31; a $12,750 cash payment is made on that day to the grill supply company. Answer from Wendy’s standpoint.
+
+j. Mall of America (in Bloomington, MN) had janitorial supplies costing $3,500 in storage. An additional $2,600 worth of supplies was purchased during January. At the end of January, $1,400 worth of janitorial supplies remained in storage.
+
+k. An Emory University employee works eight hours, at $23 per hour, on January 31; however, payday is not until February 3. Answer from the university’s point of view.
+
+l. Wang Company paid $4,800 for a fire insurance policy on January 1. The policy covers 12 months beginning on January 1. Answer from Wang’s point of view.
+
+m. Derek Incorporated has its delivery van repaired in January for $600 and charges the amount on account.
+
+n. Hass Company, a farm equipment company, receives its phone bill at the end of January for $154 for January calls. The bill has not been paid to date.
+
+o. Martin Company receives and pays in January a $2,034 invoice (bill) from a consulting firm for services received in January. Answer from Martin’s standpoint.
+
+p. Parillo’s Taxi Company pays a $595 invoice from a consulting firm for services received and recorded in December.
+
+q. PVH Corp., manufacturer of IZOD, ARROW, Van Heusen, Calvin Klein, and Tommy Hilfiger apparel among other brands, completes production of 450 men’s shirts ordered by Macy’s department stores at a cost of $21 each and delivers the order in January. Answer from PVH Corp.’s standpoint.
+
+Required:  
+For each of the transactions, if an expense is to be recognized in January, indicate the expense account title and the amount. If an expense is not to be recognized in January, indicate why.
+
+### Answers
+a. 在1月确认费用。费用账户标题：水电费，金额：3,800美元。
+
+b. 在1月确认费用。费用账户标题：广告费，金额：450美元。
+
+c. 在1月确认费用。费用账户标题：薪金费用，金额：403,000美元。
+
+d. 不在1月确认费用。原因：预付印刷费用于未来服务（比赛在9月），在1月尚未提供任何服务。
+
+e. 不在1月确认费用。原因：收到图书时成本记录为存货（资产），费用仅在图书出售时确认。
+
+f. 在1月确认费用。费用账户标题：销货成本，金额：84,000美元。
+
+g. 不在1月确认费用。原因：佣金针对12月销售，费用已在12月确认。1月支付仅减少负债。
+
+h. 在1月确认费用。费用账户标题：佣金费用，金额：55,560美元。
+
+i. 不在1月确认费用。原因：购买烤架是资本支出，记录为资产（设备）。费用通过折旧在以后期间确认。
+
+j. 在1月确认费用。费用账户标题：物料费用，金额：4,700美元。
+
+k. 在1月确认费用。费用账户标题：工资费用，金额：184美元。
+
+l. 在1月确认费用。费用账户标题：保险费，金额：400美元。
+
+m. 在1月确认费用。费用账户标题：维修保养费，金额：600美元。
+
+n. 在1月确认费用。费用账户标题：水电费（或电话费），金额：154美元。
+
+o. 在1月确认费用。费用账户标题：咨询费，金额：2,034美元。
+
+p. 不在1月确认费用。原因：服务在12月收到并已记录费用，1月支付仅减少负债。
+
+q. 在1月确认费用。费用账户标题：销货成本，金额：9,450美元。
+
+## 3-12
+E3-12 Recording Journal Entries and Posting Effects to T-Accounts
+
+At January 1 (beginning of its fiscal year), Freeman Inc., a financial services consulting firm, reported the following account balances (in thousands, except for par and market value per share):
+
+| Account                     | Amount |
+| --------------------------- | ------ |
+| Cash                        | $1,900 |
+| Short-term investments      | 410    |
+| Accounts receivable         | 3,570  |
+| Supplies                    | 150    |
+| Prepaid expenses            | 4,720  |
+| Office equipment            | 1,050  |
+| Accounts payable            | $210   |
+| Unearned revenue            | 1,320  |
+| Salaries payable            | 870    |
+| Short-term note payable     | 780    |
+| Common stock ($1 par value) | 50     |
+| Additional paid-in capital  | 6,560  |
+| Retained earnings           | 2,010  |
+
+Required:
+
+1. Prepare journal entries for the following transactions for the current year. Use the balance sheet account titles above and the revenue or expense account titles mentioned in requirement (2):
+
+a. Received $9,500 cash for consulting services rendered.
+
+b. Issued 10 additional shares of common stock at a market price of $120 per share.
+
+c. Purchased $640 of office equipment, paying 25 percent in cash and owing the rest on a short-term note.
+
+d. Received $890 from clients for consulting services to be performed in the next year.
+
+e. Bought $470 of supplies on account.
+
+f. Incurred and paid $1,800 in utilities for the current year.
+
+g. Consulted for clients in the current year for fees totaling $1,620, due from clients in the next year.
+
+h. Received $2,980 from clients paying on their accounts.
+
+i. Incurred $6,210 in salaries in the current year, paying $5,300 and owing the rest (to be paid next year).
+
+j. Purchased $1,230 in short-term investments and paid $800 for insurance coverage beginning in the next fiscal year.
+
+k. Received $10 in interest revenue earned in the current year on short-term investments.
+
+2. Create T-accounts for the balance sheet accounts and for these additional accounts: Consulting Fees Revenue, Interest Revenue, Salaries Expense, and Utilities Expense. Enter the beginning balances of the balance sheet accounts. Freeman’s income statement accounts had zero balances. Post the journal entry effects in requirement (1) above into the T-accounts, using the letter of each transaction as the reference.
+
+3. Using the data from the T-accounts, amounts for the following at the end of the current year were:
+
+Revenues $______ – Expenses $______ = Net Income $______  
+Assets $______ = Liabilities $______ + Stockholders’ Equity $______
+
+### Answers
+#### 1. Journal Entries for Current Year Transactions
+
+| Transaction | Journal Entry               | Debit  | Credit |
+| ----------- | --------------------------- | ------ | ------ |
+| a.          | Cash                        | $9,500 |        |
+|             | Consulting Fees Revenue     |        | $9,500 |
+| b.          | Cash                        | $1,200 |        |
+|             | Common Stock ($1 par value) |        | $10    |
+|             | Additional Paid-in Capital  |        | $1,190 |
+| c.          | Office Equipment            | $640   |        |
+|             | Cash                        |        | $160   |
+|             | Short-term Note Payable     |        | $480   |
+| d.          | Cash                        | $890   |        |
+|             | Unearned Revenue            |        | $890   |
+| e.          | Supplies                    | $470   |        |
+|             | Accounts Payable            |        | $470   |
+| f.          | Utilities Expense           | $1,800 |        |
+|             | Cash                        |        | $1,800 |
+| g.          | Accounts Receivable         | $1,620 |        |
+|             | Consulting Fees Revenue     |        | $1,620 |
+| h.          | Cash                        | $2,980 |        |
+|             | Accounts Receivable         |        | $2,980 |
+| i.          | Salaries Expense            | $6,210 |        |
+|             | Cash                        |        | $5,300 |
+|             | Salaries Payable            |        | $910   |
+| j.          | Short-term Investments      | $1,230 |        |
+|             | Prepaid Expenses            | $800   |        |
+|             | Cash                        |        | $2,030 |
+| k.          | Cash                        | $10    |        |
+|             | Interest Revenue            |        | $10    |
+
+#### 2. T-Accounts with Beginning Balances and Posted Transactions
+
+**Balance Sheet Accounts:**
+
+- **Cash (A)**
+  - Beg. Bal. $1,900
+  - (a) $9,500
+  - (b) $1,200
+  - (d) $890
+  - (h) $2,980
+  - (k) $10
+  - (c) $160
+  - (f) $1,800
+  - (i) $5,300
+  - (j) $2,030
+  - End. Bal. $7,190
+
+- **Short-term Investments (A)**
+  - Beg. Bal. $410
+  - (j) $1,230
+  - End. Bal. $1,640
+
+- **Accounts Receivable (A)**
+  - Beg. Bal. $3,570
+  - (g) $1,620
+  - (h) $2,980
+  - End. Bal. $2,210
+
+- **Supplies (A)**
+  - Beg. Bal. $150
+  - (e) $470
+  - End. Bal. $620
+
+- **Prepaid Expenses (A)**
+  - Beg. Bal. $4,720
+  - (j) $800
+  - End. Bal. $5,520
+
+- **Office Equipment (A)**
+  - Beg. Bal. $1,050
+  - (c) $640
+  - End. Bal. $1,690
+
+- **Accounts Payable (L)**
+  - Beg. Bal. $210
+  - (e) $470
+  - End. Bal. $680
+
+- **Unearned Revenue (L)**
+  - Beg. Bal. $1,320
+  - (d) $890
+  - End. Bal. $2,210
+
+- **Salaries Payable (L)**
+  - Beg. Bal. $870
+  - (i) $910
+  - End. Bal. $1,780
+
+- **Short-term Note Payable (L)**
+  - Beg. Bal. $780
+  - (c) $480
+  - End. Bal. $1,260
+
+- **Common Stock (SE)**
+  - Beg. Bal. $50
+  - (b) $10
+  - End. Bal. $60
+
+- **Additional Paid-in Capital (SE)**
+  - Beg. Bal. $6,560
+  - (b) $1,190
+  - End. Bal. $7,750
+
+- **Retained Earnings (SE)**
+  - Beg. Bal. $2,010
+  - No direct transactions; net income will be closed to retained earnings.
+
+**Income Statement Accounts (Beginning Balances are $0):**
+
+- **Consulting Fees Revenue**
+  - (a) $9,500
+  - (g) $1,620
+  - End. Bal. $11,120
+
+- **Interest Revenue**
+  - (k) $10
+  - End. Bal. $10
+
+- **Salaries Expense**
+  - (i) $6,210
+  - End. Bal. $6,210
+
+- **Utilities Expense**
+  - (f) $1,800
+  - End. Bal. $1,800
+
+#### 3. Amounts at the End of the Current Year
+
+- **Revenues:** $11,130 (Consulting Fees Revenue $11,120 + Interest Revenue $10)  
+- **Expenses:** $8,010 (Salaries Expense $6,210 + Utilities Expense $1,800)  
+- **Net Income:** $3,120 ($11,130 - $8,010)  
+
+- **Assets:** $18,870 (Cash $7,190 + Short-term Investments $1,640 + Accounts Receivable $2,210 + Supplies $620 + Prepaid Expenses $5,520 + Office Equipment $1,690)  
+- **Liabilities:** $5,930 (Accounts Payable $680 + Unearned Revenue $2,210 + Salaries Payable $1,780 + Short-term Note Payable $1,260)  
+- **Stockholders' Equity:** $12,940 (Common Stock $60 + Additional Paid-in Capital $7,750 + Retained Earnings $5,130 [Beginning $2,010 + Net Income $3,120])  
+
+**Check:** Assets $18,870 = Liabilities $5,930 + Stockholders' Equity $12,940.
+
+## 3-13
+Refer to E3-12.
+
+Required: 
+Use the ending balances in the T-accounts in E3-12 to prepare in good form an unadjusted classified income statement for the current year ended December 31. (Ignore income taxes.)
+
+
+根据E3-12中T-account的期末余额，编制未经调整的分类利润表。所有金额以千美元为单位，忽略所得税。
+
+### Answers
+#### Freeman Inc.
+#### Income Statement
+#### For the Year Ended December 31
+
+| Revenue                 |             |
+| ----------------------- | ----------- |
+| Consulting Fees Revenue | $11,120     |
+| Interest Revenue        | $10         |
+| **Total Revenue**       | **$11,130** |
+
+| Expenses           |            |
+| ------------------ | ---------- |
+| Salaries Expense   | $6,210     |
+| Utilities Expense  | $1,800     |
+| **Total Expenses** | **$8,010** |
+
+| Net Income | $3,120 |
+| ---------- | ------ |
