@@ -726,7 +726,7 @@ post:
     specific: false
 
     # Options: mathjax | katex
-    engine: katex
+    engine: mathjax
 
   # 流程图，基于 mermaid-js，具体请见：https://hexo.fluid-dev.com/docs/guide/#mermaid-流程图
   # Flow chart, based on mermaid-js, see: https://hexo.fluid-dev.com/docs/en/guide/#mermaid
@@ -749,7 +749,7 @@ post:
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo | cusdis | giscus | discuss
-    type: utterances
+    type: giscus
 
   image_path:
     enable: false
@@ -892,13 +892,13 @@ cusdis:
 # Based on GitHub Discussions, similar to Utterances
 # See: https://giscus.app/
 giscus:
-  repo:
-  repo-id:
-  category:
-  category-id:
+  repo: Xiao-ao-jiang-hu/Xiao-ao-jiang-hu.github.io
+  repo-id: R_kgDOMcfMcw
+  category: Announcements
+  category-id: DIC_kwDOMcfMc84CxBpz
   theme-light: light
   theme-dark: dark
-  mapping: pathname
+  mapping: title
   reactions-enabled: 1
   emit-metadata: 0
   input-position: top

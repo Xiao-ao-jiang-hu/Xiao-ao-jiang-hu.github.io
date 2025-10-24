@@ -5,6 +5,7 @@ tags:
 categories:
   - uncategorized
 excerpt: no excerpt
+abbrlink: ca94a387
 date: 2025-10-24 20:15:24
 ---
 ## Ex 1

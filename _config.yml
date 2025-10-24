@@ -116,20 +116,55 @@ deploy:
   repo: 'git@github.com:Xiao-ao-jiang-hu/Xiao-ao-jiang-hu.github.io.git'
   branch: gh-pages
 
+# hexo-renderer-marked 配置
 marked:
   prependRoot: false
   postAsset: true
+  gfm: true
+  pedantic: false
+  breaks: true
+  smartLists: true
+  smartypants: false
+  modifyAnchors: 0
+  autolink: true
+  mangle: true
+  sanitizeUrl: false
+  headerIds: true
+  lazyload: false
+  descriptionLists: true
+  # 禁用 Nunjucks 模板引擎
+  disableNunjucks: true
+  
+# hexo-filter-mathjax 配置
+mathjax:
+  tags: all  # 支持所有标签: $...$, $$...$$, \(...\), \[...\]
+  single_dollars: true
+  cjk_width: 0.9
+  normal_width: 0.6
+  append_css: true
+  every_page: false
+  packages:
+    - base
+    - ams
+    - noundefined
+    - newcommand
+    - boldsymbol
+  svg:
+    fontCache: 'global'
+  output: svg
+  # 在服务器端渲染，避免客户端的转义问题
+  renderer: 'svg'
 
-markdown_it_plus:
-    highlight: true
-    html: true
-    xhtmlOut: true
-    breaks: true
-    langPrefix:
-    linkify: true
-    typographer:
-    quotes: “”‘’
-    pre_class: highlight
+# markdown_it_plus:
+#     highlight: true
+#     html: true
+#     xhtmlOut: true
+#     breaks: true
+#     langPrefix:
+#     linkify: true
+#     typographer:
+#     quotes: ""''
+#     pre_class: highlight
 
 seo:
   auto_description: true

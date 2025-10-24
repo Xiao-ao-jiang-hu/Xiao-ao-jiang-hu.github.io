@@ -7,6 +7,7 @@ categories:
   - math
   - functional analysis
 excerpt: 泛函分析课程笔记
+abbrlink: '559903e6'
 date: 2025-09-27 18:06:33
 ---
 # §3 度量空间的紧性原理

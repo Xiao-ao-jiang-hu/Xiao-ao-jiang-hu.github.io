@@ -7,6 +7,7 @@ categories:
   - math
   - functional analysis
 excerpt: no excerpt
+abbrlink: 63f42aa2
 date: 2025-10-14 11:09:28
 ---
 ## 7.1
