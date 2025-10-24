@@ -135,24 +135,11 @@ marked:
   # 禁用 Nunjucks 模板引擎
   disableNunjucks: true
   
-# hexo-filter-mathjax 配置
+# hexo-filter-mathjax 配置（禁用服务器端渲染）
 mathjax:
-  tags: all  # 支持所有标签: $...$, $$...$$, \(...\), \[...\]
-  single_dollars: true
-  cjk_width: 0.9
-  normal_width: 0.6
-  append_css: true
+  tags: none  # 禁用服务器端渲染
+  single_dollars: false
   every_page: false
-  packages:
-    - base
-    - ams
-    - noundefined
-    - newcommand
-    - boldsymbol
-  svg:
-    fontCache: 'global'
-  output: svg
-  # 在服务器端渲染，避免客户端的转义问题
   renderer: 'svg'
 
 # markdown_it_plus:
