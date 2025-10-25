@@ -1,14 +1,14 @@
 ---
-layout: blog
 title: Signal Processing 1
-date: 2024-11-23 19:00:00
 tags:
-    - signal
-    - math
+  - signal
+  - math
 categories:
-    - math
-    - signal
+  - math
+  - signal
 excerpt: 本文将介绍信号的基本概念、运算以及奇异信号的性质。
+abbrlink: 4de8f75f
+date: 2024-11-23 19:00:00
 ---
 
 # 信号的运算

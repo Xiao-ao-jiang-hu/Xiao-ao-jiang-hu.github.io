@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: gaussian
 date: 2024-07-30 15:04:15
 tags:

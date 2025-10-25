@@ -1,15 +1,15 @@
 ---
-layout: blog
 title: LL(1) analysis
-date: 2024-12-09 13:32:42
 tags:
-    - compiler
-    - LL(1)
-    - parsing
-    - grammar
+  - compiler
+  - LL(1)
+  - parsing
+  - grammar
 categories:
-    - compiler
+  - compiler
 excerpt: 本文将介绍自顶向下的LL(1)分析方法，包括First集合、Follow集合、Select集合的计算方法，以及LL(1)文法的定义和分析方法。
+abbrlink: 3eb1bc71
+date: 2024-12-09 13:32:42
 ---
 
 # 自顶向下分析之LL（1）分析

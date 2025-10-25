@@ -1,5 +1,4 @@
 ---
-layout: blog
 title: 安卓搞机日志
 date: 2025-3-24 20:30:00
 tags:
