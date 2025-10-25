@@ -1,5 +1,5 @@
 ---
-title: 'Class 3: Income Statement Items and Accounting Cycle'
+title: 'Financial Accounting Class 3: Income Statement Items and Accounting Cycle'
 tags:
   - finance
 categories:

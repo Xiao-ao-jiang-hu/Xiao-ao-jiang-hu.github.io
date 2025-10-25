@@ -9,8 +9,6 @@ abbrlink: 44480d54
 date: 2025-10-10 20:16:31
 ---
 
-好的，这是根据第一节课总结格式调整后的第二节课总结：
-
 # Class 2: Investing and Financing Decisions and the Accounting System
 
 ## 1. 课程核心与框架
