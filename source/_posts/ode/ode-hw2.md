@@ -6,7 +6,7 @@ tags:
 categories:
   - math
   - ode
-excerpt: no excerpt
+excerpt: ODE第二次作业
 abbrlink: 74d1d102
 date: 2025-09-24 19:30:03
 ---

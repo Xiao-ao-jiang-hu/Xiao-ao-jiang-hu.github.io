@@ -1,10 +1,12 @@
 ---
 title: ODE第三次作业
 tags:
-  - no tags
+  - math
+  - ode
 categories:
-  - uncategorized
-excerpt: no excerpt
+  - math
+  - ode
+excerpt: ODE第三次作业
 abbrlink: ca94a387
 date: 2025-10-24 20:15:24
 ---
@@ -398,8 +400,14 @@ $$\dot{X}=AX;\ X(0)=c $$
 
 - **验证 $e^{tA}c$ 是解**:
   设 $X(t) = e^{tA}c$，则 $X(0) = e^{0}c = Ic = c$，满足初始条件。
-  计算 $\dot{X} = \frac{d}{dt}e^{tA}c$。
-  计算 $AX = A e^{tA}c = \begin{bmatrix} a & b \\ -b & a \end{bmatrix} \begin{bmatrix} e^{at} \cos(bt) & e^{at} \sin(bt) \\ -e^{at} \sin(bt) & e^{at} \cos(bt) \end{bmatrix}c = \begin{bmatrix} a e^{at} \cos(bt) - b e^{at} \sin(bt) & a e^{at} \sin(bt) + b e^{at} \cos(bt) \\ -a e^{at} \sin(bt) - b e^{at} \cos(bt) & a e^{at} \cos(bt) - b e^{at} \sin(bt) \end{bmatrix}c$。
+  计算:
+  $$
+  \dot{X} = \frac{d}{dt}e^{tA}c = \begin{bmatrix} a e^{at} \cos(bt) - b e^{at} \sin(bt) & a e^{at} \sin(bt) + b e^{at} \cos(bt) \\ -a e^{at} \sin(bt) - b e^{at} \cos(bt) & a e^{at} \cos(bt) - b e^{at} \sin(bt) \end{bmatrix}c
+  $$
+  计算:
+  $$
+  AX = A e^{tA}c = \begin{bmatrix} a & b \\ -b & a \end{bmatrix} \begin{bmatrix} e^{at} \cos(bt) & e^{at} \sin(bt) \\ -e^{at} \sin(bt) & e^{at} \cos(bt) \end{bmatrix}c \\= \begin{bmatrix} a e^{at} \cos(bt) - b e^{at} \sin(bt) & a e^{at} \sin(bt) + b e^{at} \cos(bt) \\ -a e^{at} \sin(bt) - b e^{at} \cos(bt) & a e^{at} \cos(bt) - b e^{at} \sin(bt) \end{bmatrix}c
+  $$
   因此 $\dot{X} = AX$，验证通过。
 
 第三个矩阵：$A = \begin{bmatrix} \lambda & 1 \\ 0 & \lambda \end{bmatrix}$
