@@ -232,39 +232,39 @@ $$\dot{X}=\begin{bmatrix}1&\\ &1\end{bmatrix}X;\ \dot{Y}=\begin{bmatrix}-1&\\ &-
 ### 解答
 首先计算每个系统的流。
 
-- **系统1**：\(\dot{X} = A X\)，其中 \(A = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}\)。  
-  解为 \(X(t) = e^{At} X(0)\)，其中 \(e^{At} = \begin{bmatrix} e^t & 0 \\ 0 & e^t \end{bmatrix}\)。  
-  流为 \(\phi_t(X) = \begin{bmatrix} e^t x_1 \\ e^t x_2 \end{bmatrix}\)，其中 \(X = (x_1, x_2)^T\)。
+- **系统1**：$\dot{X} = A X$，其中 $A = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$。  
+  解为 $X(t) = e^{At} X(0)$，其中 $e^{At} = \begin{bmatrix} e^t & 0 \\ 0 & e^t \end{bmatrix}$。  
+  流为 $\phi_t(X) = \begin{bmatrix} e^t x_1 \\ e^t x_2 \end{bmatrix}$，其中 $X = (x_1, x_2)^T$。
 
-- **系统2**：\(\dot{Y} = B Y\)，其中 \(B = \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}\)。  
-  解为 \(Y(t) = e^{Bt} Y(0)\)，其中 \(e^{Bt} = \begin{bmatrix} e^{-t} & 0 \\ 0 & e^{-t} \end{bmatrix}\)。  
-  流为 \(\psi_t(Y) = \begin{bmatrix} e^{-t} y_1 \\ e^{-t} y_2 \end{bmatrix}\)，其中 \(Y = (y_1, y_2)^T\)。
+- **系统2**：$\dot{Y} = B Y$，其中 $B = \begin{bmatrix} -1 & 0 \\ 0 & -1 \end{bmatrix}$。  
+  解为 $Y(t) = e^{Bt} Y(0)$，其中 $e^{Bt} = \begin{bmatrix} e^{-t} & 0 \\ 0 & e^{-t} \end{bmatrix}$。  
+  流为 $\psi_t(Y) = \begin{bmatrix} e^{-t} y_1 \\ e^{-t} y_2 \end{bmatrix}$，其中 $Y = (y_1, y_2)^T$。
 
-- **系统3**：\(\dot{Z} = C Z\)，其中 \(C = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}\)。  
-  解为 \(Z(t) = e^{Ct} Z(0)\)，其中 \(e^{Ct} = \begin{bmatrix} e^t & 0 \\ 0 & e^{-t} \end{bmatrix}\)。  
-  流为 \(\chi_t(Z) = \begin{bmatrix} e^t z_1 \\ e^{-t} z_2 \end{bmatrix}\)，其中 \(Z = (z_1, z_2)^T\)。
+- **系统3**：$\dot{Z} = C Z$，其中 $C = \begin{bmatrix} 1 & 0 \\ 0 & -1 \end{bmatrix}$。  
+  解为 $Z(t) = e^{Ct} Z(0)$，其中 $e^{Ct} = \begin{bmatrix} e^t & 0 \\ 0 & e^{-t} \end{bmatrix}$。  
+  流为 $\chi_t(Z) = \begin{bmatrix} e^t z_1 \\ e^{-t} z_2 \end{bmatrix}$，其中 $Z = (z_1, z_2)^T$。
 
-假设存在同胚 \(h: \mathbb{R}^2 \to \mathbb{R}^2\) 使得 \(h \circ \phi_t = \psi_t \circ h\) 对所有 \(t\) 成立。  
-由于原点是不动点（即 \(\phi_t(0) = 0\) 和 \(\psi_t(0) = 0\))，有 \(h(0) = 0\)。  
-考虑任意点 \(X \neq 0\)。在系统1中，当 \(t \to -\infty\) 时，\(\phi_t(X) = (e^t x_1, e^t x_2) \to 0\)，因此 \(h(\phi_t(X)) \to h(0) = 0\)。  
-但由拓扑共轭条件，\(h(\phi_t(X)) = \psi_t(h(X))\)。令 \(Y = h(X)\)，则 \(\psi_t(Y) = (e^{-t} y_1, e^{-t} y_2)\)。当 \(t \to -\infty\) 时，\(e^{-t} \to \infty\)，因此如果 \(Y \neq 0\)，则 \(\psi_t(Y) \to \infty\)（在范数意义上），这与 \(h(\phi_t(X)) \to 0\) 矛盾。  
-因此，必须有 \(h(X) = 0\) 对于所有 \(X \neq 0\)，但 \(h\) 是同胚，必须为双射，这与 \(h(0) = 0\) 矛盾（因为 \(X \neq 0\) 时 \(h(X) = 0\) 则 \(h\) 不是单射）。  
+假设存在同胚 $h: \mathbb{R}^2 \to \mathbb{R}^2$ 使得 $h \circ \phi_t = \psi_t \circ h$ 对所有 $t$ 成立。  
+由于原点是不动点（即 $\phi_t(0) = 0$ 和 $\psi_t(0) = 0$)，有 $h(0) = 0$。  
+考虑任意点 $X \neq 0$。在系统1中，当 $t \to -\infty$ 时，$\phi_t(X) = (e^t x_1, e^t x_2) \to 0$，因此 $h(\phi_t(X)) \to h(0) = 0$。  
+但由拓扑共轭条件，$h(\phi_t(X)) = \psi_t(h(X))$。令 $Y = h(X)$，则 $\psi_t(Y) = (e^{-t} y_1, e^{-t} y_2)$。当 $t \to -\infty$ 时，$e^{-t} \to \infty$，因此如果 $Y \neq 0$，则 $\psi_t(Y) \to \infty$（在范数意义上），这与 $h(\phi_t(X)) \to 0$ 矛盾。  
+因此，必须有 $h(X) = 0$ 对于所有 $X \neq 0$，但 $h$ 是同胚，必须为双射，这与 $h(0) = 0$ 矛盾（因为 $X \neq 0$ 时 $h(X) = 0$ 则 $h$ 不是单射）。  
 故系统1和系统2不拓扑共轭。
 
 
-假设存在同胚 \(h: \mathbb{R}^2 \to \mathbb{R}^2\) 使得 \(h \circ \phi_t = \chi_t \circ h\) 对所有 \(t\) 成立。  
-同样地，有 \(h(0) = 0\)。  
-在系统1中，所有轨迹（除原点外）是通过原点的直线，即对于每个方向 \(\theta\)，集合 \(L_\theta = \{ (r \cos \theta, r \sin \theta) : r \in \mathbb{R} \}\) 是一条轨迹。这些直线有无数条。  
-在系统3中，通过原点的轨迹只有两条：\(z_1\)-轴（即 \(z_2 = 0\)) 和 \(z_2\)-轴（即 \(z_1 = 0\))。  
-由于 \(h\) 是同胚，它必须将系统1中通过原点的轨迹映射到系统3中通过原点的轨迹上。但系统1中有无数条通过原点的直线，而系统3中只有两条，这不可能通过连续双射实现（因为通过原点的直线集合在 \(\mathbb{R}^2\) 中形成实射影线，是连通的紧致空间，而两条直线是离散的，无法同胚）。  
+假设存在同胚 $h: \mathbb{R}^2 \to \mathbb{R}^2$ 使得 $h \circ \phi_t = \chi_t \circ h$ 对所有 $t$ 成立。  
+同样地，有 $h(0) = 0$。  
+在系统1中，所有轨迹（除原点外）是通过原点的直线，即对于每个方向 $\theta$，集合 $L_\theta = \{ (r \cos \theta, r \sin \theta) : r \in \mathbb{R} \}$ 是一条轨迹。这些直线有无数条。  
+在系统3中，通过原点的轨迹只有两条：$z_1$-轴（即 $z_2 = 0$) 和 $z_2$-轴（即 $z_1 = 0$)。  
+由于 $h$ 是同胚，它必须将系统1中通过原点的轨迹映射到系统3中通过原点的轨迹上。但系统1中有无数条通过原点的直线，而系统3中只有两条，这不可能通过连续双射实现（因为通过原点的直线集合在 $\mathbb{R}^2$ 中形成实射影线，是连通的紧致空间，而两条直线是离散的，无法同胚）。  
 因此，系统1和系统3不拓扑共轭。
 
 
-假设存在同胚 \(h: \mathbb{R}^2 \to \mathbb{R}^2\) 使得 \(h \circ \psi_t = \chi_t \circ h\) 对所有 \(t\) 成立。  
-有 \(h(0) = 0\)。  
-在系统2中，所有轨迹当 \(t \to \infty\) 时收敛到原点，即对于任意 \(Y \neq 0\)，\(\psi_t(Y) \to 0\) 当 \(t \to \infty\)。因此，\(h(\psi_t(Y)) \to h(0) = 0\)。  
-由拓扑共轭条件，\(h(\psi_t(Y)) = \chi_t(h(Y))\)，所以 \(\chi_t(h(Y)) \to 0\) 当 \(t \to \infty\)。  
-在系统3中，\(\chi_t(Z) \to 0\) 当 \(t \to \infty\) 仅当 \(Z\) 在稳定流形上，即 \(z_1 = 0\)。因此，对于所有 \(Y\)，必须有 \(h(Y) \in \{ (0, z_2) : z_2 \in \mathbb{R} \}\)，即 \(h\) 将整个 \(\mathbb{R}^2\) 映射到 \(z_1\)-轴上。但 \(h\) 是同胚，必须是满射，而 \(z_1\)-轴是 \(\mathbb{R}\) 的子集，与 \(\mathbb{R}^2\) 不同胚，矛盾。  
+假设存在同胚 $h: \mathbb{R}^2 \to \mathbb{R}^2$ 使得 $h \circ \psi_t = \chi_t \circ h$ 对所有 $t$ 成立。  
+有 $h(0) = 0$。  
+在系统2中，所有轨迹当 $t \to \infty$ 时收敛到原点，即对于任意 $Y \neq 0$，$\psi_t(Y) \to 0$ 当 $t \to \infty$。因此，$h(\psi_t(Y)) \to h(0) = 0$。  
+由拓扑共轭条件，$h(\psi_t(Y)) = \chi_t(h(Y))$，所以 $\chi_t(h(Y)) \to 0$ 当 $t \to \infty$。  
+在系统3中，$\chi_t(Z) \to 0$ 当 $t \to \infty$ 仅当 $Z$ 在稳定流形上，即 $z_1 = 0$。因此，对于所有 $Y$，必须有 $h(Y) \in \{ (0, z_2) : z_2 \in \mathbb{R} \}$，即 $h$ 将整个 $\mathbb{R}^2$ 映射到 $z_1$-轴上。但 $h$ 是同胚，必须是满射，而 $z_1$-轴是 $\mathbb{R}$ 的子集，与 $\mathbb{R}^2$ 不同胚，矛盾。  
 故系统2和系统3不拓扑共轭。
 
 
