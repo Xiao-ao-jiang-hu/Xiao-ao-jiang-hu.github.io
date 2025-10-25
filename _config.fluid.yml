@@ -1110,7 +1110,7 @@ static_prefix:
 
   clipboard: https://lib.baomitu.com/clipboard.js/2.0.11/
 
-  mermaid: https://lib.baomitu.com/mermaid/8.14.0/
+  mermaid: https://cdn.jsdelivr.net/npm/mermaid@10/dist/
 
   valine: https://lib.baomitu.com/valine/1.5.1/
 
