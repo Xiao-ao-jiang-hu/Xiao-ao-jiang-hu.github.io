@@ -1,5 +1,5 @@
 ---
-title: 论文阅读
+title: Optimal Routing Protocols to Routing on Multiple Optimality Criteria
 tags:
   - optimality
   - routing
@@ -7,8 +7,8 @@ tags:
 categories:
   - paper-reading
   - network
-  - research
-excerpt: Optimal Routing Protocols to Routing on Multiple Optimality Criteria
+  - routing
+excerpt: 论文阅读
 abbrlink: 3a868304
 date: 2025-09-12 22:49:09
 ---
@@ -49,7 +49,7 @@ date: 2025-09-12 22:49:09
 - 主导属性（Dominant Attribute）：集合中不被其他属性支配的元素（帕累托最优）。  
 
 #### 相关工作分类  
-| 类别       | 代表工作              | 局限                     |
+| 类别           | 代表工作                  | 局限                         |
 | -------------- | ------------------------- | ---------------------------- |
 | 代数路由框架   | Sobrinho [5], Griffin [7] | 仅支持全序且需等张性         |
 | 多目标路径算法 | Hansen [30], Martins [31] | 集中式计算，不适用分布式协议 |
@@ -82,7 +82,7 @@ date: 2025-09-12 22:49:09
 
 ### 4. 实验评估  
 #### 实验设置  
-| 拓扑                     | 属性                         | 协议对比                             |
+| 拓扑                         | 属性                             | 协议对比                                 |
 | ---------------------------- | -------------------------------- | ---------------------------------------- |
 | Rocketfuel AS1239（284节点） | 宽度=1/OSPF权重，长度=延迟       | 宽度-长度积协议 vs 最宽最短/最短最宽协议 |
 | CAIDA AS关系（70k AS）       | 类型=客户/对等/提供商，长度=跳数 | 类型-长度积协议 vs BGP                   |

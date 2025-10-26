@@ -1,10 +1,13 @@
 ---
-title: ml_for_tsp
+title: "Unify ML4TSP: Drawing Methodological Principles for TSP and Beyond from Streamlined Design Space of Learning and Search"
 tags:
-  - no tags
+  - optimality
+  - tsp
+  - machine-learning
 categories:
-  - uncategorized
-excerpt: "Unify ML4TSP: Drawing Methodological Principles for TSP and Beyond from Streamlined Design Space of Learning and Search"
+  - paper-reading
+  - optimization
+excerpt: 论文阅读
 abbrlink: f79587e2
 date: 2025-10-26 23:44:37
 ---
