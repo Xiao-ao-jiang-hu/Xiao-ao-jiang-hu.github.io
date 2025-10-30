@@ -7,6 +7,7 @@ categories:
   - math
   - functional analysis
 excerpt: 泛函分析课程期中复习笔记
+abbrlink: 2b31788a
 date: 2025-10-27 21:45:14
 ---
 # Part 1 Hilbert Space
@@ -112,27 +113,36 @@ $F$ 是列紧的（即 $F$ 的闭包是紧集）当且仅当 $F$ 等度连续且
 从 $F$ 中任一序列必存在一致收敛的子列。
 
 
-### 关键条件
-1. 等度连续性 (Equicontinuity)  
-   $\forall \varepsilon > 0$, $\exists \delta > 0$，使得对所有 $f \in F$ 和所有 $x, y \in X$ 满足 $d(x, y) < \delta$，有  
-   $$
-   |f(x) - f(y)| < \varepsilon.
-   $$  
-   *（整个函数族“同步”连续，$\delta$ 与 $f$ 无关）*
+### Arzelà-Ascoli 定理  
+设 $(X, d_X)$ 和 $(Y, d_Y)$ 是度量空间，且 $X$ 是紧的。给定连续函数集合 $\mathcal{F} \subset C(X, Y)$，则以下等价：  
 
-2. 一致有界性 (Uniform Boundedness)  
-   $\exists M > 0$，使得对所有 $f \in F$ 和所有 $x \in X$，有  
-   $$
-   |f(x)| \leq M.
-   $$  
-   *（所有函数被同一常数 $M$ 控制）*
+1. $\mathcal{F}$ 是预紧集（在 $C(X, Y)$ 的一致收敛拓扑下，即关于度量 $d(f,g) = \sup_{x \in X} d_Y(f(x), g(x))$）。  
+2. $\mathcal{F}$ 满足：  
+   - (i) 等度连续性：  
+     $$
+     \forall \varepsilon > 0, \ \forall x \in X, \ \exists \delta > 0 \text{ 使得 } \forall f \in \mathcal{F}, \ \forall x' \in X :  
+     d_X(x, x') < \delta \implies d_Y(f(x), f(x')) < \varepsilon.
+     $$  
+   - (ii) 点态列紧性：对每个 $x \in X$，集合 $\mathcal{F}(x) = \{ f(x) \mid f \in \mathcal{F} \}$ 是 $(Y, d_Y)$ 中的预紧集。  
+
+
+### 关键条件  
+- 预紧集：对任意 $\varepsilon > 0$，存在有限个半径为 $\varepsilon$ 的开球覆盖集合（若 $Y$ 完备，则预紧等价于相对紧）。  
+- 点态列紧：条件 (ii) 要求对每个固定 $x \in X$，函数值集合 $\mathcal{F}(x)$ 在 $Y$ 中完全有界。  
+- 等度连续：$\delta$ 依赖于 $\varepsilon$ 和 $x$，但与 $f \in \mathcal{F}$ 无关；当 $X$ 紧时，可加强为一致等度连续（$\delta$ 与 $x$ 无关）。  
+
+
+### 直观解释  
+- 点态列紧：每个位置 $x$ 的函数值 $f(x)$ 不无限扩散（可被有限小球覆盖）。  
+- 等度连续：函数族整体“刚性”强，无局部剧烈振荡。  
+- 定理核心：紧空间 $X$ 将点态控制与等度连续结合，确保函数族全局一致可控，从而可提取一致收敛子列。  
 
 
 ### 特殊情形
-1. 定义域为闭区间 $[a, b]$  
-   若 $F \subset C([a, b])$，则定理简化为：  
-   *$F$ 列紧 $\iff F$ 等度连续且一致有界。*  
-   （常见于微积分教材，如证明常微分方程解的存在性）。
+$X = [a, b]$, $Y = \mathbb{R}$; $\mathcal{F} \subset C([a, b])$ 预紧当且仅当：  
+- 等度连续：$\forall \varepsilon > 0$, $\exists \delta > 0$ 使得 $|x - y| < \delta \implies |f(x) - f(y)| < \varepsilon$ 对所有 $f \in \mathcal{F}$ 成立。  
+- 点态列紧：$\forall x \in [a, b]$, $\sup_{f \in \mathcal{F}} |f(x)| < \infty$（即点态有界）。  
+
 
 
 # Part 2 泛函分析原理
@@ -247,8 +257,6 @@ $$
 
 
 ## 闭图定理
-好的，以下是闭图定理（Closed Graph Theorem）的总结，按照您的要求分点阐述：
-
 ### 核心结论
 称一个线性算子$T$是闭算子，如果它的图像$$\mathcal{G}(T) = \{ (x, Tx) \in X \times Y \mid x \in D(T) \}$$在乘积空间 $X \times Y$ 中是闭集。
 
