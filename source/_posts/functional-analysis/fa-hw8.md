@@ -2,10 +2,10 @@
 title: 泛函分析第八次作业
 tags:
   - math
-  - functional-analysis
+  - functional analysis
 categories:
   - math
-  - functional-analysis
+  - functional analysis
 excerpt: 泛函分析第八次作业
 abbrlink: 472523f2
 date: 2025-10-25 15:24:05
