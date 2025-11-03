@@ -487,6 +487,67 @@ $$
 4. 半范数控制：  
    若 $p$ 是半范数（即 $p(\alpha x)=|\alpha|p(x)$ 且次可加），结论仍成立。
 
+## Minkowski 饭哈
+
+### 1. 核心结论
+设 $X$ 是实数域 $\mathbb{R}$ 上的向量空间，$A \subseteq X$ 是吸收凸集且包含原点（$0 \in A$），则其 Minkowski泛函 $p_A: X \to [0, +\infty)$ 定义为：
+$$
+p_A(x) = \inf \left\{ t > 0 \mid t^{-1}x \in A \right\}
+$$
+满足以下核心性质：
+1. 次线性性：
+   - 正齐次性：$\forall \lambda \geq 0,  p_A(\lambda x) = \lambda p_A(x)$
+   - 次可加性：$\forall x,y \in X,  p_A(x+y) \leq p_A(x) + p_A(y)$
+2. 控制吸收性：
+   $$
+   \{ x \in X \mid p_A(x) < 1 \} \subseteq A \subseteq \{ x \in X \mid p_A(x) \leq 1 \}
+   $$
+3. 半范数性：若 $A$ 对称（即 $A = -A$），则 $p_A$ 是半范数（满足 $p_A(-x)=p_A(x)$）。
+
+
+### 2. 关键条件
+结论成立需满足以下条件：
+- 吸收性：$\forall x \in X,  \exists \delta > 0$ 使得 $\lambda x \in A$ 对所有 $|\lambda| \leq \delta$ 成立（即 $A$ 吸收任意向量）。
+- 凸性：$A$ 是凸集（即 $\forall x,y \in A, \forall t \in [0,1],  tx + (1-t)y \in A$）。
+- 原点包含：$0 \in A$（保证 $p_A(0)=0$）。
+
+对于$A$凸集：$A$是吸收集合的充分必要条件是$0$在$A$的内部。
+
+### 3. 直观解释
+- Minkowski泛函 $p_A(x)$：度量 $x$ 被 $A$ “吸收”的最小缩放因子。  
+  - $p_A(x) < 1$：$x$ 被 $A$ 严格包含（缩放后仍在 $A$ 内）。  
+  - $p_A(x) \leq 1$：$x$ 位于 $A$ 的边界或内部。  
+- 吸收性：任何向量 $x$ 经充分缩小后必属于 $A$（反映集合的“全局覆盖性”）。  
+- 次线性性：泛函沿射线的线性增长（齐次性）及三角不等式（次可加性）。  
+
+
+
+### 4. 特殊情形
+#### (1) 赋范空间中的单位球
+- 设 $(X, \|\cdot\|)$ 为赋范空间，$A = \{ x \in X \mid \|x\| \leq 1 \}$（闭单位球）。  
+- 则 Minkowski 泛函 $p_A(x) = \|x\|$，即范数本身。  
+- 验证：  
+  $$
+  p_A(x) = \inf \{ t > 0 \mid \|t^{-1}x\| \leq 1 \} = \inf \{ t > 0 \mid \|x\| \leq t \} = \|x\|.
+  $$
+
+#### (2) 对称吸收凸集 → 半范数
+- 若 $A$ 对称（即 $x \in A \iff -x \in A$），则 $p_A$ 是半范数：  
+  $$
+  p_A(\lambda x) = |\lambda| p_A(x), \quad \forall \lambda \in \mathbb{R}.
+  $$
+- 应用：局部凸空间（Locally Convex Spaces）的半范数诱导拓扑。
+
+#### (3) 开集与闭集的关系
+- 若 $A$ 为开凸集且 $0 \in A$，则：  
+  $$
+  A = \{ x \in X \mid p_A(x) < 1 \}.
+  $$
+- 若 $A$ 为闭凸集且 $0 \in A$，则：  
+  $$
+  A = \{ x \in X \mid p_A(x) \leq 1 \}.
+  $$
+
 
 ## Hahn-Banach 定理（分离版本）
 ### 核心结论  
