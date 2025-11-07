@@ -487,7 +487,7 @@ $$
 4. 半范数控制：  
    若 $p$ 是半范数（即 $p(\alpha x)=|\alpha|p(x)$ 且次可加），结论仍成立。
 
-## Minkowski 饭哈
+## Minkowski 泛函
 
 ### 1. 核心结论
 设 $X$ 是实数域 $\mathbb{R}$ 上的向量空间，$A \subseteq X$ 是吸收凸集且包含原点（$0 \in A$），则其 Minkowski泛函 $p_A: X \to [0, +\infty)$ 定义为：
@@ -551,14 +551,17 @@ $$
 
 ## Hahn-Banach 定理（分离版本）
 ### 核心结论  
-设 $X$ 是实数域上的局部凸拓扑向量空间，$A$ 和 $B$ 是 $X$ 中两个非空凸集。若满足以下条件之一：  
-1. $A$ 是开集且 $A \cap B = \emptyset$  
-2. $A$ 紧致、$B$ 闭且 $A \cap B = \emptyset$  
-则存在非零连续线性泛函 $f \in X^*$ 和常数 $\alpha \in \mathbb{R}$，使得：  
-$$
-\sup_{x \in A} f(x) \leq \alpha \leq \inf_{y \in B} f(y)
-$$  
-即 $f$ 分离 $A$ 和 $B$。若不等式严格成立（$\sup_A f < \inf_B f$），则称为 严格分离。
+设 $X$ 是一个实赋范线性空间，$A$ 和 $B$ 是 $X$ 的两个非空凸子集，且 $A \cap B = \emptyset$。则以下结论成立：
+
+- 弱分离：如果 $A$ 内部非空（是开集），则存在一个连续线性泛函 $f \in X^*$ 和一个实数 $\alpha$ 使得
+$$f(a) \leq(<) \alpha \leq f(b) \quad \text{对于所有 } a \in \mathrm{int}A(A), \, b \in B.$$
+
+- 严格分离：如果 $A$ 和 $B$ 都是开的，则存在一个连续线性泛函 $f \in X^*$ 和一个实数 $\alpha$ 使得
+$$f(a) < \alpha < f(b) \quad \text{对于所有 } a \in A, \, b \in B.$$
+
+
+- 强分离：如果 $A$ 是紧的，$B$ 是闭的，则存在一个连续线性泛函 $f \in X^*$ 和一个实数 $\alpha$ 使得
+$$\sup_{a \in A} f(a) < \alpha < \inf_{b \in B} f(b).$$
 
 
 ### 关键条件  
@@ -568,7 +571,6 @@ $$
 2. 分离可行性条件（满足其一即可）：  
    - 版本1：$A$ 有非空内部（通常取开集）且 $A \cap B = \emptyset$  
    - 版本2：$A$ 紧致、$B$ 闭且 $A \cap B = \emptyset$（可推出严格分离）  
-   - *弱条件*：$A$ 有非空相对内部（对仿射包成立）  
 
 3. 空间结构：  
    $X$ 需为 局部凸拓扑向量空间（由一族半范数诱导拓扑）。  
