@@ -1,0 +1,55 @@
+---
+title: AI-Scientist 文献调研
+tags:
+  - machine-learning
+  - ai-scientist
+categories:
+  - paper-reading
+  - optimization
+excerpt: 文献调研
+abbrlink: be2a0fd0
+date: 2025-11-09 11:20:30
+---
+# AI-Researcher Autonomous Scientific Innovation
+
+<embed src="be2a0fd0/Tang et al. - 2025 - AI-Researcher Autonomous Scientific Innovation.pdf" width="100%" height="600px" type="application/pdf">
+
+## Introduction
+原论文提出 AI-Researcher，一个由大模型驱动的多智能体系统，旨在把“读论文→提想法→写代码→做实验→出稿件”整个科研流程自动化。框架里，Knowledge Acquisition Agent 先根据用户给的 10–15 篇“人类先验”论文去 arXiv 和 GitHub 召回 15–20 篇高引文献及 5–8 个高质量代码库；Resource Analyst 把论文中的数学公式与仓库中的实现逐条对齐，形成“公式-代码”原子级映射表，显著降低幻觉；Idea Generator 在这些“人类知识图谱”上寻找空白或矛盾，用“发散-收敛”策略输出 5 条正交假设并自动选出最优；Code Agent 在 Docker 沙箱里从零实现选定算法，Advisor Agent 按“导师-学生”循环对代码进行最多三轮审查，对照原子概念逐条验证并给出修改意见，直到通过为止；Documentation Agent 再把实验日志、运行结果和推理轨迹分层组装成符合 ICLR 格式的完整手稿。整套流程仅需人类给出初始参考论文，其余步骤无人干预，实现了“先验驱动、闭环优化”的端到端科研自动化。
+
+## Human Priors
+在人类先验的使用上：一方面用 LLM 评审链量化每篇文献在方法、理论、实验三方面的贡献，抽取核心公式与超参数，另一方面把 GitHub 星标高、文档完整的实现当作“可执行基准”，通过代码同构匹配将公式变量直接映射到 PyTorch 张量操作，确保先验被完整转译为可运行程序；在改进现有方案时，先对多份人类工作进行“原子拆解”，再让 Idea Generator 专门寻找“未被任何一篇文献同时覆盖”的组合空集，从而自动生成跨论文的杂交或对立策略，随后由 Advisor Agent 在实验阶段持续比对人类 baseline，若结果落后即触发“回退-再创新”机制，保证新方案在经验上严格优于旧方案。
+
+## Experiments and Results
+论文在 22 篇 2022–2024 顶会论文组成的 Scientist-Bench 上评测：Level-1（给定目标）任务实现完整率 93.8%，正确性 2.65/5；Level-2（开放探索）完整率仍达 100%，且平均科学贡献评分比 Level-1 提升 0.3–0.7，显示“先验+自主发散”优于“先验+单纯执行”；GPT-4o 等五位 LLM 评委对比人类原文后，15.8%–78.9% 的 AI 生成稿被认为“达到或接近人类水平”，在推荐系统等轻算力领域尤为突出。
+
+性能制约：其一，系统对高级技巧（Gumbel 重参数化、二阶近似、自适应矩阵分解等）识别率偏低，往往退回到标准实现，导致理论提升空间受限；其二，长链推理时上下文压缩使多步数学推导容易中断，收敛性证明、梯度方差界限等深度分析仍须人工补全；其三，实验阶段受算力预算限制，复杂任务（扩散训练、大模型微调）只能跑 1–2 个 epoch 或小数据集，结果可信度下降；其四，LLM 评委倾向于给排版精美、图表丰富的稿件更高分，可能高估实际科学价值。作者指出，未来需引入领域专用微调、外部记忆库与更严格理论验证模块，才能突破“人类先验复现”走向“超越人类专家”的终极目标。
+
+# Past as a Guide Leveraging Retrospective Learning for Python Code Completion
+
+<embed src="be2a0fd0/Shin et al. - 2023 - Past as a Guide Leveraging Retrospective Learning for Python Code Completion.pdf" width="100%" height="600px" type="application/pdf">
+
+## Introduction
+PaG 将变量命名语义、任务描述、边界条件等自然语言提示嵌入 System Prompt，强制模型在生成代码前必须先输出“如何复用/修正过往经验”的自然语言 retrospection，从而把人类对“正确、安全、高效代码”的偏好隐式地注入后续解码过程，实现零样本的语义正则化。
+
+## Methodology
+对于“过往经验”，系统离线遍历 MBPP 前 470 题，将每道题的〈自然语言描述，代码，执行结果〉三元组存入记忆库 M；遇到新问题时，用 text-embedding-ada-002 计算指令向量，在 M 中检索最相似的题目及其完整解题轨迹，把这段历史作为上下文喂给模型，让其在生成任何代码之前先阅读并总结“旧题与今题有何异同、哪些逻辑可复用、哪些陷阱需规避”，形成可解释的 retrospection。
+
+在改进现有方案阶段，PaG 把上述 retrospection 拼接至当前 HumanEval 指令前，构成增强提示，模型据此写出首版代码；Jupyter 客户端立即执行，若报错或测试失败，就把异常信息追加到对话历史中，让模型再次参考旧题轨迹进行第二轮修正，如此循环最多 12 次。由于旧题已提供算法骨架、边界处理与调试路径，新题能在极少迭代内收敛到正确解，使 GPT-4 的 pass@1 从 67%（零次）→ 90.85%（12 次纯自迭代）进一步提升至 92.07%，超过依赖外部测试反馈的 Reflexion。
+
+## Experiments and Results
+性能方面，PaG 在 164 道 HumanEval 上取得当前无监督方法最高 pass@1，且 retrospection 人类可读、可审计；但其经验库仅限 Python 小规模题目，跨语言或跨范式泛化能力尚未验证，检索粒度较粗（整题级），记忆库一次性构建、无法在线更新，且对提示措辞敏感，若检索到语义相近但算法本质不同的旧题，可能引入误导性先验，反而降低收敛速度。
+
+
+# Reducing Human Priors in Scalable Formal Software Verification with RL in LLMs: A Preliminary Study on Dafny
+
+<embed src="be2a0fd0/Yan et al. - 2025 - ReForm -- Reducing Human Priors in Scalable Formal Software Verification with RL in LLMs A Prelimi.pdf" width="100%" height="600px" type="application/pdf">
+
+## Introduction
+ReForm 对“人类先验”的依赖被压缩到三条最小且不可消除的偏置：一是用现成 Python 代码作为种子提示 frontier LLM 自动生成形式规范，二是加载已在大规模人类语料上预训练的基础模型，三是在冷启动阶段用 3 000 条验证通过样例做极短 SFT 以注入 Dafny 语法。除此之外， pipeline 彻底摒弃自然语言链式思维、人工注解的前提/后置条件以及人类设计的奖励函数，所有训练信号均来自 Dafny 自动验证器的“通过/失败”位与基于逻辑蕴含的子集奖励，从而把人类先验从“逐样例示教”降级为“一次性语法示教”，为后续自我探索留出最大搜索空间。
+
+所谓“过往经验”并非人类标注的历史，而是模型在 Python→Dafny 自动翻译阶段累积的、已被验证器确认的全部“代码-规范”对。ReForm 将这些成功案例直接作为初始策略 π₀ 的冷启动数据，并通过 GRPO 强化学习不断产生新的〈代码，规范〉轨迹；每条轨迹只要通过验证且子集奖励优于旧策略，就会被回收到经验池中用于下一轮策略更新。因此“经验”随训练动态增长，模型在每一轮都能参考自己之前生成的、更强的形式合约，实现“自我对弈”式的经验复用与迭代，无需外部人类示范或单元测试反馈。
+
+凭借最小先验与自累积经验，ReForm 对现有形式化代码生成流程做了三点改进：① 用“子集奖励”替代传统验证奖励，驱动模型输出比 Claude 标注更弱的前置条件与更强的后置条件，从而自动生成人类未写过的紧致规范；② 用多函数组合式基准 DafnyComp 替代单函数基准，迫使模型在跨函数调用链中推理全局不变量，显著提升了分布外泛化难度；③ 用纯形式语言空间训练摒弃自然语言 CoT，避免冗长、模糊或不可靠的中间推理，使学习信号仅依赖可机检的逻辑正确性。实验显示，14 B 模型在域内验证率达 84.0%，规范优越率 53.9%；在 300 道组合式 OOD 任务上验证率 14.0%，相对 SFT 基线提升 63.8%，并首次在 128 次采样中产出 8% 以上人类未覆盖的新颖后置条件，证明其确实探索到更强、更精确的逻辑规范。
+
+然而，性能天花板与局限仍十分明显：任务域目前局限于数组-循环-算术这类“教科书”算法，尚未触及并发、递归、面向对象等更复杂语义；子集奖励仍需以 Claude 生成的 ground-truth 规范为参照，无法做到完全无参考的自我改进；熵正则虽能提升多样性，却导致训练不稳定甚至崩溃；整个流程绑定在 Dafny 与 Z3 的自动定理证明能力上，一旦验证器无法判定，奖励信号即消失。此外，由于形式代码网络存量极少，数据污染风险虽低，但可爬取种子代码规模有限，限制了经验池的持续扩大。未来需引入自博弈课程、无参照优势估计与高阶逻辑迁移，才能将“最小先验+自我经验”范式扩展到更广阔的验证场景。

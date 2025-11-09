@@ -216,3 +216,6 @@ $$y - (a - b) = (0, 0, \dots, 0, y_{N+1} + i^{-2/3}, \dots).$$
 计算范数：
 $$\|y - (a - b)\|_2^2 = \sum_{i=N+1}^{\infty} |y_i + i^{-2/3}|^2 \leq 2\sum_{i=N+1}^{\infty} y_i^2 + 2\sum_{i=N+1}^{\infty} i^{-4/3} < 2\cdot\frac{\varepsilon}{4} + 2\cdot\frac{\varepsilon}{4} = \varepsilon = \eta^2,$$
 即 $\|y - (a - b)\|_2 < \eta$，故 $A - B$ 在 $l^2$ 中稠密。
+
+不能被仿射超平面分离：
+假设存在连续线性泛函 $f \neq 0$ 和常数 $c$ 使得对于所有 $a \in A$ 有 $f(a) \leq c$，对于所有 $b \in B$ 有 $f(b) \geq c$。则对于所有 $a \in A$ 和 $b \in B$，有 $f(a) \leq f(b)$，即 $f(a - b) \leq 0$。由于 $A - B$ 在 $l^2$ 中稠密，对于任意 $x \in l^2$，存在序列 $a_n \in A$ 和 $b_n \in B$ 使得 $a_n - b_n \to x$。则 $f(a_n - b_n) \to f(x)$，但 $f(a_n - b_n) \leq 0$，故 $f(x) \leq 0$。同理，考虑 $B - A$（亦稠密），有 $f(b - a) \geq 0$，故 $f(x) \geq 0$。因此 $f(x) = 0$ 对于所有 $x \in l^2$，与 $f \neq 0$ 矛盾。故不存在非平凡仿射超平面分离 $A$ 和 $B$。
