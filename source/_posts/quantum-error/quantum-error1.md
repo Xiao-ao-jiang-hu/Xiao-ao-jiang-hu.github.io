@@ -7,6 +7,8 @@ tags:
   - quantum-channel
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 量子信道的数学描述是量子信息理论的核心内容之一。本文将介绍CPTP映射的定义及其在量子信道中的重要性。
 abbrlink: 4d8408e4
 date: 2025-03-05 18:37:16

@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节系统阐述了 NP 完全性理论的核心：Cook-Levin 定理证明 SAT 是 NP 完全的；展示了从 3-SAT 到 VERTEX-COVER、CLIQUE、3-COLORING、HAM-CYCLE、MAX-CUT 等经典问题的多项式归约；并介绍了 Ladner 定理，说明若 P ≠ NP，则存在介于 P 与 NP 完全之间的“NP 中间”问题。
 abbrlink: fae22a70
 date: 2025-05-27 11:09:08

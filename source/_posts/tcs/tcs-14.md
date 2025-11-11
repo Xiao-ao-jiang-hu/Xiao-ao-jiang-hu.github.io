@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节内容涵盖了逻辑与计算的关联、直觉主义逻辑与自然演绎、命题即类型的对应（Curry-Howard Isomorphism）等重要概念。
 abbrlink: a0b4093a
 date: 2025-05-28 23:33:02
@@ -29,12 +31,12 @@ date: 2025-05-28 23:33:02
     - **局部完备性（Local Completeness）**：消去规则可重构原命题（对应程序的**扩展等价**）。
 
 - **逻辑连接词的规则**  
-  | 逻辑符号 | 引入规则                          | 消去规则                          |
-  |----------|-----------------------------------|-----------------------------------|
-  | $A \land B$ | $\dfrac{A \quad B}{A \land B}$ | $\dfrac{A \land B}{A}$, $\dfrac{A \land B}{B}$ |
-  | $A \supset B$ | $\dfrac{[A]^x \quad \cdots \quad B}{A \supset B}$ | $\dfrac{A \supset B \quad A}{B}$ |
-  | $A \lor B$ | $\dfrac{A}{A \lor B}$, $\dfrac{B}{A \lor B}$ | $\dfrac{A \lor B \quad [A]^x \cdots C \quad [B]^y \cdots C}{C}$ |
-  | $\bot$      | 无引入规则                        | $\dfrac{\bot}{C}$（爆炸原理）    |
+  | 逻辑符号      | 引入规则                                          | 消去规则                                                        |
+  | ------------- | ------------------------------------------------- | --------------------------------------------------------------- |
+  | $A \land B$   | $\dfrac{A \quad B}{A \land B}$                    | $\dfrac{A \land B}{A}$, $\dfrac{A \land B}{B}$                  |
+  | $A \supset B$ | $\dfrac{[A]^x \quad \cdots \quad B}{A \supset B}$ | $\dfrac{A \supset B \quad A}{B}$                                |
+  | $A \lor B$    | $\dfrac{A}{A \lor B}$, $\dfrac{B}{A \lor B}$      | $\dfrac{A \lor B \quad [A]^x \cdots C \quad [B]^y \cdots C}{C}$ |
+  | $\bot$        | 无引入规则                                        | $\dfrac{\bot}{C}$（爆炸原理）                                   |
 
 - **直觉主义逻辑特性**  
   - 不可证命题：排中律（$A \lor \neg A$）、双重否定消除（$\neg \neg A \supset A$）等。
@@ -43,14 +45,14 @@ date: 2025-05-28 23:33:02
 
 ### **3. 命题即类型的对应（Curry-Howard Isomorphism）**
 - **核心对应关系**  
-  | 逻辑概念          | 程序语言概念          |
-  |-------------------|-----------------------|
-  | 命题（Proposition）| 类型（Type）         |
-  | 证明（Proof）     | 程序（Program）      |
-  | 引入规则          | 构造子（Constructor）|
-  | 消去规则          | 析构子（Destructor） |
-  | 局部规约          | 程序计算（$\beta$-规约） |
-  | 局部扩展          | 扩展等价（$\eta$-等价） |
+  | 逻辑概念            | 程序语言概念             |
+  | ------------------- | ------------------------ |
+  | 命题（Proposition） | 类型（Type）             |
+  | 证明（Proof）       | 程序（Program）          |
+  | 引入规则            | 构造子（Constructor）    |
+  | 消去规则            | 析构子（Destructor）     |
+  | 局部规约            | 程序计算（$\beta$-规约） |
+  | 局部扩展            | 扩展等价（$\eta$-等价）  |
 
 - **具体映射**  
   - **蕴含（$A \supset B$）** → **函数类型（$A \to B$）**  
@@ -73,12 +75,12 @@ date: 2025-05-28 23:33:02
 
 ### **4. 应用与扩展**
 - **逻辑系统与程序语言的对应史**  
-  | 逻辑系统                 | 程序语言                     |
-  |--------------------------|------------------------------|
-  | 自然演绎（Gentzen, 1935）| 简单类型$\lambda$-演算（Church, 1940）|
-  | System F（Girard, 1972） | 多态$\lambda$-演算（Reynolds, 1974） |
-  | 线性逻辑（Girard, 1987） | 会话类型（Honda, 1993）      |
-  | 模态逻辑                 | Monad（Moggi, 1987）         |
+  | 逻辑系统                  | 程序语言                               |
+  | ------------------------- | -------------------------------------- |
+  | 自然演绎（Gentzen, 1935） | 简单类型$\lambda$-演算（Church, 1940） |
+  | System F（Girard, 1972）  | 多态$\lambda$-演算（Reynolds, 1974）   |
+  | 线性逻辑（Girard, 1987）  | 会话类型（Honda, 1993）                |
+  | 模态逻辑                  | Monad（Moggi, 1987）                   |
 
 - **证明助手（Proof Assistants）**  
   - 基于**依赖类型（Dependent Types）** 扩展命题即类型（如 $\forall, \exists$）。  

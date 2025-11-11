@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节内容涵盖了私钥加密基础、完美保密性、计算保密性与伪随机生成器（PRG）、选择明文攻击（CPA）安全与伪随机函数（PRF）等重要概念。
 abbrlink: c3643c00
 date: 2025-05-28 23:25:21

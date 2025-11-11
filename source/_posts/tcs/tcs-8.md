@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节探讨了“若 P = NP”这一假设下的深远影响，包括搜索-判定归约、优化问题求解、密码学崩溃、自动数学证明、多项式层级坍缩、近似计数等；并介绍了相对化（relativization）障碍，说明对角化方法无法解决 P vs NP 问题。
 abbrlink: caa5a99
 date: 2025-05-27 12:14:52

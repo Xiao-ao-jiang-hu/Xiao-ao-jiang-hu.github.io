@@ -4,6 +4,8 @@ tags:
   - quantum
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 本文将深入探讨量子态概率与经典概率的本质区别，分析混态概率与纯态概率的差异，并阐明量子信息与熵的关系，以及量子计算优越性的本质。
 abbrlink: 2b6afd5d
 date: 2024-10-26 18:55:59

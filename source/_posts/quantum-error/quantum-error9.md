@@ -5,6 +5,8 @@ tags:
   - quantum-error
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 本文将介绍量子纠错码（QECC）的设计原则和核心标准，包括纠错能力、编码效率、实用性等方面的要求，以及量子码的等价性和参数权衡问题。
 abbrlink: 2ec34a37
 date: 2025-03-19 17:31:27

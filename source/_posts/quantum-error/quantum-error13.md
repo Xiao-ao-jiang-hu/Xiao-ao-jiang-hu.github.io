@@ -5,6 +5,8 @@ tags:
   - quantum
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: >-
   本文介绍了经典线性码的对偶理论，包括GF(2)上的线性代数基础、对偶码的定义与性质，以及7比特汉明码的对偶实例。重点讨论了对偶码的生成矩阵与校验矩阵之间的关系，以及秩-零定理在GF(2)中的应用。
 abbrlink: '36e94218'

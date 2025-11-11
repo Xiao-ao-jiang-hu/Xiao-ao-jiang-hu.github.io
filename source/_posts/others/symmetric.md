@@ -6,6 +6,8 @@ tags:
   - quantum field theory
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 对称性在现代物理学中的核心地位不可动摇。本文介绍了经典场论的基本框架，阐述了最小作用量原理及其导出运动方程的方法，并重点讨论了诺特定理如何将连续对称性与守恒定律联系起来。通过具体例子，我们展示了不同类型的对称性及其对应的守恒量，揭示了对称性在理解自然界基本相互作用中的重要作用。
 abbrlink: b0fda5d6
 date: 2025-06-28 20:04:54

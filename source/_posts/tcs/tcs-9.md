@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节内容涵盖了空间复杂度的基础知识、多项式空间（PSPACE）及其完备性、对数空间（Logarithmic Space）以及空间层次定理等重要概念。
 abbrlink: aadd512d
 date: 2025-05-28 23:06:57
@@ -162,9 +164,9 @@ date: 2025-05-28 23:06:57
   $$
 - **严格性**：$\text{L} \neq \text{PSPACE}$（由空间层次定理证明）。
 - **核心问题与定理**：
-  | **问题/定理**          | **复杂度类**  | **重要性**                     |
-  |------------------------|---------------|--------------------------------|
-  | TQBF                   | PSPACE-完全   | 首个 PSPACE 完备问题           |
-  | Savitch 定理           | NSPACE ⊆ SPACE($f^2$) | 连接确定与非确定空间类 |
-  | PATH                   | NL-完全       | NL 类的代表问题                |
-  | Immerman-Szelepcsényi  | NL = coNL     | NL 对补封闭                   |
+  | **问题/定理**         | **复杂度类**          | **重要性**             |
+  | --------------------- | --------------------- | ---------------------- |
+  | TQBF                  | PSPACE-完全           | 首个 PSPACE 完备问题   |
+  | Savitch 定理          | NSPACE ⊆ SPACE($f^2$) | 连接确定与非确定空间类 |
+  | PATH                  | NL-完全               | NL 类的代表问题        |
+  | Immerman-Szelepcsényi | NL = coNL             | NL 对补封闭            |

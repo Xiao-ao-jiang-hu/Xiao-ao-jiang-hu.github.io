@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节内容涵盖了λ演算中递归的实现（不动点组合子）、数据结构（对、元组、列表）及其操作（map、filter、reduce）、函数式编程思想，以及Church-Turing论题的历史背景、图灵机模型、不可判定性与λ演算的图灵完备性。
 abbrlink: ead0e63
 date: 2025-05-25 23:09:58

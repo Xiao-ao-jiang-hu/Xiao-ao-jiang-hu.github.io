@@ -5,6 +5,8 @@ tags:
   - quantum-error
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 稳定化子纠错码是量子纠错的核心技术之一，本文将介绍其设计原理、数学框架及关键机制，并回顾9比特码的核心机制和稳定子形式化。
 abbrlink: b5083f60
 date: 2025-03-25 17:31:27
@@ -56,14 +58,14 @@ date: 2025-03-25 17:31:27
 > 核心洞察：反对易关系使错误暴露为特征值-1，如同警报系统。
 
 #### 9量子比特码生成元
-| 生成元 | 作用（1-9号量子比特）     | 功能           |  
-|--------|----------------------------|----------------|  
-| $M_1$| $Z \otimes Z \otimes I^{\otimes 7}$| 组1比特翻转检测 |  
-| $M_2$| $Z \otimes I \otimes Z \otimes I^{\otimes 6}$| 组1比特翻转检测 |  
-| $M_3, M_4$| 组2类似操作             | 组2比特翻转检测 |  
-| $M_5, M_6$| 组3类似操作             | 组3比特翻转检测 |  
-| $M_7$| $X^{\otimes 3} \otimes X^{\otimes 3} \otimes I^{\otimes 3}$| 组1 vs 组2相位检测 |  
-| $M_8$| $X^{\otimes 3} \otimes I^{\otimes 3} \otimes X^{\otimes 3}$| 组1 vs 组3相位检测 |  
+| 生成元     | 作用（1-9号量子比特）                                       | 功能               |
+| ---------- | ----------------------------------------------------------- | ------------------ |
+| $M_1$      | $Z \otimes Z \otimes I^{\otimes 7}$                         | 组1比特翻转检测    |
+| $M_2$      | $Z \otimes I \otimes Z \otimes I^{\otimes 6}$               | 组1比特翻转检测    |
+| $M_3, M_4$ | 组2类似操作                                                 | 组2比特翻转检测    |
+| $M_5, M_6$ | 组3类似操作                                                 | 组3比特翻转检测    |
+| $M_7$      | $X^{\otimes 3} \otimes X^{\otimes 3} \otimes I^{\otimes 3}$ | 组1 vs 组2相位检测 |
+| $M_8$      | $X^{\otimes 3} \otimes I^{\otimes 3} \otimes X^{\otimes 3}$ | 组1 vs 组3相位检测 |
 
 
 #### 原理

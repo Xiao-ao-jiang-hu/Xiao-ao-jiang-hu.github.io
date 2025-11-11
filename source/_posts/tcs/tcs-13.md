@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节内容涵盖了交互式证明系统、抛币协议与比特承诺、零知识证明等重要概念，深入探讨了它们在计算复杂性和密码学中的应用。
 abbrlink: 651337b4
 date: 2025-05-28 23:28:05

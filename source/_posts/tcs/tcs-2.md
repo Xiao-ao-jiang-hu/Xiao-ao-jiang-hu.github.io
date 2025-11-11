@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: >-
   本节深入探讨了λ演算的计算机制，包括β-归约、相容闭包、归约策略、Church-Rosser性质及其证明，并展示了如何用λ演算编码布尔值、自然数及基本算术运算，奠定了其作为通用编程语言的基础。
 abbrlink: a8da05d7

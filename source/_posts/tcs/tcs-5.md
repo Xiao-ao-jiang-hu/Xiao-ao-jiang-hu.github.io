@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节系统介绍了时间复杂性理论，包括图灵机与RAM模型下的运行时间定义、大O记号、回文问题的复杂性分析、复杂性类TIME(t(n))与P、扩展Church-Turing论题，以及时间层级定理（Time Hierarchy Theorem）及其证明与推论。
 abbrlink: 6d7d3b59
 date: 2025-05-26 14:14:33

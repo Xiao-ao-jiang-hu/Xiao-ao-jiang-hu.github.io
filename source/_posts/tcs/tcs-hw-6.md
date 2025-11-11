@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: TCS Homework 6
 abbrlink: 6c3a380e
 date: 2025-05-30 22:01:43

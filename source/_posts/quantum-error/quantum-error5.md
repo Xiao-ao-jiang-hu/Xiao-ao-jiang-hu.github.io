@@ -5,6 +5,8 @@ tags:
   - quantum-error
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 无克隆定理是量子信息理论的核心定理之一，对量子纠错提出了重大挑战。本文将详细探讨无克隆定理的内容、证明及其对量子纠错的影响，并与经典纠错进行对比。
 abbrlink: 15f7ad4f
 date: 2025-03-18 20:55:22

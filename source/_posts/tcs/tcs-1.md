@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节课介绍了λ演算的等式理论、η-规则及其意义、不动点定理及不动点组合子的构造，
 abbrlink: aadd512d
 date: 2025-05-25 22:03:26

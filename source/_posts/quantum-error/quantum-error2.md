@@ -5,6 +5,8 @@ tags:
   - quantum-error
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 单比特量子信道是量子信息处理的基本构件，本文将介绍几种常见的单比特量子信道，包括消相干信道、去极化信道和泡利信道，并探讨它们的数学模型、物理实现及实验表现。
 abbrlink: 23b403cd
 date: 2025-03-05 18:46:26

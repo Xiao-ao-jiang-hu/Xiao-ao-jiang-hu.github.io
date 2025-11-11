@@ -5,6 +5,8 @@ tags:
   - quantum-error
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 三比特和九比特纠错码是量子纠错的基础，本文将介绍比特翻转和相位翻转纠错码的设计思路、实现细节及其在量子信息处理中的应用。
 abbrlink: 2def7ebc
 date: 2025-03-18 21:08:06

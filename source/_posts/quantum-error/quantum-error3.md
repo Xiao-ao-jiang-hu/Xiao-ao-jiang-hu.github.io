@@ -5,6 +5,8 @@ tags:
   - quantum-error
 categories:
   - quantum
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 excerpt: 多量子比特信道是量子信息处理中的重要概念，本文将介绍多量子比特泡利信道和独立/无记忆信道的定义、数学模型及其物理实现。
 abbrlink: fbf320d
 date: 2025-03-05 20:10:19

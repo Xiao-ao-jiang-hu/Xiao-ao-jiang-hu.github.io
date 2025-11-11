@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节系统介绍了P与NP类的核心区别，通过图论、逻辑与代数中的典型问题（如最短/最长路径、SAT、Hamiltonian路径、MAX-CUT、permanent等）展示“易验证但难求解”的现象，正式定义了NP类（基于验证器与非确定性图灵机），并探讨了coNP、NP ∩ coNP及著名开放问题P vs NP。
 abbrlink: 5c9521c4
 date: 2025-05-26 15:51:37

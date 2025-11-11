@@ -4,6 +4,8 @@ tags:
   - tcs
 categories:
   - tcs
+index_img: /img/tcs.jpg
+banner_img: /img/tcs.jpg
 excerpt: 本节深入探讨了 Kleene 递归定理及其在自复制程序、不可判定性证明中的应用，介绍了 Rogers 不动点定理，并借助递归定理给出了 Gödel 不完备性定理的计算视角证明，包括第一与第二不完备性定理的构造性论证。
 abbrlink: cb0a30ed
 date: 2025-05-26 11:15:44
