@@ -5,6 +5,8 @@ tags:
 categories:
   - finance
 excerpt: 本文档总结了财务会计课程第二课的核心内容，涵盖了投资与融资决策的基本概念、会计系统的结构与功能、会计信息质量特征，以及会计循环的主要步骤。
+index_img: /img/accounting.png
+banner_img: /img/accounting.png
 abbrlink: 44480d54
 date: 2025-10-10 20:16:31
 ---

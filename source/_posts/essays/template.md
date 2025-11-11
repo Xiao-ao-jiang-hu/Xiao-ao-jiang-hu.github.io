@@ -6,6 +6,8 @@ tags:
 categories:
   - paper-reading
 excerpt: 论文阅读
+index_img: /img/reading.jpg
+banner_img: /img/reading.jpg
 abbrlink: b859fa5a
 date: 2025-10-21 14:53:57
 ---

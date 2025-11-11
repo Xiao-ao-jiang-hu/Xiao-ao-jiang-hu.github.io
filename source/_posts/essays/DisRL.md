@@ -7,6 +7,8 @@ categories:
   - paper-reading
   - machine-learning
 excerpt: 论文阅读
+index_img: /img/reading.jpg
+banner_img: /img/reading.jpg
 abbrlink: 73f8e17d
 date: 2025-10-31 04:47:39
 ---

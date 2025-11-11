@@ -6,6 +6,8 @@ tags:
 categories:
   - math
   - functional analysis
+index_img: /img/math.png
+banner_img: /img/math.png
 excerpt: 泛函分析课程笔记
 abbrlink: 67625fea
 date: 2025-10-10 18:19:05
@@ -18,16 +20,16 @@ $$
 \sup_{i \in I} \|f_i(x)\|_{Y_i} < +\infty \quad \forall x \in X
 $$
 
-## 定理（一致有界原理）
-假设 $X$ 是 Banach 空间。$\{A_i\}_{i \in I}$ 满足
+## 定理（一致有界原理1）
+假设 $X$ 是 Banach 空间。$\{A_i\}_{i \in I}$ 满足：
 1. $A_i: X \to Y_i$ 是有界线性算子，$Y_i = (Y_i, \|\cdot\|)$ 赋范空间。
 2. $\{A_i\}_{i \in I}$ 是点态有界的。
+
 则 $\sup_{i \in I} \|A_i\| < +\infty$。
 
 （即 算子族的点态有界性 $\Longrightarrow$ 算子族（在算子范数下）的一致有界性。）
-$X$ 是 Banach 空间
 
-## 推论
+### 推论
 若 $(X, d)$ 是非空完备度量空间，$\{f_i\}_{i \in I}$ 满足
 1. $f_i: X \mapsto \mathbb{R}$ 是连续函数
 2. $\{f_i\}_{i \in I}$ 点态有界。
@@ -36,7 +38,7 @@ $$
 \sup_{i \in I} \sup_{x \in B(x_0; \varepsilon)} |f_i(x)| < +\infty
 $$
 
-## 证明
+#### 证明
 引入 $F_{n,i} \overset{\text{定义}}{=} \left\{ x \in X \mid |f_i(x)| \le n \right\}$，由 $f_i$ 的连续性 $\Rightarrow F_{n,i}$ 是闭集。
 $$
 F_n \overset{\text{定义}}{=} \bigcap_{i \in I} F_{n,i} = \left\{ x \in X \mid \sup_{i \in I} |f_i(x)| \le n \right\} \text{（闭集）}.
@@ -50,7 +52,7 @@ s.t. $B(x_0; \varepsilon) \subseteq F_{n_0}$。$\Rightarrow$ (得证)
 
 
 
-## 一致有界证明
+### 证明
 利用线性性质将“一点附近有界”推导为“零点附近有界”，令 $f_i(x) = \|A_i x\|_{Y_i}$，$\forall x \in X$
 
 由条件2： $\Rightarrow \{f_i\}_{i \in I}$ 是点态有界的。$\Rightarrow \exists x_0 \in X$，$\varepsilon > 0$，s.t.
@@ -90,16 +92,15 @@ $\Rightarrow \sup_{n \ge 1} \|A_n\| = +\infty$。且 $\|A e_n\|_{\ell^\infty} = 
 ## 算子强收敛
 假设 $X, Y$ 是 Banach 空间。$\forall i \in \mathbb{N}$，$A_i, A \in \mathcal{L}(X, Y)$。称 $A_i$ 强收敛至 $A$，如果 $\forall x \in X$，$A_i x \to A x$。
 
-## 定理（Banach-Steinhaus）
+### 定理（Banach-Steinhaus）
 $X, Y$ 是 Banach 空间。$\{A_i\}_{i \in \mathbb{N}} \subset \mathcal{L}(X, Y)$。则下列等价：
 ① $\forall x \in X$，$\{A_i x\}_{i \in \mathbb{N}}$ 是 $Y$ 中的 Cauchy 列。
 ② $\sup_{i \in \mathbb{N}} \|A_i\| < +\infty$ 且于稠密子集 $D \subset X$ s.t. $\forall x \in D$，s.t. $\{A_i x\}_{i \in \mathbb{N}}$ 是 $Y$ 中的 Cauchy 列。
 ③ $\sup_{i \in \mathbb{N}} \|A_i\| < +\infty$ 且 $\exists A \in \mathcal{L}(X, Y)$，s.t. $A_i \xrightarrow{\text{强}} A$，且 $\|A\| \le \lim_{i \to \infty} \|A_i\|$。
 
-### 特别
-当 $X$ 不是完备时，例 ⑥ $\Leftrightarrow$ ⑦；当 $Y$ 不是完备时，⑥ $\Leftrightarrow$ ⑦。
+特别的，当 $X$ 不是完备时，② $\Leftrightarrow$ ③；当 $Y$ 不是完备时，① $\Leftrightarrow$ ③。
 
-### 证明
+#### 证明
 1 $\Leftrightarrow$ 3：
 只需证明 1 $\Rightarrow$ 3。
 首先 ⑥ $\Longrightarrow \sup_{i \in \mathbb{N}} \|A_i\| < +\infty$。
@@ -140,7 +141,7 @@ $$
 
 3. $\forall x \in X$，$B(x, \cdot)$ 是其线性性；$\forall y \in X$，$B(\cdot, y) \in \mathcal{L}(X, Z)$ 且连续。
 
-## 证明
+#### 证明
 1 $\Rightarrow$ 2：
 $$
 \|B(x,y) - B(\hat{x}, \hat{y})\|_Z \le \|B(x, y - \hat{y})\|_Z + \|B(x - \hat{x}, \hat{y})\|_Z \quad \text{（得证）}
@@ -164,9 +165,70 @@ $\Rightarrow \{A_y\}_{y \in Y}$ 是点态有界的。
 $\Rightarrow \|B(x, y)\|_Z = \|y\| \cdot \|B(x, \frac{y}{\|y\|})\|$
 $\le \|A_{\frac{y}{\|y\|}}(x)\|_Z \cdot \|y\| \le M \|x\| \|y\|$ $\Rightarrow$ 结论
 
-### 例
+#### 例
 $\forall 1 < p < +\infty$。若 $f_n \xrightarrow{\text{弱}} f$ （即 $\forall g \in L^q(d\mu)$，$\int_X f_n g \, d\mu \xrightarrow[n \to +\infty]{} \int_X f g \, d\mu$）
 
 则 $\|f\|_{L^p} \le \lim_{n \to \infty} \|f_n\|_{L^p}$
 
 （其中 $T_n(g) = \int_X f_n g \, d\mu$，且此时 $\|T_n\| = \|f_n\|_{L^p}^*$，$\|T\| = \|f\|_{L^p}^*$）
+
+## 定理（一致有界原理2）
+设 $X$ 是一个 Banach 空间，对于每个 $n \in \mathbb{N}$，设 $Y_n$ 是一个赋范空间，$F_n \subseteq L(X, Y_n)$ 是从 $X$ 到 $Y_n$ 的有界线性算子的子集。若对每个 $n$，有
+$$\sup_{T \in F_n} \|T\| = \infty,$$
+则集合
+$$R = \left\{ x \in X \,\middle|\, \forall n \geq 1,\ \sup_{T \in F_n} \|T x\| = \infty \right\}$$
+是 $X$ 中的剩余集。
+
+### 证明
+定义辅助集合：
+$$A_n = \left\{ x \in X \,\middle|\, \sup_{T \in F_n} \|T x\| < \infty \right\}, \quad n \in \mathbb{N}.$$
+则
+$$R = X \setminus \bigcup_{n=1}^\infty A_n.$$
+目标是证明每个 $A_n$ 是稀疏集
+
+对每个 $n, m \in \mathbb{N}$，定义
+$$B_{n,m} = \left\{ x \in X \,\middle|\, \sup_{T \in F_n} \|T x\| \leq m \right\}.$$
+由于每个 $T \in F_n$ 连续，若 $x_k \to x$ 且 $x_k \in B_{n,m}$，则对任意 $T \in F_n$，有
+$$\|T x\| = \lim_{k \to \infty} \|T x_k\| \leq m,$$
+故 $x \in B_{n,m}$。因此 $B_{n,m}$ 是闭集。
+显然，
+$$A_n = \bigcup_{m=1}^\infty B_{n,m}.$$
+
+假设存在某个 $n$ 使得 $A_n$ 不是稀疏集，即其闭包包含一个开球 $B(x_0, r)$。
+由 Baire 定理，$A_n$ 作为可数个闭集 $B_{n,m}$ 的并集，必存在某个 $m_0 \in \mathbb{N}$ 使得 $B_{n,m_0}$ 在 $B(x_0, r)$ 中稠密。
+由于 $B_{n,m_0}$ 是闭集，必有
+$$B(x_0, r) \subseteq B_{n,m_0}.$$
+即对任意 $x \in B(x_0, r)$，有
+$$\sup_{T \in F_n} \|T x\| \leq m_0.$$
+
+取 $y \in B(x_0, r)$，则对任意单位向量 $u \in X$，令
+$$x = y + \frac{r}{2} u \in B(x_0, r).$$
+于是对任意 $T \in F_n$，有
+$$\|T x\| \leq m_0, \quad \|T y\| \leq m_0.$$
+因此，
+$$\|T u\| = \frac{2}{r} \|T(x - y)\| \leq \frac{2}{r} (\|T x\| + \|T y\|) \leq \frac{4m_0}{r}.$$
+这说明
+$$\|T\| = \sup_{\|u\|=1} \|T u\| \leq \frac{4m_0}{r},$$
+与假设 $\sup_{T \in F_n} \|T\| = \infty$ 矛盾。
+
+### 例
+$\mathcal{P} = [-\pi, \pi]$， $C(\mathcal{P}):=\mathcal{P}$ 上的连续周期函数的全体。
+**命题**：$\exist f \in C(\mathcal{P})$，使 $\sum_{k \in \mathbb{Z}} \hat{f}(k) e^{ikx}$ 在 $[-\pi, \pi]$ 的稠密子集上不收敛，其中，$\hat{f}(k) \stackrel{\text{def}}{=} \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) e^{-ikx} dx$
+
+**证明**：
+考虑 Banach 空间 $X = C(\mathcal{P})$，即区间 $[-\pi, \pi]$ 上的连续周期函数空间，赋予上确界范数。对于每个 $x \in [-\pi, \pi]$ 和每个 $n \in \mathbb{N}$，定义线性泛函 $L_n^x: X \to \mathbb{C}$ 为
+$$L_n^x(f) = S_n(f)(x) = \sum_{k=-n}^{n} \hat{f}(k) e^{ikx},$$
+其中 $\hat{f}(k) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t) e^{-ikt} \, dt$。这些泛函是有界的，且其范数为
+$$\|L_n^x\| = \|D_n\|_1,$$
+其中 $D_n$ 是 Dirichlet 核：
+$$D_n(t) = \frac{\sin\left((n+\frac{1}{2})t\right)}{\sin\left(\frac{t}{2}\right)}.$$
+已知 $\|D_n\|_1 \to \infty$ 当 $n \to \infty$，因此对每个固定的 $x$，有
+$$\sup_{n \in \mathbb{N}} \|L_n^x\| = \infty.$$
+由一致有界原理（Banach–Steinhaus 定理），对每个固定的 $x$，集合
+$$R_x = \left\{ f \in X \,\middle|\, \sup_{n \in \mathbb{N}} |L_n^x(f)| = \infty \right\}$$
+是 $X$ 中的剩余集。
+现在取 $[-\pi, \pi]$ 的一个可数稠密子集 $D$。则交集
+$$R = \bigcap_{x \in D} R_x$$
+仍是剩余集（因为可数个剩余集的交集仍是剩余集）。对任意 $f \in R$ 和任意 $x \in D$，有
+$$\sup_{n \in \mathbb{N}} |S_n(f)(x)| = \infty,$$
+即 Fourier 级数 $\sum_{k \in \mathbb{Z}} \hat{f}(k) e^{ikx}$ 在点 $x$ 处发散。由于 $D$ 稠密，该级数在 $[-\pi, \pi]$ 的一个稠密子集上发散。

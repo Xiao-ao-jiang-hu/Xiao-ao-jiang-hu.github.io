@@ -6,6 +6,8 @@ tags:
 categories:
   - math
   - functional analysis
+index_img: /img/math.png
+banner_img: /img/math.png
 excerpt: 泛函分析第八次作业
 abbrlink: 472523f2
 date: 2025-10-25 15:24:05

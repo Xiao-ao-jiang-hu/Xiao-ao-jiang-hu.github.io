@@ -1,10 +1,12 @@
 ---
 title: 'Financial Accounting Class 4: Adjustments, Financial Statements, and the Closing Process'
 tags:
-  - no tags
+  - finance
 categories:
-  - uncategorized
-excerpt: no excerpt
+  - finance
+index_img: /img/accounting.png
+banner_img: /img/accounting.png
+excerpt: 本文档总结了财务会计课程第四课的核心内容，涵盖了调整分录的目的与类型、Chipotle公司的具体调整案例、财务报表的编制流程以及结账过程的关键步骤。
 abbrlink: 14f7066e
 date: 2025-10-22 16:56:43
 ---

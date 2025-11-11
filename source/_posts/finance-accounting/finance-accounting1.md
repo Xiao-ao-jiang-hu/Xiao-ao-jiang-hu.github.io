@@ -5,6 +5,8 @@ tags:
 categories:
   - finance
 excerpt: 本文档总结了财务会计课程第一课的核心内容，涵盖了企业的基本概念、会计系统的作用与分类、主要商业活动以及四大基本财务报表的结构与功能。
+index_img: /img/accounting.png
+banner_img: /img/accounting.png
 abbrlink: 3829288f
 date: 2025-09-19 08:34:44
 ---

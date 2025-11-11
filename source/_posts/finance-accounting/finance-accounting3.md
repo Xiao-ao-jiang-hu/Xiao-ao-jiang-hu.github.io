@@ -4,6 +4,8 @@ tags:
   - finance
 categories:
   - finance
+index_img: /img/accounting.png
+banner_img: /img/accounting.png
 excerpt: 本文档涵盖了商业运营周期、会计分期假设、利润表要素、权责发生制、交易分析、分类利润表编制以及净利率计算等内容，旨在帮助理解会计系统如何支持经营决策。
 abbrlink: 9bc64ae0
 date: 2025-10-13 14:13:11

@@ -9,6 +9,8 @@ categories:
   - network
   - routing
 excerpt: 论文阅读
+index_img: /img/reading.jpg
+banner_img: /img/reading.jpg
 abbrlink: 3a868304
 date: 2025-09-12 22:49:09
 ---

@@ -7,6 +7,8 @@ tags:
 categories:
   - math
   - functional analysis
+index_img: /img/math.png
+banner_img: /img/math.png
 excerpt: no excerpt
 abbrlink: 88c391a1
 date: 2025-09-22 12:44:41

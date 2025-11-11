@@ -8,6 +8,8 @@ categories:
   - paper-reading
   - optimization
 excerpt: 论文阅读
+index_img: /img/reading.jpg
+banner_img: /img/reading.jpg
 abbrlink: 366154f0
 date: 2025-10-27 01:28:25
 ---

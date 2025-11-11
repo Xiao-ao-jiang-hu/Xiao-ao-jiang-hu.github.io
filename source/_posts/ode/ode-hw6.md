@@ -7,6 +7,8 @@ categories:
   - math
   - ode
 excerpt: ODE第六次作业
+index_img: /img/ode.png
+banner_img: /img/ode.png
 abbrlink: f4794a59
 date: 2025-11-07 21:28:13
 ---

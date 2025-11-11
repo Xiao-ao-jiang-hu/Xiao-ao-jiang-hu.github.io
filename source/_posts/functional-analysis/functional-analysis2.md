@@ -6,6 +6,8 @@ tags:
 categories:
   - math
   - functional analysis
+index_img: /img/math.png
+banner_img: /img/math.png
 excerpt: 泛函分析课程笔记
 abbrlink: 3b3eb9f1
 date: 2025-09-16 15:26:19
