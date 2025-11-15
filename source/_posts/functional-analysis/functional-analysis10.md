@@ -348,3 +348,81 @@ $X = (X, +, \cdot, \mathbb{R})$，则 $K$ 是吸收集 $\Leftrightarrow$ $0$ 是
    $$
    \sup_{a \in A} f(a) < \inf_{b \in B} f(B).
    $$
+
+### 证明
+
+#### 1
+
+由于 $x_0 \notin \bar{A}$ 且 $\bar{A}$ 是闭凸集，考虑集合 $C = \bar{A} - x_0$。则：
+
+$C$ 是闭凸集
+$0 \notin C$（否则 $x_0 \in \bar{A}$，矛盾）
+
+由 $0 \notin C$且$C$闭，存在$\delta > 0$使得$B(0, \delta) \cap C = \phi$。
+定义集合 $K = B(0, \delta) + \bar{A}$，则：
+
+$K$ 是凸开集（作为开球与凸集的Minkowski和）
+$0 \in K$（因 \$0 \in \bar{A}$）
+$x_0 \notin K$（否则存在 $a \in \bar{A}$ 使得 $x_0 - a \in B(0, \delta)$，即 $x_0 - a \in C \cap B(0, \delta)$，矛盾）
+
+考虑 $K$ 的 Minkowski 泛函 $p_K$。由于 $K$ 是凸吸收开集，$p_K$ 是连续次线性泛函。
+在子空间 $M = \text{span}\{x_0\}$ 上定义线性泛函：
+$f_0(λx_0) = λp_K(x_0)$
+验证 $f_0 \leq  p_K$ 在 $M$ 上：
+
+当 $λ \geq 0$：$f_0(λx_0) = λp_K(x_0) = p_K(λx_0)$
+当 $λ < 0$：$f_0(λx_0) = λp_K(x_0) < 0 \leq  p_K(λx_0)$
+
+由 Hahn-Banach 定理（解析形式），存在 $X$ 上的线性泛函 $f$ 延拓 $f_0$ 且满足 $f \leq  p_K$。
+由于 $p_K$ 连续，$f$ 也连续，即 $f \in X^*$。
+取 $c = p_K(x_0)$，则：
+
+$f(x_0) = p_K(x_0) = c$
+对任意 $a \in A$，有 $a \in K$，故 $p_K(a) \leq  1$，但需更精确估计：
+
+实际上，对任意 $a \in \bar{A}$，由 $K$ 的定义，$a + B(0, \delta) \subset K$，故 $p_K(a) \leq  1$。更精细地：
+对任意 $\epsilon > 0$，有 $a \in (1+\epsilon)K$，故 $p_K(a) \leq  1$。
+因此 $f(a) \leq  p_K(a) \leq  1$，而 $f(x_0) = p_K(x_0)$。
+由于 $x_0 \notin K$，有 $p_K(x_0) \geq 1$，故：
+$f(x_0) = p_K(x_0) \geq 1 \geq p_K(a) \geq f(a) \quad \forall a \in A$
+对 $\tilde{a} \in \text{int}(A)$，存在 $r > 0$ 使得 $\tilde{a} + B(0, r) \subset A$，故 $p_K(\tilde{a}) < 1$，从而：
+$f(\tilde{a}) \leq  p_K(\tilde{a}) < 1 \leq  p_K(x_0) = c$
+
+
+#### 2
+由条件知 $\text{int}(A) \cap B = \phi$（否则与结论矛盾）。
+考虑集合 $C = \text{int}(A) - B = \{a - b : a \in \text{int}(A), b \in B\}$，则：
+
+$C$ 是凸集（作为两个凸集的Minkowski差）
+$0 ∉ C$（因 $\text{int}(A) \cap B = \phi$）
+$C$ 是开集（因 $\text{int}(A)$ 开）
+
+由第一部分证明方法，存在非零 $f \in X^*$ 使得：
+$f(c) > 0 \quad \forall c \in C$
+即对任意 $a \in \text{int}(A)$，$b \in B$，有：
+$f(a - b) > 0 \quad \Rightarrow \quad f(a) > f(b)$
+令 $c = \inf_{b \in B} f(b)$，则：
+
+$f(a) \geq c$ 对 $a \in A$（由连续性及 $A \subset \overline{\text{int}(A)}$）
+$f(\tilde{a}) > c$ 对 $\tilde{a} \in \text{int}(A)$
+$c \leq  f(b)$ 对 $b \in B$
+
+因此：
+$\sup_{a \in A} f(a) \leq  c \leq  \inf_{b \in B} f(b), \quad f(\tilde{a}) < c \quad \forall \tilde{a} \in \text{int}(A)$
+
+
+#### 3
+由于 $A$ 闭、$B$ 紧且不相交，存在 $\delta > 0$ 使得：
+$d(A, B) = \inf\{\|a-b\| : a \in A, b \in B\} > 0$
+令 $U = A + B(0, \delta/2)$，则$U$ 是凸开集，$U \cap B = \phi$且$A \subset U$
+
+由第二部分（取 $A = U$，$B = B$），存在非零 $f \in X^*$ 使得：
+$\sup_{u \in U} f(u) \leq  \inf_{b \in B} f(b)$
+由于 $A \subset U$，有：
+$\sup_{a \in A} f(a) \leq  \sup_{u \in U} f(u) \leq  \inf_{b \in B} f(b)$
+但需证明严格不等式。假设相等，则存在序列 $\{a_n\} \subset A$，$\{b_n\} \subset B$ 使得：
+$\lim f(a_n) = \lim f(b_n) = c$
+由 $B$ 紧，存在子列 $b_{n_k} \to b \in B$，且 $f(b) = c$。
+对任意 $\epsilon > 0$，存在 $a \in A$ 使得 $f(a) > c - \epsilon$。考虑点 $a + \delta v$，其中 $v$ 满足 $f(v) > 0$，则：
+$f(a + \delta v) = f(a) + \delta f(v) > c - \epsilon + \delta f(v)$
+取 $\epsilon$ 充分小，可得 $f(a + \delta v) > c$，但 $a + \delta v \in U$，与 $\sup_{u \in U} f(u) \leq  c$ 矛盾。

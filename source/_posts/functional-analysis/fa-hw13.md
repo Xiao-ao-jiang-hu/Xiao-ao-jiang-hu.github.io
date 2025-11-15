@@ -1,6 +1,6 @@
 ---
 title: 泛函分析第十三次作业
-tags:
+泛函分析第十三次作业tags:
   - math
   - functional analysis
 categories:
@@ -8,7 +8,7 @@ categories:
   - functional analysis
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
-excerpt: 泛函分析第十三次作业
+excerpt: 
 abbrlink: 80bfaf41
 date: 2025-11-09 10:45:45
 ---
