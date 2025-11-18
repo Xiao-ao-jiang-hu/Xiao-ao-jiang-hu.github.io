@@ -11,6 +11,7 @@ categories:
 index_img: /img/reading.jpg
 banner_img: /img/reading.jpg
 excerpt: 论文阅读
+abbrlink: 1d48b98c
 date: 2025-11-15 19:38:54
 ---
 https://dl.acm.org/doi/10.1145/3726854.3727312

@@ -143,12 +143,12 @@ color:
   body_bg_color: "#eee"
   # 暗色模式下的 body 背景色，下同
   # Color in dark mode, the same below
-  body_bg_color_dark: "#181c27"
+  body_bg_color_dark: "#080808"
 
   # 顶部菜单背景色
   # Color of navigation bar background
   navbar_bg_color: "#2f4154"
-  navbar_bg_color_dark: "#1f3144"
+  navbar_bg_color_dark: "#1b1b1b"
 
   # 顶部菜单字体色
   # Color of navigation bar text
@@ -173,7 +173,7 @@ color:
   # 主面板背景色
   # Color of main board
   board_color: "#fff"
-  board_color_dark: "#252d38"
+  board_color_dark: "#111111"
 
   # 文章正文字体色
   # Color of post text
@@ -198,7 +198,7 @@ color:
   # 超链接悬浮背景色
   # Color of link background when hovering
   link_hover_bg_color: "#f8f9fa"
-  link_hover_bg_color_dark: "#364151"
+  link_hover_bg_color_dark: "#151518"
 
   # 分隔线和表格边线的颜色
   # Color of horizontal rule and table border
@@ -221,7 +221,7 @@ color:
   # 按钮悬浮背景色
   # Color of button when hovering
   button_hover_bg_color: "#f2f3f5"
-  button_hover_bg_color_dark: "#46647e"
+  button_hover_bg_color_dark: "#141419"
 
 # 主题字体配置
 # Font
@@ -372,7 +372,7 @@ navbar:
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
@@ -997,7 +997,7 @@ about:
 # Custom Page through `hexo new page`
 #---------------------------
 page:
-  banner_img: /img/bg.png
+  banner_img: /img/bg.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -1008,7 +1008,7 @@ page:
 #---------------------------
 page404:
   enable: true
-  banner_img: /img/bg.png
+  banner_img: /img/bg.jpg
   banner_img_height: 85
   banner_mask_alpha: 0.3
   # 重定向到首页的延迟(毫秒)
@@ -1022,34 +1022,27 @@ page404:
 #---------------------------
 links:
   enable: true
-  banner_img: /img/bg.png
+  banner_img: /img/links.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   # 友链的成员项
   # Member item of page
   items:
     - {
-      title: "Fluid Blog",
-      intro: "主题博客",
-      link: "https://hexo.fluid-dev.com/",
-      avatar: "/img/favicon.png"
+      title: "Ywang",
+      link: "https://ywang.top/",
+      avatar: "https://avatars.githubusercontent.com/u/115384186?v=4",
     }
     - {
-      title: "Fluid Docs",
-      intro: "主题使用指南",
-      link: "https://hexo.fluid-dev.com/docs/",
-      avatar: "/img/favicon.png"
+      title: "Murasaki010",
+      link: "https://murasaki010.github.io/",
+      avatar: "https://murasaki010.github.io/images/avatar.jpg"
     }
     - {
-      title: "Fluid Repo",
-      intro: "主题 GitHub 仓库",
-      link: "https://github.com/fluid-dev/hexo-theme-fluid",
-      avatar: "/img/favicon.png"
+      title: "Sygl233",
+      link: "https://sygl233.github.io/",
+      avatar: "https://sygl233.github.io/favicon.ico"
     }
-
-  # 当成员头像加载失败时，替换为指定图片
-  # When the member avatar fails to load, replace the specified image
-  onerror_avatar: /img/avatar.png
 
   # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
   # Custom content at the bottom of the links
