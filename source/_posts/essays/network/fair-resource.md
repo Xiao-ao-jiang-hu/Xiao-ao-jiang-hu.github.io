@@ -1,5 +1,5 @@
 ---
-title: 'Concurrent Entanglement Routing for Quantum Networks: Model and Designs'
+title: 'Quantum Network Optimization: From Optimal Routing to Fair Resource Allocation'
 tags:
   - quantum
   - routing
