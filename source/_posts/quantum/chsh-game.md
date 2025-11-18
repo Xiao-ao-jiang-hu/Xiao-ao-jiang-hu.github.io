@@ -7,6 +7,7 @@ categories:
 index_img: /img/quan.jpg
 banner_img: /img/quan.jpg
 excerpt: no excerpt
+abbrlink: c4a4f6d1
 date: 2025-11-11 20:26:39
 ---
 ## 量子非局域性：贝尔不等式

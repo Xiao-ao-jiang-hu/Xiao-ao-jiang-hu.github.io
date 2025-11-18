@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: a4a8f45b
 date: 2025-10-13 10:42:52
 ---
 # 共轭双线性泛函的表示

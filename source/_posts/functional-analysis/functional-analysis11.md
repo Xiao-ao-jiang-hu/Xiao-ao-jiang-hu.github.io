@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: 4e4e0a12
 date: 2025-10-23 12:54:36
 ---
 # 二次对偶空间

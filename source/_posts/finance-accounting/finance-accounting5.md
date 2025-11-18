@@ -7,6 +7,7 @@ categories:
 index_img: /img/accounting.png
 banner_img: /img/accounting.png
 excerpt: none
+abbrlink: a2e9d7b2
 date: 2025-11-12 16:57:52
 ---
 # 作业

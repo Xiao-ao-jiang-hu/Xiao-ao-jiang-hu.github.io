@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第七次作业
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: ddb6334e
 date: 2025-11-16 21:28:31
 ---
 # Ex1
