@@ -26,7 +26,7 @@ date: 2025-11-12 19:39:37
 
 ## 定义（拓扑向量空间）
 
-一个**拓扑向量空间**是一个二元组 $(X, \mathscr{U})$，其中 $X$ 是实向量空间，$\mathscr{U} \subset 2^X$ 是一个拓扑，使得结构映射
+一个**拓扑向量空间**是一个二元组 $(X, \mathcal{U})$，其中 $X$ 是实向量空间，$\mathcal{U} \subset 2^X$ 是一个拓扑，使得结构映射
 $$
 X \times X \to X : (x,y) \mapsto x+y, \qquad \mathbb{R} \times X \to X : (\lambda,x) \mapsto \lambda x
 $$
@@ -34,11 +34,11 @@ $$
 $$
 x \in V \subset U, \quad V \text{ 是凸集},
 $$
-则称拓扑向量空间 $(X, \mathscr{U})$ 为**局部凸**的。
+则称拓扑向量空间 $(X, \mathcal{U})$ 为**局部凸**的。
 
 ## 例（强拓扑）
 
-赋范向量空间 $(X, \|\cdot\|)$ 在由范数诱导的拓扑 $\mathscr{U}^s := \mathscr{U}(X, \|\cdot\|)$ 下构成拓扑向量空间。此拓扑有时被称为**强拓扑**或**范数拓扑**，以区别于后文讨论的更弱的拓扑。
+赋范向量空间 $(X, \|\cdot\|)$ 在由范数诱导的拓扑 $\mathcal{U}^s := \mathcal{U}(X, \|\cdot\|)$ 下构成拓扑向量空间。此拓扑有时被称为**强拓扑**或**范数拓扑**，以区别于后文讨论的更弱的拓扑。
 
 ## 例（光滑函数）
 
@@ -51,7 +51,7 @@ $$
 
 ## 例
 
-设 $X$ 为实向量空间。则 $(X, \mathscr{U})$ 是拓扑向量空间，其中 $\mathscr{U} := \{\emptyset, X\}$，但不是离散拓扑。
+设 $X$ 为实向量空间。则 $(X, \mathcal{U})$ 是拓扑向量空间，其中 $\mathcal{U} := \{\emptyset, X\}$，但不是离散拓扑。
 
 ## 例（测度意义下的收敛）
 
@@ -77,13 +77,13 @@ $$
 $$
 \mathcal{F} \subset \{ f: X \to \mathbb{R} \mid f \text{ 是线性的} \}
 $$
-为 $X$ 上任意一组线性泛函。定义 $\mathscr{U}_{\mathcal{F}} \subset 2^X$ 为使得每个 $f \in \mathcal{F}$ 连续的最弱拓扑。于是，任一线性泛函 $f \in \mathcal{F}$ 下开区间的原像均为 $X$ 的开子集。因此，集合
+为 $X$ 上任意一组线性泛函。定义 $\mathcal{U}_{\mathcal{F}} \subset 2^X$ 为使得每个 $f \in \mathcal{F}$ 连续的最弱拓扑。于是，任一线性泛函 $f \in \mathcal{F}$ 下开区间的原像均为 $X$ 的开子集。因此，集合
 $$
 V := \{ x \in X \mid a_i < f_i(x) < b_i \text{ 对 } i=1,\dots,m \}
 $$
 对于所有整数 $m \in \mathbb{N}$、所有 $f_1,\dots,f_m \in \mathcal{F}$ 以及所有满足 $a_i < b_i$（$i=1,\dots,m$）的 $2m$-元实数组 $(a_1,\dots,a_m,b_1,\dots,b_m)$，也是开集。记所有此类子集的集合为
 $$
-\mathscr{V}_{\mathcal{F}} := \left\{ \bigcap_{i=1}^m f_i^{-1}((a_i,b_i)) \,\middle|\,
+\mathcal{V}_{\mathcal{F}} := \left\{ \bigcap_{i=1}^m f_i^{-1}((a_i,b_i)) \,\middle|\,
 \begin{array}{l}
 m \in \mathbb{N},\, f_1,\dots,f_m \in \mathcal{F}, \\
 a_1,\dots,a_m,b_1,\dots,b_m \in \mathbb{R}, \\
@@ -95,26 +95,26 @@ $$
 
 ## 引理
 
-设 $X$ 为实向量空间，$\mathcal{F} \subset \mathbb{R}^X$ 为 $X$ 上的一组实值线性泛函，$\mathscr{U}_{\mathcal{F}} \subset 2^X$ 为使得 $\mathcal{F}$ 中所有元素连续的最弱拓扑。则以下结论成立：
+设 $X$ 为实向量空间，$\mathcal{F} \subset \mathbb{R}^X$ 为 $X$ 上的一组实值线性泛函，$\mathcal{U}_{\mathcal{F}} \subset 2^X$ 为使得 $\mathcal{F}$ 中所有元素连续的最弱拓扑。则以下结论成立：
 
-**(i)** 集合 $\mathscr{V}_{\mathcal{F}}$（见公式 (3.1.1)）是拓扑 $\mathscr{U}_{\mathcal{F}}$ 的一个基，即
+**(i)** 集合 $\mathcal{V}_{\mathcal{F}}$（见公式 (3.1.1)）是拓扑 $\mathcal{U}_{\mathcal{F}}$ 的一个基，即
 $$
-\mathscr{U}_{\mathcal{F}} = \{ U \subset X \mid \forall x \in U\, \exists V \in \mathscr{V}_{\mathcal{F}} \text{ 使得 } x \in V \subset U \}.
+\mathcal{U}_{\mathcal{F}} = \{ U \subset X \mid \forall x \in U\, \exists V \in \mathcal{V}_{\mathcal{F}} \text{ 使得 } x \in V \subset U \}.
 \tag{3.1.2}
 $$
 
-**(ii)** $(X, \mathscr{U}_{\mathcal{F}})$ 是局部凸拓扑向量空间。
+**(ii)** $(X, \mathcal{U}_{\mathcal{F}})$ 是局部凸拓扑向量空间。
 
-**(iii)** 序列 $x_n \in X$ 关于拓扑 $\mathscr{U}_{\mathcal{F}}$ 收敛到某元素 $x_0 \in X$，当且仅当对所有 $f \in \mathcal{F}$ 有 $f(x_0) = \lim_{n\to\infty} f(x_n)$。
+**(iii)** 序列 $x_n \in X$ 关于拓扑 $\mathcal{U}_{\mathcal{F}}$ 收敛到某元素 $x_0 \in X$，当且仅当对所有 $f \in \mathcal{F}$ 有 $f(x_0) = \lim_{n\to\infty} f(x_n)$。
 
-**(iv)** 拓扑空间 $(X, \mathscr{U}_{\mathcal{F}})$ 是Hausdorff空间，当且仅当 $\mathcal{F}$ 能分离点，即对每个非零向量 $x \in X$，存在线性泛函 $f \in \mathcal{F}$ 使得 $f(x) \ne 0$。
+**(iv)** 拓扑空间 $(X, \mathcal{U}_{\mathcal{F}})$ 是Hausdorff空间，当且仅当 $\mathcal{F}$ 能分离点，即对每个非零向量 $x \in X$，存在线性泛函 $f \in \mathcal{F}$ 使得 $f(x) \ne 0$。
 
 
 ### 证明
 
-**第(i)部分** 是一道带提示的练习题。根据公式 (3.1.2) 的右边定义集合 $\mathscr{U}_{\mathcal{F}} \subset 2^X$。由定义直接可知，$\mathscr{U}_{\mathcal{F}}$ 是一个拓扑，每个线性泛函 $f: X \to \mathbb{R}$ 在 $\mathcal{F}$ 中关于该拓扑连续，且任何使得 $\mathcal{F}$ 中每个元素连续的拓扑 $\mathscr{U} \subset 2^X$ 必须包含 $\mathscr{V}_{\mathcal{F}}$，从而也包含 $\mathscr{U}_{\mathcal{F}}$。这证明了第(i)部分。
+**第(i)部分** 是一道带提示的练习题。根据公式 (3.1.2) 的右边定义集合 $\mathcal{U}_{\mathcal{F}} \subset 2^X$。由定义直接可知，$\mathcal{U}_{\mathcal{F}}$ 是一个拓扑，每个线性泛函 $f: X \to \mathbb{R}$ 在 $\mathcal{F}$ 中关于该拓扑连续，且任何使得 $\mathcal{F}$ 中每个元素连续的拓扑 $\mathcal{U} \subset 2^X$ 必须包含 $\mathcal{V}_{\mathcal{F}}$，从而也包含 $\mathcal{U}_{\mathcal{F}}$。这证明了第(i)部分。
 
-我们证明**第(ii)部分**。首先证明标量乘法关于 $\mathscr{U}_{\mathcal{F}}$ 连续。固定集合 $V \in \mathscr{V}_{\mathcal{F}}$，并设 $\lambda_0 \in \mathbb{R}$ 和 $x_0 \in X$ 使得 $\lambda_0 x_0 \in V$。由 $\mathscr{V}_{\mathcal{F}}$ 的定义（见公式 (3.1.1)），存在常数 $\delta > 0$ 使得
+我们证明**第(ii)部分**。首先证明标量乘法关于 $\mathcal{U}_{\mathcal{F}}$ 连续。固定集合 $V \in \mathcal{V}_{\mathcal{F}}$，并设 $\lambda_0 \in \mathbb{R}$ 和 $x_0 \in X$ 使得 $\lambda_0 x_0 \in V$。由 $\mathcal{V}_{\mathcal{F}}$ 的定义（见公式 (3.1.1)），存在常数 $\delta > 0$ 使得
 $$
 \delta \ne |\lambda_0|, \quad (\lambda_0 - \delta)x_0 \in V, \quad (\lambda_0 + \delta)x_0 \in V.
 $$
@@ -122,19 +122,19 @@ $$
 $$
 U := \frac{1}{\lambda_0 - \delta} V \cap \frac{1}{\lambda_0 + \delta} V.
 $$
-则 $U \in \mathscr{V}_{\mathcal{F}}$ 且 $x_0 \in U$。此外，若 $x \in U$ 且 $\lambda \in \mathbb{R}$ 满足 $|\lambda - \lambda_0| < \delta$，则 $(\lambda_0 - \delta)x \in V$ 且 $(\lambda_0 + \delta)x \in V$，故 $\lambda x \in V$，因为 $V$ 是凸集。这表明标量乘法是连续的。
+则 $U \in \mathcal{V}_{\mathcal{F}}$ 且 $x_0 \in U$。此外，若 $x \in U$ 且 $\lambda \in \mathbb{R}$ 满足 $|\lambda - \lambda_0| < \delta$，则 $(\lambda_0 - \delta)x \in V$ 且 $(\lambda_0 + \delta)x \in V$，故 $\lambda x \in V$，因为 $V$ 是凸集。这表明标量乘法是连续的。
 
-我们证明加法是连续的。固定元素 $W \in \mathscr{V}_{\mathcal{F}}$，并设 $x_0, y_0 \in X$ 使得 $x_0 + y_0 \in W$。定义集合
+我们证明加法是连续的。固定元素 $W \in \mathcal{V}_{\mathcal{F}}$，并设 $x_0, y_0 \in X$ 使得 $x_0 + y_0 \in W$。定义集合
 $$
 U := \frac{1}{2}(x_0 - y_0) + \frac{1}{2}W, \quad V := \frac{1}{2}(y_0 - x_0) + \frac{1}{2}W.
 $$
-则由公式 (3.1.1)，$U,V \in \mathscr{V}_{\mathcal{F}}$。此外，$x_0 \in U$，$y_0 \in V$，且对所有 $x \in U$ 和所有 $y \in V$，由于 $W$ 是凸集，有 $x + y \in W$。这表明加法是连续的。因此 $(X, \mathscr{U}_{\mathcal{F}})$ 是拓扑向量空间。$(X, \mathscr{U}_{\mathcal{F}})$ 是局部凸的，是因为 $\mathscr{V}_{\mathcal{F}}$ 中的元素均为凸集。这证明了第(ii)部分。
+则由公式 (3.1.1)，$U,V \in \mathcal{V}_{\mathcal{F}}$。此外，$x_0 \in U$，$y_0 \in V$，且对所有 $x \in U$ 和所有 $y \in V$，由于 $W$ 是凸集，有 $x + y \in W$。这表明加法是连续的。因此 $(X, \mathcal{U}_{\mathcal{F}})$ 是拓扑向量空间。$(X, \mathcal{U}_{\mathcal{F}})$ 是局部凸的，是因为 $\mathcal{V}_{\mathcal{F}}$ 中的元素均为凸集。这证明了第(ii)部分。
 
-我们证明**第(iii)部分**。固定序列 $(x_n)_{n\in\mathbb{N}}$ 在 $X$ 中和元素 $x_0 \in X$。假设 $x_n$ 关于拓扑 $\mathscr{U}_{\mathcal{F}}$ 收敛到 $x_0$。设 $f \in \mathcal{F}$ 并固定常数 $\varepsilon > 0$。则集合
+我们证明**第(iii)部分**。固定序列 $(x_n)_{n\in\mathbb{N}}$ 在 $X$ 中和元素 $x_0 \in X$。假设 $x_n$ 关于拓扑 $\mathcal{U}_{\mathcal{F}}$ 收敛到 $x_0$。设 $f \in \mathcal{F}$ 并固定常数 $\varepsilon > 0$。则集合
 $$
 U := \{ x \in X \mid |f(x) - f(x_0)| < \varepsilon \}
 $$
-是 $\mathscr{V}_{\mathcal{F}}$ 的一个元素，因而属于 $\mathscr{U}_{\mathcal{F}}$。由于 $x_0 \in U$，存在正整数 $n_0$ 使得对每个整数 $n \ge n_0$ 有 $x_n \in U$。因此我们已证：
+是 $\mathcal{V}_{\mathcal{F}}$ 的一个元素，因而属于 $\mathcal{U}_{\mathcal{F}}$。由于 $x_0 \in U$，存在正整数 $n_0$ 使得对每个整数 $n \ge n_0$ 有 $x_n \in U$。因此我们已证：
 $$
 \forall f \in \mathcal{F}\, \forall \varepsilon > 0\, \exists n_0 \in \mathbb{N}\, \forall n \in \mathbb{N}: (n \ge n_0 \implies |f(x_n) - f(x_0)| < \varepsilon).
 $$
@@ -144,9 +144,9 @@ $$
 $$
 对所有 $f \in \mathcal{F}$ 成立。
 
-反之，假设对所有 $f \in \mathcal{F}$ 有 $\lim_{n\to\infty} f(x_n) = f(x_0)$，并设 $U \in \mathscr{U}_{\mathcal{F}}$ 使得 $x_0 \in U$。则存在集合
+反之，假设对所有 $f \in \mathcal{F}$ 有 $\lim_{n\to\infty} f(x_n) = f(x_0)$，并设 $U \in \mathcal{U}_{\mathcal{F}}$ 使得 $x_0 \in U$。则存在集合
 $$
-V = \bigcap_{i=1}^m f_i^{-1}((a_i,b_i)) \in \mathscr{V}_{\mathcal{F}}
+V = \bigcap_{i=1}^m f_i^{-1}((a_i,b_i)) \in \mathcal{V}_{\mathcal{F}}
 $$
 使得 $x_0 \in V \subset U$。这意味着对 $i=1,\dots,m$ 有 $a_i < f_i(x_0) < b_i$。由于 $\lim_{n\to\infty} f_i(x_n) = f_i(x_0)$，存在正整数 $n_0$ 使得对每个整数 $n \ge n_0$ 和每个 $i \in \{1,\dots,m\}$ 有 $a_i < f_i(x_n) < b_i$。因此对每个整数 $n \ge n_0$ 有 $x_n \in V \subset U$，这就证明了第(iii)部分。
 
@@ -154,7 +154,7 @@ $$
 $$
 0 \in U, \quad x \notin U.
 $$
-选择集合 $V = \bigcap_{i=1}^m f_i^{-1}((a_i,b_i)) \in \mathscr{V}_{\mathcal{F}}$ 使得
+选择集合 $V = \bigcap_{i=1}^m f_i^{-1}((a_i,b_i)) \in \mathcal{V}_{\mathcal{F}}$ 使得
 $$
 0 \in V \subset U.
 $$
@@ -164,7 +164,7 @@ $$
 $$
 U_i := \{ x \in X \mid |f(x - x_i)| < \varepsilon \}
 $$
-对 $i=0,1$。则 $U_0, U_1 \in \mathscr{V}_{\mathcal{F}} \subset \mathscr{U}_{\mathcal{F}}$，$x_0 \in U_0$，$x_1 \in U_1$，且 $U_0 \cap U_1 = \emptyset$。这证明了第(iv)部分及引理。
+对 $i=0,1$。则 $U_0, U_1 \in \mathcal{V}_{\mathcal{F}} \subset \mathcal{U}_{\mathcal{F}}$，$x_0 \in U_0$，$x_1 \in U_1$，且 $U_0 \cap U_1 = \emptyset$。这证明了第(iv)部分及引理。
 
 
 ## 例（乘积拓扑）
@@ -173,7 +173,7 @@ $$
 $$
 \pi := \{ \pi_i \mid i \in I \}
 $$
-为所有这些求值映射的集合，并记 $\mathscr{U}_\pi$ 为 $X$ 上使得每个投影 $\pi_i$ 连续的最弱拓扑。根据上述引理，该拓扑由公式 (3.1.1) 和 (3.1.2) 给出。它被称为 $\mathbb{R}^I$ 上的**乘积拓扑**。因此，$\mathbb{R}^I$ 是一个具有乘积拓扑的局部凸Hausdorff拓扑向量空间。
+为所有这些求值映射的集合，并记 $\mathcal{U}_\pi$ 为 $X$ 上使得每个投影 $\pi_i$ 连续的最弱拓扑。根据上述引理，该拓扑由公式 (3.1.1) 和 (3.1.2) 给出。它被称为 $\mathbb{R}^I$ 上的**乘积拓扑**。因此，$\mathbb{R}^I$ 是一个具有乘积拓扑的局部凸Hausdorff拓扑向量空间。
 
 ## 例（弱拓扑）
 
@@ -181,13 +181,13 @@ $$
 
 ### (i)
 
-$X$ 上的**弱拓扑**是使得每个有界线性泛函 $\Lambda: X \to \mathbb{R}$ 都连续的最弱拓扑 $\mathscr{U}^w \subset 2^X$。它是关于一族映射生成初拓扑的引理中所述拓扑 $\mathscr{U}_\mathcal{F} \subset 2^X$ 的特例，其中 $\mathcal{F} := X^*$ 是对偶空间。由 Hahn–Banach 定理的一个推论可知，对偶空间能够分离点，即对于每个 $x \in X \setminus \{0\}$，存在 $x^* \in X^*$ 使得 $\langle x^*, x \rangle \neq 0$。因此，上述引理断言 $(X, \mathscr{U}^w)$ 是一个局部凸的豪斯多夫拓扑向量空间。
+$X$ 上的**弱拓扑**是使得每个有界线性泛函 $\Lambda: X \to \mathbb{R}$ 都连续的最弱拓扑 $\mathcal{U}^w \subset 2^X$。它是关于一族映射生成初拓扑的引理中所述拓扑 $\mathcal{U}_\mathcal{F} \subset 2^X$ 的特例，其中 $\mathcal{F} := X^*$ 是对偶空间。由 Hahn–Banach 定理的一个推论可知，对偶空间能够分离点，即对于每个 $x \in X \setminus \{0\}$，存在 $x^* \in X^*$ 使得 $\langle x^*, x \rangle \neq 0$。因此，上述引理断言 $(X, \mathcal{U}^w)$ 是一个局部凸的豪斯多夫拓扑向量空间。
 
 ### (ii)
 
-由连续线性泛函的基本性质可知，每个有界线性泛函关于由范数诱导的**强拓扑** $\mathscr{U}^s := \mathscr{U}(X, \|\cdot\|)$ 是连续的。因此，
+由连续线性泛函的基本性质可知，每个有界线性泛函关于由范数诱导的**强拓扑** $\mathcal{U}^s := \mathcal{U}(X, \|\cdot\|)$ 是连续的。因此，
 $$
-\mathscr{U}^w \subset \mathscr{U}^s.
+\mathcal{U}^w \subset \mathcal{U}^s.
 $$
 当 $X$ 是有限维空间时，弱拓扑与强拓扑一致。
 
@@ -205,13 +205,13 @@ $$
 
 ### (i)
 
-$X^*$ 上的**弱\*拓扑**是使得对所有 $x \in X$，线性泛函 $\iota(x): X^* \to \mathbb{R}$（在自然嵌入中定义）都连续的最弱拓扑 $\mathscr{U}^{w^*} \subset 2^{X^*}$。它是关于一族映射生成初拓扑的引理中所述拓扑 $\mathscr{U}_\mathcal{F} \subset 2^{X^*}$ 的特例，其中 $\mathcal{F} := \iota(X) \subset X^{**}$。这个线性泛函族能够分离点，即对于每个 $x^* \in X^* \setminus \{0\}$，存在元素 $x \in X$ 使得 $\langle x^*, x \rangle \neq 0$。因此，上述引理断言 $(X^*, \mathscr{U}^{w^*})$ 是一个局部凸的豪斯多夫拓扑向量空间。
+$X^*$ 上的**弱\*拓扑**是使得对所有 $x \in X$，线性泛函 $\iota(x): X^* \to \mathbb{R}$（在自然嵌入中定义）都连续的最弱拓扑 $\mathcal{U}^{w^*} \subset 2^{X^*}$。它是关于一族映射生成初拓扑的引理中所述拓扑 $\mathcal{U}_\mathcal{F} \subset 2^{X^*}$ 的特例，其中 $\mathcal{F} := \iota(X) \subset X^{**}$。这个线性泛函族能够分离点，即对于每个 $x^* \in X^* \setminus \{0\}$，存在元素 $x \in X$ 使得 $\langle x^*, x \rangle \neq 0$。因此，上述引理断言 $(X^*, \mathcal{U}^{w^*})$ 是一个局部凸的豪斯多夫拓扑向量空间。
 
 ### (ii)
 
-记 $\mathscr{U}^s \subset 2^{X^*}$ 为由范数诱导的强拓扑，记 $\mathscr{U}^w \subset 2^{X^*}$ 为上例中的弱拓扑。则有
+记 $\mathcal{U}^s \subset 2^{X^*}$ 为由范数诱导的强拓扑，记 $\mathcal{U}^w \subset 2^{X^*}$ 为上例中的弱拓扑。则有
 $$
-\mathscr{U}^{w^*} \subset \mathscr{U}^w \subset \mathscr{U}^s.
+\mathcal{U}^{w^*} \subset \mathcal{U}^w \subset \mathcal{U}^s.
 $$
 当 $X$ 是自反Banach空间时，弱拓扑与弱*拓扑一致。
 
@@ -389,9 +389,9 @@ $$
 $$
 对所有 $x \in X$ 成立，故 (iii) 成立。(iii) 蕴含 (i) 是显然的，这证明了引理。\qed
 
-## 定理（拓扑 $\mathscr{U}_\mathcal{F}$）
+## 定理（拓扑 $\mathcal{U}_\mathcal{F}$）
 
-设 $X$ 为一个实向量空间，$\mathcal{F} \subset \{\Lambda : X \to \mathbb{R} \mid \Lambda \text{ 是线性的}\}$ 是所有线性泛函空间的一个线性子空间。令 $\mathscr{U}_\mathcal{F} \subset 2^X$ 为 $X$ 上使得每个 $\Lambda \in \mathcal{F}$ 均连续的最弱拓扑。该拓扑具有以下性质：
+设 $X$ 为一个实向量空间，$\mathcal{F} \subset \{\Lambda : X \to \mathbb{R} \mid \Lambda \text{ 是线性的}\}$ 是所有线性泛函空间的一个线性子空间。令 $\mathcal{U}_\mathcal{F} \subset 2^X$ 为 $X$ 上使得每个 $\Lambda \in \mathcal{F}$ 均连续的最弱拓扑。该拓扑具有以下性质：
 
 1. 一个线性泛函 $\Lambda: X \to \mathbb{R}$ 是连续的当且仅当它具有闭核，当且仅当 $\Lambda \in \mathcal{F}$。
 
@@ -409,7 +409,7 @@ $$
 
 ### 证明
 
-我们证明 (i)。若 $\Lambda \in \mathcal{F}$，则根据拓扑 $\mathscr{U}_\mathcal{F}$ 的定义，$\Lambda$ 是连续的。若 $\Lambda$ 是连续的，则根据连续性的定义，$\Lambda$ 具有闭核。因此，只需证明：若 $\Lambda$ 具有闭核，则 $\Lambda \in \mathcal{F}$。于是假设 $\Lambda$ 具有闭核，且不失一般性地假设 $\Lambda \neq 0$。选择 $x \in X$ 使得 $\Lambda(x) = 1$。则 $x \in X \setminus \ker(\Lambda)$，且集合 $X \setminus \ker(\Lambda)$ 是开集。因此，存在一个整数 $n > 0$、一个常数 $\varepsilon > 0$，以及元素 $\Lambda_1, \dots, \Lambda_n \in \mathcal{F} \setminus \{0\}$，使得
+我们证明 (i)。若 $\Lambda \in \mathcal{F}$，则根据拓扑 $\mathcal{U}_\mathcal{F}$ 的定义，$\Lambda$ 是连续的。若 $\Lambda$ 是连续的，则根据连续性的定义，$\Lambda$ 具有闭核。因此，只需证明：若 $\Lambda$ 具有闭核，则 $\Lambda \in \mathcal{F}$。于是假设 $\Lambda$ 具有闭核，且不失一般性地假设 $\Lambda \neq 0$。选择 $x \in X$ 使得 $\Lambda(x) = 1$。则 $x \in X \setminus \ker(\Lambda)$，且集合 $X \setminus \ker(\Lambda)$ 是开集。因此，存在一个整数 $n > 0$、一个常数 $\varepsilon > 0$，以及元素 $\Lambda_1, \dots, \Lambda_n \in \mathcal{F} \setminus \{0\}$，使得
 $$
 V := \bigcap_{i=1}^n \{y \in X \mid |\Lambda_i(y) - \Lambda_i(x)| < \varepsilon\} \subset X \setminus \ker(\Lambda).
 $$
@@ -423,4 +423,4 @@ $$
 $$
 
 
-我们证明 (ii)。设 $E \subset X$ 为一个线性子空间。若 $\Lambda \in \mathcal{F}$ 在 $E$ 上消失，则 $\overline{E} \subset \ker(\Lambda)$，因为 $\ker(\Lambda)$ 是包含 $E$ 的 $X$ 的一个闭子集。反之，令 $x \in X \setminus \overline{E}$。由于 $(X, \mathscr{U}_\mathcal{F})$ 是局部凸的（由引理的 (ii) 部分），且 $X \setminus \overline{E}$ 是开集，存在一个凸开集 $U \in \mathscr{U}_\mathcal{F}$，使得 $x \in U$ 且 $U \cap E = \emptyset$。由于 $U$ 和 $E$ 是凸的，定理断言存在一个连续线性泛函 $\Lambda: X \to \mathbb{R}$，使得 $\Lambda(x) > \sup_{y \in E} \Lambda(y)$。由于 $E$ 是一个线性子空间，这蕴含 $E \subset \ker(\Lambda)$。由于由 (i) 可知 $\Lambda \in \mathcal{F}$，故 $x \notin \bigcap_{\Lambda \in \mathcal{F},\, E \subset \ker(\Lambda)} \ker(\Lambda)$。这证明了部分 (ii)。部分 (iii) 和 (iv) 直接由 (ii) 得出。
+我们证明 (ii)。设 $E \subset X$ 为一个线性子空间。若 $\Lambda \in \mathcal{F}$ 在 $E$ 上消失，则 $\overline{E} \subset \ker(\Lambda)$，因为 $\ker(\Lambda)$ 是包含 $E$ 的 $X$ 的一个闭子集。反之，令 $x \in X \setminus \overline{E}$。由于 $(X, \mathcal{U}_\mathcal{F})$ 是局部凸的（由引理的 (ii) 部分），且 $X \setminus \overline{E}$ 是开集，存在一个凸开集 $U \in \mathcal{U}_\mathcal{F}$，使得 $x \in U$ 且 $U \cap E = \emptyset$。由于 $U$ 和 $E$ 是凸的，定理断言存在一个连续线性泛函 $\Lambda: X \to \mathbb{R}$，使得 $\Lambda(x) > \sup_{y \in E} \Lambda(y)$。由于 $E$ 是一个线性子空间，这蕴含 $E \subset \ker(\Lambda)$。由于由 (i) 可知 $\Lambda \in \mathcal{F}$，故 $x \notin \bigcap_{\Lambda \in \mathcal{F},\, E \subset \ker(\Lambda)} \ker(\Lambda)$。这证明了部分 (ii)。部分 (iii) 和 (iv) 直接由 (ii) 得出。
