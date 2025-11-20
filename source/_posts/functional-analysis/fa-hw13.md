@@ -5,7 +5,7 @@ title: 泛函分析第十三次作业
   - functional analysis
 categories:
   - math
-  - functional analysis
+  - functional analysis homework
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析第十三次作业

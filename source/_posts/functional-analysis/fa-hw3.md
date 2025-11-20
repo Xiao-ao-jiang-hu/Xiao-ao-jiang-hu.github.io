@@ -6,7 +6,7 @@ tags:
   - functional analysis
 categories:
   - math
-  - functional analysis
+  - functional analysis homework
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: no excerpt
