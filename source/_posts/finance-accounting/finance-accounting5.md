@@ -1,5 +1,5 @@
 ---
-title: 'Financial Accounting Class 5: '
+title: 'Financial Accounting Class 5: Reporting and Interpreting Sales Revenue, Receivables, and Cash'
 tags:
   - finance
 categories:
