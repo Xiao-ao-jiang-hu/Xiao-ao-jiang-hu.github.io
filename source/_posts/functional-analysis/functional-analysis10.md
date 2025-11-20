@@ -10,7 +10,7 @@ index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
 abbrlink: 9846b420
-date: 2025-10-18 14:14:25
+date: 2025-11-2 14:14:25
 ---
 # Hahn-Banach 定理（延拓）
 子空间上的有界线性泛函延拓到全空间
