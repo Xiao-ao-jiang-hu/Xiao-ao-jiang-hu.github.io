@@ -1,0 +1,46 @@
+/* 减小文章内容的左右内边距，使文字显示更宽 */
+.post-content {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+/* 针对移动端，保持较小的内边距 */
+@media (max-width: 767px) {
+    .post-content {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* 让中间的内容栏占满整个宽度 */
+    #board-ctn {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* 在大屏幕上调整布局，隐藏左侧空栏，加宽中间内容栏 */
+@media (min-width: 992px) {
+
+    /* 隐藏左侧空白侧边栏 */
+    .row.nomargin-x>.side-col.d-none.d-lg-block.col-lg-2:first-child {
+        flex: 0 0 10% !important;
+        max-width: 10% !important;
+    }
+
+    /* 调整中间内容区域宽度，使其占据更多空间 */
+    .row.nomargin-x>.col-lg-8 {
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+    }
+
+    /* 调整右侧侧边栏(目录)宽度，使其变窄 */
+    .row.nomargin-x>.side-col.d-none.d-lg-block.col-lg-2:last-child {
+        flex: 0 0 10% !important;
+        max-width: 10% !important;
+    }
+
+    /* 关键：去除中间容器的 Bootstrap 默认最大宽度限制，使其填满列宽 */
+    #board-ctn {
+        max-width: 100% !important;
+    }
+}
