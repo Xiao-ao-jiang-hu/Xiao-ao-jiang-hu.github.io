@@ -79,7 +79,7 @@ $$\|f_n\|_\infty \leq c \|f_n\|_{L_1} \implies 1 \leq c \cdot \frac{1}{n}.$$
 因 $T$ 连续，故 $T(S y_n) \to T(z)$。但 $T(S y_n) = y_n \to y$，所以 $T(z) = y$。
 因此 $z = S y$，即 $(y, z) \in \Gamma(S)$。
 这表明 $\Gamma(S)$ 是闭集。
-由闭图像定理（应用于 $S: Y \to X$，其中 $Y$ 和 $X$ 为巴拿赫空间），$S$ 连续，即 $T^{-1}$ 有界。
+由闭图像定理（应用于 $S: Y \to X$，其中 $Y$ 和 $X$ 为Banach空间），$S$ 连续，即 $T^{-1}$ 有界。
 
 ## 开映射定理
 > 开映射定理：若 $T: X \to Y$ 是有界线性算子且是满射，则 $T$ 是开映射
@@ -87,7 +87,7 @@ $$\|f_n\|_\infty \leq c \|f_n\|_{L_1} \implies 1 \leq c \cdot \frac{1}{n}.$$
 设 $N = \ker T$。因 $T$ 连续，故 $N$ 是 $X$ 的闭子空间。
 考虑商空间 $Z = X / N$，其元素为等价类 $[x] = x + N$，赋予商范数 $\|[x]\|_Z = \inf_{n \in N} \|x + n\|_X$。
 
-因 $N$ 闭且 $X$ 巴拿赫，故 $Z$ 巴拿赫。
+因 $N$ 闭且 $X$ Banach，故 $Z$ Banach。
 定义诱导算子 $\tilde{T}: Z \to Y$ 为 $\tilde{T}([x]) = T x$。
 良定性：若 $[x] = [x']$，则 $x - x' \in N = \ker T$，故 $T x = T x'$，因此 $\tilde{T}$ 良定。
 线性：$\tilde{T}$ 显然线性。
