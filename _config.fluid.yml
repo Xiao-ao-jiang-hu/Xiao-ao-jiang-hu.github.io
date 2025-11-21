@@ -1041,6 +1041,16 @@ links:
       link: "https://sygl233.github.io/",
       avatar: "https://sygl233.github.io/favicon.ico"
     }
+    - {
+      title: "zdd14990",
+      link: "https://zdd14990.github.io/",
+      avatar: "https://zdd14990.github.io/assets/favicon.png"
+    }
+    - {
+      title: "浅草袋鼠鸡",
+      link: "https://tbl0x7d6.github.io/",
+      avatar: "https://tbl0x7d6.github.io/avatar.png"
+    }
 
   # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
   # Custom content at the bottom of the links
