@@ -9,7 +9,7 @@ categories:
 excerpt: ODE第一次大作业
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
-abbrlink: f4794a59
+abbrlink: 4fab5f93
 date: 2025-11-14 13:28:22
 ---
 用S表示定义在R上的$C^{\infty}$ 光滑函数全体。定义微分映射$D:\mathbb{S}\to\mathbb{Z}$ S为

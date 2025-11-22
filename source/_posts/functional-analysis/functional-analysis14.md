@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: 30b933db
 date: 2025-11-18 04:11:53
 ---
 在无限维空间中，单位球在范数拓扑下通常不具紧性。而 Banach–Alaoglu 定理指出，对偶空间中的闭单位球在弱\*拓扑下却是紧的。本节给出 Banach–Alaoglu 定理的两种形式：可分空间情形和一般情形。
