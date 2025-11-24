@@ -1,5 +1,5 @@
 ---
-title: ODE第一部分
+title: 一阶ODE
 tags:
   - math
   - ode
@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第一部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: d972197
 date: 2025-11-24 06:34:17
 ---
 ## 第一部分：一阶ODE的基本概念

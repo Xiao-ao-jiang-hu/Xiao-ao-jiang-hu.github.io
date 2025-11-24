@@ -1,5 +1,5 @@
 ---
-title: ODE第二部分
+title: 二阶系统及其几何解释
 tags:
   - math
   - ode
@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第二部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: b9c0ca07
 date: 2025-11-24 07:17:24
 ---
 ## 第一部分：二阶系统的IVP形式与线性共轭
