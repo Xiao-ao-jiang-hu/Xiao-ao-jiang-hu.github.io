@@ -10,7 +10,7 @@ excerpt: ODE第三部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
 abbrlink: f7fc2a7c
-date: 2025-11-25 00:29:59
+date: 2025-10-21 00:29:59
 ---
 ## 第一部分：一阶一维自治系统
 

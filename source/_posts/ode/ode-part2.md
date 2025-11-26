@@ -10,7 +10,7 @@ excerpt: ODE第二部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
 abbrlink: b9c0ca07
-date: 2025-11-24 07:17:24
+date: 2025-10-3 07:17:24
 ---
 ## 第一部分：二阶系统的IVP形式与线性共轭
 
