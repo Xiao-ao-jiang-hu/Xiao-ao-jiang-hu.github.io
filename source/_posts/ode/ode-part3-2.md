@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第三部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: 8df66acc
 date: 2025-11-03 05:51:27
 ---
 ## 第一部分：极大解与极大积分曲线

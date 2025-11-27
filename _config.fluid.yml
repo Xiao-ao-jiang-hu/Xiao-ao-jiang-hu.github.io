@@ -227,7 +227,7 @@ color:
 # Font
 font:
   font_size: 18px
-  font_family: "LXGW WenKai Screen"
+  font_family:
   letter_spacing: 0.02em
   code_font_size: 85%
 

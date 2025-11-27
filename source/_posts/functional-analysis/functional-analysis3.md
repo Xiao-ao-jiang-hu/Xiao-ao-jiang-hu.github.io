@@ -495,7 +495,7 @@ $$
 > 即 $\{x_\alpha\}_{\alpha \in I}$ 只有可数个非零项，其余均为零。
 > 当 $\sum_{\alpha \in I} \|x_\alpha\| < +\infty \iff \sum_{i=1}^\infty \|x_{\alpha_i}\| < +\infty$，$\Rightarrow \sum_{\alpha \in I} x_\alpha$ 是收敛的，即 $\sum_{\alpha \in I} x_\alpha$ 是无序和收敛。
 
-4. 对于 $\{x_\alpha\}_{\alpha \in I}$，绝对收敛 $\Rightarrow$ 无序和收敛，而无序和收敛 $\not\Rightarrow$ 绝对收敛。（举例？）
+4. 对于 $\{x_\alpha\}_{\alpha \in I}$，绝对收敛 $\Rightarrow$ 无序和收敛，而无序和收敛 $\not\Rightarrow$ 绝对收敛。例如考虑 Hilbert 空间 $l^2$（平方可和序列空间），取标准正交基 $\{e_n\}_{n=1}^\infty$。定义级数 $\sum_{n=1}^\infty \frac{1}{n} e_n$。无序和收敛：在 $l^2$ 中，部分和 $S_J = \sum_{n \in J} \frac{1}{n} e_n$ 对于任何有限集 $J$ 都收敛，且由于 $\{\frac{1}{n}\} \in l^2$，任何重排都会收敛到同一个元素，因此无序和收敛。不绝对收敛：因为 $\sum_{n=1}^\infty \|\frac{1}{n} e_n\| = \sum_{n=1}^\infty \frac{1}{n} = +\infty$（调和级数发散）。
 
 
 #### 定义（无序和是 Cauchy 的）：

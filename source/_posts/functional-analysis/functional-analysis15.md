@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: 1b3d63c1
 date: 2025-11-21 13:29:23
 ---
 Banach–Dieudonné 定理表明：Banach 空间 $X$ 的对偶空间 $X^*$ 的一个线性子空间是弱\*闭的，当且仅当它与 $X^*$ 中的闭单位球的交集是弱\*闭的。这一结果将在 Eberlein–Šmulian 定理的证明中起核心作用，该定理通过闭单位球的弱紧性来刻画自反 Banach 空间。

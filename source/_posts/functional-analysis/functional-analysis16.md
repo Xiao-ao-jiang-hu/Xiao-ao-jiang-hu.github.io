@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: 5c4ecb8
 date: 2025-11-25 14:09:38
 ---
 若 $X$ 是一个自反的巴拿赫空间，则其对偶空间 $X^* = \mathcal{L}(X, \mathbb{R})$ 上的弱拓扑与弱\*拓扑一致，因此 $X^*$ 中的闭单位球是弱紧的，从而 $X$ 中的闭单位球也是弱紧的。Eberlein–Šmulian 定理断言，这一性质刻画了自反性。它还断言，闭单位球的弱紧性等价于序列弱紧性。

@@ -1,7 +1,7 @@
 ---
 title: >-
-  Financial Accounting Class 7: Reporting and Interpreting Property, Plant, and Equipment; Intangibles; and Natural Resources
-  and Inventory
+  Financial Accounting Class 7: Reporting and Interpreting Property, Plant, and
+  Equipment; Intangibles; and Natural Resources and Inventory
 tags:
   - finance
 categories:
@@ -9,6 +9,7 @@ categories:
 index_img: /img/accounting.png
 banner_img: /img/accounting.png
 excerpt: none
+abbrlink: 324bf79
 date: 2025-11-26 17:41:30
 ---
 # 作业
