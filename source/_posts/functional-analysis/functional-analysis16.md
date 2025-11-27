@@ -1,5 +1,5 @@
 ---
-title: Ch 3.4 
+title: Ch 3.4 Eberlein–Šmulian 定理
 tags:
   - math
   - functional analysis

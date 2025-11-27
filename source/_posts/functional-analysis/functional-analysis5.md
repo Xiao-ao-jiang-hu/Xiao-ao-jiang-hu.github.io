@@ -49,7 +49,7 @@ $$
 
 5：
 
-“$\Rightarrow$” 若 $R \subseteq X$ 是剩余集，$A = X \setminus R$ 是第一纲集 $\xRightarrow{\text{定义}} A = \bigcup_{j=1}^{\infty} A_j$, $A_j$ 是无处稠密集。
+“$\Rightarrow$” 若 $R \subseteq X$ 是剩余集，$A = X \setminus R$ 是第一纲集 $\Rightarrow A = \bigcup_{j=1}^{\infty} A_j$, $A_j$ 是无处稠密集。
 
 记 $U_i = X \setminus \overline{A_i} = \text{int}(X \setminus A_i)$，从而 $\overline{U_i} = \overline{\text{int}(X \setminus A_i)} = X \setminus \text{int}(\overline{A_i}) = X$ $\Rightarrow U_i$ 是开稠集。
 
@@ -57,7 +57,7 @@ $$
 \bigcap_{i=1}^{\infty} U_i = X \setminus \bigcup_{i=1}^{\infty} \overline{A_i} \subseteq X \setminus \bigcup_{i=1}^{\infty} A_i = R \quad \Rightarrow \text{结论}.
 $$
 
-“$\Leftarrow$” 若 $\bigcap_{i=1}^{\infty} U_i \subseteq R$，其中 $U_i$ 是开稠集。记 $A_i = X \setminus U_i$ $\xRightarrow{\text{引理1①}} A_i$ 是无处稠密集，
+“$\Leftarrow$” 若 $\bigcap_{i=1}^{\infty} U_i \subseteq R$，其中 $U_i$ 是开稠集。记 $A_i = X \setminus U_i$ $\Rightarrow A_i$ 是无处稠密集，
 
 $\Rightarrow A = \bigcup_{i=1}^{\infty} A_i$ 是第一纲集，$X \setminus R \subseteq X \setminus \bigcap_{i=1}^{\infty} U_i = \bigcup_{i=1}^{\infty} A_i = A$ $\Rightarrow$ 结论。
 
@@ -77,7 +77,7 @@ $\Rightarrow A = \bigcup_{i=1}^{\infty} A_i$ 是第一纲集，$X \setminus R \s
 
 - 1 $\Rightarrow$ 2：由于 $U$ 是开集 $\Rightarrow X \setminus U$ 不是稠密的 $\Rightarrow X \setminus U$ 不是剩余集 $\Rightarrow U$ 不是第一纲集。
 - 2 $\Rightarrow$ 3：由定义知 $\bigcup_{i=1}^{\infty} A_i$ 是第一纲集。（反证法）若 $\bigcup_{i=1}^{\infty} A_i$ 会有内点，即 $\bigcup_{i=1}^{\infty} A_i$ 包含一开集 $\Longrightarrow \bigcup_{i=1}^{\infty} A_i$ 是第二纲集，这与 $\bigcup_{i=1}^{\infty} A_i$ 是第一纲集矛盾，$\Rightarrow$ 结论。
-- 3 $\Rightarrow$ 4：记 $A_i = X \setminus U_i$；$\xRightarrow{\text{由引理1①}} A_i$ 是无处稠密的且是闭集 $\xRightarrow{\text{③}} \bigcup_{i=1}^{\infty} A_i$ 无内点。由于 $\left( \bigcup_{i=1}^{\infty} A_i \right)^C = \bigcap_{i=1}^{\infty} U_i$，从而 $\bigcap_{i=1}^{\infty} U_i$ 是稠密的。否则若 $\bigcap_{i=1}^{\infty} U_i$ 不稠，$\exists x_0 \in X$ 以及 $\varepsilon > 0$，s.t. $B(x_0; \varepsilon) \cap \bigcap_{i=1}^{\infty} U_i = \varnothing$，由上式，有 $B(x_0; \varepsilon) \subseteq \bigcup_{i=1}^{\infty} A_i$，这与条件矛盾。
+- 3 $\Rightarrow$ 4：记 $A_i = X \setminus U_i$；$\Rightarrow A_i$ 是无处稠密的且是闭集 $\Rightarrow \bigcup_{i=1}^{\infty} A_i$ 无内点。由于 $\left( \bigcup_{i=1}^{\infty} A_i \right)^C = \bigcap_{i=1}^{\infty} U_i$，从而 $\bigcap_{i=1}^{\infty} U_i$ 是稠密的。否则若 $\bigcap_{i=1}^{\infty} U_i$ 不稠，$\exists x_0 \in X$ 以及 $\varepsilon > 0$，s.t. $B(x_0; \varepsilon) \cap \bigcap_{i=1}^{\infty} U_i = \varnothing$，由上式，有 $B(x_0; \varepsilon) \subseteq \bigcup_{i=1}^{\infty} A_i$，这与条件矛盾。
 - 4 $\Rightarrow$ 1：假设 $R$ 是剩余集，由引理1⑤，$R$ 是稠密的。
 
 ### Baire 纲定理的证明
