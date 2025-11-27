@@ -11,11 +11,6 @@ banner_img: /img/accounting.png
 excerpt: none
 date: 2025-11-26 17:41:30
 ---
-解答题目，要求：
-1. 先完整复述题面，使用英文。其余内容使用中文。
-2. 仅保留必要的步骤和计算过程，去掉多余文字。尤其不要标明“题面复述”等字样，直接写内容，不要写标题
-3. 给出最终答案
-4. 如果有多小问，用三级标题给出题号，不要重复题面
 # 作业
 ## M8-4
 Computing Book Value (Straight-Line Depreciation)
