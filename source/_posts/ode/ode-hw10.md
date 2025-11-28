@@ -1,9 +1,13 @@
 ---
-title: ode-hw10
+title: ODE第十次作业
 tags:
-  - no tags
+  - math
+  - ode
 categories:
-  - uncategorized
-excerpt: no excerpt
+  - math
+  - ode
+excerpt: ODE第十次作业
+index_img: /img/ode.jpg
+banner_img: /img/ode.jpg
 date: 2025-11-28 21:10:39
 ---
