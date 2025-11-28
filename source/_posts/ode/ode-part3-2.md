@@ -1,5 +1,5 @@
 ---
-title: 一阶系统解的性质
+title: Ch3.2 一阶系统解的性质
 tags:
   - math
   - ode

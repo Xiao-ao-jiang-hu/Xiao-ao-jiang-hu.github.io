@@ -1,5 +1,5 @@
 ---
-title: 一阶ODE
+title: Ch1 一阶ODE
 tags:
   - math
   - ode
