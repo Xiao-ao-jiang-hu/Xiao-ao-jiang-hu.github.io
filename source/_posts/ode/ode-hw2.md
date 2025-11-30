@@ -5,7 +5,7 @@ tags:
   - ode
 categories:
   - math
-  - ode
+  - ode-hw
 excerpt: ODE第二次作业
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg

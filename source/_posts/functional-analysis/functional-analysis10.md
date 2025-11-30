@@ -112,6 +112,15 @@ $$(Z, \chi) \preccurlyeq (\widehat{Z}, \widehat{\chi}) \quad \text{如果} \quad
 2. $\Phi(x) \leq \|\phi\| \|x\|,\quad \forall x \in X \implies |\Phi(x)| = \Phi(\operatorname{sgn}\Phi(x)\cdot x) \leq \|\phi\| \|x\|\implies \|\Phi\| = \|\phi\|$。
 
 ### 推论2（复 Hahn-Banach）
+
+!!! note 复线性泛函和实线性泛函
+    复线性泛函的实部和虚部都是实线性泛函。
+    考虑 $f(x) = \varphi(x) + i \phi(x)$，则有 $\varphi(x) = \frac{f(x) + \overline{f(x)}}{2},\quad \phi(x) = \frac{f(x) - \overline{f(x)}}{2i}$
+    于是 $\varphi(\alpha x + \beta y) = \frac{f(\alpha x + \beta y) + \overline{f(\alpha x + \beta y)}}{2} = \frac{\alpha f(x) + \beta f(y) + \overline{\alpha f(x) + \beta f(y)}}{2} = \alpha \varphi(x) + \beta \varphi(y)$，同理可证 $\phi$ 也是实线性泛函。
+    另外，我们有 $f(ix) = if(x)$，即 $\varphi(ix) + i \phi(ix) = i \varphi(x) - \phi(x)$，从而 $\varphi(ix) = -\phi(x),\quad \phi(ix) = \varphi(x)$。
+    故 $f(x) = \varphi(x) - i \varphi(ix)$， 即复线性泛函由其实部唯一确定。
+
+
 若 $X$ 是 $\mathbb{C}$ 上的赋范空间，$Y \subseteq X$ 是线性子空间，$\gamma \in L(Y; \mathbb{C})$，则 $\exists\, \Psi \in L(X; \mathbb{C})$，s.t.
 1. $\Psi|_Y = \gamma$，
 2. $\|\Psi\| = \|\gamma\|$。
