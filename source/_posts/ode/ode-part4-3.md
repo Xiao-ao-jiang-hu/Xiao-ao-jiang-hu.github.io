@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第三部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: f326612e
 date: 2025-11-21 21:51:18
 ---
 ### 3.1 初值问题的解的形式

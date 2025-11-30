@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: e3dc0774
 date: 2025-11-28 04:16:51
 ---
 # Ch4 Fredholm 理论

@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第三部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: 330641a
 date: 2025-11-11 21:11:01
 ---
 ### 1.1 矩阵值级数与方阵的指数定义

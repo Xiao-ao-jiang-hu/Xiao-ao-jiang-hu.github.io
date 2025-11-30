@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第三部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: ec1e15b8
 date: 2025-11-26 21:59:33
 ---
 ### 4.1 一维周期系数线性方程

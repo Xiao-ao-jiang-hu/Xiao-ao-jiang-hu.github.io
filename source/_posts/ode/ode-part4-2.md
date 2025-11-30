@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第三部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: 18ab96a7
 date: 2025-11-16 21:31:47
 ---
 ### 2.1 高阶方程与一阶方程组

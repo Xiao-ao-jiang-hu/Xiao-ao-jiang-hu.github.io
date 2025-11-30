@@ -153,6 +153,10 @@ mathjax:
 #     quotes: ""''
 #     pre_class: highlight
 
+markdown:
+  plugins:
+    - markdown-it-container
+
 seo:
   auto_description: true
 
