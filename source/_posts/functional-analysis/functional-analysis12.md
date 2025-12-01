@@ -49,7 +49,7 @@ d(f,g) := \sum_{\ell=1}^\infty 2^{-\ell} \frac{\|f-g\|_{C^\ell(K_\ell)}}{1 + \|f
 $$
 诱导。其中 $K_\ell \subset \Omega$ 是一列穷竭的紧集。
 
-## 例
+## 例（平凡拓扑）
 
 设 $X$ 为实向量空间。则 $(X, \mathcal{U})$ 是拓扑向量空间，其中 $\mathcal{U} := \{\emptyset, X\}$，但不是离散拓扑。
 
@@ -81,7 +81,7 @@ $$
 
 # 弱拓扑与弱\*拓扑
 
-一个重要类别的拓扑向量空间由线性泛函族决定，如下所述。固定一个实向量空间 $X$，并令
+一类重要的拓扑向量空间由线性泛函族决定。固定一个实向量空间 $X$，并令
 $$
 \mathcal{F} \subset \{ f: X \to \mathbb{R} \mid f \text{ 是线性的} \}
 $$
@@ -101,7 +101,7 @@ a_i < b_i \text{ 对 } i=1,\dots,m
 \tag{3.1.1}
 $$
 
-## 引理(弱拓扑的开集基)
+## 引理（开集的有限个泛函逆像构成拓扑基）
 
 设 $X$ 为实向量空间，$\mathcal{F} \subset \mathbb{R}^X$ 为 $X$ 上的一组实值线性泛函，$\mathcal{U}_{\mathcal{F}} \subset 2^X$ 为使得 $\mathcal{F}$ 中所有元素连续的最弱拓扑。则以下结论成立：
 
@@ -120,7 +120,20 @@ $$
 
 ### 证明
 
-**第(i)部分** 是一道带提示的练习题。根据公式 (3.1.2) 的右边定义集合 $\mathcal{U}_{\mathcal{F}} \subset 2^X$。由定义直接可知，$\mathcal{U}_{\mathcal{F}}$ 是一个拓扑，每个线性泛函 $f: X \to \mathbb{R}$ 在 $\mathcal{F}$ 中关于该拓扑连续，且任何使得 $\mathcal{F}$ 中每个元素连续的拓扑 $\mathcal{U} \subset 2^X$ 必须包含 $\mathcal{V}_{\mathcal{F}}$，从而也包含 $\mathcal{U}_{\mathcal{F}}$。这证明了第(i)部分。
+我们证明**第(i)部分**。首先证明 $\mathcal{U}_{\mathcal{F}}$ 是拓扑。
+
+首先有$\emptyset \in \mathcal{U}_{\mathcal{F}}$。
+
+$X \in \mathcal{U}_{\mathcal{F}}$：对任意 $x \in X$，取任意 $f \in \mathcal{F} \neq \emptyset$ 及开区间 $(a,b)$ 使得 $f(x) \in (a,b)$，则 $V = f^{-1}((a,b)) \in \mathcal{V}_{\mathcal{F}}$ 满足 $x \in V \subset X$，故 $X \in \mathcal{U}_{\mathcal{F}}$。
+
+对任意并封闭：设 $\{U_\alpha\} \subset \mathcal{U}_{\mathcal{F}}$，$U = \bigcup U_\alpha$。对任意 $x \in U$，存在 $\alpha$ 使 $x \in U_\alpha$，进而存在 $V \in \mathcal{V}_{\mathcal{F}}$ 使 $x \in V \subset U_\alpha \subset U$，故 $U \in \mathcal{U}_{\mathcal{F}}$。
+
+对有限交封闭：设 $U_1, U_2 \in \mathcal{U}_{\mathcal{F}}$，$U = U_1 \cap U_2$。对任意 $x \in U$，存在 $V_1, V_2 \in \mathcal{V}_{\mathcal{F}}$ 使 $x \in V_1 \subset U_1$，$x \in V_2 \subset U_2$。令 $V = V_1 \cap V_2 \in \mathcal{V}_{\mathcal{F}}$，则 $x \in V \subset U$，故 $U \in \mathcal{U}_{\mathcal{F}}$。
+因此 $\mathcal{U}_{\mathcal{F}}$ 是拓扑。
+
+接着证明每个 $f \in \mathcal{F}$ 在 $\mathcal{U}_{\mathcal{F}}$ 下连续。任取 $x \in f^{-1}((a,b))$，令 $V = f^{-1}((a,b))$，则 $V \in \mathcal{V}_{\mathcal{F}}$（取 $m=1$）且 $x \in V \subset f^{-1}((a,b))$，故 $f^{-1}((a,b)) \in \mathcal{U}_{\mathcal{F}}$。因此 $f$ 连续。
+
+最后证明任何使 $\mathcal{F}$ 中泛函连续的拓扑 $\mathcal{U}$ 都包含 $\mathcal{U}_{\mathcal{F}}$。设 $\mathcal{U}$ 为 $X$ 上拓扑且每个 $f \in \mathcal{F}$ 连续。对任意 $U \in \mathcal{U}_{\mathcal{F}}$，由定义，对每个 $x \in U$ 存在 $V_x \in \mathcal{V}_{\mathcal{F}}$ 使 $x \in V_x \subset U$，则 $U = \bigcup_{x \in U} V_x$。由于每个 $V \in \mathcal{V}_{\mathcal{F}}$ 可表为有限个 $f_i^{-1}((a_i,b_i))$ 的交，且每个 $f_i^{-1}((a_i,b_i)) \in \mathcal{U}$（因 $f_i$ 连续），故 $V \in \mathcal{U}$。从而 $U$ 是 $\mathcal{U}$ 中集的并，即 $U \in \mathcal{U}$，故 $\mathcal{U}_{\mathcal{F}} \subset \mathcal{U}$。
 
 我们证明**第(ii)部分**。首先证明标量乘法关于 $\mathcal{U}_{\mathcal{F}}$ 连续。固定集合 $V \in \mathcal{V}_{\mathcal{F}}$，并设 $\lambda_0 \in \mathbb{R}$ 和 $x_0 \in X$ 使得 $\lambda_0 x_0 \in V$。由 $\mathcal{V}_{\mathcal{F}}$ 的定义（见公式 (3.1.1)），存在常数 $\delta > 0$ 使得
 $$
