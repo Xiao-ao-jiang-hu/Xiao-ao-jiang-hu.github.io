@@ -71,7 +71,15 @@ $$
 
 一般而言，具有依测度收敛拓扑的拓扑向量空间 $L^0(\mu)$ 不是局部凸的。
 
-> **练习**：证明 $L^0([0,1])$ 中每个非空开凸子集都是全空间。由此推出，每个连续线性泛函 $\Lambda: L^0([0,1]) \to \mathbb{R}$ 必然恒为零。
+## 例（乘积拓扑）
+
+设 $I$ 为任意集合，考虑空间 $X := \mathbb{R}^I$，即所有函数 $x: I \to \mathbb{R}$ 构成的空间。这是一个实向量空间。对 $i \in I$，记在点 $i$ 处的求值映射为 $\pi_i: \mathbb{R}^I \to \mathbb{R}$，即 $\pi_i(x) := x(i)$ 对 $x \in \mathbb{R}^I$。则对每个 $i \in I$，$\pi_i: X \to \mathbb{R}$ 是一个线性泛函。令
+$$
+\pi := \{ \pi_i \mid i \in I \}
+$$
+为所有这些求值映射的集合，并记 $\mathcal{U}_\pi$ 为 $X$ 上使得每个投影 $\pi_i$ 连续的最弱拓扑。根据上述引理，该拓扑由公式 (3.1.1) 和 (3.1.2) 给出。它被称为 $\mathbb{R}^I$ 上的**乘积拓扑**。因此，$\mathbb{R}^I$ 是一个具有乘积拓扑的局部凸Hausdorff拓扑向量空间。
+
+# 弱拓扑与弱\*拓扑
 
 一个重要类别的拓扑向量空间由线性泛函族决定，如下所述。固定一个实向量空间 $X$，并令
 $$
@@ -93,21 +101,21 @@ a_i < b_i \text{ 对 } i=1,\dots,m
 \tag{3.1.1}
 $$
 
-## 引理
+## 引理(弱拓扑的开集基)
 
 设 $X$ 为实向量空间，$\mathcal{F} \subset \mathbb{R}^X$ 为 $X$ 上的一组实值线性泛函，$\mathcal{U}_{\mathcal{F}} \subset 2^X$ 为使得 $\mathcal{F}$ 中所有元素连续的最弱拓扑。则以下结论成立：
 
-**(i)** 集合 $\mathcal{V}_{\mathcal{F}}$（见公式 (3.1.1)）是拓扑 $\mathcal{U}_{\mathcal{F}}$ 的一个基，即
+1. 集合 $\mathcal{V}_{\mathcal{F}}$（见公式 (3.1.1)）是拓扑 $\mathcal{U}_{\mathcal{F}}$ 的一个基，即
 $$
 \mathcal{U}_{\mathcal{F}} = \{ U \subset X \mid \forall x \in U\, \exists V \in \mathcal{V}_{\mathcal{F}} \text{ 使得 } x \in V \subset U \}.
 \tag{3.1.2}
 $$
 
-**(ii)** $(X, \mathcal{U}_{\mathcal{F}})$ 是局部凸拓扑向量空间。
+2. $(X, \mathcal{U}_{\mathcal{F}})$ 是局部凸拓扑向量空间。
 
-**(iii)** 序列 $x_n \in X$ 关于拓扑 $\mathcal{U}_{\mathcal{F}}$ 收敛到某元素 $x_0 \in X$，当且仅当对所有 $f \in \mathcal{F}$ 有 $f(x_0) = \lim_{n\to\infty} f(x_n)$。
+3. 序列 $x_n \in X$ 关于拓扑 $\mathcal{U}_{\mathcal{F}}$ 收敛到某元素 $x_0 \in X$，当且仅当对所有 $f \in \mathcal{F}$ 有 $f(x_0) = \lim_{n\to\infty} f(x_n)$。
 
-**(iv)** 拓扑空间 $(X, \mathcal{U}_{\mathcal{F}})$ 是Hausdorff空间，当且仅当 $\mathcal{F}$ 能分离点，即对每个非零向量 $x \in X$，存在线性泛函 $f \in \mathcal{F}$ 使得 $f(x) \ne 0$。
+4. 拓扑空间 $(X, \mathcal{U}_{\mathcal{F}})$ 是Hausdorff空间，当且仅当 $\mathcal{F}$ 能分离点，即对每个非零向量 $x \in X$，存在线性泛函 $f \in \mathcal{F}$ 使得 $f(x) \ne 0$。
 
 
 ### 证明
@@ -166,58 +174,46 @@ U_i := \{ x \in X \mid |f(x - x_i)| < \varepsilon \}
 $$
 对 $i=0,1$。则 $U_0, U_1 \in \mathcal{V}_{\mathcal{F}} \subset \mathcal{U}_{\mathcal{F}}$，$x_0 \in U_0$，$x_1 \in U_1$，且 $U_0 \cap U_1 = \emptyset$。这证明了第(iv)部分及引理。
 
+## 定义（弱拓扑）
 
-## 例（乘积拓扑）
+设 $X$ 是一个实赋范向量空间。$X$ 上的**弱拓扑**是使得每个有界线性泛函 $\Lambda: X \to \mathbb{R}$ 都连续的最弱拓扑 $\mathcal{U}^w \subset 2^X$。
 
-设 $I$ 为任意集合，考虑空间 $X := \mathbb{R}^I$，即所有函数 $x: I \to \mathbb{R}$ 构成的空间。这是一个实向量空间。对 $i \in I$，记在点 $i$ 处的求值映射为 $\pi_i: \mathbb{R}^I \to \mathbb{R}$，即 $\pi_i(x) := x(i)$ 对 $x \in \mathbb{R}^I$。则对每个 $i \in I$，$\pi_i: X \to \mathbb{R}$ 是一个线性泛函。令
-$$
-\pi := \{ \pi_i \mid i \in I \}
-$$
-为所有这些求值映射的集合，并记 $\mathcal{U}_\pi$ 为 $X$ 上使得每个投影 $\pi_i$ 连续的最弱拓扑。根据上述引理，该拓扑由公式 (3.1.1) 和 (3.1.2) 给出。它被称为 $\mathbb{R}^I$ 上的**乘积拓扑**。因此，$\mathbb{R}^I$ 是一个具有乘积拓扑的局部凸Hausdorff拓扑向量空间。
+### 注
+1. 弱拓扑是关于一族映射生成初拓扑的引理中所述拓扑 $\mathcal{U}_\mathcal{F} \subset 2^X$ 的特例，其中 $\mathcal{F} := X^*$ 是对偶空间。由 Hahn–Banach 定理的一个推论可知，对偶空间能够分离点，即对于每个 $x \in X \setminus \{0\}$，存在 $x^* \in X^*$ 使得 $\langle x^*, x \rangle \neq 0$。因此，上述引理断言 $(X, \mathcal{U}^w)$ 是一个局部凸的豪斯多夫拓扑向量空间。
 
-## 例（弱拓扑）
-
-设 $X$ 是一个实赋范向量空间。
-
-### (i)
-
-$X$ 上的**弱拓扑**是使得每个有界线性泛函 $\Lambda: X \to \mathbb{R}$ 都连续的最弱拓扑 $\mathcal{U}^w \subset 2^X$。它是关于一族映射生成初拓扑的引理中所述拓扑 $\mathcal{U}_\mathcal{F} \subset 2^X$ 的特例，其中 $\mathcal{F} := X^*$ 是对偶空间。由 Hahn–Banach 定理的一个推论可知，对偶空间能够分离点，即对于每个 $x \in X \setminus \{0\}$，存在 $x^* \in X^*$ 使得 $\langle x^*, x \rangle \neq 0$。因此，上述引理断言 $(X, \mathcal{U}^w)$ 是一个局部凸的豪斯多夫拓扑向量空间。
-
-### (ii)
-
-由连续线性泛函的基本性质可知，每个有界线性泛函关于由范数诱导的**强拓扑** $\mathcal{U}^s := \mathcal{U}(X, \|\cdot\|)$ 是连续的。因此，
+2. 由连续线性泛函的基本性质可知，每个有界线性泛函关于由范数诱导的**强拓扑** $\mathcal{U}^s := \mathcal{U}(X, \|\cdot\|)$ 是连续的。因此，
 $$
 \mathcal{U}^w \subset \mathcal{U}^s.
 $$
 当 $X$ 是有限维空间时，弱拓扑与强拓扑一致。
 
-### (iii)
-
-设 $(x_n)_{n \in \mathbb{N}}$ 是 $X$ 中的一个序列，且 $x \in X$。则上述引理断言，$x_n$ 在弱拓扑下收敛于 $x$ 当且仅当
+3. 设 $(x_n)_{n \in \mathbb{N}}$ 是 $X$ 中的一个序列，且 $x \in X$。则上述引理断言，$x_n$ 在弱拓扑下收敛于 $x$ 当且仅当
 $$
 \langle x^*, x \rangle = \lim_{n \to \infty} \langle x^*, x_n \rangle \quad \text{对所有 } x^* \in X^*.
 $$
 此时我们记作 $x_n \overset{\mathrm{w}}{\to} x$ 或 $x = \mathrm{w}\text{-}\lim_{n \to \infty} x_n$。
 
-## 例（弱*拓扑）
+!!! note 弱邻域的“有限控制”结构
+    弱邻域形如：
+    $$N(x_0; f_1,\dots,f_n;\varepsilon) = \{ x \in X : |f_i(x-x_0)| < \varepsilon,\ i=1,\dots,n \}$$
+    它只限制 $x$ 与 $x_0$ 在 $f_1,\dots,f_n$ 这有限个线性泛函上的差异，而在这些泛函的零空间
+    $$Z = \bigcap_{i=1}^n \ker f_i$$
+    （对于 $X$ 是无穷维的情况来说是一个无穷维子空间）上完全自由。因此，弱邻域在 $Z$ 方向上是无界的，可以沿 $Z$ 任意移动而不离开邻域。
 
-设 $X$ 是一个实赋范向量空间，令 $X^* = \mathcal{L}(X, \mathbb{R})$ 为其对偶空间。
+## 定义(弱\*拓扑)
 
-### (i)
+设 $X$ 是一个实赋范向量空间，令 $X^* = \mathcal{L}(X, \mathbb{R})$ 为其对偶空间。则$X^*$ 上的**弱\*拓扑**是使得对所有 $x \in X$，线性泛函 $\iota(x): X^* \to \mathbb{R}$（在自然嵌入中定义）都连续的最弱拓扑 $\mathcal{U}^{w^*} \subset 2^{X^*}$。
 
-$X^*$ 上的**弱\*拓扑**是使得对所有 $x \in X$，线性泛函 $\iota(x): X^* \to \mathbb{R}$（在自然嵌入中定义）都连续的最弱拓扑 $\mathcal{U}^{w^*} \subset 2^{X^*}$。它是关于一族映射生成初拓扑的引理中所述拓扑 $\mathcal{U}_\mathcal{F} \subset 2^{X^*}$ 的特例，其中 $\mathcal{F} := \iota(X) \subset X^{**}$。这个线性泛函族能够分离点，即对于每个 $x^* \in X^* \setminus \{0\}$，存在元素 $x \in X$ 使得 $\langle x^*, x \rangle \neq 0$。因此，上述引理断言 $(X^*, \mathcal{U}^{w^*})$ 是一个局部凸的豪斯多夫拓扑向量空间。
+### 注
+1. 它是关于一族映射生成初拓扑的引理中所述拓扑 $\mathcal{U}_\mathcal{F} \subset 2^{X^*}$ 的特例，其中 $\mathcal{F} := \iota(X) \subset X^{**}$。这个线性泛函族能够分离点，即对于每个 $x^* \in X^* \setminus \{0\}$，存在元素 $x \in X$ 使得 $\langle x^*, x \rangle \neq 0$。因此，上述引理断言 $(X^*, \mathcal{U}^{w^*})$ 是一个局部凸的豪斯多夫拓扑向量空间。
 
-### (ii)
-
-记 $\mathcal{U}^s \subset 2^{X^*}$ 为由范数诱导的强拓扑，记 $\mathcal{U}^w \subset 2^{X^*}$ 为上例中的弱拓扑。则有
+2. 记 $\mathcal{U}^s \subset 2^{X^*}$ 为由范数诱导的强拓扑，记 $\mathcal{U}^w \subset 2^{X^*}$ 为上例中的弱拓扑。则有
 $$
 \mathcal{U}^{w^*} \subset \mathcal{U}^w \subset \mathcal{U}^s.
 $$
 当 $X$ 是自反Banach空间时，弱拓扑与弱*拓扑一致。
 
-### (iii)
-
-设 $(x_n^*)_{n \in \mathbb{N}}$ 是 $X^*$ 中的一个序列，且 $x^* \in X^*$。则上述引理断言，$x_n^*$ 在弱\*拓扑下收敛于 $x^*$ 当且仅当
+3. 设 $(x_n^*)_{n \in \mathbb{N}}$ 是 $X^*$ 中的一个序列，且 $x^* \in X^*$。则上述引理断言，$x_n^*$ 在弱\*拓扑下收敛于 $x^*$ 当且仅当
 $$
 \langle x^*, x \rangle = \lim_{n \to \infty} \langle x_n^*, x \rangle \quad \text{对所有 } x \in X.
 $$

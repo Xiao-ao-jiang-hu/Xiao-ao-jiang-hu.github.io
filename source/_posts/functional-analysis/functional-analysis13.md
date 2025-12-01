@@ -75,6 +75,9 @@ x \in \overline{\operatorname{conv}}(\{x_i \mid i \in \mathbb{N}\}),
 $$
 即，对每个 $\varepsilon > 0$，存在一个 $n \in \mathbb{N}$ 和实数 $\lambda_1, \dots, \lambda_n$，使得 $\lambda_i \geq 0$ 对所有 $i$ 成立，$\sum_{i=1}^n \lambda_i = 1$，且 $\left\| x - \sum_{i=1}^n \lambda_i x_i \right\| < \varepsilon$。
 
+!!! note
+    直观上，若一点 $x$ 不在 $C$ 的范数闭包中，则由 Hahn-Banach 定理存在一个连续线性泛函 $f$ 严格分离 $x$ 与 $C$。于是 $f$ 给出的弱邻域就将 $x$ 与 $C$ 分离，故 $x$ 也不在弱闭包中。这说明了尽管弱拓扑更粗，但连续线性泛函足够多，足以分离凸集与外点。
+
 ### 证明
 
 集合 $K := \operatorname{conv}(\{x_i \mid i \in \mathbb{N}\})$ 是凸的，因此其强闭包 $\overline{K}$ 也是凸的。故由闭凸集是弱闭的可知 $\overline{K}$ 是弱闭的。由于 $x_i \in K$ 弱收敛于 $x$，故 $x \in \overline{K}$。
@@ -89,6 +92,9 @@ $$
 S := \{x \in X \mid \|x\| = 1\}, \quad B := \{x \in X \mid \|x\| \leq 1\}.
 $$
 则 $B$ 是 $S$ 的弱闭包。
+
+!!! note
+    直观上，这是因为弱拓扑比范数拓扑更粗，其邻域仅由有限个线性泛函控制，从而允许我们通过沿“未被检测”的方向扰动球内的点，使其达到球面，同时保持弱逼近。
 
 ### 证明
 
