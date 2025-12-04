@@ -124,8 +124,9 @@ $$
 \|f_{y^*}\| &= \sup_{y \in M} |\langle y^*, y \rangle| \\
 &= \sup_{x \in X, \|x\|_X \le 1} |\langle y^*, Kx \rangle| \\
 &= \sup_{x \in X, \|x\|_X \le 1} |\langle K^* y^*, x \rangle| \\
-&= \|K^* y^*\|_{X^*}. \tag{1}
+&= \|K^* y^*\|_{X^*}. 
 \end{aligned}
+\tag{1}
 $$
 因此 $\|f\| \le \|K^*\| = \|K\|$ 对所有 $f \in \mathcal{F}$ 成立，所以 $\mathcal{F}$ 是 $C(M)$ 的一个有界子集。此外，集合 $\mathcal{F}$ 是等度连续的，因为
 $$
