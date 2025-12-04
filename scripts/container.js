@@ -23,7 +23,7 @@ hexo.extend.filter.register('before_post_render', function (data) {
         type = type.trim().toLowerCase();
         if (type === 'tip') return 'success';
         if (type === 'error') return 'danger';
-        if (type === 'waining') return 'warning'; // 容错用户的拼写
+        if (type === 'warning') return 'warning'; // 容错用户的拼写
         if (type === 'note') return 'info';       // 将 note 映射为 info
         if (type === 'failure') return 'danger';  // 增加 failure 别名映射到 danger
         return type;
@@ -56,7 +56,7 @@ hexo.extend.filter.register('before_post_render', function (data) {
     content = content.replace(admonitionRegex, function (match, type, title, body) {
         // 去除每行的缩进 (4空格或Tab)
         const innerContent = body.replace(/^(?: {4}|\t)/gm, '');
-        return generateNote(type, title, innerContent);
+        return generateNote(type, title, innerContent) + '\n';
     });
 
     // 4. 还原代码块
