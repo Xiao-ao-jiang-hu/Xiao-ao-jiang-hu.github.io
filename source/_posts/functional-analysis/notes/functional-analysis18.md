@@ -21,6 +21,9 @@ date: 2025-12-04 09:59:15
 2. 若 $S \subset X$ 是一个有界集，则集合 $K(S) := \{ Kx \mid x \in S \}$ 具有紧闭包。
 3. 集合 $\overline{\{ Kx \mid x \in X, \|x\|_X \le 1 \}}$ 是 $Y$ 的一个紧子集。
 
+!!! note 紧算子
+    有界集合在紧算子下的像具有紧闭包。这类似于有限维空间中有界集合的性质。
+
 ### 证明
 
 我们证明 (i) 蕴含 (ii)。因此假设 $K$ 满足 (i)，并令 $S \subset X$ 为一个有界集。则 $K(S)$ 中的每个序列都有一个 Cauchy 子列（由 (i)）。由于 $Y$ 是完备的，根据度量空间中紧等价于列紧，$\overline{K(S)}$ 是 $Y$ 的一个紧子集。
@@ -218,17 +221,42 @@ $$
 #### 积分的例子
 $A\varphi(t) := \int_a^b k(t,s)\varphi(s)ds$ 其中 $\varphi \in L^2(a,b)$, $k \in L^2((a,b)\times(a,b))$. 则 $A: L^2(a,b) \to L^2(a,b)$ 是紧算子.
 
-**证明:**
-回忆: $L^p$ 中的紧性原理
+**回忆: $L^p$ 中的紧性原理**
 
 设 $1 \leq p < \infty$，$\Omega \subseteq \mathbb{R}^n$ 为可测集。考虑零延拓到全空间的函数空间 $L^p(\Omega)$。子集 $\mathcal{F} \subset L^p(\Omega)$ 是相对紧的（即其闭包在 $L^p(\Omega)$ 中紧）当且仅当同时满足以下三条：
 
 1. 一致有界：存在常数 $M > 0$，使得对所有 $f \in \mathcal{F}$，有 $$\| f \|_{L^p(\Omega)} \leq M.$$
 
 2. 等度连续（平移连续性）：对所有 $\varepsilon > 0$，存在 $\delta > 0$，使得对所有满足 $|h| < \delta$ 的向量 $h \in \mathbb{R}^n$ 和所有 $f \in \mathcal{F}$，有
-$$\| f(\cdot + h) - f(\cdot) \|_{L^p(\Omega_{|h|})} < \varepsilon,$$
-其中 $\Omega_{|h|} = \{ x \in \Omega : x + h \in \Omega \}$，并且约定在 $\Omega$ 外 $f$ 为零。
+  $$\| f(\cdot + h) - f(\cdot) \|_{L^p(\Omega_{|h|})} < \varepsilon,$$
+  其中 $\Omega_{|h|} = \{ x \in \Omega : x + h \in \Omega \}$，并且约定在 $\Omega$ 外 $f$ 为零。
 
 3. 一致消失（若 $\Omega$ 无界）：对所有 $\varepsilon > 0$，存在紧集 $K \subset \Omega$，使得对所有 $f \in \mathcal{F}$，有
-$$\int_{\Omega \setminus K} |f(x)|^p \, dx < \varepsilon.$$
-若 $\Omega$ 有界，此条件自动满足（取 $K = \Omega$ 即可）。
+  $$\int_{\Omega \setminus K} |f(x)|^p \, dx < \varepsilon.$$
+  若 $\Omega$ 有界，此条件自动满足（取 $K = \Omega$ 即可）。
+
+**证明:**
+设 $B \subset L^2(a,b)$ 为有界集，即存在 $M_0 > 0$ 使得对任意 $\varphi \in B$ 有 $\|\varphi\|_{L^2} \leq M_0$。我们需证 $A(B) = \{ A\varphi : \varphi \in B \}$ 在 $L^2(a,b)$ 中相对紧，即满足 $L^p$ 紧性原理（$p=2$）的三条条件。由于 $(a,b)$ 有界，第三条自动成立，故只需验证前两条。
+
+1. 一致有界性
+  对任意 $\varphi \in B$，由 Cauchy-Schwarz 不等式，
+  $$|(A\varphi)(t)| \leq \int_a^b |k(t,s)\varphi(s)|\,ds \leq \left( \int_a^b |k(t,s)|^2\,ds \right)^{1/2} \|\varphi\|_{L^2}.$$
+  两边取 $L^2$ 范数，
+  $$\|A\varphi\|_{L^2}^2 \leq \|\varphi\|_{L^2}^2 \iint_{(a,b)\times(a,b)} |k(t,s)|^2\,ds\,dt = \|\varphi\|_{L^2}^2 \|k\|_{L^2}^2.$$
+  记 $C = \|k\|_{L^2}$，则 $\|A\varphi\|_{L^2} \leq C M_0$，故 $A(B)$ 一致有界。
+
+1. 等度连续性
+  对任意 $\varphi \in B$ 和 $h \in \mathbb{R}$，当 $t, t+h \in (a,b)$ 时，
+  $$|(A\varphi)(t+h) - (A\varphi)(t)| \leq \left( \int_a^b |k(t+h,s) - k(t,s)|^2\,ds \right)^{1/2} \|\varphi\|_{L^2}.$$
+  记 $\Omega_{|h|} = \{ t \in (a,b) : t+h \in (a,b) \}$，则
+  $$\| (A\varphi)(\cdot+h) - (A\varphi)(\cdot) \|_{L^2(\Omega_{|h|})}^2 
+  \leq M_0^2 \int_{\Omega_{|h|}} \int_a^b |k(t+h,s) - k(t,s)|^2\,ds\,dt.$$
+  将 $k$ 零延拓到 $\mathbb{R}^2$，则当 $|h|$ 足够小时，有
+  $$\int_a^b \int_a^b |k(t+h,s) - k(t,s)|^2\,ds\,dt \to 0 \quad (h \to 0),$$
+  这是 $L^2$ 函数的平移连续性。因此，对任意 $\varepsilon > 0$，存在 $\delta > 0$，使得当 $|h| < \delta$ 时，
+  $$\left( \int_a^b \int_a^b |k(t+h,s) - k(t,s)|^2\,ds\,dt \right)^{1/2} < \frac{\varepsilon}{M_0}.$$
+  此时，
+  $$\| (A\varphi)(\cdot+h) - (A\varphi)(\cdot) \|_{L^2(\Omega_{|h|})} < \varepsilon,$$
+  即 $A(B)$ 等度连续。
+
+由 $L^p$ 紧性原理（$p=2$），$A(B)$ 在 $L^2(a,b)$ 中相对紧。故 $A$ 将任意有界集映为相对紧集，即 $A$ 是紧算子。
