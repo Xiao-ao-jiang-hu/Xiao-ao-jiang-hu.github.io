@@ -1,5 +1,5 @@
 ---
-title: 'White Paper on Quantum Internet Computer Science Research Challenges'
+title: White Paper on Quantum Internet Computer Science Research Challenges
 tags:
   - quantum
   - routing
@@ -11,6 +11,7 @@ categories:
 index_img: /img/reading.jpg
 banner_img: /img/reading.jpg
 excerpt: 论文阅读
+abbrlink: 2a9ab7fc
 date: 2025-12-04 15:20:32
 ---
 

@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析第二十次作业
+abbrlink: 613c1166
 date: 2025-12-04 20:32:09
 ---
 # 20.1

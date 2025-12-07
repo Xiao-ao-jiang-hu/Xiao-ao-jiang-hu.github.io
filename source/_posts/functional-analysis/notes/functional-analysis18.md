@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: 8ceccf57
 date: 2025-12-04 09:59:15
 ---
 在有界线性算子的研究中，最重要的概念之一是紧算子。紧算子的概念可以通过几种等价的方式定义。这些条件的等价性是以下引理的内容。
