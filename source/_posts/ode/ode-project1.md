@@ -18,13 +18,13 @@ $$D(f):=f^{\prime}.$$
 
 更一般的，设$q(x)\;=\;x^{n}+a_{n-1}x^{n-1}+\cdots+a_{1}x+a_{0}$ 为首一多项式，定义$.q(D):\mathbb{S}\to\mathbb{S}$ 为
 
-
-
 $$q(D)(f):=f^{(n)}+a_{n-1}f^{(n-1)}+\cdots+a_{1}f^{\prime}+a_{0}f.$$
 
-任给$\lambda\in\mathbb{C}$ 以及多项式$\mathbf{\nabla}p(t)$ ，称$\mathbf{i}p(t)e^{\lambda t}$ 是一个指数为λ的拟多项式。我们称多项$ 式 p$ 的次数为拟多项式$\Re p(t)e^{\lambda t}$ 的次数。设$d\in\mathbb{N}$ ，定义空间
+任给 $\lambda\in\mathbb{C}$ 以及多项式 $\mathbf{\nabla}p(t)$ ，称 $\mathbf{i}p(t)e^{\lambda t}$ 是一个指数为 $\lambda$ 的拟多项式。我们称多项式 $p$ 的次数为拟多项式 $p(t)e^{\lambda t}$ 的次数。设$d\in\mathbb{N}$ ，定义空间
 
-$$\mathbb{P}(d;\lambda):=\{p(t)e^{\lambda t}:\operatorname{deg}(p)<d\}.$$
+$$
+\mathbb{P}(d,\lambda):=\{ p(t) e^{\lambda t} : \operatorname{deg}(p) < d\}
+$$
 
 ## 1
 证明：
