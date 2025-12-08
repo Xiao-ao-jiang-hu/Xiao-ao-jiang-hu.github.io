@@ -246,7 +246,7 @@ $A\varphi(t) := \int_a^b k(t,s)\varphi(s)ds$ 其中 $\varphi \in L^2(a,b)$, $k \
   $$\|A\varphi\|_{L^2}^2 \leq \|\varphi\|_{L^2}^2 \iint_{(a,b)\times(a,b)} |k(t,s)|^2\,ds\,dt = \|\varphi\|_{L^2}^2 \|k\|_{L^2}^2.$$
   记 $C = \|k\|_{L^2}$，则 $\|A\varphi\|_{L^2} \leq C M_0$，故 $A(B)$ 一致有界。
 
-1. 等度连续性
+2. 等度连续性
   对任意 $\varphi \in B$ 和 $h \in \mathbb{R}$，当 $t, t+h \in (a,b)$ 时，
   $$|(A\varphi)(t+h) - (A\varphi)(t)| \leq \left( \int_a^b |k(t+h,s) - k(t,s)|^2\,ds \right)^{1/2} \|\varphi\|_{L^2}.$$
   记 $\Omega_{|h|} = \{ t \in (a,b) : t+h \in (a,b) \}$，则
