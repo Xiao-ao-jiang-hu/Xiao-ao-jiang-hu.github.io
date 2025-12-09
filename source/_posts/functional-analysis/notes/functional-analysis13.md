@@ -9,7 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
-abbrlink: 30b933db
+abbrlink: fb137297
 date: 2025-11-13 22:11:18
 ---
 # 动机与定义

@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: 6d93cfe8
 date: 2025-12-09 14:17:47
 ---
 # Fredholm 算子
