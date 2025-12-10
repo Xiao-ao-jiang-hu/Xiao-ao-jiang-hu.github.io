@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: 7dac11c7
 date: 2024-10-02 21:46:35
 ---
 # 3.1 $\mathbb{E}^n$ 中的闭有界子集

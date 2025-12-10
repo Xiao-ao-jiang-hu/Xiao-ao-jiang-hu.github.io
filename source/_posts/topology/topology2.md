@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: a33fb347
 date: 2024-09-25 20:58:22
 ---
 # 2.1 开集与闭集

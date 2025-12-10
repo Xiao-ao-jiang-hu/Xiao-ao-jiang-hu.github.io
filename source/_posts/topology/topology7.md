@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: fae016a1
 date: 2024-10-24 10:53:12
 ---
 # 5.1 同伦映射

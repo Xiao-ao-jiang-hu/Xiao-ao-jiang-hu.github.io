@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: 62f79378
 date: 2024-10-07 22:14:59
 ---
 # 3.5 连通性

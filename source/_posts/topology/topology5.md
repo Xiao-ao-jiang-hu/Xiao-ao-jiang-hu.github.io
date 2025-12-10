@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: d3826bf7
 date: 2024-10-11 22:39:07
 ---
 ## 4.1 莫比乌斯带的构造
