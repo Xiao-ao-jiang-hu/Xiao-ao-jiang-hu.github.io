@@ -206,7 +206,7 @@ $$
 
 ## 连续映射诱导的同态
 
-连续映射诱导基本群间的同态，且该构造具有函子性。
+连续映射诱导基本群间的同态。
 
 ### 定理 5.7
 
@@ -235,3 +235,97 @@ $$
 $$
 
 特别地，若 $h: X \to Y$ 为同胚，则 $h_*: \pi_1(X, p) \to \pi_1(Y, h(p))$ 为同构，其逆为 $(h^{-1})_*$。因此，同胚的道路连通空间具有同构的基本群。
+
+
+## 函子性质
+
+在范畴论中，**函子**是不同范畴之间的结构保持映射。具体而言，设 $\mathcal{C}$ 与 $\mathcal{D}$ 为两个范畴，一个函子 $F: \mathcal{C} \to \mathcal{D}$ 由以下两部分构成：
+
+1. **对象映射**：将 $\mathcal{C}$ 中每个对象 $X$ 映射到 $\mathcal{D}$ 中一个对象 $F(X)$。
+2. **态射映射**：将 $\mathcal{C}$ 中每个态射 $f: X \to Y$ 映射到 $\mathcal{D}$ 中一个态射 $F(f): F(X) \to F(Y)$。
+
+并要求满足以下两条公理：
+
+- **单位态射的保持**：对 $\mathcal{C}$ 中任意对象 $X$，有 $F(\mathrm{id}_X) = \mathrm{id}_{F(X)}$。
+- **复合运算的保持**：对 $\mathcal{C}$ 中任意可复合的态射 $f: X \to Y$ 与 $g: Y \to Z$，有 $F(g \circ f) = F(g) \circ F(f)$。
+
+函子分为两类：**协变函子**（如上所述）与**反变函子**（将复合顺序反转，即 $F(g \circ f) = F(f) \circ F(g)$）。函子是范畴之间保持结构的工具。
+
+## 基本群的函子性质
+
+基本群的构造定义了一个从带基点的拓扑空间范畴到群范畴的协变函子。具体设定如下：
+
+- **源范畴**：对象为二元组 $(X, p)$，其中 $X$ 是道路连通拓扑空间，$p \in X$ 为基点；态射为保持基点的连续映射 $f: (X, p) \to (Y, q)$（即 $f(p) = q$）。
+- **目标范畴**：对象为群，态射为群同态。
+
+定义函子 $\pi_1$ 如下：
+
+- **对象对应**：将 $(X, p)$ 映射到基本群 $\pi_1(X, p)$。
+- **态射对应**：将连续映射 $f: (X, p) \to (Y, q)$ 映射到诱导的同态  
+  $$
+  f_*: \pi_1(X, p) \to \pi_1(Y, q), \quad f_*(\langle \alpha \rangle) = \langle f \circ \alpha \rangle.
+  $$
+
+我们验证函子公理：
+
+1. **单位态射的保持**：恒等映射 $\mathrm{id}_{(X, p)}$ 诱导的同态 $(\mathrm{id}_X)_*$ 满足  
+   $$
+   (\mathrm{id}_X)_*(\langle \alpha \rangle) = \langle \mathrm{id}_X \circ \alpha \rangle = \langle \alpha \rangle,
+   $$  
+   即 $(\mathrm{id}_X)_*$ 是 $\pi_1(X, p)$ 上的恒等同态，故 $\pi_1(\mathrm{id}_{(X, p)}) = \mathrm{id}_{\pi_1(X, p)}$。
+
+2. **复合运算的保持**：给定映射 $f: (X, p) \to (Y, q)$ 与 $g: (Y, q) \to (Z, r)$，对任意 $\langle \alpha \rangle \in \pi_1(X, p)$，  
+   $$
+   (g \circ f)_*(\langle \alpha \rangle) = \langle (g \circ f) \circ \alpha \rangle = \langle g \circ (f \circ \alpha) \rangle = g_*( \langle f \circ \alpha \rangle ) = g_*( f_*( \langle \alpha \rangle ) ),
+   $$  
+   故 $(g \circ f)_* = g_* \circ f_*$，即 $\pi_1(g \circ f) = \pi_1(g) \circ \pi_1(f)$。
+
+因此，基本群构造确为一个协变函子。这一性质保证了：
+
+- **拓扑不变性**：若两个带基点空间同胚，则它们的基本群同构（因为同胚诱导群同构）。
+- **同伦不变性**：实际上，基本群是更广泛的同伦不变量——若两个空间具有相同的同伦型，则它们的基本群同构（进一步的讨论涉及同伦等价诱导的同构）。
+
+# 5.3 Brouwer 不动点定理
+作为基本群应用的一个重要例子，我们证明 Brouwer 不动点定理。
+
+### Brouwer不动点定理（二维情形）  
+设 $D^2 = \{ (x,y) \in \mathbb{R}^2 \mid x^2 + y^2 \leq 1 \}$ 为单位闭圆盘，则任意连续映射 $f: D^2 \to D^2$ 必存在不动点，即存在 $p \in D^2$ 使得 $f(p) = p$。
+
+#### 证明
+假设存在连续映射 $f: D^2 \to D^2$ 无不动点，即对任意 $x \in D^2$，均有 $f(x) \neq x$。
+
+由于对任意 $x \in D^2$，点 $x$ 与 $f(x)$ 不重合，可定义从 $x$ 出发经过 $f(x)$ 的射线。该射线与单位圆周 $S^1 = \partial D^2$ 有唯一交点（因为圆盘凸且射线方向指向圆盘外）。具体构造如下：
+
+对任意 $x \in D^2$，考虑参数方程：
+$$
+\gamma(t) = x + t \bigl( f(x) - x \bigr), \quad t \geq 0.
+$$
+我们需要解方程 $\|\gamma(t)\| = 1$ 以确定射线与 $S^1$ 的交点。定义实函数：
+$$
+\varphi(t) = \| x + t(f(x)-x) \|^2 - 1.
+$$
+易见 $\varphi(0) = \|x\|^2 - 1 \leq 0$，且当 $t \to +\infty$ 时 $\varphi(t) \to +\infty$（因为 $f(x)-x \neq 0$）。由连续函数介值定理，存在唯一的 $t = t(x) \geq 0$ 使得 $\varphi(t) = 0$。进一步，由于 $\varphi$ 关于 $t$ 是严格凸的二次函数（除非 $f(x)-x$ 与 $x$ 共线且反向，但此时仍可证唯一性），该 $t(x)$ 唯一且连续依赖于 $x$（由隐函数定理）。定义映射：
+$$
+r: D^2 \to S^1, \quad r(x) = x + t(x) \bigl( f(x) - x \bigr).
+$$
+则 $r$ 连续，且当 $x \in S^1$ 时，显然 $t(x)=0$，从而 $r(x)=x$。即 $r|_{S^1} = \operatorname{id}_{S^1}$。换言之，$r$ 是圆盘 $D^2$ 到其边界圆周 $S^1$ 的一个**收缩映射**，且保持边界上每点不动。
+
+令 $i: S^1 \hookrightarrow D^2$ 为包含映射。由构造知：
+$$
+r \circ i = \operatorname{id}_{S^1}.
+$$
+ 
+取基点 $x_0 \in S^1$，考虑基本群及诱导同态：
+$$
+\pi_1(S^1, x_0) \xrightarrow{i_*} \pi_1(D^2, x_0) \xrightarrow{r_*} \pi_1(S^1, x_0).
+$$
+由函子性质及 $r \circ i = \operatorname{id}_{S^1}$ 得：
+$$
+r_* \circ i_* = (r \circ i)_* = (\operatorname{id}_{S^1})_* = \operatorname{id}_{\pi_1(S^1, x_0)}.
+$$
+
+已知：
+- $\pi_1(S^1, x_0) \cong \mathbb{Z}$（非平凡），
+- $\pi_1(D^2, x_0) = 0$（圆盘单连通）。
+
+因此，$i_*: \pi_1(S^1, x_0) \to 0$ 为零同态，从而 $r_* \circ i_*$ 也是零同态。但另一方面，$r_* \circ i_*$ 是 $\pi_1(S^1, x_0)$ 上的恒等同构，这与零同态矛盾（因为 $\mathbb{Z}$ 不是零群）。
