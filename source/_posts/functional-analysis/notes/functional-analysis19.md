@@ -13,7 +13,28 @@ abbrlink: 6d93cfe8
 date: 2025-12-09 14:17:47
 ---
 # Fredholm 算子
+## 动机
+考虑 $A \in \mathcal{M}_{m,n}(\mathbb{R}) : \mathbb{R}^n \mapsto \mathbb{R}^m$. $\ker(A) \overset{\text{定义}}{=} \{x \in \mathbb{R}^n \mid Ax = 0\}$. $\operatorname{coker}(A) = \mathbb{R}^m / \operatorname{Ran}(A)$.
 
+$a \overset{\text{定义}}{=} \dim \ker(A)$. $\longleftrightarrow$ $a$ 表明 $Ax=0$ 解集合的自由度 $\longleftrightarrow$ $a$ 表明映射 $A$ 的“单射”情况
+
+$b \overset{\text{定义}}{=} \dim \operatorname{coker}(A)$ $\longleftrightarrow$ $b$ 表明 $Ax=y$ 可解性的相容性条件. 由 H-B 定理知, 存在 $f_1, \cdots, f_b \in X^*$ s.t. $f_i \big|_{\operatorname{Ran}(A)} = 0$ 且 $\operatorname{Ran}(A)^\perp = \operatorname{span}\{f_1, \cdots, f_b\} (\cong \ker(A^T))$ ($\mathbb{R}^m = \operatorname{Ran}(A) \oplus \ker(A^T)$)
+
+因此, $y \in \operatorname{Ran}(A) \Leftrightarrow \forall i \leq b$, $f_i(y) = 0$.
+
+$\longleftrightarrow$ $b$ 表明映射 $A$ 的“满射”情况
+
+记 $L \overset{\text{定义}}{=} a - b$. $\Rightarrow$ $\begin{cases} L > 0 \; (\Leftrightarrow b < a) \text{ 即映射 } A \text{ 更接近满射} \\ L < 0 \; (\Leftrightarrow b > a) \text{ 即映射 } A \text{ 更接近单射} \\ L = 0 \; (\Leftrightarrow b = a) \text{ 即“接近单射”或“满射”相当}. \end{cases}$
+
+回到 $A: \mathbb{R}^n \mapsto \mathbb{R}^m$.
+
+$$L = \dim \ker(A) - \dim(\mathbb{R}^m / \operatorname{Ran}(A))= \dim \ker(A) + \dim \operatorname{Ran}(A) - m = n - m$$
+
+因此, $$\begin{cases} A \in \mathcal{M}_{m,m} \; (m=n) \quad \Leftrightarrow \text{ 二择一定理成立, 即} \begin{cases} \text{要么 } Ax=0 \text{ 有非零解} \\ \text{要么 } \forall y \in Y, \; Ax=y \text{ 有解}. \end{cases} \\ A \in \mathcal{M}_{m,n} \; (m < n) \Rightarrow L > 0 \Rightarrow \text{将高维映射到低维. 此时, 更接近“满射”} \\ A \in \mathcal{M}_{m,n} \; (m > n) \Rightarrow L < 0 \Leftrightarrow \text{将低维嵌入高维}, \text{更接近“单射”}. \end{cases}$$
+
+为了将这样的线性映射性质从有限维推广至无限维, 引入 Fredholm 算子.
+
+## 定义：三个空间
 设 $X$ 和 $Y$ 是实 Banach 空间，令 $A: X \to Y$ 为一个有界线性算子。$A$ 的**核 (kernel)**、**像 (image)** 和**余核 (cokernel)** 定义为
 $$
 \ker(A) := \{ x \in X \mid Ax = 0 \}, \\ \mathrm{im}(A) := \{ Ax \mid x \in X \}, \\ \mathrm{coker}(A) := Y / \mathrm{im}(A).

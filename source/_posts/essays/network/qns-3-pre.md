@@ -35,7 +35,7 @@ qns-3 is the first quantum-network extension that fully complies with ns-3’s a
 
 唯一完全按 ns-3 编码规范写的量子扩展，可跟 IPv4/IPv6、SDN、5G 跑在同一条离散事件轴。声称后台用 ExaTN 张量网络，支持 GPU 并行，单机能跑 1000+ 量子比特。
 
-这是季老师组的往年工作。本论文是邓芮萱学姐大三的工作，主要是基于tensornetwork实现了量子信道和量子链路的模拟，实现了量子隐形传态和量子密钥分发的模拟。大四毕设的内容就是给qns-3加上了stabilizer后端。
+这是季老师组的往年工作。本论文是邓芮萱学姐大三的工作，主要是基于tensornetwork实现了量子信道和量子链路的模拟，实现了量子隐形传态和量子密钥分发的模拟。大四毕设的内容就是给qns-3加上了stabilizer后端（只影响物理层）
 
 关于还没有人做的论证： https://ruc.udc.es/dspace/bitstream/handle/2183/34234/XoveTIC_2023_proceedings_Parte20.pdf 抨击NS-3提供的QKDNetSim：“这些简化并没有让模拟更容易理解，反而限制了 QKDNetSim 的实用性；特别是它无法体现真实量子网络中由信道噪声、错误率和纠缠保真度引起的动态变化。”
 
@@ -121,3 +121,23 @@ https://jns.nju.edu.cn/CN/10.13232/j.cnki.jnju.2024.04.009
 仓库：https://github.com/Huawei-HiQ/qkd-router-demo  
 已实现：链路保活、量子密钥池管理、最短密钥路径路由（DQC 算法）。  
 > 侧重 QKD 场景，但 `DQC.java` 给出了“密钥-链路权重”计算示例，可用于 ns-3 上实现“量子-经典混合路由”。
+
+
+# 计划
+~~整理一下到底要干什么~~
+
+~~咨询一下学姐是否适合作为毕设内容~~
+
+~~调研现有模拟器~~
+
+~~寻找空白点并确定基于哪个模拟器进行改进~~
+
+找量子网络协议论文，筛选出比较好用、先进的
+
+~~找一些已有的实现代码~~
+
+~~阅读论文和代码~~
+
+阅读qns-3的示例，先在本地跑通流程
+
+
