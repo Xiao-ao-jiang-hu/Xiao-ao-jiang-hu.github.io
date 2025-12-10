@@ -136,7 +136,10 @@ $$
 $$
 (A \oplus \Phi)(x, z) := Ax + \Phi z.
 $$
-若 $A$ 是 Fredholm 算子且 $\dim Z < \infty$，则 $A \oplus \Phi$ 是 Fredholm 算子，且 $\mathrm{index}(A \oplus \Phi) = \mathrm{index}(A) + \dim Z$。（请证明！）
+若 $A$ 是 Fredholm 算子且 $\dim Z < \infty$，则 $A \oplus \Phi$ 是 Fredholm 算子，且 $\mathrm{index}(A \oplus \Phi) = \mathrm{index}(A) + \dim Z$。
+
+#### 证明
+由于 $A$ 是 Fredholm 算子，$A$ 具有闭像且其核与余核均为有限维。因此，算子 $A \oplus \Phi$ 也具有闭像。进一步地，有限维空间 $Z$ 的引入不会改变核与余核的有限维性质。具体地，有限维空间的直和不会增加核与余核的维数。因此，$A \oplus \Phi$ 也是 Fredholm 算子。
 
 下一个定理将 Fredholm 算子刻画为模紧算子可逆的算子。Fredholm 与紧算子的等价刻画定理的证明依赖于以下引理。该引理也部分回答了一个重要问题：如何识别给定的算子是否为 Fredholm。它刻画了具有闭像和有限维核的有界线性算子，并且是建立许多微分算子 Fredholm 性质的关键工具。
 
