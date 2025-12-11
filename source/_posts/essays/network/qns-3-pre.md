@@ -109,12 +109,12 @@ qns-3 is the first quantum-network extension that fully complies with ns-3’s a
 > 虽然依赖 OMNeT，但路由逻辑全部封装在 `src/routing/` 目录，可整体拷贝后把 `cMessage` 换成 ns-3 的 `Packet` 即可编译。
 
 ### Q-NET 1.0（PennyLane + Python）  
-仓库：https://github.com/XanaduAI/QNET  
+仓库：https://github.com/shenqq377/Q-Net
 已实现：量子网络流代数（QNA）路由、强化学习路由代理、量子数据报头部封装。  
 > 代码量小，侧重算法原型；可把 `qnet/algorithms/routing.py` 中的“保真度-时延”代价函数直接嵌入 ns-3 的 `QRoutingTable`。
 
 ### HiQ-QKD-Router（Java，华为开源 SDK）  
-仓库：https://github.com/Huawei-HiQ/qkd-router-demo  
+仓库：https://gitee.com/mindspore/mindquantum
 已实现：链路保活、量子密钥池管理、最短密钥路径路由（DQC 算法）。  
 > 侧重 QKD 场景，但 `DQC.java` 给出了“密钥-链路权重”计算示例，可用于 ns-3 上实现“量子-经典混合路由”。
 
