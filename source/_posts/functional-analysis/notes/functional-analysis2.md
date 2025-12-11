@@ -353,7 +353,7 @@ $$
 
 **两点说明**：
 1. 关于“等号”的数学表述，实质上是在“等距同构”下相等。即
-$\exist \phi :(L^p(d\mu))^* \longrightarrow L^q(d\mu)$ 是等距同构映射。s.t. $\forall T \in (L^p(d\mu))^*$,
+$\exists \phi :(L^p(d\mu))^* \longrightarrow L^q(d\mu)$ 是等距同构映射。s.t. $\forall T \in (L^p(d\mu))^*$,
 $$
 \|T\| = \|\Phi(T)\|_{L^q(d\mu)} \quad \text{且} \quad \forall f \in L^p(d\mu), \quad T(f) = \int_X f \cdot \Phi(T) d\mu.
 $$

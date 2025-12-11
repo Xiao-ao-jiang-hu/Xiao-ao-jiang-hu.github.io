@@ -169,7 +169,7 @@ $$
 
   $\forall f \in C[0,1] \setminus A_n$, $f$ 满足 $\forall s \in [0,1], \exists h_s \text{ s.t. } |h_s| \leq \frac{1}{n} \text{ 且 } \underset{0 \leq s+h_s \leq 1}{|f(s+h_s) - f(s)| \geq (n + \delta_s) |h_s|}$
 
-  由 $f$ 的连续性， $\exist \eta_s > 0$. s.t. $\forall t \in [s - \eta_s, s + \eta_s] \cap [0,1]$, 有
+  由 $f$ 的连续性， $\exists \eta_s > 0$. s.t. $\forall t \in [s - \eta_s, s + \eta_s] \cap [0,1]$, 有
 
   $$ |f(t + h_s) - f(t)| \geq \left(n + \frac{\delta_s}{2}\right) |h_s| $$
 

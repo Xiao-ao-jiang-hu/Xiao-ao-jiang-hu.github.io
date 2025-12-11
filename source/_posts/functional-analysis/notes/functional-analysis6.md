@@ -213,7 +213,7 @@ $$\|T\| = \sup_{\|u\|=1} \|T u\| \leq \frac{4m_0}{r},$$
 
 ### 例
 $\mathcal{P} = [-\pi, \pi]$， $C(\mathcal{P}):=\mathcal{P}$ 上的连续周期函数的全体。
-**命题**：$\exist f \in C(\mathcal{P})$，使 $\sum_{k \in \mathbb{Z}} \hat{f}(k) e^{ikx}$ 在 $[-\pi, \pi]$ 的稠密子集上不收敛，其中，$\hat{f}(k) \stackrel{\text{def}}{=} \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) e^{-ikx} dx$
+**命题**：$\exists f \in C(\mathcal{P})$，使 $\sum_{k \in \mathbb{Z}} \hat{f}(k) e^{ikx}$ 在 $[-\pi, \pi]$ 的稠密子集上不收敛，其中，$\hat{f}(k) \stackrel{\text{def}}{=} \frac{1}{2\pi} \int_{-\pi}^{\pi} f(x) e^{-ikx} dx$
 
 **证明**：
 考虑 Banach 空间 $X = C(\mathcal{P})$，即区间 $[-\pi, \pi]$ 上的连续周期函数空间，赋予上确界范数。对于每个 $x \in [-\pi, \pi]$ 和每个 $n \in \mathbb{N}$，定义线性泛函 $L_n^x: X \to \mathbb{C}$ 为

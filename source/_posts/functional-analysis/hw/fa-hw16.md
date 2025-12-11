@@ -27,7 +27,7 @@ $$V:=\{x\in H:\max_{i=1,\cdots,m}|\langle x,y_i\rangle|<\epsilon\}\subset U.$$
 
 ## 解答
 ### 1
-由于$H$是Hilbert空间，于是由Reisz表示定理，$\forall f \in H^*, !\exist y \in H \, s.t. \, f(x) = <x, y>, \, \forall x \in H$。又由于$(e_n)_{n\in\mathbb{N}}$为标准正交基，故有Parseval等式：
+由于$H$是Hilbert空间，于是由Reisz表示定理，$\forall f \in H^*, !\exists y \in H \, s.t. \, f(x) = <x, y>, \, \forall x \in H$。又由于$(e_n)_{n\in\mathbb{N}}$为标准正交基，故有Parseval等式：
 $$\sum_{n=1}^{\infty} |<e_n, y>|^2 = ||y||^2 < +\infty, \forall y \in H$$
 因此$|<e_n, y>| \to 0$，即$e_n \rightharpoonup 0$。
 
