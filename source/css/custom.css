@@ -44,3 +44,11 @@
         max-width: 100% !important;
     }
 }
+/* Dark mode support for TikZJax SVGs */
+[data-user-color-scheme="dark"] .tikzjax {
+    filter: invert(1);
+}
+
+.tikzjax {
+    zoom: 2.5;
+}

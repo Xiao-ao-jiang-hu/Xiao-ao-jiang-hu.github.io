@@ -7,12 +7,20 @@
  * Supported types in Fluid theme: primary, secondary, success, danger, warning, info, light
  */
 hexo.extend.filter.register('before_post_render', function (data) {
+    // 0. 强力修复 tikz 代码块头部的奇怪字符
+    // 匹配 ``` 开头，后面跟着任意非换行字符（可能包含零宽空格等），只要包含 tikz，就规范化为 ```tikz
+    data.content = data.content.replace(/^```[^\n]*tikz[^\n]*/gm, '```tikz');
+
     // 简单的代码块保护：```...``` 和 `...`
     const codeBlockRegex = /(```[\s\S]*?```|`[^`\n]+`)/g;
     const placeholders = [];
 
     // 1. 替换代码块为占位符，防止误伤
     let content = data.content.replace(codeBlockRegex, function (match) {
+        // 排除 tikz 代码块，让 hexo-filter-tikzjax 能处理它
+        if (/^```\s*tikz/.test(match)) {
+            return match;
+        }
         const id = `__CODE_BLOCK_${placeholders.length}__`;
         placeholders.push(match);
         return id;
@@ -66,4 +74,4 @@ hexo.extend.filter.register('before_post_render', function (data) {
 
     data.content = content;
     return data;
-});
+}, 0);

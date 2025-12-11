@@ -8,6 +8,7 @@ categories:
   - functional analysis
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
+tikzjax: true
 excerpt: 泛函分析课程笔记
 abbrlink: 3b3eb9f1
 date: 2025-09-16 15:26:19
@@ -277,13 +278,15 @@ $$
 **证明**：
 1. 线性显然，且 $\|\pi(x)\| = \|[x]\| \leq \|x\|$，故 $\pi$ 有界且 $\|\pi\| \leq 1$. 显然 $\pi$ 是满射.
 2. 交换图：
-   $$
-    \begin{CD}
-     A @>{\pi}>> B \\
-     @V{T}VV @VV{T_0}V \\
-     C @= C
-    \end{CD}
-   $$
+   ```tikz
+    \usepackage{tikz-cd}
+    \begin{document}
+    \begin{tikzcd}
+      A \arrow[r, "\pi"] \arrow[rd, "T"] & B \arrow[d, "T_0"] \\
+      & C
+    \end{tikzcd}
+    \end{document}
+   ```
     由 $Y \subseteq \ker T$ 可知 $\forall x_1, x_2 \in X$，若 $[x_1] = [x_2]$，则 $x_1 - x_2 \in Y \Rightarrow T x_1 = T x_2$，从而可定义 $T_0([x]) := T x$，且 $T = T_0 \circ \pi$. 
 
     唯一性：若 $T = T_1 \circ \pi$，则 $\forall [x] \in X/Y$，$T_1([x]) = T_1(\pi(x)) = T x = T_0([x])$，从而 $T_1 = T_0$.

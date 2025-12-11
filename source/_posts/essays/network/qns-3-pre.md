@@ -10,6 +10,7 @@ categories:
 index_img: /img/reading.jpg
 banner_img: /img/reading.jpg
 excerpt: 论文阅读
+abbrlink: 6ee65c7d
 date: 2025-12-10 23:28:15
 ---
 # 选题说明

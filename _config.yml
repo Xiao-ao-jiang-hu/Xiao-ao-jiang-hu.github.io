@@ -171,3 +171,7 @@ hexo_seo_autopush:
   baidu:
     enable: false
     count: 200
+tikzjax:
+  tikzjax_options:
+    texPackages:
+      tikz-cd: ''
