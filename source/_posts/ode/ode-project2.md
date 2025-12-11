@@ -324,4 +324,74 @@ $$\Delta''(\lambda) = 2\left( \langle \phi, \psi \rangle^2 - \langle \phi, \phi 
 不可能出现更高重数的根，因为若假设根的重数大于等于三，则需要 $\Delta'(\lambda_0) = \Delta''(\lambda_0) = 0$，这与第 15 题中当 $\Delta'(\lambda_0)=0$ 时 $\Delta''(\lambda_0) \ne 0$ 矛盾。
 因此，$\Delta(\lambda) \pm 2 = 0$ 的每个根至多是二重根。
 
-## 16.
+## 16. 证明如下两个集合是离散的, 有最小元且无聚点
+$$
+\begin{cases}
+\Lambda_+ := \{\lambda \in \mathbb{R}: \Delta(\lambda)-2=0\}\\\Lambda_- := \{\lambda \in \mathbb{R}: \Delta(\lambda)+2=0\}
+\end{cases}
+$$
+直接承认上述两个集合是可数的
+
+$\Delta(\lambda) \pm 2$ 是非常值的实解析函数，其零点都是孤立的。因此，若存在有限聚点 $\lambda_0$，则在 $\lambda_0$ 的任意邻域内都有无穷多个零点，这与解析函数的零点孤立性矛盾。故 $\Lambda_+$ 和 $\Lambda_-$ 均无有限聚点，即它们是离散集合。
+
+由第8题，存在 $\lambda_* \in \mathbb{R}$ 使得当 $\lambda < \lambda_*$ 时 $\Delta(\lambda) > 2$。因此，对任意 $\lambda \in \Lambda_+$，必有 $\lambda \ge \lambda_*$；对任意 $\lambda \in \Lambda_-$，由于 $\Delta(\lambda) = -2 < 2$，同样有 $\lambda \ge \lambda_*$。即 $\Lambda_+$ 和 $\Lambda_-$ 均有下界。
+
+下证 $\Lambda_+$ 非空。考虑 $\lambda$ 充分大的情形，此时势能项 $q(t) - \lambda$ 的主导部分是 $-\lambda$，方程近似于 $\ddot{x} + \lambda x = 0$，判别式 $\Delta(\lambda)$ 会振荡于 $[-2,2]$ 之间（见第7题 $q=0$ 的情形，实际上对于连续周期 $q$，$\Delta(\lambda)$ 在 $\lambda \to +\infty$ 时渐近表现为 $2\cos\sqrt{\lambda}$ 的振荡）。因此必存在无穷多个 $\lambda$ 使得 $\Delta(\lambda) = 2$，故 $\Lambda_+$ 非空且无限。类似可证 $\Lambda_-$ 非空且无限。
+
+由于 $\Lambda_+$ 是闭集（连续函数的零点集），且有下界，故其下确界属于该集合，即存在最小元 $\lambda_+^{\min} = \min \Lambda_+$。同理，$\Lambda_-$ 也存在最小元 $\lambda_-^{\min} = \min \Lambda_-$。
+
+综上，$\Lambda_+$ 和 $\Lambda_-$ 是离散的、有最小元的可数集合，且无有限聚点。
+
+
+# 第三部分
+由16，我们可以列出$\Lambda_+$ 和$\Lambda_-$中的元素：
+$$
+\Lambda_+ = \{\lambda_1, \lambda_2, \lambda_3, \cdots\}\\
+\Lambda_- = \{\mu_1, \mu_2, \mu_3, \cdots\}
+$$
+
+其中所有的零点按从小到大的顺序排列，并记重数（即二重根会重复一次）。从而当$n \to \infty$时
+
+$$
+\lambda_n, \mu_n \to \infty.
+$$
+
+## 17. 证明$\lambda_1 < \mu_1$ 且 $\Delta'(\lambda_1)<0$
+由第8题知存在 $\lambda_* \in \mathbb{R}$ 使得当 $\lambda < \lambda_*$ 时 $\Delta(\lambda) > 2$。设 $\lambda_1 = \min\{\lambda \in \mathbb{R} : \Delta(\lambda) = 2\}$，则 $\lambda_1 \geq \lambda_*$。若存在 $\mu < \lambda_1$ 使 $\Delta(\mu) = -2$，则由连续性，在 $(\mu, \lambda_1)$ 内存在 $\lambda'$ 使 $\Delta(\lambda') = 2$，与 $\lambda_1$ 的最小性矛盾。故 $\mu_1 \geq \lambda_1$。若 $\mu_1 = \lambda_1$，则 $\Delta(\lambda_1) = 2 = -2$ 不可能，因此 $\lambda_1 < \mu_1$。
+现证 $\Delta'(\lambda_1) < 0$。假设 $\Delta'(\lambda_1) \geq 0$。若 $\Delta'(\lambda_1) > 0$，则 $\Delta$ 在 $\lambda_1$ 处从下方穿过 2，即左侧附近 $\Delta < 2$，右侧附近 $\Delta > 2$，但与 $\lambda < \lambda_1$ 时 $\Delta > 2$ 矛盾。若 $\Delta'(\lambda_1) = 0$，由第14、15题知 $\Delta''(\lambda_1) < 0$，故 $\lambda_1$ 是局部极大点，左侧附近 $\Delta < 2$，同样与 $\lambda < \lambda_1$ 时 $\Delta > 2$ 矛盾。因此必有 $\Delta'(\lambda_1) < 0$。
+
+
+## 18.
+证明 $\Delta$ 在 $[\lambda_1, \mu_1]$ 上严格单调下降，从而  
+$$
+\Delta([\lambda_1, \mu_1]) = [-2, 2].
+$$
+
+由17知 $\Delta'(\lambda_1) < 0$，故在 $\lambda_1$ 右侧附近 $\Delta$ 下降。对任意 $\lambda \in (\lambda_1, \mu_1)$，有 $\Delta(\lambda) \neq \pm 2$（因 $\lambda_1, \mu_1$ 是最小零点），故 $|\Delta(\lambda)| < 2$。由第13题，当 $|\Delta(\lambda)| < 2$ 时 $\Delta'(\lambda) \neq 0$。结合 $\Delta'(\lambda_1) < 0$ 及连续性，在 $(\lambda_1, \mu_1)$ 内恒有 $\Delta'(\lambda) < 0$，即 $\Delta$ 严格单调下降。由 $\Delta(\lambda_1) = 2$，$\Delta(\mu_1) = -2$ 及连续性，$\Delta$ 在 $[\lambda_1, \mu_1]$ 上取遍 $[-2, 2]$。
+
+## 19. 
+证明：$\Delta((\mu_1, \mu_2)) \subset (-\infty, -2)$。证明：$\lambda_2 > \mu_2$ 且 $\Delta$ 在 $[\mu_2, \lambda_2]$ 上严格单调上升，从而  
+$$
+\Delta([\mu_2, \lambda_2]) = [-2, 2].
+$$
+
+先证 $\Delta((\mu_1, \mu_2)) \subset (-\infty, -2)$。若 $\mu_1$ 是二重根，则 $\mu_1 = \mu_2$，区间 $(\mu_1, \mu_2)$ 为空，结论自然成立。设 $\mu_1$ 为单根，则 $\mu_1 < \mu_2$。由18，$\Delta$ 在 $[\lambda_1, \mu_1]$ 严格下降，故在 $\mu_1$ 左侧附近 $\Delta > -2$，在 $\mu_1$ 处 $\Delta = -2$。若存在 $c \in (\mu_1, \mu_2)$ 使 $\Delta(c) \geq -2$，则 $\Delta$ 在 $[\mu_1, c]$ 上存在最小值点 $d$。若 $d \in (\mu_1, c)$，则 $\Delta'(d) = 0$ 且 $\Delta(d) \geq -2$。若 $\Delta(d) > -2$，则 $|\Delta(d)| < 2$，与第13题矛盾；若 $\Delta(d) = -2$，则 $d$ 为 $\Delta = -2$ 的根，与 $\mu_1, \mu_2$ 相邻矛盾。故 $\Delta$ 在 $(\mu_1, \mu_2)$ 内恒小于 $-2$。
+由 $\Delta((\mu_1, \mu_2)) \subset (-\infty, -2)$ 知 $\Delta(\mu_2) = -2$，且在 $\mu_2$ 左侧附近 $\Delta < -2$。因 $\Delta(\mu_2) = -2 < 2$，且当 $\lambda \to +\infty$ 时 $\Delta$ 振荡于 $[-2, 2]$，故存在 $\lambda > \mu_2$ 使 $\Delta(\lambda) = 2$。设 $\lambda_2 = \min\{\lambda > \mu_2 : \Delta(\lambda) = 2\}$，则 $\lambda_2 > \mu_2$（否则 $\Delta(\mu_2) = 2 = -2$ 矛盾）。
+现证 $\Delta$ 在 $[\mu_2, \lambda_2]$ 上严格单调上升。在 $(\mu_2, \lambda_2)$ 内，$\Delta \neq \pm 2$（否则与 $\mu_2, \lambda_2$ 的最小性矛盾）。若存在 $\lambda \in (\mu_2, \lambda_2)$ 使 $|\Delta(\lambda)| > 2$，则 $\Delta$ 可能先 $< -2$ 或 $> 2$。若 $\Delta < -2$，则需从 $-2$ 下降再上升回 $2$，中间必经过 $-2$，产生新根，与 $\mu_2$ 相邻矛盾；若 $\Delta > 2$，则需上升再下降回 $2$，中间必经过 $2$，与 $\lambda_2$ 最小矛盾。故在 $(\mu_2, \lambda_2)$ 内 $|\Delta(\lambda)| < 2$。由第13题，$\Delta'(\lambda) \neq 0$。由 $\Delta(\mu_2) = -2$，$\Delta(\lambda_2) = 2$，知 $\Delta$ 必须上升，故 $\Delta'(\lambda) > 0$，即严格单调上升。因此 $\Delta([\mu_2, \lambda_2]) = [-2, 2]$。
+
+
+## 20.
+证明如上的零点满足  
+$$
+\lambda_1 < \mu_1 \le \mu_2 < \lambda_2 \le \lambda_3 < \mu_3 \le \mu_4 < \lambda_4 \le \cdots
+$$  
+进一步证明：  
+$$
+\mathcal{S} = \bigcup_{n \ge 1} [\lambda_{2n-1}, \mu_{2n-1}] \cup \bigcup_{n \ge 1} [\mu_{2n}, \lambda_{2n}].
+$$
+
+由17和19已得 $\lambda_1 < \mu_1$，$\lambda_2 > \mu_2$。类似可证 $\lambda_2 \leq \lambda_3$（因 $\lambda_2, \lambda_3$ 为 $\Delta = 2$ 的根，按序排列），且 $\mu_2 \leq \mu_3$。进一步，在区间 $(\lambda_2, \lambda_3)$ 内，类似论证可得 $\Delta > 2$ 或 $\Delta < -2$，且由 $\Delta(\lambda_2) = 2$，$\Delta(\lambda_3) = 2$，中间必经过 $-2$，故存在 $\mu_3$ 使 $\Delta(\mu_3) = -2$，且 $\lambda_2 < \mu_3 < \lambda_3$。重复该过程可得排序：
+$$\lambda_1 < \mu_1 \leq \mu_2 < \lambda_2 \leq \lambda_3 < \mu_3 \leq \mu_4 < \lambda_4 \leq \cdots$$
+其中等号对应于二重根情形。
+稳定集 $\mathcal{S} = \{\lambda \in \mathbb{R} : |\Delta(\lambda)| \leq 2\}$。由上述单调性，$\Delta$ 在 $[\lambda_{2n-1}, \mu_{2n-1}]$ 上从 $2$ 严格下降至 $-2$，在 $[\mu_{2n}, \lambda_{2n}]$ 上从 $-2$ 严格上升至 $2$，且在其他区间满足 $|\Delta| > 2$。故
+$$\mathcal{S} = \bigcup_{n \ge 1} [\lambda_{2n-1}, \mu_{2n-1}] \cup \bigcup_{n \ge 1} [\mu_{2n}, \lambda_{2n}].$$
