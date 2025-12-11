@@ -12,7 +12,7 @@ banner_img: /img/ode.jpg
 abbrlink: 347f22c5
 date: 2025-12-11 10:32:06
 ---
-# 第一部分：
+# 第一部分
 设 $q: \mathbb{R} \to \mathbb{R}$ 连续且以 1 为周期。考虑如下周期系数二阶齐次方程
 $$
 -\ddot{x} + q(t)x = 0. \tag{1}
@@ -133,3 +133,105 @@ $$
 “仅当”部分：若存在非零有界解，但假设 $|\operatorname{tr} M| > 2$，则由 (a) 知任何非零解均无界，矛盾。故必有 $|\operatorname{tr} M| \le 2$。
 
 综上，结论得证。
+
+# 第二部分
+接下来，我们引入参数 $\lambda \in \mathbb{R}$。考虑一族方程
+$$
+\mathcal{E}(\lambda): \quad -\ddot{x} + (q(t) - \lambda)x = 0. \tag{3}
+$$
+设 $\phi(t, \lambda)$ 与 $\psi(t, \lambda)$ 分别为 (3) 的满足如下初值的解：
+$$
+\phi^{(2)}(0, \lambda) = (1, 0)^t; \quad \psi^{(2)}(0, \lambda) = (0, 1)^t. \tag{4}
+$$
+则我们有
+$$
+\Pi(t; q - \lambda) = [\phi^{(2)}(t, \lambda), \psi^{(2)}(t, \lambda)]. \tag{5}
+$$
+定义**稳定参数集**为
+$$
+\mathcal{S} := \{\lambda \in \mathbb{R}: \text{(3) 有一个有界的非零解}\}.
+$$
+记与 (3) 等价的一阶系统的首次回归矩阵为
+$$
+M(\lambda) := \Pi(1; q - \lambda).
+$$
+定义关于参数的**判别式函数** $\Delta: \mathbb{R} \to \mathbb{R}$ 为
+$$
+\Delta(\lambda) := \operatorname{tr} M(\lambda).
+$$
+
+## 6. 证明 $\Delta$ 为 $C^\infty$ 光滑函数，且$\mathcal{S} = \{\lambda \in \mathbb{R}: |\Delta(\lambda)| \le 2\}.$
+方程 (3) 等价于一阶系统 $\dot{X} = Q(t; \lambda) X$，其中 $Q(t; \lambda) = \begin{bmatrix} 0 & 1 \\ q(t) - \lambda & 0 \end{bmatrix}$。由于 $q(t)$ 连续周期，$Q$ 关于 $t$ 连续且关于 $\lambda$ 是仿射的，故对任意阶数可微。根据常微分方程解关于参数的光滑依赖性定理，基解矩阵 $\Pi(t; q - \lambda)$ 关于 $\lambda$ 是 $C^\infty$ 的。特别地，$M(\lambda) = \Pi(1; q - \lambda)$ 关于 $\lambda$ 光滑，因此迹函数 $\Delta(\lambda) = \operatorname{tr} M(\lambda)$ 也是 $C^\infty$ 光滑的。
+
+对于稳定参数集 $\mathcal{S}$，由第 5 题的结论，对每个固定的 $\lambda$，方程 (3) 存在非零有界解当且仅当首次回归矩阵 $M(\lambda)$ 的迹的绝对值不超过 2，即 $|\Delta(\lambda)| \le 2$。因此，$\mathcal{S} = \{ \lambda \in \mathbb{R} : |\Delta(\lambda)| \le 2 \}$。
+
+## 7. 令 $q = 0$, 计算 $\Delta$ 和 $\mathcal{S}$
+当 $q = 0$ 时，方程 (3) 变为
+$$-\ddot{x} - \lambda x = 0 \quad \text{即} \quad \ddot{x} + \lambda x = 0.$$
+对应的矩阵 $Q(t; \lambda) = \begin{bmatrix} 0 & 1 \\ -\lambda & 0 \end{bmatrix}$ 为常矩阵，基解矩阵为 $\Pi(t; -\lambda) = e^{tQ}$。直接计算矩阵指数可得：
+
+若 $\lambda > 0$，令 $\omega = \sqrt{\lambda}$，则
+$$e^{tQ} = \begin{bmatrix} \cos(\omega t) & \frac{1}{\omega} \sin(\omega t) \\ -\omega \sin(\omega t) & \cos(\omega t) \end{bmatrix},$$
+于是 $M(\lambda) = e^{Q}$ 的迹为 $\Delta(\lambda) = 2\cos(\sqrt{\lambda})$。
+
+若 $\lambda = 0$，则
+$$e^{tQ} = \begin{bmatrix} 1 & t \\ 0 & 1 \end{bmatrix},$$
+故 $\Delta(0) = 2$。
+
+若 $\lambda < 0$，令 $k = \sqrt{-\lambda}$，则
+$$e^{tQ} = \begin{bmatrix} \cosh(k t) & \frac{1}{k} \sinh(k t) \\ k \sinh(k t) & \cosh(k t) \end{bmatrix},$$
+故 $\Delta(\lambda) = 2\cosh(\sqrt{-\lambda})$。
+
+稳定参数集为
+$$\mathcal{S} = \{\lambda \in \mathbb{R}: |\Delta(\lambda)| \le 2\}.$$
+
+当 $\lambda > 0$ 时，$\Delta(\lambda) = 2\cos(\sqrt{\lambda}) \in [-2, 2]$，故所有正 $\lambda$ 均属于 $\mathcal{S}$。
+当 $\lambda = 0$ 时，$\Delta(0) = 2$，故 $\lambda = 0 \in \mathcal{S}$。
+当 $\lambda < 0$ 时，$\Delta(\lambda) = 2\cosh(\sqrt{-\lambda}) > 2$（因为 $\cosh(y) > 1$ 对 $y > 0$ 成立），故无负的 $\lambda$ 属于 $\mathcal{S}$。
+
+因此，
+$$\mathcal{S} = [0, \infty).$$
+
+
+## 8. 证明存在 $\lambda_* \in \mathbb{R}$ 使得 $\Delta(\lambda)>2, \, \forall \lambda < \lambda_*$
+由于 $q$ 连续，存在常数 $C > 0$ 使得 $|q(t)| \leq C$ 对所有 $t$ 成立。取 $\lambda$ 满足 $-\lambda > C$，则 $q(t) - \lambda \geq -\lambda - C =: B > 0$。
+考虑常微分方程 $y'' = B y$，其满足初值 $y(0)=1, y'(0)=0$ 的解为 $y_B(t) = \cosh(\sqrt{B} t)$，满足初值 $y(0)=0, y'(0)=1$ 的解为 $z_B(t) = \frac{1}{\sqrt{B}} \sinh(\sqrt{B} t)$。对于原方程的解 $\phi(t,\lambda)$ 和 $\psi(t,\lambda)$（满足 (4)），由比较定理可得在 $[0,1]$ 上 $\phi(t,\lambda) \geq y_B(t)$ 且 $\psi(t,\lambda) \geq z_B(t)$，进而可证 $\psi'(t,\lambda) \geq z_B'(t) = \cosh(\sqrt{B} t)$。于是
+$$\Delta(\lambda) = \phi(1,\lambda) + \psi'(1,\lambda) \geq 2 \cosh(\sqrt{B}).$$
+当 $\lambda \to -\infty$ 时，$B \to +\infty$，故 $\cosh(\sqrt{B}) \to +\infty$，从而 $\Delta(\lambda) \to +\infty$。因此存在 $\lambda_* \in \mathbb{R}$ 使得对所有 $\lambda < \lambda_*$ 有 $\Delta(\lambda) > 2$。
+
+## 9
+设 $\lambda, \mu \in \mathbb{R}$ 且 $\lambda \ne \mu$。设 $f$ 和 $g$ 分别是 $\mathcal{E}(\lambda)$ 和 $\mathcal{E}(\mu)$ 的解。证明  
+$$
+(\lambda - \mu) \langle f, g \rangle = g(0) \dot{f}(0) - f(0) \dot{g}(0) - g(1) \dot{f}(1) + f(1) \dot{g}(1), \tag{6}
+$$  
+这里  
+$$
+\langle f, g \rangle := \int_0^1 f(t) g(t) \, dt.
+$$
+
+**证明**：设 $f$ 和 $g$ 分别满足  
+$$
+-\ddot{f} + q(t)f = \lambda f, \quad -\ddot{g} + q(t)g = \mu g.
+$$  
+则  
+$$
+(\lambda - \mu) f g = (\lambda f) g - f (\mu g) = (-\ddot{f} + q f) g - f (-\ddot{g} + q g) = -\ddot{f} g + f \ddot{g}.
+$$  
+积分得  
+$$
+(\lambda - \mu) \langle f, g \rangle = \int_0^1 (-\ddot{f} g + f \ddot{g}) \, dt = -\int_0^1 (\ddot{f} g - f \ddot{g}) \, dt. \tag{*}
+$$  
+对积分 $\int_0^1 (\ddot{f} g - f \ddot{g}) \, dt$ 分部积分：  
+$$
+\int_0^1 \ddot{f} g \, dt = [\dot{f} g]_0^1 - \int_0^1 \dot{f} \dot{g} \, dt, \quad 
+\int_0^1 f \ddot{g} \, dt = [f \dot{g}]_0^1 - \int_0^1 \dot{f} \dot{g} \, dt,
+$$  
+故  
+$$
+\int_0^1 (\ddot{f} g - f \ddot{g}) \, dt = [\dot{f} g]_0^1 - [f \dot{g}]_0^1 = g(1)\dot{f}(1) - g(0)\dot{f}(0) - f(1)\dot{g}(1) + f(0)\dot{g}(0).
+$$  
+代入 $(*)$ 得  
+$$
+(\lambda - \mu) \langle f, g \rangle = -\bigl[ g(1)\dot{f}(1) - g(0)\dot{f}(0) - f(1)\dot{g}(1) + f(0)\dot{g}(0) \bigr] = g(0)\dot{f}(0) - f(0)\dot{g}(0) - g(1)\dot{f}(1) + f(1)\dot{g}(1).
+$$  
+此即公式 (6)。
