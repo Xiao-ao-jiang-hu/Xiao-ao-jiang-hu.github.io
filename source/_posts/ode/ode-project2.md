@@ -296,12 +296,32 @@ $$|\Delta(\lambda)| = |\phi(1, \lambda) + \dot{\psi}(1, \lambda)| \ge 2 \sqrt{\p
 等号成立仅当 $\phi(1, \lambda) = \dot{\psi}(1, \lambda) = \pm 1$，此时 $|\Delta(\lambda)| = 2$，与 $|\Delta(\lambda)| < 2$ 矛盾。故假设不成立，原命题得证。
 
 ## 13. 证明：若 $|\Delta(\lambda)| < 2$，则 $\Delta'(\lambda) \ne 0$。
-由 Hill 方程理论，在稳定区间内部（即 $|\Delta(\lambda)| < 2$），判别式 $\Delta(\lambda)$ 是严格单调的。具体地，可证明 $\Delta'(\lambda)$ 的表达式（公式 (11)）在 $|\Delta(\lambda)| < 2$ 时不为零，否则会导致解的函数性质矛盾（如线性相关等）。因此必有 $\Delta'(\lambda) \ne 0$。
+假设 $\Delta'(\lambda) = 0$，则(11)为零。同时，由第12题，当 $|\Delta(\lambda)| < 2$ 时，$\psi(1,\lambda)$ 与 $\dot{\phi}(1,\lambda)$ 不全为零。不妨设 $\dot{\phi}(1,\lambda) \ne 0$。考虑线性组合解 $u = \alpha \phi + \beta \psi$，选择 $\alpha, \beta$ 不全为零使得 $u(1,\lambda) = 0$，即 $\alpha \phi(1,\lambda) + \beta \psi(1,\lambda) = 0$。由于 $|\Delta(\lambda)| < 2$，矩阵 $M(\lambda)$ 没有实特征值，故不存在非零解同时满足 $u(1)=0$ 和 $\dot{u}(1)=0$，因此必有 $\dot{u}(1,\lambda) \ne 0$。计算内积 $\langle u, u \rangle$：
+$$\langle u, u \rangle = \alpha^2 \langle \phi, \phi \rangle + 2\alpha\beta \langle \phi, \psi \rangle + \beta^2 \langle \psi, \psi \rangle.$$
+另一方面，对参数 $\lambda$ 求导，利用类似第10题的恒等式可得（推导类似于 (8)）：
+$$\langle u, u \rangle = -\dot{u}(1,\lambda) \frac{\partial u}{\partial \lambda}(1,\lambda) + u(1,\lambda) \frac{\partial \dot{u}}{\partial \lambda}(1,\lambda).$$
+由于 $u(1,\lambda)=0$，上式化为
+$$\langle u, u \rangle = -\dot{u}(1,\lambda) \frac{\partial u}{\partial \lambda}(1,\lambda). \tag{*}$$
+因为 $\langle u, u \rangle > 0$ 且 $\dot{u}(1,\lambda) \ne 0$，由 (*) 得 $\frac{\partial u}{\partial \lambda}(1,\lambda) \ne 0$。但将 $u = \alpha \phi + \beta \psi$ 代入，有
+$$\frac{\partial u}{\partial \lambda}(1,\lambda) = \alpha \frac{\partial \phi}{\partial \lambda}(1,\lambda) + \beta \frac{\partial \psi}{\partial \lambda}(1,\lambda).$$
+同时，由假设 $\Delta'(\lambda)=0$ ，可以验证，当选择 $\alpha, \beta$ 满足 $\alpha \phi(1,\lambda) + \beta \psi(1,\lambda)=0$ 时可推出 $\alpha \frac{\partial \phi}{\partial \lambda}(1,\lambda) + \beta \frac{\partial \psi}{\partial \lambda}(1,\lambda)=0$，即 $\frac{\partial u}{\partial \lambda}(1,\lambda)=0$，这与 (\*) 式要求矛盾。因此假设不成立，故 $\Delta'(\lambda) \ne 0$。
+因此，在 $|\Delta(\lambda)| < 2$ 时，必有 $\Delta'(\lambda) \ne 0$。
+
 
 ## 14. 设 $\Delta(\lambda) = 2(-2)$。证明  $\Delta'(\lambda) = 0 \iff M(\lambda) = I_2(-I_2).$
 考虑 $\Delta(\lambda) = 2$ 的情形。由 $\det M(\lambda) = 1$ 知特征值为 $1$（二重）。若 $M(\lambda) = I_2$，则直接代入公式 (11) 可得 $\Delta'(\lambda) = 0$。反之，若 $\Delta'(\lambda) = 0$ 且 $\Delta(\lambda) = 2$，假设 $M(\lambda) \ne I_2$，则 $M(\lambda)$ 为 Jordan 块，此时通过公式 (11) 可证 $\Delta'(\lambda) \ne 0$，矛盾。故 $M(\lambda) = I_2$。对 $\Delta(\lambda) = -2$ 情形同理。
 
-## 15. 证明：若 $\Delta(\lambda) = 2(-2)$，$\Delta'(\lambda) = 0$，则必有 $\Delta''(\lambda) < 0 (> 0)$。
+## 15. 证明：若 $\Delta(\lambda) = 2(-2)$，$\Delta'(\lambda) = 0$，则必有 $\Delta''(\lambda) < 0 (> 0)$, 并说明 $\Delta(\lambda) \pm 2=0$ 的每个根至多为二重根
 考虑 $\Delta(\lambda) = 2$ 且 $\Delta'(\lambda) = 0$ 的情形，此时 $M(\lambda) = I_2$，即 $\phi(1)=1, \dot{\phi}(1)=0, \psi(1)=0, \dot{\psi}(1)=1$。对公式 (11) 求导并代入这些值，结合第 10 题的恒等式，可得
 $$\Delta''(\lambda) = 2\left( \langle \phi, \psi \rangle^2 - \langle \phi, \phi \rangle \langle \psi, \psi \rangle \right).$$
 由 Cauchy-Schwarz 不等式及 $\phi, \psi$ 线性独立，有 $\langle \phi, \psi \rangle^2 < \langle \phi, \phi \rangle \langle \psi, \psi \rangle$，故 $\Delta''(\lambda) < 0$。对 $\Delta(\lambda) = -2$ 情形，类似可得 $\Delta''(\lambda) > 0$。
+
+设 $\lambda_0$ 满足 $\Delta(\lambda_0) = 2$（或 $-2$）。分两种情况：
+
+若 $\Delta'(\lambda_0) \ne 0$：则根为单根（一重根）。
+若 $\Delta'(\lambda_0) = 0$：由第 14 题结论，此时 $M(\lambda_0) = I_2$（对应 $\Delta=2$）或 $M(\lambda_0) = -I_2$（对应 $\Delta=-2$）。再由第 15 题结论，$\Delta''(\lambda_0) < 0$（对应 $\Delta=2$）或 $\Delta''(\lambda_0) > 0$（对应 $\Delta=-2$），即 $\Delta''(\lambda_0) \ne 0$。因此根为二重根（因为一阶导为零，二阶导非零）。
+
+不可能出现更高重数的根，因为若假设根的重数大于等于三，则需要 $\Delta'(\lambda_0) = \Delta''(\lambda_0) = 0$，这与第 15 题中当 $\Delta'(\lambda_0)=0$ 时 $\Delta''(\lambda_0) \ne 0$ 矛盾。
+因此，$\Delta(\lambda) \pm 2 = 0$ 的每个根至多是二重根。
+
+## 16.
