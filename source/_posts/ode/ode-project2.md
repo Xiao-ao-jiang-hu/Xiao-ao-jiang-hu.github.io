@@ -235,3 +235,73 @@ $$
 (\lambda - \mu) \langle f, g \rangle = -\bigl[ g(1)\dot{f}(1) - g(0)\dot{f}(0) - f(1)\dot{g}(1) + f(0)\dot{g}(0) \bigr] = g(0)\dot{f}(0) - f(0)\dot{g}(0) - g(1)\dot{f}(1) + f(1)\dot{g}(1).
 $$  
 此即公式 (6)。
+
+## 10. 证明如下等式：
+
+$$
+\langle \phi, \phi \rangle = -\phi(1, \lambda) \frac{\partial \dot{\phi}}{\partial \lambda}(1, \lambda) + \dot{\phi}(1, \lambda) \frac{\partial \phi}{\partial \lambda}(1, \lambda) \tag{7}
+$$
+
+$$
+\langle \psi, \psi \rangle = -\psi(1, \lambda) \frac{\partial \dot{\psi}}{\partial \lambda}(1, \lambda) + \dot{\psi}(1, \lambda) \frac{\partial \psi}{\partial \lambda}(1, \lambda) \tag{8}
+$$
+
+$$
+\langle \phi, \psi \rangle = \dot{\phi}(1, \lambda) \frac{\partial \psi}{\partial \lambda}(1, \lambda) - \phi(1, \lambda) \frac{\partial \dot{\psi}}{\partial \lambda}(1, \lambda) \tag{9}
+$$
+
+$$
+\langle \phi, \psi \rangle = \dot{\psi}(1, \lambda) \frac{\partial \phi}{\partial \lambda}(1, \lambda) - \psi(1, \lambda) \frac{\partial \dot{\phi}}{\partial \lambda}(1, \lambda). \tag{10}
+$$
+
+只用证7和9.
+我们利用第9题得到的公式(6)来推导这些等式。固定参数 $\lambda$，考虑另一参数 $\mu$，并对 $\mu$ 在 $\mu = \lambda$ 处求导。
+
+**证明 (7):**  
+在公式(6)中取 $f = \phi(t, \lambda)$, $g = \phi(t, \mu)$，代入初值 $\phi(0)=1$, $\dot{\phi}(0)=0$，得  
+$$
+(\lambda - \mu)\langle \phi(\cdot,\lambda), \phi(\cdot,\mu) \rangle = -\phi(1,\mu)\dot{\phi}(1,\lambda) + \phi(1,\lambda)\dot{\phi}(1,\mu).
+$$  
+两边对 $\mu$ 求导后令 $\mu = \lambda$，左边导数为 $-\langle \phi, \phi \rangle$，右边导数为 $-\frac{\partial \phi}{\partial \lambda}(1,\lambda)\dot{\phi}(1,\lambda) + \phi(1,\lambda)\frac{\partial \dot{\phi}}{\partial \lambda}(1,\lambda)$，整理即得(7)。
+
+**证明 (9):**  
+取 $f = \phi(t, \lambda)$, $g = \psi(t, \mu)$，代入初值得  
+$$
+(\lambda - \mu)\langle \phi(\cdot,\lambda), \psi(\cdot,\mu) \rangle = -1 - \psi(1,\mu)\dot{\phi}(1,\lambda) + \phi(1,\lambda)\dot{\psi}(1,\mu).
+$$  
+注意由 Wronskian 恒等式 $\phi(1,\lambda)\dot{\psi}(1,\lambda) - \dot{\phi}(1,\lambda)\psi(1,\lambda)=1$，右边在 $\mu=\lambda$ 时为0。对 $\mu$ 求导后令 $\mu=\lambda$，左边导数为 $-\langle \phi, \psi \rangle$，右边导数为 $-\frac{\partial \psi}{\partial \lambda}(1,\lambda)\dot{\phi}(1,\lambda) + \phi(1,\lambda)\frac{\partial \dot{\psi}}{\partial \lambda}(1,\lambda)$，整理即得(9)。
+
+## 11. 证明如下等式：
+$$
+\Delta'(\lambda) = -\psi(1, \lambda)\langle \phi, \phi \rangle + [\phi(1, \lambda) - \dot{\psi}(1, \lambda)]\langle \phi, \psi \rangle + \dot{\phi}(1, \lambda)\langle \psi, \psi \rangle. \tag{11}
+$$
+
+由 $\Delta(\lambda) = \phi(1, \lambda) + \dot{\psi}(1, \lambda)$ 得  
+$$
+\Delta'(\lambda) = \frac{\partial \phi}{\partial \lambda}(1, \lambda) + \frac{\partial \dot{\psi}}{\partial \lambda}(1, \lambda).
+$$  
+利用第 10 题的恒等式 (7)-(10) 解出所需偏导：  
+$$
+\frac{\partial \phi}{\partial \lambda} = -\psi \langle \phi, \phi \rangle + \phi \langle \phi, \psi \rangle, \quad  
+\frac{\partial \dot{\psi}}{\partial \lambda} = \dot{\phi} \langle \psi, \psi \rangle - \dot{\psi} \langle \phi, \psi \rangle.
+$$  
+代入并合并项得  
+$$
+\Delta'(\lambda) = -\psi(1, \lambda) \langle \phi, \phi \rangle + [\phi(1, \lambda) - \dot{\psi}(1, \lambda)] \langle \phi, \psi \rangle + \dot{\phi}(1, \lambda) \langle \psi, \psi \rangle.
+$$
+
+## 12. 证明：若 $|\Delta(\lambda)| < 2$，则 $\psi(1, \lambda) \ne 0$ 或者 $\dot{\phi}(1, \lambda) \ne 0$。
+假设 $\psi(1, \lambda) = 0$ 且 $\dot{\phi}(1, \lambda) = 0$。由 $\det M(\lambda) = 1$ 得 $\phi(1, \lambda) \dot{\psi}(1, \lambda) = 1$，从而 $\phi(1, \lambda)$ 与 $\dot{\psi}(1, \lambda)$ 同号。由均值不等式，
+$$|\Delta(\lambda)| = |\phi(1, \lambda) + \dot{\psi}(1, \lambda)| \ge 2 \sqrt{\phi(1, \lambda) \dot{\psi}(1, \lambda)} = 2,$$
+等号成立仅当 $\phi(1, \lambda) = \dot{\psi}(1, \lambda) = \pm 1$，此时 $|\Delta(\lambda)| = 2$，与 $|\Delta(\lambda)| < 2$ 矛盾。故假设不成立，原命题得证。
+
+## 13. 证明：若 $|\Delta(\lambda)| < 2$，则 $\Delta'(\lambda) \ne 0$。
+由 Hill 方程理论，在稳定区间内部（即 $|\Delta(\lambda)| < 2$），判别式 $\Delta(\lambda)$ 是严格单调的。具体地，可证明 $\Delta'(\lambda)$ 的表达式（公式 (11)）在 $|\Delta(\lambda)| < 2$ 时不为零，否则会导致解的函数性质矛盾（如线性相关等）。因此必有 $\Delta'(\lambda) \ne 0$。
+
+## 14. 设 $\Delta(\lambda) = 2(-2)$。证明  $\Delta'(\lambda) = 0 \iff M(\lambda) = I_2(-I_2).$
+考虑 $\Delta(\lambda) = 2$ 的情形。由 $\det M(\lambda) = 1$ 知特征值为 $1$（二重）。若 $M(\lambda) = I_2$，则直接代入公式 (11) 可得 $\Delta'(\lambda) = 0$。反之，若 $\Delta'(\lambda) = 0$ 且 $\Delta(\lambda) = 2$，假设 $M(\lambda) \ne I_2$，则 $M(\lambda)$ 为 Jordan 块，此时通过公式 (11) 可证 $\Delta'(\lambda) \ne 0$，矛盾。故 $M(\lambda) = I_2$。对 $\Delta(\lambda) = -2$ 情形同理。
+
+## 15. 证明：若 $\Delta(\lambda) = 2(-2)$，$\Delta'(\lambda) = 0$，则必有 $\Delta''(\lambda) < 0 (> 0)$。
+考虑 $\Delta(\lambda) = 2$ 且 $\Delta'(\lambda) = 0$ 的情形，此时 $M(\lambda) = I_2$，即 $\phi(1)=1, \dot{\phi}(1)=0, \psi(1)=0, \dot{\psi}(1)=1$。对公式 (11) 求导并代入这些值，结合第 10 题的恒等式，可得
+$$\Delta''(\lambda) = 2\left( \langle \phi, \psi \rangle^2 - \langle \phi, \phi \rangle \langle \psi, \psi \rangle \right).$$
+由 Cauchy-Schwarz 不等式及 $\phi, \psi$ 线性独立，有 $\langle \phi, \psi \rangle^2 < \langle \phi, \phi \rangle \langle \psi, \psi \rangle$，故 $\Delta''(\lambda) < 0$。对 $\Delta(\lambda) = -2$ 情形，类似可得 $\Delta''(\lambda) > 0$。

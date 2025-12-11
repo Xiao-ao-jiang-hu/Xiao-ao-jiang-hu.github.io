@@ -46,11 +46,6 @@ qns-3 is the first quantum-network extension that fully complies with ns-3’s a
 
 
 ## 其他量子模拟器
-### MPQUIC的NS-3实现
-南京大学学报(自然科学版) ›› 2024, Vol. 60 ›› Issue (4) : 625-632. DOI: 10.13232/j.cnki.jnju.2024.04.009
-基于NS⁃3网络模拟器的MPQUIC协议仿真研究
-https://jns.nju.edu.cn/CN/10.13232/j.cnki.jnju.2024.04.009
-
 ### NetSquid、SeQUeNCe、QuISP、QuNetSim
 跟 TCP/IP 不在一条时间轴，做“混合经典-量子”实验要外部耦合
 
