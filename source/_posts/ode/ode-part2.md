@@ -53,6 +53,9 @@ $$
 其中 $\mathbf{c}_2 = P^{-1} \mathbf{c}_1$。  
 设 $\phi(t)$ 是一个从 $\mathbb{R}$ 到 $\mathbb{R}^2$ 的函数。则 $\phi$ 是 IVP(2) 的解当且仅当 $P \phi$ 是 IVP(1) 的解。
 
+!!! note 流角度的理解
+    该性质表明线性系统的相流是拓扑共轭的，其中同胚映射是线性变换 $P$。
+
 **证明**  
 首先假设 $\phi$ 是 IVP(2) 的解，即 $\dot{\phi}(t) = B \phi(t)$ 对于所有 $t$ 在定义区间内，且 $\phi(t_0) = \mathbf{c}_2$。  
 定义 $\psi(t) = P \phi(t)$。则  

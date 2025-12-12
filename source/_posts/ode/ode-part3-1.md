@@ -67,6 +67,10 @@ $$
 $$  
 给出。
 
+!!! note 速记
+    分离变量系统存在唯一解的充分条件：$f(t)$ 连续，$g(x)$ 连续且在初值点 $x_0$ 处非零。（即存在一个邻域使得 $g$ 不为零，否则只要离开该点就无法保证唯一性）
+    唯一解区间：$(T_*, T^*)$，其中 $T$ 是 $F(t)$ 落在 $G(J)=\int_{x_0}^x \frac{1}{g(y)}dy(J)$ 内的的最大（小）时间点，其中 $J$ 是 包含 $x_0$ 且 $g$ 非零的最大区间。
+
 **证明：**  
 首先验证初值条件：  
 $$
@@ -122,6 +126,10 @@ $$
 - $G: J \to \mathbb{R}$ 定义为 $G(x) = \int_{x_0}^x \frac{dy}{g(y)}$，  
 - $G(J) = (\tau_*, \tau^*)$ 是一个开区间。
 
+!!! note 速记
+    自治系统存在唯一解的充分条件：$g(x)$ 连续且在初值点 $x_0$ 处非零。
+    唯一解区间：$(t_0 + \tau_*, t_0 + \tau^*)$，其中 $\tau$ 是 $t - t_0$ 落在 $G(J)=\int_{x_0}^x \frac{1}{g(y)}dy(J)$ 内的的最大（小）时间点，其中 $J$ 是 包含 $x_0$ 且 $g$ 非零的最大区间。
+
 **证明：**  
 首先验证初值条件：  
 $$
@@ -149,13 +157,16 @@ $$
 所以 $G(\psi(t)) = t - t_0 + C$ 对于某个常数 $C$。由初始条件 $\psi(t_0) = x_0$，得 $G(x_0) = 0$，所以 $C = 0$，即 $G(\psi(t)) = t - t_0$。因此，$\psi(t) = G^{-1}(t - t_0) = \varphi(t)$。  
 证毕。
 
-**推论 1.2.2（解的极大区间和取值范围）**  
+**推论 1.2.2（解的极大唯一区间和取值范围）**  
 设 $g: I \to \mathbb{R}$ 连续，其中 $I = (a, b)$ 是开区间，$x_0 \in I$ 且 $g(x_0) \neq 0$。设 $J = (\hat{a}, \hat{b}) \subseteq I$ 是包含 $x_0$ 且 $g$ 非零的最大区间。考虑初值问题 $\dot{x} = g(x), x(t_0) = x_0$.
 
 1. 如果 $g(x_0) > 0$ 且 $\hat{b} < b$，则 $\tau^* = \infty$ 当且仅当对于初值问题的任何解 $\psi: I_\psi \to \mathbb{R}$（其中 $I_\psi$ 是解的极大定义区间），有 $\psi(t) < \hat{b}$ 对于所有 $t \in I_\psi$.
 2. 如果 $g(x_0) > 0$ 且 $\hat{a} > a$，则 $\tau_* = -\infty$ 当且仅当对于任何解 $\psi: I_\psi \to \mathbb{R}$，有 $\psi(t) > \hat{a}$ 对于所有 $t \in I_\psi$.
 3. 如果 $g(x_0) < 0$ 且 $\hat{b} < b$，则 $\tau_* = -\infty$ 当且仅当对于任何解 $\psi: I_\psi \to \mathbb{R}$，有 $\psi(t) < \hat{b}$ 对于所有 $t \in I_\psi$.
 4. 如果 $g(x_0) < 0$ 且 $\hat{a} > a$，则 $\tau^* = \infty$ 当且仅当对于任何解 $\psi: I_\psi \to \mathbb{R}$，有 $\psi(t) > \hat{a}$ 对于所有 $t \in I_\psi$.
+
+!!! note 速记
+    只要解在有限时间内达到 $g$ 的零点，解就可以延拓为常数解，从而失去唯一性，进而可能导致分离变量法得到的解不再适用。（因为积分发散）
 
 **证明：**  
 我们证明第一部分，其余部分类似。  
@@ -208,7 +219,7 @@ $$
 
 证毕。
 
-**性质 1.2.1（平衡点处解的唯一性条件）**  
+**性质 1.2.1（初值为平衡点时解的唯一性条件）**  
 设 $x_0 \in I$ 是 $g$ 的孤立零点，即 $g(x_0) = 0$ 且存在 $\delta > 0$ 使得对任意的 $x \in [x_0 - \delta, x_0) \cup (x_0, x_0 + \delta]$ 均有 $g(x) \neq 0$。则初值问题
 $$
 \begin{cases}
@@ -301,13 +312,6 @@ $$
 $$
 \dot{X} = F(X), \quad \text{其中 } X = (x, y) \in I \times J,
 $$
-即
-$$
-\begin{cases}
-\dot{x} = f(x, y), \\
-\dot{y} = g(x, y).
-\end{cases}
-$$
 假设对任意的 $X \in I \times J$，有 $f(X) \neq 0$。考虑一维非自治系统 (1.3.2)
 $$
 \frac{dy}{dx} = \frac{g(x, y)}{f(x, y)}.
@@ -356,8 +360,7 @@ $$
 
 证毕。
 
-## 第二部分：解的存在性——Peano定理
-## 第二部分：解的存在性—Peano定理
+## 第二部分：解的存在性：Peano 定理
 
 ### 2.1 Euler折线法
 
@@ -373,6 +376,9 @@ $$
 - 在 $[s_0, s_1]$ 上：$\phi_n(t) = x_0 + (t-s_0)f(s_0, x_0)$
 - 在 $[s_j, s_{j+1}]$ 上：$\phi_n(t) = \phi_n(s_j) + (t-s_j)f(s_j, \phi_n(s_j))$，$j=1,\dots,n-1$
 
+!!! note 直观理解
+    先将解的定义区间划分为 $n$ 个小区间，随后从最左的小区间开始，利用当前点的斜率（由 $f$ 给出）线性外推到下一个节点，依次类推，直到覆盖整个区间，从而得到一条折线近似解。
+
 **定义 2.2（阶梯函数）**  
 定义阶梯函数 $\rho_n: [t_0, t_0+\epsilon] \to \mathbb{R}^d$ 为：
 $$
@@ -382,6 +388,7 @@ $$
 $$
 \phi_n(t) = x_0 + \int_{t_0}^t \rho_n(s)ds
 $$
+即每个区间内都是左端点处的斜率。
 
 ### 2.2 Peano定理
 
@@ -405,6 +412,9 @@ x(t_0) = x_0
 \end{cases}
 $$
 在区间 $[t_0-\epsilon, t_0+\epsilon]$ 上至少存在一个解。
+
+!!! note 直观理解
+    如果 $\phi$ 是一个解，则在 $[t_0, t_0+\epsilon]$ 上，$\phi(t)$ 不会离开以 $x_0$ 为中心、半径为 $\eta$ 的闭球，因为解的变化率被 $M$ 控制，且时间长度为 $\epsilon \leq \eta/M$。
 
 **证明**  
 仅证 $[t_0, t_0+\epsilon]$ 部分，另一侧对称。令 $t_1 = t_0 + \epsilon$。
@@ -540,7 +550,7 @@ $$
 $$
 称 $f$ 在 $U$ 上关于 $x$ 局部 Lipschitz 连续，记为 $f \in \mathrm{Lip}_{x,loc}(U)$，若对任意的紧集 $K \subset U$，均有 $f \in \mathrm{Lip}_x(K)$。
 
-**定理 3.6（Picard-Lindelöf）**  
+**定理 3.6 存在唯一性定理（Picard-Lindelöf）**  
 设 $U \subset \mathbb{R}^{d+1}$ 是开集，$f: U \to \mathbb{R}^d$ 连续，且 $f \in \mathrm{Lip}_{x,loc}(U)$。设 $(t_0, x_0) \in U$，则存在 $\delta > 0$ 使得初值问题
 $$
 \begin{cases}
@@ -727,3 +737,24 @@ $$
 |f(t,x) - f(t,x')| = |A(t)(x - x')| \leq \|A(t)\| |x - x'| \leq L|x - x'|.
 $$
 由性质3.12知，初值问题的解在 $J$ 上存在且唯一。由 $J \subset I$ 的任意性知，解在 $I$ 上存在且唯一。
+
+#### 例子
+我们来计算 IVP
+$$\dot{x} = x; \quad x(0)=1$$
+的 Picard 迭代序列。回忆：
+$$
+(T\phi)(t) = x_0 + \int_{t_0}^t f(\tau, \phi(\tau)) \, d\tau, \quad \forall t \in I.
+$$  
+
+取初始函数 $\phi_0(t) \equiv 1$，则
+$$
+\begin{aligned}
+  (T\phi_0)(t) &= 1 + \int_0^t \phi_0(\tau) \, d\tau = 1 + \int_0^t 1 \, d\tau = 1 + t, \\
+  (T^2\phi_0)(t) &= 1 + \int_0^t (T\phi_0)(\tau) \, d\tau = 1 + \int_0^t (1 + \tau) \, d\tau = 1 + t + \frac{t^2}{2}, \\
+  (T^3\phi_0)(t) &= 1 + \int_0^t (T^2\phi_0)(\tau) \, d\tau = 1 + \int_0^t \left(1 + \tau + \frac{\tau^2}{2}\right) d\tau = 1 + t + \frac{t^2}{2} + \frac{t^3}{6}, \\
+  &\vdots \\
+  (T^n\phi_0)(t) &= 1 + t + \frac{t^2}{2!} + \frac{t^3}{3!} + \cdots + \frac{t^n}{n!}.
+\end{aligned}
+$$
+显然，随着 $n \to \infty$，该序列收敛到指数函数的泰勒展开：
+$$\phi(t) = e^t.$$
