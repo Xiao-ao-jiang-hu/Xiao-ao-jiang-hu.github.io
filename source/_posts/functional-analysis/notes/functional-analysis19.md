@@ -1,5 +1,5 @@
 ---
-title: Ch 4.3 Fredholm 算子
+title: Ch 4.3 Fredholm 算子及其复合与稳定性
 tags:
   - math
   - functional analysis
@@ -245,3 +245,192 @@ $$
 \|y^*\|_{Y^*} = \|F^*A^*y^* + L^*y^*\|_{Y^*} \le c (\|A^*y^*\|_{Y^*} + \|L^*y^*\|_{Y^*})
 $$
 对所有 $y^* \in Y^*$ 成立。因此，由主 Fredholm 引理可知，$A^*$ 具有有限维核，故由 Fredholm 算子的对偶性定理可知，$A$ 具有有限维余核。这证明了 Fredholm 与紧算子的等价刻画定理。
+
+
+# 复合与稳定性
+
+## Fredholm 算子的复合定理
+
+设 $X, Y, Z$ 为 Banach 空间，且令 $A: X \to Y$ 和 $B: Y \to Z$ 为 Fredholm 算子。则 $BA: X \to Z$ 是一个 Fredholm 算子，且
+$$
+\text{index}(BA) = \text{index}(A) + \text{index}(B).
+$$
+
+### 证明
+
+由 Fredholm 算子的紧扰动刻画定理可知，存在有界线性算子 $F: Y \to X$ 和 $G: Z \to Y$，使得算子 $\mathbb{1}_X - FA$, $\mathbb{1}_Y - AF$, $\mathbb{1}_Y - GB$, 和 $\mathbb{1}_Z - BG$ 是紧的。定义 $H := FG: Z \to X$。则算子
+$$
+\mathbb{1}_X - HBA = F(\mathbb{1}_Y - GB)A + \mathbb{1}_X - FA,
+$$
+$$
+\mathbb{1}_Z - BAH = B(\mathbb{1}_Y - AF)G + \mathbb{1}_Z - BG
+$$
+根据紧算子的基本性质定理的第 (i) 部分是紧的。因此，由 Fredholm 算子的紧扰动刻画定理可知 $BA$ 是一个 Fredholm 算子。
+
+为证明指标公式，考虑算子
+$$
+A_0: \frac{\ker(BA)}{\ker(A)} \to \ker(B), \quad A_0[x] := Ax,
+$$
+$$
+B_0: \frac{Y}{\text{im}(A)} \to \frac{\text{im}(B)}{\text{im}(BA)}, \quad B_0[y] := [By].
+$$
+这些是在有限维实向量空间之间的良定义线性算子。根据定义，算子 $A_0$ 是单射，$B_0$ 是满射。其次，$\text{im}(A_0) = \text{im}(A) \cap \ker(B)$，故
+$$
+\text{coker}(A_0) = \frac{\ker(B)}{\text{im}(A) \cap \ker(B)}.
+$$
+第三，
+$$
+\begin{aligned}
+\ker(B_0) &= \left\{ [y] \in Y/\text{im}(A) \mid By \in \text{im}(BA) \right\} \\
+&= \left\{ [y] \in Y/\text{im}(A) \mid \exists x \in X \text{ 使得 } B(y - Ax) = 0 \right\} \\
+&= \left\{ [y] \in Y/\text{im}(A) \mid y \in \text{im}(A) + \ker(B) \right\} \\
+&= \frac{\text{im}(A) + \ker(B)}{\text{im}(A)} \\
+&\cong \frac{\ker(B)}{\text{im}(A) \cap \ker(B)} \\
+&= \text{coker}(A_0).
+\end{aligned}
+$$
+
+#### 证明续
+
+因此，由有限维向量空间指标的例子，我们有
+$$
+\begin{aligned}
+0 &= \text{index}(A_0) + \text{index}(B_0) \\
+&= \dim\left( \frac{\ker(BA)}{\ker(A)} \right) - \dim\ker(B) + \dim\text{coker}(A) - \dim\left( \frac{\text{im}(B)}{\text{im}(BA)} \right) \\
+&= \dim\ker(BA) - \dim\ker(A) - \dim\ker(B) \\
+&\quad + \dim\text{coker}(A) + \dim\text{coker}(B) - \dim\text{coker}(BA) \\
+&= \text{index}(BA) - \text{index}(A) - \text{index}(B).
+\end{aligned}
+$$
+这证明了 Fredholm 算子的复合定理。$\square$
+
+## Fredholm 指标的稳定性定理
+
+设 $X$ 和 $Y$ 为 Banach 空间，且令 $D: X \to Y$ 为一个 Fredholm 算子。
+
+1. 若 $K: X \to Y$ 是一个紧算子，则 $D+K$ 是一个 Fredholm 算子，且 $\text{index}(D+K) = \text{index}(D)$。
+
+2. 存在一个常数 $\varepsilon > 0$，使得以下成立。若 $P: X \to Y$ 是一个满足 $\|P\| < \varepsilon$ 的有界线性算子，则 $D+P$ 是一个 Fredholm 算子，且 $\text{index}(D+P) = \text{index}(D)$。
+
+### 证明
+
+我们在第 1 部分中证明 Fredholm 性质。设 $D: X \to Y$ 为一个 Fredholm 算子，且令 $K: X \to Y$ 为一个紧算子。由 Fredholm 算子的紧扰动刻画定理，存在一个有界线性算子 $T: Y \to X$，使得算子 $\mathbb{1}_X - TD$ 和 $\mathbb{1}_Y - DT$ 是紧的。因此，算子 $\mathbb{1}_X - T(D+K)$ 和 $\mathbb{1}_Y - (D+K)T$ 根据紧算子的基本性质定理也是紧的，所以 $D+K$ 是一个 Fredholm 算子，由 Fredholm 算子的紧扰动刻画定理得证。
+
+我们在第 2 部分中证明 Fredholm 性质。设 $D: X \to Y$ 为一个 Fredholm 算子。由 Fredholm 算子的等价刻画引理，存在一个紧算子 $K: X \to Z$ 和一个常数 $c>0$，使得对所有 $x \in X$ 有 $\|x\|_X \le c(\|Dx\|_Y + \|Kx\|_Z)$。现在令 $P: X \to Y$ 为一个具有算子范数
+$$
+\|P\| < \frac{1}{c}
+$$
+的有界线性算子。
+
+那么，对所有 $x \in X$，我们有
+$$
+\begin{aligned}
+\|x\|_X &\le c(\|Dx\|_Y + \|Kx\|_Z) \\
+&\le c(\|Dx + Px\|_Y + \|Px\|_Y + \|Kx\|_Z) \\
+&\le c(\|(D+P)x\|_Y + \|Kx\|_Z) + c\|P\|\|x\|_X
+\end{aligned}
+$$
+从而
+$$
+(1 - c\|P\|)\|x\|_X \le c(\|(D+P)x\|_Y + \|Kx\|_Z).
+$$
+因此，由 Fredholm 算子的等价刻画引理可知，$D+P$ 具有闭值域和有限维核。对偶算子进行相同的论证表明，当 $\|P^*\| = \|P\|$ 足够小时，$D^* + P^*$ 具有有限维核，因此由 Fredholm 算子的对偶定理可知，$D+P$ 具有有限维余核。
+
+
+我们证明第 2 部分中的指标公式。如同在 Fredholm 算子的紧扰动刻画定理的证明中一样，定义 $X_0 := \ker(A)$ 和 $Y_1 := \text{im}(A)$，并使用 Banach 空间直和分解引理找到闭线性子空间 $X_1 \subset X$ 和 $Y_0 \subset Y$，使得
+$$
+X = X_0 \oplus X_1, \quad Y = Y_0 \oplus Y_1.
+$$
+对于 $i,j \in \{0,1\}$，定义 $P_{ji}: X_i \to Y_j$ 为 $P|_{X_i}: X_i \to Y$ 与投影 $Y = Y_0 \oplus Y_1 \to Y_j: y_0 + y_1 \mapsto y_j$ 的复合。令 $D_{11}: X_1 \to Y_1$ 为 $D$ 在 $X_1$ 上的限制，其值域在 $Y_1 = \text{im}(D)$ 中。则 $D_{11}$ 是双射的。我们证明以下结论。
+
+#### 引理
+
+假设算子 $D_{11} + P_{11}: X_1 \to Y_1$ 是双射的，并定义
+$$
+A_0 := P_{00} - P_{01}(D_{11} + P_{11})^{-1}P_{10}: X_0 \to Y_0.
+$$
+则 $\text{index}(D+P) = \text{index}(A_0)$。
+
+该声明表明，当算子 $D_{11} + P_{11}$ 是双射时，
+$$
+\text{index}(D+P) = \text{index}(A_0) = \dim X_0 - \dim Y_0 = \text{index}(D)
+$$
+成立。由 Banach 空间上的逆算子扰动推论，当 $\|P_{11}\|\|(D_{11} + P_{11})^{-1}\| < 1$ 时成立，因此当 $\|P\|$ 足够小时成立。
+
+**引理的证明**
+观察到方程
+$$
+(D+P)(x_0 + x_1) = y_0 + y_1 \tag{4.4.1}
+$$
+可以写成
+$$
+y_0 = P_{00}x_0 + P_{01}x_1, \tag{4.4.2}
+$$
+$$
+y_1 = P_{10}x_0 + (D_{11} + P_{11})x_1
+$$
+其中 $x_0 \in X_0$, $x_1 \in X_1$ 且 $y_0 \in Y_0$, $y_1 \in Y_1$。由于 $D_{11} + P_{11}$ 是双射的，方程 (4.4.2) 可以写成如下形式：
+$$
+A_0x_0 = y_0 - P_{01}(D_{11} + P_{11})^{-1}y_1, \tag{4.4.3}
+$$
+$$
+x_1 = (D_{11} + P_{11})^{-1}(y_1 - P_{10}x_0).
+$$
+这表明
+$$
+x_0 + x_1 \in \ker(D+P) \iff \begin{cases} x_0 \in \ker(A_0), \\ x_1 = -(D_{11} + P_{11})^{-1}P_{10}x_0 \end{cases}
+$$
+对于 $x_i \in X_i$，因此 $\ker(D+P) \cong \ker(A_0)$。方程 (4.4.3) 也表明
+$$
+y_0 + y_1 \in \text{im}(D+P) \iff y_0 - P_{01}(D_{11} + P_{11})^{-1}y_1 \in \text{im}(A_0)
+$$
+对于 $y_i \in Y_i$。因此，映射 $Y \to Y_0: y_0 + y_1 \mapsto y_0 - P_{01}(D_{11} + P_{11})^{-1}y_1$ 诱导出从 $Y/\text{im}(D+P)$ 到 $Y_0/\text{im}(A_0)$ 的同构。因此
+$$
+\text{coker}(D+P) \cong \text{coker}(A_0).
+$$
+这证明了引理和第 2 部分的指标公式。
+
+剩下要证明的是第 1 部分的指标公式。令 $K: X \to Y$ 为一个紧算子，并定义 $I := \{ t \in \mathbb{R} \mid \text{index}(D+tK) = \text{index}(D) \}$。由第 2 部分，集合 $\mathcal{F}_k(X,Y) \subset \mathcal{L}(X,Y)$ 中指标为 $k$ 的 Fredholm 算子对于每个 $k \in \mathbb{Z}$ 都是开集，因此它们的并集 $\mathcal{F}(X,Y) := \bigcup_{k \in \mathbb{Z}} \mathcal{F}_k(X,Y)$ 也是开集。此外，映射 $\mathbb{R} \to \mathcal{F}(X,Y): t \mapsto D+tK$ 是连续的，因此对于每个 $k \in \mathbb{Z}$，该映射下的原像 $\mathcal{F}_k(X,Y)$ 是开集。因此，集合 $I_k := \{ t \in \mathbb{R} \mid \text{index}(D+tK) = k \}$ 对于所有 $k \in \mathbb{Z}$ 都是开集，且 $\mathbb{R} = \bigcup_{k \in \mathbb{Z}} I_k$。由于 $I_k = I$ 当 $k = \text{index}(D)$ 时，可知 $I$ 和 $\mathbb{R} \setminus I = \bigcup_{\ell \ne k} I_\ell$ 都是开集。由于 $0 \in I$ 且 $\mathbb{R}$ 是连通的，可知 $I = \mathbb{R}$，因此 $1 \in I$，所以 $\text{index}(D+K) = \text{index}(D)$。这证明了 Fredholm 指标的稳定性定理。$\square$
+
+## 注记：Fredholm 替代
+考虑特殊情况，其中 $X=Y$ 是一个 Banach 空间，且 $K: X \to X$ 是一个紧算子。此时 Fredholm 指标的稳定性定理断言 $\mathbb{1}-K$ 是一个指标为零的 Fredholm 算子。这导致所谓的 **Fredholm 替代**。它断言，对于每个 $y \in X$，非齐次线性方程
+$$
+x - Kx = y
+$$
+都有解 $x \in X$，或者相应的齐次方程 $x - Kx = 0$ 有非平凡解。这只是因为算子 $\mathbb{1}-K$ 的核和余核具有相同维度，因此要么都是平凡的，要么都是非平凡的。
+
+## 注记：Calkin 代数
+
+设 $X$ 为一个 Banach 空间，记 $\mathcal{L}(X)$ 为从 $X$ 到自身的有界线性算子构成的 Banach 空间，记 $\mathcal{F}(X) \subset \mathcal{L}(X)$ 为所有 Fredholm 算子的子集，记 $\mathcal{K}(X) \subset \mathcal{L}(X)$ 为所有紧算子的子集。由紧算子的基本性质定理的第 (ii) 部分，线性子空间 $\mathcal{K}(X) \subset \mathcal{L}(X)$ 是闭的，且由紧算子的基本性质定理的第 (i) 部分，商空间
+$$
+\mathcal{L}(X)/\mathcal{K}(X)
+$$
+是一个 Banach 代数，称为 **Calkin 代数**。由 Fredholm 指标的稳定性定理的第 2 部分，集合 $\mathcal{F}(X)$ 是 $\mathcal{L}(X)$ 的一个开子集，且由 Fredholm 指标的稳定性定理的第 1 部分，这个开集在等价关系下是不变的。由 Fredholm 算子的紧扰动刻画定理，商空间中的相应开子集
+$$
+\mathcal{F}(X)/\mathcal{K}(X) \subset \mathcal{L}(X)/\mathcal{K}(X)
+$$
+是 Calkin 代数中的可逆元群。由 Fredholm 指标的稳定性定理的第 1 部分，Fredholm 指标产生一个良定义的映射
+$$
+\mathcal{F}(X)/\mathcal{K}(X) \to \mathbb{Z}: [D] \mapsto \text{index}(D). \tag{4.4.4}
+$$
+由 Fredholm 算子的复合定理，此映射是一个群同态。
+
+## 注记：Fredholm 算子与 K-理论
+
+设 $H$ 为一个无限维可分 Hilbert 空间。Kuiper 的一个定理 [53] 断言，群
+$$
+\text{Aut}(H) := \{ A: H \to H \mid A \text{ 是一个双射的有界线性算子} \}
+$$
+是可收缩的。这可用于证明空间 $\mathcal{F}(H)$（从 $H$ 到自身的 Fredholm 算子）是 K-理论的一个分类空间。起点是观察到，如果 $M$ 是一个紧 Hausdorff 空间，且 $A: M \to \mathcal{F}(H)$ 是一个连续映射，使得算子 $A(p)$ 对所有 $p \in M$ 都是满射，则这些算子的核确定了一个定义在 $M$ 上的向量丛 $E$，其定义为
+$$
+E := \{ (p,x) \in M \times H \mid A(p)x = 0 \}. \tag{4.4.5}
+$$
+更一般地，任何定义在紧 Hausdorff 空间 $M$ 上的连续映射 $A: M \to \mathcal{F}(H)$，决定了 $M$ 上的一个所谓 **K-理论类**（在等价关系 $(E,F) \sim (E',F')$ 当且仅当 $E \oplus F' \cong E' \oplus F$ 下的一对向量丛的等价类），两个这样的映射所关联的 K-理论类一致当且仅当映射是同伦的，并且每个紧 Hausdorff 空间上的 K-理论类都可以通过这种方式获得。这就是 **Atiyah–Jänich 定理** [5,7,42]。特别地，当 $M$ 是一个单点时，该定理断言，对于所有 $k \in \mathbb{Z}$，指标为 $k$ 的 Fredholm 算子的空间 $\mathcal{F}_k(H)$ 是非空且连通的。
+
+## 注记：Banach 超平面问题
+
+1932 年，Banach 提出了一个问题：是否每一个无限维实 Banach 空间 $X$ 都同构于 $X \times \mathbb{R}$，或者等价地，是否每一个闭余维度为一的子空间都同构于 $X$。这个问题在 1994 年由 Gowers 给出了解答。他构造了一个无限维实 Banach 空间 $X$，它不与其任何真子空间同构，因此 $X$ 上的每一个 Fredholm 算子都具有 Fredholm 指标零。这个例子后来被 Argyros 和 Haydon 改进。**Argyros–Haydon 空间** 是一个无限维实 Banach 空间 $X$，使得 $X$ 上的每一个有界线性算子 $A: X \to X$ 都具有形式 $A = \lambda \mathbb{1} + K$，其中 $\lambda$ 是一个实数，且 $K: X \to X$ 是一个紧算子。因此，$X$ 上的每一个有界线性算子要么是紧算子，要么是指标为零的 Fredholm 算子，开集 $\mathcal{F}(X) = \mathcal{F}_0(X) = \mathcal{L}(X) \setminus \mathcal{K}(X)$ 有两个连通分支，且 Calkin 代数同构于实数，即
+$$
+\mathcal{L}(X)/\mathcal{K}(X) \cong \mathbb{R}.
+$$
+这表明 Atiyah–Jänich 定理中的 Hilbert 空间 $H$ 不能被任意的 Banach 空间替代（参见 Fredholm 算子与 K-理论注记）。Gowers 和 Argyros–Haydon 的构造细节超出了本书的范围。
