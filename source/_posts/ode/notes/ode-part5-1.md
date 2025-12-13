@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第五部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: 313f8d33
 date: 2025-12-13 02:31:28
 ---
 ## 自治系统的基本概念

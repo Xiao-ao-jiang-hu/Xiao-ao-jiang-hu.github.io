@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: d80b3115
 date: 2024-12-24 16:39:35
 ---
 本章将选取几个同调理论经典且重要的应用

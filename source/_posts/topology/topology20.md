@@ -9,7 +9,8 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
-date: 2025-1-3 21:49:41
+abbrlink: e81dddcd
+date: 2025-01-03 21:49:41
 ---
 ## **4. Jordan 曲线定理的代数拓扑证明**
 

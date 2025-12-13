@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第五部分
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: eb645d7b
 date: 2025-12-13 02:48:23
 ---
 ## 梯度系统

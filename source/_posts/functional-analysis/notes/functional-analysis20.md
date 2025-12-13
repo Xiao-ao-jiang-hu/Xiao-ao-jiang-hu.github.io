@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程笔记
+abbrlink: 6d9ec8dc
 date: 2025-12-12 16:35:27
 ---
 # 谱理论

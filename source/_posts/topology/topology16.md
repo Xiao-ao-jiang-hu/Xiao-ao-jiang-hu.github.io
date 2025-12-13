@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: 961f52fb
 date: 2024-12-04 14:39:01
 ---
 在前面的部分中，我们定义了奇异同调群 $H_n(X)$，并建立了一些基本性质。然而，直接计算奇异同调往往非常复杂，因为奇异链群太大。为了有效计算，我们需要一些工具来将空间分解为更简单的部分。

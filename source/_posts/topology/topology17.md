@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: ae76bda6
 date: 2024-12-10 20:56:39
 ---
 胞腔同调是一种在 CW 复形上计算同调的工具。与奇异同调相比，其链复形通常小得多，便于具体计算。本节首先说明 CW 复形的基本概念，然后构造胞腔链复形，证明它与奇异同调的等价性，并通过典型例子展示其应用。

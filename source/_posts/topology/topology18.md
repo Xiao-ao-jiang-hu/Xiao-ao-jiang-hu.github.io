@@ -9,6 +9,7 @@ categories:
 index_img: /img/topology.jpg
 banner_img: /img/topology.jpg
 excerpt: 拓扑学笔记
+abbrlink: d9a2bdbf
 date: 2024-12-19 23:03:56
 ---
 Mayer-Vietoris序列将一个空间 $X$ 的同调群分解为两个子空间 $U$ 和 $V$ 的同调群以及它们的交的同调群。它类似于 Van Kampen 定理在同调中的版本。
