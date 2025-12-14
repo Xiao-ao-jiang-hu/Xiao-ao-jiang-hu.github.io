@@ -1051,6 +1051,12 @@ links:
       link: "https://tbl0x7d6.github.io/",
       avatar: "https://tbl0x7d6.github.io/avatar.png"
     }
+    - {
+      title: "Young's Toy Box",
+      description: "玩具盒",
+      link: "https://wesley-young.github.io/",
+      avatar: "https://avatars.githubusercontent.com/u/25684570?v=4"
+    }
 
   # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
   # Custom content at the bottom of the links
