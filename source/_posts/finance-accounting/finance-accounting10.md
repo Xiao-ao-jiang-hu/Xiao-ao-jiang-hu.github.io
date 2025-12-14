@@ -1,5 +1,5 @@
 ---
-title: 'Financial Accounting Class 10: Reporting and Interpreting Shareholders' Equity'
+title: 'Financial Accounting Class 10: Reporting and Interpreting Shareholders'' Equity'
 tags:
   - finance
 categories:
@@ -7,6 +7,7 @@ categories:
 index_img: /img/accounting.png
 banner_img: /img/accounting.png
 excerpt: 本节课主要讲解了企业股东权益（Shareholders' Equity）的会计处理与报告，涵盖普通股、优先股、留存收益及其对财务报表的影响。
+abbrlink: '91676237'
 date: 2025-12-14 22:46:40
 ---
 # 股东权益的报告与解释

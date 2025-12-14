@@ -6,7 +6,10 @@ categories:
   - finance
 index_img: /img/accounting.png
 banner_img: /img/accounting.png
-excerpt: 本节课主要讲解了现金流量表（Statement of Cash Flow）的编制方法与分析技巧，涵盖经营活动、投资活动和筹资活动的现金流量分类及其对企业财务状况的影响。
+excerpt: >-
+  本节课主要讲解了现金流量表（Statement of Cash
+  Flow）的编制方法与分析技巧，涵盖经营活动、投资活动和筹资活动的现金流量分类及其对企业财务状况的影响。
+abbrlink: c3457725
 date: 2025-12-14 22:46:47
 ---
 # 现金流量表的编制与分析
