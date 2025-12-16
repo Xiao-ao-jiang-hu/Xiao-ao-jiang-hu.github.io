@@ -87,42 +87,27 @@ $$
 故 $\Pi_n \circ \Pi_m = \Pi_m \circ \Pi_n = \Pi_m$ 当 $n \geq m \geq 1$.
 
 ### 2
+首先，由 Schauder 基的定义，对任意 $x \in X$，有 $\Pi_n(x) \to x$ 在范数 $\|\cdot\|$ 下。于是
+$$
+\|x\| = \lim_{n\to\infty} \|\Pi_n(x)\| \le \sup_{n\ge 1} \|\Pi_n(x)\| = |\!|\!|x|\!|\!|,
+$$
+即 $\|x\| \le |\!|\!|x|\!|\!|$ 对所有 $x \in X$ 成立。
 
-由于 $(e_i)$ 是 Schauder 基，有 $x = \lim_{n \to \infty} \Pi_n(x)$。范数 $\|\cdot\|$ 连续，故：
+下证 $(X, |\!|\!|\cdot|\!|\!|)$ 是 Banach 空间。设 $\{x^{(k)}\} \subset X$ 是 $|\!|\!|\cdot|\!|\!|$ 下的 Cauchy 序列，即对任意 $\varepsilon > 0$，存在 $N$ 使得当 $k,l \ge N$ 时，
 $$
-\|x\| = \left\| \lim_{n \to \infty} \Pi_n(x) \right\| = \lim_{n \to \infty} \|\Pi_n(x)\|.
+|\!|\!|x^{(k)} - x^{(l)}|\!|\!| = \sup_{n\ge 1} \|\Pi_n(x^{(k)} - x^{(l)})\| < \varepsilon.
 $$
-由于 $\|\Pi_n(x)\| \leq |\|x\||$ 对于所有 $n$，取极限得：
-$$
-\|x\| = \lim_{n \to \infty} \|\Pi_n(x)\| \leq \sup_{n \geq 1} \|\Pi_n(x)\| = |\|x\||.
-$$
+由 $\|x\| \le |\!|\!|x|\!|\!|$ 知，$\{x^{(k)}\}$ 也是 $\|\cdot\|$ 下的 Cauchy 序列。因 $(X, \|\cdot\|)$ 完备，存在 $x \in X$ 使得 $\|x^{(k)} - x\| \to 0$。
 
-接下来证明 $|\|\cdot\||$ 是范数：
-- 非负性：$|\|x\|| = \sup_{n \geq 1} \|\Pi_n(x)\| \geq 0$，且若 $|\|x\|| = 0$，则 $\|\Pi_n(x)\| = 0$ 对于所有 $n$，故 $\Pi_n(x) = 0$，从而 $x = \lim_{n \to \infty} \Pi_n(x) = 0$。
-- 齐次性：对于标量 $\alpha$，有：
-  $$
-  |\|\alpha x\|| = \sup_{n \geq 1} \|\Pi_n(\alpha x)\| = \sup_{n \geq 1} |\alpha| \|\Pi_n(x)\| = |\alpha| \sup_{n \geq 1} \|\Pi_n(x)\| = |\alpha| |\|x\||.
-  $$
-- 三角不等式：对于 $x, y \in X$，有：
-  $$
-  |\|x + y\|| = \sup_{n \geq 1} \|\Pi_n(x + y)\| = \sup_{n \geq 1} \|\Pi_n(x) + \Pi_n(y)\| \leq \sup_{n \geq 1} (\|\Pi_n(x)\| + \|\Pi_n(y)\|) \leq |\|x\|| + |\|y\||.
-  $$
-
-现在证明 $(X, |\|\cdot\||)$ 是完备的。设 $\{x_k\}$ 是 $(X, |\|\cdot\||)$ 中的 Cauchy 序列，即对于任意 $\epsilon > 0$，存在 $K$ 使得当 $k, l \geq K$ 时，$|\|x_k - x_l\|| < \epsilon$。由于 $\|x\| \leq |\|x\||$，$\{x_k\}$ 也是 $(X, \|\cdot\|)$ 中的 Cauchy 序列。由于 $X$ 是完备的，存在 $y \in X$ 使得在 $\|\cdot\|$ 下 $x_k \to y$。
-
-由于 $(e_i)$ 是 Schauder 基，系数泛函 $x \mapsto x_i$ 是连续的。因此，对于每个 $i$，有 $x_{k,i} \to y_i$ 当 $k \to \infty$。对于固定 $n$，有：
+对于 Schauder 基，投影算子 $\Pi_n$ 是连续线性算子（坐标泛函连续），故对每个 $n$，有 $\|\Pi_n(x^{(k)}) - \Pi_n(x)\| \to 0$ 当 $k \to \infty$。对任意 $k \ge N$，在不等式
 $$
-\Pi_n(x_k) = \sum_{i=1}^n x_{k,i} e_i \to \sum_{i=1}^n y_i e_i = \Pi_n(y) \quad \text{在 } \|\cdot\| \text{ 下}.
+\|\Pi_n(x^{(k)} - x^{(l)})\| < \varepsilon \quad (\forall l \ge N)
 $$
-现在证明 $x_k \to y$ 在 $|\|\cdot\||$ 下。对于任意 $\epsilon > 0$，存在 $K$ 使得当 $k, l \geq K$ 时，$|\|x_k - x_l\|| < \epsilon/2$。对于每个 $n$，有：
+中令 $l \to \infty$，得 $\|\Pi_n(x^{(k)}) - \Pi_n(x)\| \le \varepsilon$ 对所有 $n$ 成立。因此
 $$
-\|\Pi_n(x_k) - \Pi_n(y)\| = \lim_{l \to \infty} \|\Pi_n(x_k) - \Pi_n(x_l)\| \leq \limsup_{l \to \infty} |\|x_k - x_l\|| \leq \epsilon/2.
+|\!|\!|x^{(k)} - x|\!|\!| = \sup_{n\ge 1} \|\Pi_n(x^{(k)} - x)\| \le \varepsilon, \quad \forall k \ge N,
 $$
-因此，
-$$
-|\|x_k - y\|| = \sup_{n \geq 1} \|\Pi_n(x_k) - \Pi_n(y)\| \leq \epsilon/2 < \epsilon \quad \text{当 } k \geq K.
-$$
-故 $x_k \to y$ 在 $|\|\cdot\||$ 下，所以 $(X, |\|\cdot\||)$ 是完备的。
+即 $x^{(k)} \to x$ 在 $|\!|\!|\cdot|\!|\!|$ 下。故 $(X, |\!|\!|\cdot|\!|\!|)$ 是 Banach 空间。
 
 ### 3
 
