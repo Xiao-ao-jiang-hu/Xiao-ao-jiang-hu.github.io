@@ -13,33 +13,47 @@ abbrlink: a831cd8
 date: 2025-11-16 14:38:10
 ---
 # 15.1
-设X为实的拓扑向量空间，$K\subset X$ 是平衡凸吸收集，则
+设 $X$ 为实的拓扑向量空间，$K\subset X$ 是平衡凸吸收集，证明：
 
 1. $\mathrm{Int}(K)\subseteq\{x\in X|P_K(x)<1\}\subseteq K\subseteq\{x\in X|P_K(x)\leq1\}\subseteq\bar{K}.$
 
-2. $P_{K}$ 是连续函数当且仅当K包含一个包含零点的开集。此时$\mathrm{Int}(K)=\{x\in X|P_{K}(x)< 1\},\{x\in X|P_{K}(x)\leq1\}=\bar{K}.$ 
+2. $P_{K}$ 是连续函数当且仅当K包含一个包含零点的开集。此时 $\mathrm{Int}(K)=\{x\in X|P_{K}(x)< 1\},\{x\in X|P_{K}(x)\leq1\}=\bar{K}.$ 
 
 
 ## 解答
-### 1.
-任取 $x \in \mathrm{Int}(K)$, 则存在 $U$，使得 $x + U \subset K$. 由于 $K$ 是平衡集，故对于任意 $u \in U$，有 $x + t u \in K, \forall t \in [-1,1]$. 因此对于任意 $t \in [0,1]$，有 $x = (1-t)x + t(x + u) \in K$. 故 $P_K(x) \leq 1$. 若 $P_K(x) = 1$, 则存在 $t_n \to 1^-$，使得 $x \in t_n K$. 则存在 $k_n \in K$，使得 $x = t_n k_n$. 因为 $K$ 是吸收集，故存在 $\lambda > 0$，使得 $\frac{1}{\lambda} x \in K$. 取 $n$ 足够大，使得 $t_n > \lambda$, 则有 $k_n = \frac{1}{t_n} x \in K$, 与 $K$ 的凸性矛盾. 因此 $P_K(x) < 1$, 即 $\mathrm{Int}(K) \subseteq \{x \in X | P_K(x) < 1\}$.
-
-任取 $x \in \{x \in X | P_K(x) < 1\}$, 则存在 $t < 1$，使得 $x \in t K$. 因为 $K$ 是凸集，故 $x = t k$，其中 $k \in K$. 因为 $t < 1$，故 $k = \frac{1}{t} x \in K$. 因此 $x \in K$, 即 $\{x \in X | P_K(x) < 1\} \subseteq K$.
-
-任取 $x \in K$, 则 $P_K(x) \leq 1$, 故 $K \subseteq \{x \in X | P_K(x) \leq 1\}$.
-
-任取 $x \in \{x \in X | P_K(x) \leq 1\}$, 则存在 $t_n \to 1^+$，使得 $x \in t_n K$. 则存在 $k_n \in K$，使得 $x = t_n k_n$. 因为 $K$ 是吸收集，故存在 $\lambda > 0$，使得 $\frac{1}{\lambda} x \in K$. 取 $n$ 足够大，使得 $t_n < \lambda$, 则有 $k_n = \frac{1}{t_n} x \in K$. 因此 $k_n$ 在 $K$ 中有界. 由 $k_n = \frac{1}{t_n} x$ 可知，$k_n \to x$. 因此 $x \in \bar{K}$, 即 $\{x \in X | P_K(x) \leq 1\} \subseteq \bar{K}$.
+### 1. 证明 $\mathrm{Int}(K) \subseteq \{ x \in X : P_K(x) < 1 \}$  
+取 $x \in \mathrm{Int}(K)$，存在原点处的开邻域 $U$ 使得 $x + U \subseteq K$。考虑映射 $\varphi: \mathbb{R} \to X$，$\varphi(t) = tx$。由于标量乘法连续，存在 $\delta > 0$ 使得当 $|t-1| < \delta$ 时，$\varphi(t) = tx \in x + U \subseteq K$。取 $t = 1 + \delta/2 > 1$，则 $tx \in K$，即 $x \in \frac{1}{t} K$。因 $\frac{1}{t} < 1$，得 $P_K(x) \le \frac{1}{t} < 1$，故 $x \in \{ P_K < 1 \}$。
 
 
-### 2.
-充分性：若 $P_K$ 连续，则 $\{ x \in X : P_K(x) < 1 \}$ 是开集（因为 $P_K$ 连续且 $(-\infty, 1)$ 开）。由部分 1，$\{ x \in X : P_K(x) < 1 \} \subseteq K$，且 $P_K(0) = 0$，故 $0 \in \{ x \in X : P_K(x) < 1 \}$。因此 $K$ 包含一个包含零点的开集。
+### 2. 证明 $\{ x \in X : P_K(x) < 1 \} \subseteq K$  
+若 $P_K(x) < 1$，存在 $0 < t < 1$ 使得 $x \in tK$，即存在 $k \in K$ 满足 $x = tk$。由 $K$ 平衡凸且包含 $0$，对任意 $t \in [0,1]$ 有 $tK \subseteq K$，故 $x \in K$。
 
-必要性：若 $K$ 包含一个包含零点的开集 $U$，则存在平衡开邻域 $V \subseteq U \subseteq K$（拓扑向量空间中零点的开邻域包含平衡开邻域）。需证 $P_K$ 连续。由于 $P_K$ 是半范数，只需证在零点连续。对任意 $\epsilon > 0$，取 $W = \epsilon V$，则 $W$ 是零点开邻域。若 $x \in W$，则 $x/\epsilon \in V \subseteq K$，故 $P_K(x/\epsilon) \leq 1$，即 $P_K(x) \leq \epsilon$。因此 $P_K$ 在零点连续，从而在整个空间连续。
 
-当 $P_K$ 连续时：
+### 3. 证明 $K \subseteq \{ x \in X : P_K(x) \le 1 \}$  
+对任意 $x \in K$，有 $x \in 1 \cdot K$，因此 $P_K(x) \le 1$，即 $x \in \{ P_K \le 1 \}$。
 
-由部分 1，$\text{Int}(K) \subseteq \{ x \in X : P_K(x) < 1 \}$。又 $\{ x \in X : P_K(x) < 1 \}$ 是开集且包含于 $K$，故 $\{ x \in X : P_K(x) < 1 \} \subseteq \text{Int}(K)$。因此 $\text{Int}(K) = \{ x \in X : P_K(x) < 1 \}$。
-由部分 1，$K \subseteq \{ x \in X : P_K(x) \leq 1 \} \subseteq \overline{K}$。又 $\{ x \in X : P_K(x) \leq 1 \}$ 是闭集（因为 $P_K$ 连续且 $(-\infty, 1]$ 闭），故 $\overline{K} \subseteq \{ x \in X : P_K(x) \leq 1 \}$。因此 $\{ x \in X : P_K(x) \leq 1 \} = \overline{K}$.
+
+### 4. 证明 $\{ x \in X : P_K(x) \le 1 \} \subseteq \overline{K}$  
+设 $P_K(x) \le 1$，下证 $x \in \overline{K}$。任取 $x$ 的开邻域 $V$，由标量乘法在 $1$ 处连续，存在 $\delta' > 0$ 使得当 $| \alpha - 1 | < \delta'$ 时，$\alpha x \in V$。取 $\eta > 0$ 满足 $\eta < \delta'$。因 $P_K(x) \le 1$，由下确界定义，存在 $t$ 满足 $1 \le t < 1 + \eta$ 使得 $x \in tK$，即存在 $k \in K$ 使得 $x = tk$，则 $k = \frac{1}{t} x$。由于 $1 < t < 1 + \eta$，有 $\left| \frac{1}{t} - 1 \right| = 1 - \frac{1}{t} < 1 - \frac{1}{1+\eta} = \frac{\eta}{1+\eta} < \eta < \delta'$，故 $\frac{1}{t} x \in V$，即 $k \in V \cap K$，因此 $V \cap K \ne \varnothing$，得 $x \in \overline{K}$。
+
+
+### 5. 连续性与等价条件  
+$P_K$ 是次线性泛函，且满足 $P_K(\lambda x) = |\lambda| P_K(x)$（因 $K$ 平衡）。
+
+**必要性**：若 $P_K$ 连续，由 $P_K(0) = 0$，存在原点处的开邻域 $U$ 使得 $x \in U \Rightarrow P_K(x) < 1$，从而 $U \subseteq \{ P_K < 1 \} \subseteq K$，即 $K$ 包含 $0$ 的一个开邻域。
+
+**充分性**：若存在开集 $U$ 满足 $0 \in U \subseteq K$，由拓扑向量空间的性质，存在平衡开邻域 $V \subseteq U \subseteq K$。下证 $P_K$ 在 $0$ 处连续：对任意 $\varepsilon > 0$，考虑开集 $\varepsilon V$（标量乘法同胚），它是 $0$ 的邻域。对任意 $x \in \varepsilon V$，存在 $v \in V$ 使得 $x = \varepsilon v$。由 $v \in V \subseteq K$ 且 $V$ 开，有 $v \in \mathrm{Int}(K)$，从而 $P_K(v) < 1$，故 $P_K(x) = \varepsilon P_K(v) < \varepsilon$。因此 $P_K$ 在 $0$ 连续，进而 $P_K$ 在全空间连续。
+
+
+### 6. 连续性下的等式  
+设 $P_K$ 连续，则：
+
+- $\mathrm{Int}(K) = \{ P_K < 1 \}$：  
+  由第一部分，$\mathrm{Int}(K) \subseteq \{ P_K < 1 \}$。反向，因 $P_K$ 连续，$\{ P_K < 1 \}$ 是开集且包含于 $K$，故为 $K$ 的开子集，从而包含于 $\mathrm{Int}(K)$。
+
+- $\overline{K} = \{ P_K \le 1 \}$：  
+  由第一部分，$\{ P_K \le 1 \} \subseteq \overline{K}$。反向，因 $P_K$ 连续，$\{ P_K \le 1 \}$ 是闭集，且 $K \subseteq \{ P_K \le 1 \}$，故 $\overline{K} \subseteq \overline{\{ P_K \le 1 \}} = \{ P_K \le 1 \}$。
+
 
 # 15.2
 假设$X$是实线性空间，$\mathcal{P}=\{p_{\beta}\}_{\beta\in\Lambda}$ 是$X$上的一族半范。
