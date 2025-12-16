@@ -55,7 +55,7 @@ $$\lim_{n\to\infty}\|x-\sum_{i=1}^{n}x_i e_i\|=0.$$
 
 1. $\Pi_{n}$ 是 $X$ 上的线性投影算子且$\Pi_{n}\circ\Pi_{m}=\Pi_{m}\circ\Pi_{n}=\Pi_{m}$ 如果$n\geq m\geq1$ 
 
-2. 引入$\left|\left\|x\right\|\right|:=\sup_{n\geq1}\left\|\Pi_n(x)\right\|$ ,则$\forall x\in X,\|x\|\leq|\|x\||$ ，从而$(X,|\|\cdot\||)$ 是Banach空间.
+2. 引入 $|\|x\||:=\sup_{n\geq1}\left\|\Pi_n(x)\right\|$ ,则 $\forall x\in X,\|x\|\leq|\|x\||$ ，从而$(X,|\|\cdot\||)$ 是Banach空间.
 
 3. 存在常数$c>0$ 使得$\sup_{n\geq1}\|\Pi_n(x)\|\leq c\|x\|$ 
 
