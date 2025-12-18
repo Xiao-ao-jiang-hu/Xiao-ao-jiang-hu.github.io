@@ -16,6 +16,7 @@
     "hexo-abbrlink": "^2.2.1",
     "hexo-asset-image": "^1.0.0",
     "hexo-asset-img": "^1.2.0",
+    "hexo-blog-encrypt": "^3.1.9",
     "hexo-deployer-git": "^4.0.0",
     "hexo-filter-mathjax": "^0.9.1",
     "hexo-filter-tikzjax": "^1.0.2",
