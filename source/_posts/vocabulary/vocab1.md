@@ -9,6 +9,7 @@ categories:
 index_img: /img/english.jpg
 banner_img: /img/english.jpg
 excerpt: 词根 band、bal、bar 相关词汇的记忆方法与解析。
+abbrlink: 5984df4a
 date: 2025-12-17 02:36:49
 ---
 ## 词根解析

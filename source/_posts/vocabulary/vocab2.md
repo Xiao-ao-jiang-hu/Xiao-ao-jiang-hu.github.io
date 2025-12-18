@@ -9,6 +9,7 @@ categories:
 index_img: /img/english.jpg
 banner_img: /img/english.jpg
 excerpt: 词根 press 相关词汇的记忆方法与解析。
+abbrlink: c1befa4c
 date: 2025-12-17 02:43:17
 ---
 ## 词根解析

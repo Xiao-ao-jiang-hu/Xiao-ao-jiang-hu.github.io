@@ -91,6 +91,19 @@ qns-3 is the first quantum-network extension that fully complies with ns-3’s a
 核心机制：系统梳理 2016-2024 所有量子路由协议，归纳为 Shortest-Path、Max-Flow、Graph-State、Purify-Aware、Hybrid 五大类。  
 网络层功能：指出“仍缺与经典 IP 同轴的分布式量子路由协议”，并给出统一性能基准，提供需求清单与评估指标。
 
+### 2025 – Fidelity-Aware Multipath Routing for Multipartite State Distribution in Quantum Networks  
+论文链接：https://arxiv.org/abs/2503.03831
+协议/框架名称：Fidelity-Aware Multipath Routing  
+
+#### 内容总结
+不同于点对点的直线路径，分发多体态需要构建一个斯坦纳树（Steiner Tree）。树的根节点产生光子，通过分束器或中继节点分发给所有叶子节点。提出了一套数学公式，用于计算多条链路、多个中继操作（如 BSM）以及量子存储器衰减后，最终生成的 GHZ 态的整体保真度。为了应对量子链路极低的成功率，算法不仅寻找一条树，而是尝试寻找多条候选路径或并行链路，通过冗余分发来提升最终成功的概率。
+
+论文中计算保真度估计值的公式为在图上优化计算 $F_{GHZ} = \frac{1}{2}(1 + \prod_{i \in \text{edges}} (2f_i - 1))$，当退化为点对点路径时，优化目标退化为 $F_{end-to-end} \approx \frac{1}{2} + \frac{1}{2} \prod_{j=1}^{n} (2f_{link,j}-1)$。论文中还给出了多路径并行的机制，即同时在多条路径上尝试分发，看哪条先成功。当退化为点对点时，这个机制带剪枝的单路径路由，即先用 Dijkstra 算出前K条最短路径，再根据保真度公式计算每条路径的预估 $F$。剔除所有 $F < F_{threshold}$（用户需求阈值）的路径。在剩下的路径中，选择成功概率 $P$ 最高的一条。
+
+### 2025 - Dynamic Routing in Space-Ground Integrated Quantum Networks
+论文链接：https://arxiv.org/abs/2501.10252
+
+#### 内容总结
 
 # 已有的代码实现
 ### NetSquid-Routing（Python）  
@@ -112,6 +125,27 @@ qns-3 is the first quantum-network extension that fully complies with ns-3’s a
 仓库：https://gitee.com/mindspore/mindquantum
 已实现：链路保活、量子密钥池管理、最短密钥路径路由（DQC 算法）。  
 > 侧重 QKD 场景，但 `DQC.java` 给出了“密钥-链路权重”计算示例，可用于 ns-3 上实现“量子-经典混合路由”。
+
+
+### 容错与恢复
+
+
+# 选题角度
+## 1. 提出一个考虑保真度的量子路由算法
+切入点：经典网络路由只考虑延迟或带宽，但量子网络必须考虑保真度。
+
+在 qns-3 中实现一种多约束路由算法。研究当链路存在噪声（qns-3 的强项）且退相干时间有限时，如何选择路径才能使端到端的纠缠保真度最高。实现传统的 Dijkstra 算法作为对照组，同时实现改进的“保真度-成功率平衡”路由算法。利用 qns-3 的噪声模型，对比不同路径选择对最终量子态质量的影响。
+
+主要参考论文：[Fidelity-Aware Multipath Routing for Multipartite State Distribution in Quantum Networks](https://arxiv.org/abs/2503.03831)
+该论文主要解决了在噪声环境下，如何高效、高保真度地构建 GHZ 态分发树。首先可以作为特例研究点对点的情形，此时算法从寻找覆盖多个点的树退化为寻找连接两个点的路径。如果时间充裕，可以尝试实现多点纠缠分发的路由算法。
+
+## 2. 实现量子网络的动态重路由机制
+切入点： 实际量子信道极易受到环境干扰（如物理环境变化导致的噪声剧增）。
+
+实现网络层的快速重路由机制，当某一中继节点因环境噪声过载而失效时，网络层如何快速切换到备份路径并保持纠缠的一致性。在模拟干扰情形下比较静态路由与动态重路由在突发干扰下的连接中断率。
+
+主要参考论文：[Dynamic Routing in Space-Ground Integrated Quantum Networks](https://arxiv.org/abs/2501.10252)
+
 
 
 # 计划
