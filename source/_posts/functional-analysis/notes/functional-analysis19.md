@@ -14,17 +14,25 @@ date: 2025-12-09 14:17:47
 ---
 # Fredholm 算子
 ## 动机
-考虑 $A \in \mathcal{M}_{m,n}(\mathbb{R}) : \mathbb{R}^n \mapsto \mathbb{R}^m$. $\ker(A) \overset{\text{定义}}{=} \{x \in \mathbb{R}^n \mid Ax = 0\}$. $\operatorname{coker}(A) = \mathbb{R}^m / \operatorname{Ran}(A)$.
+### 定义：三个空间
+设 $X$ 和 $Y$ 是实 Banach 空间，令 $A: X \to Y$ 为一个有界线性算子。$A$ 的**核 (kernel)**、**像 (image)** 和**余核 (cokernel)** 定义为
+$$
+\ker(A) := \{ x \in X \mid Ax = 0 \}, \\ \mathrm{im}(A) := \{ Ax \mid x \in X \}, \\ \mathrm{coker}(A) := Y / \mathrm{im}(A).
+$$
+如果 $A$ 的像是 $Y$ 的一个闭子空间，则余核是一个具有商范数的 Banach 空间。
 
-$a \overset{\text{定义}}{=} \dim \ker(A)$. $\longleftrightarrow$ $a$ 表明 $Ax=0$ 解集合的自由度 $\longleftrightarrow$ $a$ 表明映射 $A$ 的“单射”情况
+### 直观理解
 
-$b \overset{\text{定义}}{=} \dim \operatorname{coker}(A)$ $\longleftrightarrow$ $b$ 表明 $Ax=y$ 可解性的相容性条件. 由 H-B 定理知, 存在 $f_1, \cdots, f_b \in X^*$ s.t. $f_i \big|_{\operatorname{Ran}(A)} = 0$ 且 $\operatorname{Ran}(A)^\perp = \operatorname{span}\{f_1, \cdots, f_b\} (\cong \ker(A^T))$ ($\mathbb{R}^m = \operatorname{Ran}(A) \oplus \ker(A^T)$)
+$a := \dim \ker(A)$. $\longleftrightarrow$ $a$ 表明 $Ax=0$ 解集合的自由度 $\longleftrightarrow$ $a$ 表明映射 $A$ 的“单射”情况
+
+$b := \dim \operatorname{coker}(A)$ $\longleftrightarrow$ $b$ 表明 $Ax=y$ 可解性的相容性条件. 
+由 Hahn-Banach 定理知, 存在 $f_1, \cdots, f_b \in X^*$ s.t. $f_i \big|_{\operatorname{Ran}(A)} = 0$ 且 $\operatorname{Ran}(A)^\perp = \operatorname{span}\{f_1, \cdots, f_b\} (\cong \ker(A^T))$ ($\mathbb{R}^m = \operatorname{Ran}(A) \oplus \ker(A^T)$)
 
 因此, $y \in \operatorname{Ran}(A) \Leftrightarrow \forall i \leq b$, $f_i(y) = 0$.
 
 $\longleftrightarrow$ $b$ 表明映射 $A$ 的“满射”情况
 
-记 $L \overset{\text{定义}}{=} a - b$. $\Rightarrow$ $\begin{cases} L > 0 \; (\Leftrightarrow b < a) \text{ 即映射 } A \text{ 更接近满射} \\ L < 0 \; (\Leftrightarrow b > a) \text{ 即映射 } A \text{ 更接近单射} \\ L = 0 \; (\Leftrightarrow b = a) \text{ 即“接近单射”或“满射”相当}. \end{cases}$
+记 $L := a - b$. $\Rightarrow$ $\begin{cases} L > 0 \; (\Leftrightarrow b < a) \text{ 即映射 } A \text{ 更接近满射} \\ L < 0 \; (\Leftrightarrow b > a) \text{ 即映射 } A \text{ 更接近单射} \\ L = 0 \; (\Leftrightarrow b = a) \text{ 即“接近单射”或“满射”相当}. \end{cases}$
 
 回到 $A: \mathbb{R}^n \mapsto \mathbb{R}^m$.
 
@@ -34,12 +42,7 @@ $$L = \dim \ker(A) - \dim(\mathbb{R}^m / \operatorname{Ran}(A))= \dim \ker(A) + 
 
 为了将这样的线性映射性质从有限维推广至无限维, 引入 Fredholm 算子.
 
-## 定义：三个空间
-设 $X$ 和 $Y$ 是实 Banach 空间，令 $A: X \to Y$ 为一个有界线性算子。$A$ 的**核 (kernel)**、**像 (image)** 和**余核 (cokernel)** 定义为
-$$
-\ker(A) := \{ x \in X \mid Ax = 0 \}, \\ \mathrm{im}(A) := \{ Ax \mid x \in X \}, \\ \mathrm{coker}(A) := Y / \mathrm{im}(A).
-$$
-如果 $A$ 的像是 $Y$ 的一个闭子空间，则余核是一个具有商范数的 Banach 空间。
+
 
 ## Fredholm 算子的定义
 
@@ -95,6 +98,10 @@ $$
 2. $A$ 是 Fredholm 算子当且仅当 $A^*$ 是 Fredholm 算子。
 
 3. 若 $A$ 是 Fredholm 算子，则 $\mathrm{index}(A^*) = -\mathrm{index}(A)$。
+
+!!! note 直观理解
+    $\operatorname{coker}$ 可以如下看待: $\operatorname{im}(A)$ 反映了有多少“方向”是可以被 $A$ 映射到的。因此 $A$ 商掉了这些“方向”后，剩下的每个等价类描述了一种“无法通过 $A$ 达到的方向”的不满足可能。余核越大，说明 $B$ 中的元素想要待在 $\operatorname{im}(A)$ 中必须满足的约束种类越多（每一种不满足的可能性都要考虑到才能呆在里面），因此映射越远离满射。
+
 
 ### 证明
 
