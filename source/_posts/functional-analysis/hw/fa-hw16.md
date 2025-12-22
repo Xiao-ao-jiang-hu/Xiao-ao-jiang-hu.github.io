@@ -28,8 +28,8 @@ $$V:=\{x\in H:\max_{i=1,\cdots,m}|\langle x,y_i\rangle|<\epsilon\}\subset U.$$
 ## 解答
 ### 1
 由于$H$是Hilbert空间，于是由Reisz表示定理， $\forall f \in H^*, !\exists y \in H \, s.t. \, f(x) = \langle x, y \rangle , \, \forall x \in H$ 。又由于 $(e_n)_{n\in\mathbb{N}}$ 为标准正交基，故有Parseval等式：
-$$\sum_{n=1}^{\infty} |<e_n, y>|^2 = ||y||^2 < +\infty, \forall y \in H$$
-因此$|<e_n, y>| \to 0$，即$e_n \rightharpoonup 0$。
+$$\sum_{n=1}^{\infty} |\langle e_n, y \rangle|^2 = \|y\|^2 < +\infty, \forall y \in H$$
+因此$|\langle e_n, y\rangle| \to 0$，即$e_n \rightharpoonup 0$。
 
 ### 2
 任取$A$中的弱收敛子列$\sqrt{n_k}e_{n_k} \rightharpoonup x$，则其一定有界。设其弱收敛为$x$，需要证明$x \in A$。由于$\sqrt{n_k}e_{n_k}$有界，故存在$M>0$使得$||\sqrt{n_k}e_{n_k}|| \leq M$，即$n_k \leq M^2$。因此，$n_k$只能取有限个值，故$\sqrt{n_k}e_{n_k}$只能取有限个值，因此其弱极限$x$也只能是这些值中的一个，即$x \in A$。
