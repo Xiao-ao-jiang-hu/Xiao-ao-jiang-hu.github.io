@@ -1,99 +1,90 @@
 
-const originalContentMap = new Map();
+// 1. 注入 MathJax 配置，确保渲染后的 HTML 节点携带原始 TeX 源码
+const mathJaxConfig = `
+<script>
+  (function() {
+    var config = window.MathJax || {};
+    window.MathJax = config;
+    if (!config.options) config.options = {};
+    if (!config.options.renderActions) config.options.renderActions = {};
+    // 添加自定义动作：渲染完成后将 TeX 源码存入 data-tex 属性
+    config.options.renderActions.addTexData = [200, function(doc) {
+      for (var i = 0; i < doc.math.length; i++) {
+        var math = doc.math[i];
+        var node = math.typesetRoot;
+        if (node) {
+          node.setAttribute('data-tex', math.math);
+          node.setAttribute('data-display', math.display);
+        }
+      }
+    }, ''];
+  })();
+</script>
+`;
 
-hexo.extend.filter.register('before_post_render', function (data) {
-    // 记录原始 Markdown 内容，避免被其他插件（如 protect-math）修改
-    originalContentMap.set(data.source, data.content);
-    return data;
-}, 1);
+hexo.extend.injector.register('head_end', mathJaxConfig, 'post');
+hexo.extend.injector.register('head_end', mathJaxConfig, 'page');
 
-hexo.extend.filter.register('markdown-it:renderer', function (md) {
-    const blockNames = [
-        'paragraph_open', 'heading_open', 'list_item_open', 'blockquote_open',
-        'code_block', 'fence', 'table_open', 'tr_open', 'bullet_list_open', 'ordered_list_open'
-    ];
-
-    blockNames.forEach(name => {
-        const original = md.renderer.rules[name] || function (tokens, idx, options, env, self) {
-            return self.renderToken(tokens, idx, options);
-        };
-
-        md.renderer.rules[name] = function (tokens, idx, options, env, self) {
-            const token = tokens[idx];
-            if (token.map) {
-                token.attrSet('data-source-line', token.map[0]);
-                token.attrSet('data-source-end-line', token.map[1]);
-            }
-            return original(tokens, idx, options, env, self);
-        };
-    });
-});
-
-hexo.extend.filter.register('after_post_render', function (data) {
-    // 仅在文章和页面中嵌入源码
-    if (data.layout !== 'post' && data.layout !== 'page') return data;
-
-    const rawMarkdown = originalContentMap.get(data.source) || data._content;
-    originalContentMap.delete(data.source);
-
-    if (!rawMarkdown) return data;
-
-    const encodedMarkdown = Buffer.from(rawMarkdown).toString('base64');
-
-    // 注入隐藏的数据节点
-    data.content += `<script class="raw-markdown-data" type="text/plain" data-content="${encodedMarkdown}"></script>`;
-
-    return data;
-});
-
+// 2. 注入复制拦截脚本，处理选中内容的转换
 const copyScript = `
 <script>
   (function() {
-    document.addEventListener('copy', function(e) {
-      const selection = window.getSelection();
-      if (selection.isCollapsed) return;
+    function getMarkdown(node) {
+      if (node.nodeType === 3) return node.textContent; // 文本节点
+      if (node.nodeType !== 1) return '';
 
-      const range = selection.getRangeAt(0);
+      var tag = node.tagName;
       
-      function findBlock(node) {
-        let el = node.nodeType === 1 ? node : node.parentElement;
-        while (el && !el.hasAttribute('data-source-line')) {
-          el = el.parentElement;
-          if (!el || el.classList.contains('markdown-body')) break;
-        }
-        return el && el.hasAttribute('data-source-line') ? el : null;
+      // 处理 MathJax 公式
+      if (tag === 'MJX-CONTAINER' || node.hasAttribute('data-tex')) {
+        var tex = node.getAttribute('data-tex');
+        var isDisplay = node.getAttribute('data-display') === 'true';
+        return isDisplay ? '\\n$$\\n' + tex + '\\n$$\\n' : '$' + tex + '$';
       }
 
-      const startBlock = findBlock(range.startContainer);
-      const endBlock = findBlock(range.endContainer);
+      // 处理代码块
+      if (tag === 'PRE') return '\\n\`\`\`\\n' + node.innerText + '\\n\`\`\`\\n';
+      if (tag === 'CODE' && node.parentElement.tagName !== 'PRE') return '\`' + node.innerText + '\`';
 
-      if (startBlock && endBlock) {
-        const startLine = parseInt(startBlock.getAttribute('data-source-line'));
-        const endLine = parseInt(endBlock.getAttribute('data-source-end-line'));
+      // 递归处理子节点
+      var childrenContent = '';
+      for (var i = 0; i < node.childNodes.length; i++) {
+        childrenContent += getMarkdown(node.childNodes[i]);
+      }
 
-        // 查找当前文章对应的源码数据
-        let container = startBlock;
-        while (container && !container.querySelector('.raw-markdown-data')) {
-          container = container.parentElement;
-          if (!container || container.tagName === 'BODY') break;
-        }
-        const rawDataEl = container ? container.querySelector('.raw-markdown-data') : document.querySelector('.raw-markdown-data');
+      // 处理基础格式转换
+      if (tag === 'A' && node.getAttribute('href')) return '[' + childrenContent + '](' + node.getAttribute('href') + ')';
+      if (tag === 'STRONG' || tag === 'B') return '**' + childrenContent + '**';
+      if (tag === 'EM' || tag === 'I') return '*' + childrenContent + '*';
+      if (tag === 'BR') return '\\n';
+
+      // 处理块级元素换行
+      var blockTags = ['P', 'DIV', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'LI', 'TR', 'BLOCKQUOTE'];
+      if (blockTags.indexOf(tag) !== -1) {
+        return '\\n' + childrenContent + '\\n';
+      }
+
+      return childrenContent;
+    }
+
+    document.addEventListener('copy', function(e) {
+      var selection = window.getSelection();
+      if (selection.isCollapsed) return;
+
+      var container = document.createElement('div');
+      for (var i = 0; i < selection.rangeCount; i++) {
+        container.appendChild(selection.getRangeAt(i).cloneContents());
+      }
+
+      // 只有当选中内容包含公式、链接或代码时，才干预复制行为
+      if (container.querySelector('mjx-container, a, code, [data-tex]')) {
+        var markdown = getMarkdown(container).trim()
+          .replace(/\\n{3,}/g, '\\n\\n'); // 压缩多余的空行
         
-        if (rawDataEl) {
-          const encoded = rawDataEl.getAttribute('data-content');
-          const binary = atob(encoded);
-          const bytes = new Uint8Array(binary.length);
-          for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-          const rawMarkdown = new TextDecoder().decode(bytes);
-          
-          const allLines = rawMarkdown.split('\\n');
-          const selectedMarkdown = allLines.slice(startLine, endLine).join('\\n');
-          
-          if (selectedMarkdown) {
-            e.clipboardData.setData('text/plain', selectedMarkdown);
-            e.preventDefault();
-            console.log('Copied as Markdown (lines ' + (startLine + 1) + '-' + endLine + ')');
-          }
+        if (markdown) {
+          e.clipboardData.setData('text/plain', markdown);
+          e.preventDefault();
+          console.log('Copied with formulas preserved');
         }
       }
     });

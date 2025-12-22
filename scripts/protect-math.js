@@ -15,7 +15,9 @@ hexo.extend.filter.register('before_post_render', function (data) {
     // 先保护 $$...$$ 块公式
     content = content.replace(/\$\$([\s\S]*?)\$\$/g, function (match) {
         const index = formulas.length;
-        formulas.push(match);
+        // 去除公式内部的换行符，替换为空格，避免渲染错误
+        const cleanedFormula = match.replace(/\r?\n/g, ' ');
+        formulas.push(cleanedFormula);
         // 使用特殊标记，确保不会与正常代码混淆
         return `MATHBLOCK_PLACEHOLDER_${index}_ENDMARK`;
     });

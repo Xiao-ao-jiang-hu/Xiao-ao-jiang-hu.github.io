@@ -10,14 +10,16 @@ categories:
 index_img: /img/quan.jpg
 banner_img: /img/quan.jpg
 abbrlink: e19c09b2
-excerpt: 本文介绍了稳定子表的基本概念及其在量子电路模拟中的应用，涵盖了泡利积、稳定子生成元、稳定子表的定义与操作等内容。
+excerpt: 本文介绍了稳定子表的基本概念及其在量子电路模拟中的应用，涵盖了Pauli积、稳定子生成元、稳定子表的定义与操作等内容。
 date: 2025-12-18 20:50:58
 ---
-### **第1部分：前置基础**
+# 前置基础
 
-#### **1.1 泡利积**
+## Pauli积
+Pauli矩阵 $\{I, X, Y, Z\}$ 构成单量子比特厄米算子的一个正交基（在 Hilbert-Schmidt 内积下）。对于 $n$ 量子比特系统，所有 $n$-fold Pauli 算子张成的集合构成多体算子空间的一组完备基，使得任意算子均可表示为 Pauli 算子的线性组合。这种表示简化了量子态和量子操作的分析。
+### 定义：Pauli矩阵
 
-**定义 1** (泡利矩阵) 泡利矩阵的集合是 $\Sigma = \{I, X, Y, Z\}$，其中：
+Pauli矩阵的集合是 $\Sigma = \{I, X, Y, Z\}$，其中：
 $$
 \sigma_0 = I = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix},
 \sigma_1 = X = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix},
@@ -26,102 +28,86 @@ $$
 \quad (1.1)
 $$
 
-**定义 2** (泡利积) $n$ 个量子比特上的一个泡利积 $P$ 是 $n$ 个泡利矩阵的张量积：
+### 定义:Pauli积
+$n$ 个量子比特上的一个Pauli积 $P$ 是 $n$ 个Pauli矩阵的张量积：
 $$
 P = \bigotimes_{k=1}^{n} \sigma_k, \quad \text{其中 } \sigma_k \in \Sigma.
 \quad (1.2)
 $$
 
-**例** (泡利积记号) $X_1Y_2Z_3$ 表示一个作用在3个量子比特上的泡利积，其中 $\sigma_1 = X$, $\sigma_2 = Y$, $\sigma_3 = Z$。
+**例** 
+$X_1Y_2Z_3$ 表示一个作用在3个量子比特上的Pauli积，其中 $\sigma_1 = X$, $\sigma_2 = Y$, $\sigma_3 = Z$。
 
-**定义 3** (泡利群) $n$ 量子比特泡利群 $\mathcal{P}_n$ 是所有作用在 $n$ 个量子比特上的泡利积乘以一个来自集合 $\Phi := \{\pm 1, \pm i\}$ 的相位因子所组成的集合。形式上：
+### 定义：Pauli群
+$n$ 量子比特Pauli群 $\mathcal{P}_n$ 是所有作用在 $n$ 个量子比特上的Pauli积乘以一个来自集合 $\Phi := \{\pm 1, \pm i\}$ 的相位因子所组成的集合。形式上：
 $$
-\mathcal{P}_n = \left\{ \phi P \mid \phi \in \Phi, P = \bigotimes_{k=1}^{n} \sigma_k, \sigma_k \in \Sigma \right\}.
-\quad (1.3)
+\mathcal{P}_n = \left\{ \phi P \mid \phi \in \Phi, P = \bigotimes_{k=1}^{n} \sigma_k, \sigma_k \in \Sigma \right\}
 $$
-单量子比特泡利群记为 $\mathcal{P}_1$。
+单量子比特Pauli群记为 $\mathcal{P}_1$。
 
-**断言** $\{X_k, Z_k\}_{k=1}^{n}$ 是 $\mathcal{P}_n$ 的一个生成集。
 
-**断言** (唯一分解) 对于任意泡利算子 $P \in \mathcal{P}_n$，存在唯一的 $\phi \in \Phi$ 和 $x_k, z_k \in \{0,1\}$（对每个量子比特索引 $k \in [n] := \{1,2,\dots,n\}$），使得：
+### 定理：Pauli群的生成元
+$\{X_k, Z_k\}_{k=1}^{n}$ 是 $\mathcal{P}_n$ 的生成元。
+
+### 定理：Pauli群的唯一分解性质
+对于任意 $P \in \mathcal{P}_n$，存在唯一的一组 $\{x_k, z_k\}_{k=1}^{n} \subseteq \{0,1\}$ 和 $\phi \in \Phi$，使得：
 $$
 P = \phi \prod_{k=1}^{n} X_k^{x_k} Z_k^{z_k}.
-\quad (1.4)
 $$
 
-**定义 4** (相位与算子提取) 对于任意泡利积 $Q \in \mathcal{P}_n$，它可以唯一地写成 $Q = \phi P$，其中 $\phi \in \Phi$ 且 $P = \bigotimes_{k=1}^{n} \sigma_k$（其中每个 $\sigma_k \in \{I, X, Y, Z\}$ 的相位为 $+1$），我们定义：
-- 相位函数 $\text{ph}(Q) = \phi$。
-- 算子函数 $\text{op}(Q) = P$。¹
-
-¹ 注意，$\text{op}(Q)$ 对应于商群 $\mathcal{P}_n / \Phi$ 中 $Q$ 的代表元，带有 $+1$ 相位。
-
----
-
-#### **1.2 稳定子生成元**
-
-**定义 5** (XZ编码) XZ编码是一个映射 $\text{encode\_xz}: \{I, X, Y, Z\} \to \{0,1\}^2$，由其在泡利矩阵上的作用定义：
+进一步，对于任意Pauli积 $Q \in \mathcal{P}_n$，我们定义：
 $$
-\text{encode\_xz}(I) = (0,0) \quad (1.5) \\
-\text{encode\_xz}(X) = (1,0) \quad (1.6) \\
-\text{encode\_xz}(Y) = (1,1) \quad (1.7) \\
-\text{encode\_xz}(Z) = (0,1) \quad (1.8)
-$$
-一般来说，对于任何 $P \in \mathcal{P}_1$ 且 $\text{op}(P) = X^x Z^z$，我们有 $\text{encode\_xz}(P) = (x,z)$。
-
-**性质** (XZ编码的同态性) XZ编码是一个同态。对于任何 $P_1, P_2 \in \{I, X, Y, Z\}$：
-$$
-\text{encode\_xz}(P_1 P_2) = \text{encode\_xz}(P_1) \oplus \text{encode\_xz}(P_2).
-\quad (1.9)
+\text{ph}(P) = \phi, \, \text{op}(P) = \prod_{k=1}^{n} X_k^{x_k} Z_k^{z_k}
 $$
 
-**定义 6** (稳定子) 我们说一个酉算子 $U$ 稳定一个纯态 $|\psi\rangle$，如果：
+### 推论：XZ编码
+设 $\mathcal{P}_n$ 为 n 比特 Pauli 群（忽略全局相位）。对于任意 $P \in \mathcal{P}_n$，存在唯一的二进制向量 $(x_1, \dots, x_n, z_1, \dots, z_n) \in \{0,1\}^{2n}$，使得 $P$ 可表示为 $\prod_{k=1}^{n} X_k^{x_k} Z_k^{z_k}$。XZ 编码定义为映射 $\text{encode\_xz}: \mathcal{P}_n \to \{0,1\}^{2n}$，将 $P$ 映为该向量。
+
+**性质**
+该编码具有同态性：对任意 $P, Q \in \mathcal{P}_n$，有
+$$\text{encode\_xz}(P Q) = \text{encode\_xz}(P) \oplus \text{encode\_xz}(Q),$$
+其中 $\oplus$ 表示逐分量模 2 加法。
+
+## 稳定子
+稳定子码与经典线性码具有深刻的对应关系。通过稳定子的二进制表示，可以将量子码的构造问题转化为经典码的辛正交条件，从而利用成熟的经典编码理论来设计量子码。这种联系极大地丰富了量子纠错码的资源，并简化了分析和设计过程。
+
+### 定义：稳定子和稳定子群
+称酉算子 $U$ 稳定一个纯态 $|\psi\rangle$，如果：
 $$
-U |\psi\rangle = |\psi\rangle.
-\quad (1.10)
+U |\psi\rangle = |\psi\rangle
 $$
+称 $|\psi\rangle$ 的稳定子为所有稳定 $|\psi\rangle$ 的酉算子集合。
 
-**断言** (稳定子群) 稳定 $|\psi\rangle$ 的酉算子集合在乘法下构成一个群。
+稳定 $|\psi\rangle$ 的酉算子集合在乘法下构成一个群。给定一个 $n$ 量子比特纯态 $|\psi\rangle$，其稳定子群 $\mathcal{S}(|\psi\rangle)$ 被定义为所有稳定 $|\psi\rangle$ 的Pauli积所组成的群。
 
-**定义 7** (稳定子群) 给定一个 $n$ 量子比特纯态 $|\psi\rangle$，其稳定子群 $\mathcal{S}(|\psi\rangle)$ 被定义为所有稳定 $|\psi\rangle$ 的泡利积所组成的群。
+### 稳定子的性质
+1. 稳定子群是阿贝尔群。
+2. 一个 $n$ 量子比特态 $|\psi\rangle$ 最多有 $n$ 个稳定子生成元。
 
-**性质** (阿贝尔性) 稳定子群是阿贝尔群。
+**证明**
+1. 设 $S_1, S_2 \in \mathcal{S}(|\psi\rangle)$，则：
+    $$S_1 S_2 |\psi\rangle = S_1 (S_2 |\psi\rangle) = S_1 |\psi\rangle = |\psi\rangle,$$
+    因此 $S_1 S_2 \in \mathcal{S}(|\psi\rangle)$。类似地，$S_2 S_1 |\psi\rangle = |\psi\rangle$，所以 $S_1 S_2 = S_2 S_1$。
+2. 设 $\{S_1, \dots, S_m\}$ 为 $\mathcal{S}(|\psi\rangle)$ 的一组生成元。由于每个 $S_i$ 都是厄米且平方为单位元，$S_i$ 的本征值为 $\pm 1$。因此，$\mathcal{S}(|\psi\rangle)$ 的每个生成元将希尔伯特空间分割为两个子空间：一个对应于本征值 $+1$，另一个对应于本征值 $-1$。每添加一个独立的生成元，稳定子空间的维度至少减半。因此，最多只能有 $n$ 个独立生成元，否则稳定子空间将变得平凡。$\square$
 
-**证明** (反证法) $\forall M, N \in \mathcal{S}(|\psi\rangle) \subset \mathcal{P}_n$,
-$$
-MN \neq NM \\
-\iff MN = -NM \\
-\iff -|\psi\rangle = -NM|\psi\rangle = MN|\psi\rangle = |\psi\rangle \\
-\iff \text{false}
-\quad \square
-$$
+### 定义：稳定子态
+一个具有恰好 $n$ 个稳定子生成元的 $n$ 量子比特态 $|\psi\rangle$。
 
-**断言** 一个 $n$ 量子比特态 $|\psi\rangle$ 最多有 $n$ 个稳定子生成元。
-
-**定义 8** (稳定子态) 一个具有恰好 $n$ 个稳定子生成元的 $n$ 量子比特态 $|\psi\rangle$。
-
----
-
-#### **1.3 稳定子表**
-
-**定义 9** ( Clifford 操作) 一个酉算子 $C$ 是 Clifford 操作，如果 $\forall P \in \mathcal{P}_n, CPC^\dagger \in \mathcal{P}_n$。
+### 定义：Clifford 操作
+一个酉算子 $C$ 是 Clifford 操作，如果 $\forall P \in \mathcal{P}_n, CPC^\dagger \in \mathcal{P}_n$。
 
 !!! note 理解
     即 Clifford 操作是 $\mathcal{P}_n$ 在酉算子集合中的正规化子。于是 Clifford 操作由其在 $\mathcal{P}_n$ 生成元上的共轭作用唯一确定。
 
-**定义 10** (稳定子表) 给定一个 $n$ 量子比特 Clifford 操作 $C$，一个稳定子表 $\text{Tableau}(C) ::= T$ 是一种表示，它存储了 $C$ 如何共轭每个泡利群生成元。具体来说，它记录了 $T(g) := CgC^{-1}$，对每个生成元 $g \in \{X_1, Z_1, \dots, X_n, Z_n\}$。²
+
+## 稳定子表
+Gottesman–Knill 定理表明，稳定子态在 Clifford 门下的演化可以高效地通过跟踪其稳定子生成元来模拟。稳定子表提供了一种紧凑表示 Clifford 操作的方法，使得我们可以高效地计算这些操作对 Pauli 积的共轭作用。
+
+### 定义：稳定子表
+给定一个 $n$ 量子比特 Clifford 操作 $C$，一个稳定子表 $\text{Tableau}(C) ::= T$ 是一种表示，它存储了 $C$ 如何共轭每个Pauli群生成元。具体来说，它记录了 $T(g) := CgC^{-1}$，对每个生成元 $g \in \{X_1, Z_1, \dots, X_n, Z_n\}$。
 
 !!! note 理解
     如前所述，$C$ 由其在生成元上的共轭作用唯一确定，因此稳定子表也唯一地表示 $C$（直到全局相位）。由于生成元是有限的，稳定子表是对 Clifford 操作的有限表示。
-
-² 存储一个稳定子表的空间复杂度是 $O(n^2)$ 比特。
-
-
-**备注** (后向传播) 共轭恒等式 $gC|\psi\rangle = C(C^{-1}gC)|\psi\rangle$ 可以可视化为以下电路等价：
-```text
-|ψ⟩ ——[C]——[g]——     Backward    Forward
-          ||            ↖       ↗
-|ψ⟩ ——[C⁻¹gC]——[C]——
-```
 
 **例** (Controlled-Y门的表) Controlled-Y门 $C_Y$ 的表如下：
 $$
@@ -143,20 +129,21 @@ controlled-Y门 $C_Y$ 的表可以通过以下方式计算：
    - $C_Y (I \otimes X_2) C_Y^{-1} = Z_1 \otimes X_2$
    - $C_Y (I \otimes Z_2) C_Y^{-1} = Z_1 \otimes Z_2$
 3. 计算相位：
-   - 
+    - $(X_1 \otimes I)(X_1 \otimes Y_2) = I \otimes Y_2$，相位为 $+1$。
+    - $(Z_1 \otimes I)(Z_1 \otimes I) = I \otimes I$，相位为 $+1$。
+    - $(I \otimes X_2)(Z_1 \otimes X_2) = Z_1 \otimes I$，相位为 $+1$。
+    - $(I \otimes Z_2)(Z_1 \otimes Z_2) = Z_1 \otimes I$，相位为 $+1$。
 4. 每个生成元的共轭结果构成稳定子表的列
 
 
 !!! warning 稳定子表中的相位
-    泡利群中的算子一般形式为 $\pm i^k P_1 \otimes \cdots \otimes P_n$，其中 $P_i \in \{I, X, Y, Z\}$，$k \in \{0,1,2,3\}$。但厄米性要求算子等于其共轭转置。泡利矩阵 $X, Y, Z$ 均为厄米，但乘以 $i$ 后变为反厄米（例如 $(iX)^\dagger = -iX$）。因此，为了保持 $CgC^{-1}$ 的厄米性（因为 $C$ 是酉的且 $g$ 厄米），其相位只能是 $\pm 1$，不能是 $\pm i$。在稳定子表表示中，相位位仅记录 $\pm 1$，任何 $\pm i$ 相位可以通过生成元的交换关系推断，但不直接存储。
-
-**断言** (泡利积乘法) 对于两个实相位泡利积 $P, Q \in \mathcal{P}_n$，它们的乘积可以通过以下方式计算：
-1. 应用XZ编码同态，逐位应用于 $\text{op}(P)$ 和 $\text{op}(Q)$。
-2. 计算相位 $\text{ph}(PQ) = \sum_{k=1}^{n} s_{x,k} t_{x,k} - s_{z,k} t_{z,k} \mod 4$，其中 $s_{x/z,k}$ 是表 $\text{Tableau}(P)$ 中第 $k$ 列 $X_k/Z_k$ 项的相位指数。
+    Pauli群中的算子一般形式为 $\pm i^k P_1 \otimes \cdots \otimes P_n$，其中 $P_i \in \{I, X, Y, Z\}$，$k \in \{0,1,2,3\}$。但厄米性要求算子等于其共轭转置。Pauli矩阵 $X, Y, Z$ 均为厄米，但乘以 $i$ 后变为反厄米（例如 $(iX)^\dagger = -iX$）。因此，为了保持 $CgC^{-1}$ 的厄米性（因为 $C$ 是酉的且 $g$ 厄米），其相位只能是 $\pm 1$，不能是 $\pm i$。在稳定子表表示中，相位位仅记录 $\pm 1$，任何 $\pm i$ 相位可以通过生成元的交换关系推断，但不直接存储。
 
 
 
-**断言** (表- Clifford 对应) 在 Clifford 操作和有效稳定子表之间存在一一对应关系（全局相位除外）。一个形如下的表 $T$：
+
+### 定理：表 - Clifford 对应
+一个 Clifford 操作唯一对应一个有效稳定子表（全局相位除外）。一个形如下的表 $T$：
 $$
 T = \begin{array}{c|cccccc}
 & X_1 & Z_1 & X_2 & Z_2 & \dots & X_n & Z_n \\
@@ -168,107 +155,169 @@ T = \begin{array}{c|cccccc}
 n & x_{n,1} & z_{n,1} & x_{n,2} & z_{n,2} & \dots & x_{n,n} & z_{n,n} \\
 \end{array}
 $$
-表示一个有效的 Clifford 操作，当且仅当各列（视为泡利积）保持生成元之间的对易关系：
+表示一个有效的 Clifford 操作，当且仅当各列保持生成元之间的对易关系：
 - $[T(X_a), T(X_b)] = 0$
 - $[T(Z_a), T(Z_b)] = 0$
 - $\{T(X_a), T(Z_a)\} = 0$ （反对易）
 - $[T(X_a), T(Z_b)] = 0$ 对于 $a \neq b$
 
-**证明** (“仅当”方向) 设存储的泡利积记为 $X'_k := T(X_k)$ 和 $Z'_k := T(Z_k)$，其中 $k=1,\dots,n$。根据假设，集合 $\{X'_k, Z'_k\}_{k=1}^{n}$ 满足标准对易关系：
+**证明** (“仅当”方向) 设存储的Pauli积记为 $X'_k := T(X_k)$ 和 $Z'_k := T(Z_k)$，其中 $k=1,\dots,n$。根据假设，集合 $\{X'_k, Z'_k\}_{k=1}^{n}$ 满足标准对易关系：
 $$
-[X'_j, X'_k] = [Z'_j, Z'_k] = 0, \quad \{X'_j, Z'_j\} = 0, \quad [X'_j, Z'_k] = 0 \text{ 当 } j \neq k.
-\quad (1.11)
+[X'_j, X'_k] = [Z'_j, Z'_k] = 0, \quad \{X'_j, Z'_j\} = 0, \quad [X'_j, Z'_k] = 0 \text{ 当 } j \neq k
 $$
 考虑标准生成元 $\{X_k, Z_k\}$。有限群的Stone-von Neumann定理指出，在维度为 $2^n$ 的希尔伯特空间上，这些关系存在唯一的不可约表示（直到酉等价）。由于 $\{X_k, Z_k\}$ 和 $\{X'_k, Z'_k\}$ 都是 $(\mathbb{C}^2)^{\otimes n}$ 上这些关系的表示，因此存在一个酉算子 $U$，使得：
 $$
-U X_k U^\dagger = X'_k \quad \text{和} \quad U Z_k U^\dagger = Z'_k \quad \forall k.
-\quad (1.12)
+U X_k U^\dagger = X'_k \quad \text{和} \quad U Z_k U^\dagger = Z'_k \quad \forall k
 $$
 由于 $U$ 将 $\mathcal{P}_n$ 的生成元映射到 $\mathcal{P}_n$ 的元素，它将整个群 $\mathcal{P}_n$ 映射到自身。因此，$U$ 是一个 Clifford 操作。 $\square$
 
----
+## 通过稳定子表进行计算
+### 算法1：Pauli积乘法
 
-#### **1.3.1 通过表共轭一个泡利积**
-
-**算法** (通过表共轭) 为了通过 $C$ 的表（计算 $CPC^{-1}$）来共轭一个任意泡利积 $P$：
-1. 将 $\text{op}(P)$ 分解为生成元：$\text{op}(P) = \prod_{k \in Q_P} X_k^{x_k} Z_k^{z_k}$，其中 $Q_P$ 是 $P$ 作用非平凡的量子比特集合。
-2. 用表中的像替换每个生成元：$X_k \to X'_k := CX_kC^{-1}$, $Z_k \to Z'_k := CZ_kC^{-1}$。
-3. 将得到的泡利积⁵和初始相位相乘，得到最终结果 $CPC^{-1} = \text{ph}(P) \prod_{k \in Q_P} (X'_k)^{x_k} (Z'_k)^{z_k}$。
-
-⁵ 断言 1.5
-
-**断言** (原地共轭的复杂度) 设 $C$ 是一个 $m$ 量子比特 Clifford 操作，其稳定子表为 $T$，设 $P$ 是一个 $n$ 量子比特泡利积。定义：
-- $Q_T = \{q_1, \dots, q_m\}$ 为表覆盖的量子比特集合，
-- $Q_P = \{p_1, \dots, p_n\}$ 为 $P$ 作用非平凡的量子比特集合（即，不是单位元），
-- $Q_{\text{common}} = Q_T \cap Q_P$，其中 $c = |Q_{\text{common}}|$ 为公共量子比特数。
-
-那么，计算 $CPC^{-1}$ 原地的复杂度是 $O(mc) \subseteq O(m^2)$，独立于 $n$。
-
-**证明** 根据算法1.1，对每个 $k \in Q_P$：
-- 如果 $k \in Q_{\text{common}}$：我们从表中查找 $CX_kC^{-1}$ 和/或 $CZ_kC^{-1}$ 并将其乘入结果。每次查找和乘法的时间为 $O(m)$。
-- 如果 $k \notin Q_T$：则 $C$ 不作用于量子比特 $k$，所以 $CX_kC^{-1} = X_k$ 且 $CZ_kC^{-1} = Z_k$。这些量子比特不变，不需要查找/乘法。
-
-表查找次数最多为 $2c$。因此，总复杂度为 $O(c \cdot m) \subseteq O(m^2)$，与 $n$ 无关。 $\square$
-
-**例** (表与泡利积的部分重叠) 考虑一个覆盖量子比特 $Q_T = \{1,2,3\}$（所以 $m=3$）的表 $T$ 和一个泡利积：
 $$
-P = X_1 Y_2 X_5 Z_7 Y_8,
-\quad (1.13)
-$$
-其中 $Q_P = \{1,2,5,7,8\}$（所以 $n=5$）。公共量子比特是 $Q_{\text{common}} = \{1,2\}$，给出 $c=2$。Stim 计算 $CPC^{-1}$ 如下：
-1. 丢弃 $Q_P \setminus Q_T = \{5,7,8\}$，留下 $P' = X_1 Y_2$。
-2. 分解 $Y = iXZ$，所以 $P' = iX_1 X_2 Z_2$。
-3. 从表中查找 $CX_1C^{-1}$、$CX_2C^{-1}$ 和 $CZ_2C^{-1}$（每个都是一个 $m$ 量子比特泡利积）。
-
-4. 将结果相乘：$CP'C^{-1} = (CX_1C^{-1})(CX_2C^{-1})(CZ_2C^{-1})$。
-5. 将结果散开得到 $CPC^{-1} = (CP'C^{-1})X_5Z_7Y_8$。
-
----
-
-#### **1.3.2 组合表**
-
-给定一个 $n$ 量子比特稳定子表 $A$ 和一个 $m$ 量子比特稳定子表 $B$，其中 $m \leq n$，我们可能希望将 $B$ 追加或前置到 $A$ 中。
-
-**算法** (原地追加) 将 $B$ 原地追加到 $A$ 中（赋值 $A \leftarrow B \circ A$）是通过原地共轭 $A$ 的每一列来完成的。对于 $A$ 的每一列 $k \in \{1, \dots, 2n\}$：
-1. 设 $P_k$ 为存储在第 $k$ 列的泡利积。计算 $P'_k = BP_kB^{-1}$。（用 $B$ 共轭 $P_k$）。⁶
-2. 更新第 $k$ 列以存储 $P'_k$。
-
-由于有 $2n$ 列，总复杂度为 $O(n \cdot m^2)$。
-
-⁶ 这需要 $O(m^2)$ 时间。
-
-**图1.** 将 $B$ 追加到 $A$ 的可视化。
-```text
----m---
-      |   |
-      | A |----[B]----
-      |   |
----n-m---
-```
-
-**算法** (原地前置) 将 $B$ 原地前置到 $A$ 中（赋值 $A \leftarrow A \circ B$）是通过计算共轭 $B$ 的每一列来完成的。对于 $B$ 的每一列 $k \in \{1, \dots, 2m\}$：
-1. 设 $P_k$ 为存储在第 $k$ 列的泡利积。计算 $P'_k = AP_kA^{-1}$。（用 $A$ 共轭 $P_k$）。⁷
-2. 将 $P'_k$ 写入 $A$ 的第 $k$ 列下方。
-
-由于有 $2m$ 列，总复杂度为 $O(m \cdot m \cdot n) = O(n \cdot m^2)$。
-
-⁷ 这需要 $O(m \cdot n)$ 时间，因为 $P_k$ 在 $A$ 中有 $m$ 个量子比特。
-
-**图2.** 将 $B$ 前置到 $A$ 的可视化。
-```text
----m---
-      |   |
-      | B |----[A]----
-      |   |
----n-m---
-```
-
-**断言** (组合同态性) 同构 $C \mapsto \text{Tableau}(C)$ 是从 Clifford 群（模全局相位 $\{\pm 1, \pm i\}$）到稳定子表群（在组合下）的一个群同态。也就是说，对于任意 Clifford 操作 $C_1$ 和 $C_2$：
-$$
-\text{Tableau}(C_1 C_2) = \text{Tableau}(C_1) \circ \text{Tableau}(C_2)
+\begin{array}{|l|}
+\hline
+\textbf{算法1：Pauli积乘法} \\
+\hline
+\text{输入：} \\
+\quad P, Q \in \mathcal{P}_n \text{，分别由相位指数 } p, q \in \mathbb{Z}_4 \text{ 和指数向量 } (x_P, z_P), (x_Q, z_Q) \in \{0,1\}^{2n} \text{ 表示。} \\
+\text{输出：} \\
+\quad R = PQ \text{ 的表示：相位指数 } r \in \mathbb{Z}_4 \text{ 和指数向量 } (x_R, z_R) \in \{0,1\}^{2n}。 \\
+\text{步骤：} \\
+1. \text{计算指数向量：} \\
+\quad \text{对于 } k = 1, \dots, n: \\
+\qquad x_{R,k} \gets x_{P,k} \oplus x_{Q,k} \\
+\qquad z_{R,k} \gets z_{P,k} \oplus z_{Q,k} \\
+2. \text{计算相位贡献：} \\
+\quad \Delta \gets 2 \cdot (x_Q \cdot z_P) \bmod 4 \quad \text{（其中 } \cdot \text{ 表示点积，结果为整数）} \\
+3. \text{计算总相位：} \\
+\quad r \gets (p + q + \Delta) \bmod 4 \\
+4. \text{返回 } (r, (x_R, z_R)) \\
+\hline
+\end{array}
 $$
 
----
+**复杂度分析**：步骤1需 $O(n)$ 次异或，步骤2需 $O(n)$ 次乘加（乘为按位与，加为求和），步骤3常数时间，故总时间复杂度 $O(n)$。空间复杂度 $O(n)$。
+
+**正确性证明**：基于 Pauli 乘法的标准公式 $(X^{x_P} Z^{z_P})(X^{x_Q} Z^{z_Q}) = (-1)^{x_Q \cdot z_P} X^{x_P \oplus x_Q} Z^{z_P \oplus z_Q}$，相位因子 $(-1)^{x_Q \cdot z_P} = i^{2 (x_Q \cdot z_P)}$。结合输入相位即得算法。
+
+
+### 算法2：通过稳定子表计算 Pauli 共轭
+
+$$
+\begin{array}{|l|}
+\hline
+\textbf{算法2：通过稳定子表计算 Pauli 共轭} \\
+\hline
+\text{输入：} \\
+\quad \text{Clifford 操作 } C \text{ 的局部表表示：覆盖量子比特集合 } Q_T = \{q_1,\dots,q_m\} \text{，} \\
+\quad \text{矩阵 } M \in \{0,1\}^{2m \times 2m} \text{ 和相位向量 } r \in \mathbb{Z}_4^{2m}。 \\
+\quad \text{Pauli 算子 } P \text{，由相位指数 } p \in \mathbb{Z}_4 \text{ 和指数向量 } (x, z) \in \{0,1\}^{2N} \text{ 表示，} \\
+\quad \text{其中 } N \geq m \text{ 为总量子比特数，} P \text{ 作用于集合 } Q_P \text{（大小为 } n\text{）。} \\
+\quad \text{映射函数 } \mathrm{idx}: Q_T \to \{1,\dots,m\} \text{ 给出量子比特在表中的索引。} \\
+\text{输出：} \\
+\quad R = C P C^{-1} \text{ 的表示：相位指数 } p' \in \mathbb{Z}_4 \text{ 和指数向量 } (x', z') \in \{0,1\}^{2N}。 \\
+\text{步骤：} \\
+1. \text{初始化局部结果：} p_{\text{cur}} \gets 0, \; v_{\text{cur}} \gets (0,\dots,0) \in \{0,1\}^{2m} \\
+2. \text{遍历公共量子比特：对于每个 } k \in Q_{\text{common}} = Q_T \cap Q_P: \\
+\quad \text{设 } i = \mathrm{idx}(k) \\
+\quad \text{若 } x_k = 1: \\
+\qquad w \gets M[i] \text{（第 } i \text{ 行，对应 } CX_kC^{-1} \text{）}, \; r_i \gets r[i] \\
+\qquad \text{调用算法1，输入 } (p_{\text{cur}}, v_{\text{cur}}) \text{ 和 } (r_i, w) \text{，更新 } (p_{\text{cur}}, v_{\text{cur}}) \\
+\quad \text{若 } z_k = 1: \\
+\qquad w \gets M[m+i] \text{（第 } m+i \text{ 行，对应 } CZ_kC^{-1} \text{）}, \; r_{m+i} \gets r[m+i] \\
+\qquad \text{调用算法1，输入 } (p_{\text{cur}}, v_{\text{cur}}) \text{ 和 } (r_{m+i}, w) \text{，更新 } (p_{\text{cur}}, v_{\text{cur}}) \\
+3. \text{构建全局指数向量：} \\
+\quad \text{对于 } k = 1 \text{ 到 } N: \\
+\qquad \text{若 } k \in Q_T \text{ 且存在 } \mathrm{idx}(k): \\
+\qquad\quad i \gets \mathrm{idx}(k) \\
+\qquad\quad x'_k \gets v_{\text{cur}}[i], \quad z'_k \gets v_{\text{cur}}[m+i] \\
+\qquad \text{否则：} \\
+\qquad\quad x'_k \gets x_k, \quad z'_k \gets z_k \\
+4. \text{加入原始相位：} p' \gets (p_{\text{cur}} + p) \bmod 4 \\
+5. \text{返回 } (p', (x', z')) \\
+\hline
+\end{array}
+$$
+
+**复杂度分析**：设 $c = |Q_{\text{common}}|$，步骤2中每个公共量子比特至多调用两次算法1，每次 $O(m)$，故步骤2总复杂度 $O(c \cdot m) \subseteq O(m^2)$。步骤3需 $O(N)$ 时间。空间复杂度 $O(N + m)$。
+
+**正确性证明**：由 Clifford 操作的同构性质，$C P C^{-1} = i^p \prod_{k \in Q_{\text{common}}} (C X_k C^{-1})^{x_k} (C Z_k C^{-1})^{z_k} \cdot \prod_{k \notin Q_T} X_k^{x_k} Z_k^{z_k}$。算法2依次乘以相应像并保持相位，算法1保证乘法正确，非公共量子比特部分保持不变，故正确。
+
+
+**示例**
+
+考虑总量子比特数 $N=5$，Clifford 操作 $C$ 覆盖 $Q_T = \{1,2,3\}$（即 $m=3$）。定义 $C$ 如下（相位均为 $+1$）：
+- $C X_1 C^{-1} = Z_1$
+- $C Z_1 C^{-1} = X_1$
+- $C X_2 C^{-1} = X_2$
+- $C Z_2 C^{-1} = Z_1 Z_2$
+- $C X_3 C^{-1} = X_3$
+- $C Z_3 C^{-1} = Z_3$
+
+其表 $T$ 如下（行对应生成元像，列对应量子比特的 $X$ 和 $Z$ 分量）：
+
+$$
+T = \begin{array}{c|cccccc}
+& X_1 & Z_1 & X_2 & Z_2 & X_3 & Z_3 \\
+\hline
+1 & 0 & 1 & 0 & 0 & 0 & 0 \\
+2 & 1 & 0 & 0 & 0 & 0 & 0 \\
+3 & 0 & 0 & 1 & 0 & 0 & 0 \\
+4 & 0 & 1 & 0 & 1 & 0 & 0 \\
+5 & 0 & 0 & 0 & 0 & 1 & 0 \\
+6 & 0 & 0 & 0 & 0 & 0 & 1 \\
+\end{array}
+$$
+
+其中行1–3对应 $C X_k C^{-1}$，行4–6对应 $C Z_k C^{-1}$，所有相位 $r_i = 0$。
+
+设 Pauli 算子 $P = X_1 Y_2 X_4 Z_5$。将 $Y_2 = i X_2 Z_2$ 代入得 $P = i X_1 X_2 Z_2 X_4 Z_5$，故相位指数 $p = 1$，指数向量为：
+- 量子比特1: $(x_1=1, z_1=0)$
+- 量子比特2: $(x_2=1, z_2=1)$
+- 量子比特4: $(x_4=1, z_4=0)$
+- 量子比特5: $(x_5=0, z_5=1)$
+- 其余为 $(0,0)$
+
+因此 $Q_P = \{1,2,4,5\}$，$Q_{\text{common}} = \{1,2\}$，$c=2$。
+
+执行算法2：
+1. 初始化 $p_{\text{cur}}=0$，$v_{\text{cur}} = (0,0,0|0,0,0)$（长度 $2m=6$）。
+2. 遍历公共量子比特：
+   - $k=1$：$x_1=1$，取行1：$w = (0,1,0,0,0,0)$，$r_1=0$。调用算法1：$(0,零向量) \times (0,w)$ 得 $p_{\text{cur}}=0$，$v_{\text{cur}} = (0,0,0|1,0,0)$（即 $Z_1$）。
+   - $k=2$：$x_2=1, z_2=1$。
+       先乘 $X_2$ 像（行3）：$w = (0,0,1,0,0,0)$，$r_3=0$。调用算法1：当前 $(0, (0,0,0|1,0,0)) \times (0, (0,0,1,0,0,0))$ 计算 $\Delta = 2 \cdot ( (0,0,1) \cdot (1,0,0) ) = 0$，得 $p_{\text{cur}}=0$，$v_{\text{cur}} = (0,1,0|1,0,0)$（即 $Z_1 X_2$）。
+       再乘 $Z_2$ 像（行4）：$w = (0,1,0,1,0,0)$，$r_4=0$。调用算法1：当前 $(0, (0,1,0|1,0,0)) \times (0, (0,1,0,1,0,0))$ 计算 $\Delta = 2 \cdot ( (0,1,0) \cdot (1,0,0) ) = 0$，得 $p_{\text{cur}}=0$，$v_{\text{cur}} = (0,1,0|0,1,0)$（即 $X_2 Z_2$）。
+3. 构建全局指数向量：
+   - 量子比特1（在 $Q_T$ 中，$\mathrm{idx}(1)=1$）：从 $v_{\text{cur}}$ 取 $x'_1 = v_{\text{cur}}[1] = 0$，$z'_1 = v_{\text{cur}}[4] = 0$。
+   - 量子比特2（$\mathrm{idx}(2)=2$）：$x'_2 = 1$，$z'_2 = 1$。
+   - 量子比特3（$\mathrm{idx}(3)=3$）：$x'_3 = 0$，$z'_3 = 0$。
+   - 量子比特4（不在 $Q_T$）：$x'_4 = x_4 = 1$，$z'_4 = 0$。
+   - 量子比特5（不在 $Q_T$）：$x'_5 = 0$，$z'_5 = 1$。
+4. $p' = (0 + 1) \bmod 4 = 1$。
+
+返回结果为：相位指数 $p'=1$，指数向量 $(x', z')$ 如上，对应 $C P C^{-1} = i X_2 Z_2 X_4 Z_5$。
+
+
+### 算法3：组合表
+
+给定一个 $n$ 量子比特稳定子表 $A$（表示 Clifford 操作 $C_A$）和一个 $m$ 量子比特稳定子表 $B$（表示 $C_B$，且 $m \leq n$），计算组合 Clifford 操作 $C_B \circ C_A$ 或 $C_A \circ C_B$ 的表。
+
+**追加**（计算 $C_B \circ C_A$ 的表）：  
+对于 $A$ 的每一列 $k \in \{1, \dots, 2n\}$（每列存储 $C_A P_k C_A^{-1}$，其中 $P_k$ 为第 $k$ 个 Pauli 生成元）：
+1. 取出列 $k$ 对应的 Pauli 积 $P_k'$。
+2. 计算 $P_k'' = C_B P_k' C_B^{-1}$（通过算法 2 共轭，复杂度 $O(m^2)$）。
+3. 将 $P_k''$ 存回列 $k$。
+
+由于共轭每列需 $O(m^2)$，总列数 $2n$，故复杂度为 $O(n \cdot m^2)$。
+
+**前置**（计算 $C_A \circ C_B$ 的表）：  
+对于 $B$ 的每一列 $k \in \{1, \dots, 2m\}$：
+1. 取出 $B$ 中列 $k$ 对应的 Pauli 积 $P_k' = C_B P_k C_B^{-1}$。
+2. 计算 $P_k'' = C_A P_k' C_A^{-1}$（复杂度 $O(m \cdot n)$，因 $P_k'$ 作用在 $m$ 个量子比特上）。
+3. 将 $P_k''$ 写入 $A$ 的列 $k$（覆盖原内容，$A$ 表扩展至 $n$ 量子比特）。
+
+共轭每列需 $O(m \cdot n)$，总列数 $2m$，故复杂度为 $O(m \cdot n \cdot m) = O(n \cdot m^2)$。
 
 #### **1.3.3 逆表**
 
@@ -299,12 +348,12 @@ $$
 $T^{-1} \circ T$ 的论证相同。 $\square$
 
 **算法** (逆一个表) 给定一个表 $T$，其逆 $T^{-1}$ 可以按如下方式计算：
-1. **计算泡利项**。对于生成元 $G_a \in \{X_a, Z_a\}$，在 $T^{-1}$ 中第 $a$ 个量子比特的列由 $T$ 中第 $b$ 个量子比特的列的项决定。具体来说，设 $T(G_a)$ 表示在 $T$ 下生成元 $G_a$ 的输出在第 $b$ 个量子比特的泡利项。然后，$T^{-1}(G_a)$ 在第 $a$ 个量子比特的项由求解对易关系确定：⁸
+1. **计算Pauli项**。对于生成元 $G_a \in \{X_a, Z_a\}$，在 $T^{-1}$ 中第 $a$ 个量子比特的列由 $T$ 中第 $b$ 个量子比特的列的项决定。具体来说，设 $T(G_a)$ 表示在 $T$ 下生成元 $G_a$ 的输出在第 $b$ 个量子比特的Pauli项。然后，$T^{-1}(G_a)$ 在第 $a$ 个量子比特的项由求解对易关系确定：⁸
     - 如果 $T(X_a)$ 与 $X_b$ 对易，则 $T^{-1}(X_b)$ 必须与 $X_a$ 对易；否则反对易。
     - 如果 $T(Z_a)$ 与 $Z_b$ 对易，则 $T^{-1}(X_b)$ 必须与 $Z_a$ 对易；否则反对易。
-2. **计算符号**。设 $S$ 为一个与 $T^{-1}$ 具有相同泡利项但所有符号均为正的表。对于每个生成元 $g \in \{X_1, Z_1, \dots, X_N, Z_N\}$，通过计算 $T(S(g))g$ 来确定 $T^{-1}$ 中相应列的符号。⁹
+2. **计算符号**。设 $S$ 为一个与 $T^{-1}$ 具有相同Pauli项但所有符号均为正的表。对于每个生成元 $g \in \{X_1, Z_1, \dots, X_N, Z_N\}$，通过计算 $T(S(g))g$ 来确定 $T^{-1}$ 中相应列的符号。⁹
 
-⁸ 这实际上相当于对表的泡利项进行转置并伴随局部基变换，耗时 $O(n^2)$。
+⁸ 这实际上相当于对表的Pauli项进行转置并伴随局部基变换，耗时 $O(n^2)$。
 ⁹ 直接计算符号需要 $O(n^3)$ 时间。
 
 **断言** (逆重构的正确性) $T^{-1}(g)$ 的符号与 $T(S(g))g$ 的符号相同。
@@ -380,13 +429,13 @@ $$
 
 ---
 
-#### **1.4 泡利框架**
+#### **1.4 Pauli框架**
 
-**定义 13** (泡利框架) 一个泡利框架 $\mathcal{F}$ 是商群 $\mathcal{P}_n/\Phi$ 中的一个元素，其中 $\Phi = \{\pm 1, \pm i\}$。它对应于某个 $P \in \mathcal{F}$ 的 $\text{op}(P)$，有效地忽略了全局相位。¹³
+**定义 13** (Pauli框架) 一个Pauli框架 $\mathcal{F}$ 是商群 $\mathcal{P}_n/\Phi$ 中的一个元素，其中 $\Phi = \{\pm 1, \pm i\}$。它对应于某个 $P \in \mathcal{F}$ 的 $\text{op}(P)$，有效地忽略了全局相位。¹³
 
-¹³ 存储一个泡利框架的空间复杂度是 $O(n)$ 比特。
+¹³ 存储一个Pauli框架的空间复杂度是 $O(n)$ 比特。
 
-**性质** (框架传播) 设 $\mathcal{F} \in \mathcal{P}_n/\Phi$ 为一个泡利框架。 Clifford 门 $C$ 在 $\mathcal{F}$ 上的作用通过共轭任意代表元 $P \in \mathcal{F}$ 来定义：
+**性质** (框架传播) 设 $\mathcal{F} \in \mathcal{P}_n/\Phi$ 为一个Pauli框架。 Clifford 门 $C$ 在 $\mathcal{F}$ 上的作用通过共轭任意代表元 $P \in \mathcal{F}$ 来定义：
 $$
 \mathcal{F}' = [CPC^{-1}]_\Phi,
 \quad (1.14)
@@ -406,10 +455,10 @@ $$
 
 ##### **1.4.1 跟踪噪声**
 
-**假设** (泡利噪声) 在泡利框架模拟中，噪声过程必须是泡利信道，即，它们必须等价于从概率分布中采样一个泡利积并将其乘入状态。
+**假设** (Pauli噪声) 在Pauli框架模拟中，噪声过程必须是Pauli信道，即，它们必须等价于从概率分布中采样一个Pauli积并将其乘入状态。
 
 ##### **1.4.2 跟踪校正**
 
-**备注** (自适应校正) 如果需要自适应校正（基于测量应用 $I, X, Y$ 或 $Z$），只需模拟参考电路一次。自适应行为完全通过更新泡利框架 $\mathcal{F}$ 来处理（例如，如果触发校正 $P$，则 $\mathcal{F} \leftarrow \mathcal{F} \cdot P$）。
+**备注** (自适应校正) 如果需要自适应校正（基于测量应用 $I, X, Y$ 或 $Z$），只需模拟参考电路一次。自适应行为完全通过更新Pauli框架 $\mathcal{F}$ 来处理（例如，如果触发校正 $P$，则 $\mathcal{F} \leftarrow \mathcal{F} \cdot P$）。
 
 
