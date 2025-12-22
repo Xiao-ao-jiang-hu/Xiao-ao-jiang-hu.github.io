@@ -1,5 +1,5 @@
 ---
-title: stabilizer-tableau
+title: 稳定子表
 tags:
   - quantum
   - simulation
@@ -7,8 +7,10 @@ tags:
 categories:
   - quantum
   - simulation
-excerpt: no excerpt
+index_img: /img/quan.jpg
+banner_img: /img/quan.jpg
 abbrlink: e19c09b2
+excerpt: 本文介绍了稳定子表的基本概念及其在量子电路模拟中的应用，涵盖了泡利积、稳定子生成元、稳定子表的定义与操作等内容。
 date: 2025-12-18 20:50:58
 ---
 ### **第1部分：前置基础**
@@ -103,11 +105,16 @@ $$
 
 **定义 9** ( Clifford 操作) 一个酉算子 $C$ 是 Clifford 操作，如果 $\forall P \in \mathcal{P}_n, CPC^\dagger \in \mathcal{P}_n$。
 
+!!! note 理解
+    即 Clifford 操作是 $\mathcal{P}_n$ 在酉算子集合中的正规化子。于是 Clifford 操作由其在 $\mathcal{P}_n$ 生成元上的共轭作用唯一确定。
+
 **定义 10** (稳定子表) 给定一个 $n$ 量子比特 Clifford 操作 $C$，一个稳定子表 $\text{Tableau}(C) ::= T$ 是一种表示，它存储了 $C$ 如何共轭每个泡利群生成元。具体来说，它记录了 $T(g) := CgC^{-1}$，对每个生成元 $g \in \{X_1, Z_1, \dots, X_n, Z_n\}$。²
+
+!!! note 理解
+    如前所述，$C$ 由其在生成元上的共轭作用唯一确定，因此稳定子表也唯一地表示 $C$（直到全局相位）。由于生成元是有限的，稳定子表是对 Clifford 操作的有限表示。
 
 ² 存储一个稳定子表的空间复杂度是 $O(n^2)$ 比特。
 
----
 
 **备注** (后向传播) 共轭恒等式 $gC|\psi\rangle = C(C^{-1}gC)|\psi\rangle$ 可以可视化为以下电路等价：
 ```text
@@ -116,24 +123,38 @@ $$
 |ψ⟩ ——[C⁻¹gC]——[C]——
 ```
 
-**例** (受控-Y门的表) 受控-Y门 $C_Y$ 的表如下：³
+**例** (Controlled-Y门的表) Controlled-Y门 $C_Y$ 的表如下：
 $$
 \text{Tableau}(C_Y) = \begin{array}{c|cccc}
 & X_1 & Z_1 & X_2 & Z_2 \\
 \hline
 \pm & + & + & + & + \\
-1 & X & Z & I & I \\
-2 & Y &   & Z & Z \\
+1 & X & Z & Z & Z \\
+2 & Y &   & X & Z \\
 \end{array}
 $$
 
-³ 由于 $g$ 的相位为 $\pm 1$ $\iff$ $g$ 是厄米算子 $\iff$ $CgC^\dagger$ 是厄米算子 $\iff$ $CgC^{-1}$ 的相位为 $\pm 1$，因此稳定子表中的相位总是 $\pm 1$，永远不会是 $\pm i$。
+**计算过程**
+controlled-Y门 $C_Y$ 的表可以通过以下方式计算：
+1. 生成元为 $X_1, Z_1, X_2, Z_2$。
+2. 通过共轭计算每个生成元的像：
+   - $C_Y (X_1 \otimes I) C_Y^{-1} = X_1 \otimes Y_2$
+   - $C_Y (Z_1 \otimes I) C_Y^{-1} = Z_1 \otimes I$
+   - $C_Y (I \otimes X_2) C_Y^{-1} = Z_1 \otimes X_2$
+   - $C_Y (I \otimes Z_2) C_Y^{-1} = Z_1 \otimes Z_2$
+3. 计算相位：
+   - 
+4. 每个生成元的共轭结果构成稳定子表的列
+
+
+!!! warning 稳定子表中的相位
+    泡利群中的算子一般形式为 $\pm i^k P_1 \otimes \cdots \otimes P_n$，其中 $P_i \in \{I, X, Y, Z\}$，$k \in \{0,1,2,3\}$。但厄米性要求算子等于其共轭转置。泡利矩阵 $X, Y, Z$ 均为厄米，但乘以 $i$ 后变为反厄米（例如 $(iX)^\dagger = -iX$）。因此，为了保持 $CgC^{-1}$ 的厄米性（因为 $C$ 是酉的且 $g$ 厄米），其相位只能是 $\pm 1$，不能是 $\pm i$。在稳定子表表示中，相位位仅记录 $\pm 1$，任何 $\pm i$ 相位可以通过生成元的交换关系推断，但不直接存储。
 
 **断言** (泡利积乘法) 对于两个实相位泡利积 $P, Q \in \mathcal{P}_n$，它们的乘积可以通过以下方式计算：
-1. 应用XZ编码同态⁴，逐位应用于 $\text{op}(P)$ 和 $\text{op}(Q)$。
+1. 应用XZ编码同态，逐位应用于 $\text{op}(P)$ 和 $\text{op}(Q)$。
 2. 计算相位 $\text{ph}(PQ) = \sum_{k=1}^{n} s_{x,k} t_{x,k} - s_{z,k} t_{z,k} \mod 4$，其中 $s_{x/z,k}$ 是表 $\text{Tableau}(P)$ 中第 $k$ 列 $X_k/Z_k$ 项的相位指数。
 
-⁴ 性质 1.1
+
 
 **断言** (表- Clifford 对应) 在 Clifford 操作和有效稳定子表之间存在一一对应关系（全局相位除外）。一个形如下的表 $T$：
 $$
@@ -390,3 +411,5 @@ $$
 ##### **1.4.2 跟踪校正**
 
 **备注** (自适应校正) 如果需要自适应校正（基于测量应用 $I, X, Y$ 或 $Z$），只需模拟参考电路一次。自适应行为完全通过更新泡利框架 $\mathcal{F}$ 来处理（例如，如果触发校正 $P$，则 $\mathcal{F} \leftarrow \mathcal{F} \cdot P$）。
+
+
