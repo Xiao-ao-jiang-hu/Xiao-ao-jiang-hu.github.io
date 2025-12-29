@@ -228,7 +228,7 @@ $$
   2. $X$ 在 $l^2$ 中稠密。
 
   -  $l^2$ 是完备的
-  $l^2$ 是希尔伯特空间，因为其内积 $\langle x, y \rangle = \sum_{i=1}^{\infty} x_i y_i$ 诱导的范数满足完备性。具体地，任何柯西序列在 $l^2$ 中收敛，这是一个标准结果（参见泛函分析教材，如《Real Analysis》 by H.L. Royden 或《Functional Analysis》 by W. Rudin）。因此，$l^2$ 是完备的。
+  $l^2$ 是Hilbert空间，因为其内积 $\langle x, y \rangle = \sum_{i=1}^{\infty} x_i y_i$ 诱导的范数满足完备性。具体地，任何柯西序列在 $l^2$ 中收敛，这是一个标准结果（参见泛函分析教材，如《Real Analysis》 by H.L. Royden 或《Functional Analysis》 by W. Rudin）。因此，$l^2$ 是完备的。
 
   -  $X$ 在 $l^2$ 中稠密
   对于任意 $x = (x_1, x_2, \ldots) \in l^2$，定义序列 $\{x_n\} \subset X$ 为 $x_n = (x_1, x_2, \ldots, x_n, 0, 0, \ldots)$，即前 $n$ 个分量与 $x$ 相同，其余为零。每个 $x_n$ 只有有限个非零分量，故 $x_n \in X$。 then:

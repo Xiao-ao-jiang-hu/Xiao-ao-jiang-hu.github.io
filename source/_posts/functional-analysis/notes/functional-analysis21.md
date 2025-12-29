@@ -12,11 +12,10 @@ excerpt: 泛函分析课程笔记
 abbrlink: b131692d
 date: 2025-12-12 17:08:46
 ---
-# 5.2. 谱
-
+# 谱理论预备
 ## 谱的定义
 
-设 $X$ 为一个复巴拿赫空间，且令 $A \in \mathcal{L}^c(X)$。算子 $A$ 的**谱**是集合
+设 $X$ 为一个复Banach空间，且令 $A \in \mathcal{L}^c(X)$。算子 $A$ 的**谱**是集合
 $$
 \sigma(A) := \left\{ \lambda \in \mathbb{C} \mid \text{算子 } \lambda\mathbb{1} - A \text{ 不是双射} \right\}
 $$
@@ -37,7 +36,7 @@ $$
 $$
 Ax = \lambda x.
 $$
-元素 $\lambda \in \mathrm{P}\sigma(A)$ 称为 $A$ 的**特征值**，而非零向量 $x \in \ker(\lambda\mathbb{1} - A)$ 称为**特征向量**。当 $X$ 是一个实巴拿赫空间且 $A \in \mathcal{L}(X)$ 时，我们记 $\sigma(A) := \sigma(A^c)$ 为复化算子 $A^c$ 的谱，类似地定义点谱、连续谱和剩余谱。
+元素 $\lambda \in \mathrm{P}\sigma(A)$ 称为 $A$ 的**特征值**，而非零向量 $x \in \ker(\lambda\mathbb{1} - A)$ 称为**特征向量**。当 $X$ 是一个实Banach空间且 $A \in \mathcal{L}(X)$ 时，我们记 $\sigma(A) := \sigma(A^c)$ 为复化算子 $A^c$ 的谱，类似地定义点谱、连续谱和剩余谱。
 
 关于谱和预解集的划分，可以总结为如下表格：
 |                                   | $(\lambda I - A)^{-1}$ | $\operatorname{Ran}(\lambda I - A)$对于$Y$ | $(\lambda I - A)^{-1}$ 有界性 | $(\lambda I - A)x = y$ 可解性         |
@@ -77,11 +76,11 @@ $$
 $$
 \sigma(A) = \overline{\{ \lambda_i \mid i \in \mathbb{N} \}}, \quad \mathrm{P}\sigma(A) = \{ \lambda_i \mid i \in \mathbb{N} \}, \quad \mathrm{R}\sigma(A) = \emptyset.
 $$
-因此，每一个非空紧子集都是某个无限维希尔伯特空间上的有界线性算子的谱。
+因此，每一个非空紧子集都是某个无限维Hilbert空间上的有界线性算子的谱。
 
 ## 谱的基本性质引理
 
-设 $A: X \to X$ 为复巴拿赫空间 $X$ 上的一个有界复线性算子，并记 $A^*: X^* \to X^*$ 为其复对偶算子。则以下结论成立：
+设 $A: X \to X$ 为复Banach空间 $X$ 上的一个有界复线性算子，并记 $A^*: X^* \to X^*$ 为其复对偶算子。则以下结论成立：
 
 1. 谱 $\sigma(A)$ 是 $\mathbb{C}$ 的一个紧子集。
 
@@ -112,10 +111,10 @@ $$
 
 
 ## 全纯函数
-这是另一个预备性小节。它讨论定义在复平面开子集上、取值于复巴拿赫空间的全纯函数。谱理论中最重要的例子是算子值全纯函数。
+这是另一个预备性小节。它讨论定义在复平面开子集上、取值于复Banach空间的全纯函数。谱理论中最重要的例子是算子值全纯函数。
 
 ### 定义
-设 $\Omega \subset \mathbb{C}$ 是一个开集，$X$ 是一个复巴拿赫空间，且 $f: \Omega \to X$ 是一个连续函数。
+设 $\Omega \subset \mathbb{C}$ 是一个开集，$X$ 是一个复Banach空间，且 $f: \Omega \to X$ 是一个连续函数。
 
 1. 若极限
    $$
@@ -133,7 +132,7 @@ $$
 
 ### 全纯函数的刻画引理
 
-设 $X$ 和 $Y$ 为复巴拿赫空间，且令 $A: \Omega \to \mathcal{L}^c(X,Y)$ 为一个在开集 $\Omega \subset \mathbb{C}$ 上定义的弱连续函数。则以下命题等价：
+设 $X$ 和 $Y$ 为复Banach空间，且令 $A: \Omega \to \mathcal{L}^c(X,Y)$ 为一个在开集 $\Omega \subset \mathbb{C}$ 上定义的弱连续函数。则以下命题等价：
 
 1. 函数 $A$ 是全纯的。
 2. 对任意 $x \in X$ 和任意 $y^* \in Y^*$，函数
@@ -164,24 +163,28 @@ $$
 $$
 为证明这一点，令 $x \in X$ 和 $y^* \in Y^*$。则由柯西积分公式和算子 $B(w)$ 的定义得：
 $$
-\left\langle y^*, \frac{A(w + h)x - A(w)x}{h} - B(w)x \right\rangle
-= \frac{1}{2\pi i} \int_\gamma \left( \frac{1}{h} \left( \frac{1}{z - w - h} - \frac{1}{z - w} \right) - \frac{1}{(z - w)^2} \right) \langle y^*, A(z)x \rangle \, dz
-= \frac{1}{2\pi i} \int_\gamma \frac{h \langle y^*, A(z)x \rangle}{(z - w)^2(z - w - h)} \, dz.
+\begin{aligned}
+& \left\langle y^*, \frac{A(w + h)x - A(w)x}{h} - B(w)x \right\rangle \\
+= & \frac{1}{2\pi i} \int_\gamma \left( \frac{1}{h} \left( \frac{1}{z - w - h} - \frac{1}{z - w} \right) - \frac{1}{(z - w)^2} \right) \langle y^*, A(z)x \rangle \, dz \\
+= & \frac{1}{2\pi i} \int_\gamma \frac{h \langle y^*, A(z)x \rangle}{(z - w)^2(z - w - h)} \, dz.
+\end{aligned}
 $$
 函数沿曲线积分的绝对值以函数的上确界范数乘以曲线长度为上界。在当前情形下，曲线长度为 $2\pi r$。因此，
 $$
-\left| \left\langle y^*, \frac{A(w + h)x - A(w)x}{h} - B(w)x \right\rangle \right|
-= \frac{1}{2\pi} \left| \int_\gamma \frac{h \langle y^*, A(z)x \rangle}{(z - w)^2(z - w - h)} \, dz \right|
-\le \sup_{|z - z_0| = r} \frac{r|h| \, |\langle y^*, A(z)x \rangle|}{|z - w|^2 |z - w - h|}
-\le \frac{cr|h| \, \|y^*\| \|x\|}{(r - |w|)^2(r - |w| - |h|)}
+\begin{aligned}
+& \left| \left\langle y^*, \frac{A(w + h)x - A(w)x}{h} - B(w)x \right\rangle \right| \\
+= & \frac{1}{2\pi} \left| \int_\gamma \frac{h \langle y^*, A(z)x \rangle}{(z - w)^2(z - w - h)} \, dz \right| \\
+\le & \sup_{|z - z_0| = r} \frac{r|h| \, |\langle y^*, A(z)x \rangle|}{|z - w|^2 |z - w - h|} \\
+\le & \frac{cr|h| \, \|y^*\| \|x\|}{(r - |w|)^2(r - |w| - |h|)}
+\end{aligned}
 $$
-对所有 $x \in X$ 和所有 $y^* \in Y^*$ 成立。因此，上述差商与导数之差的估计式由哈恩-巴拿赫定理（关于线性泛函范数实现的推论）得出。
+对所有 $x \in X$ 和所有 $y^* \in Y^*$ 成立。因此，上述差商与导数之差的估计式由哈恩-Banach定理（关于线性泛函范数实现的推论）得出。
 
 由该估计式可知，函数 $A: \Omega \to \mathcal{L}^c(X,Y)$ 在每一点 $w \in B_r(z_0)$ 处可微，且其在 $w$ 处的导数等于 $B(w)$。因此，$A$ 在范数拓扑下连续，函数 $B: B_r(z_0) \to \mathcal{L}^c(X,Y)$ 也由定义连续。故 $A$ 是全纯的，这证明了全纯函数的刻画引理。
 
 ## Von Neumann 级数定理
 
-设 $X$ 是一个复巴拿赫空间，$T \in \mathcal{L}^c(X)$ 是一个有界线性算子，且其算子范数满足 $\|T\| < 1$。则恒等算子与 $T$ 的差 $I - T$ 是可逆的，其逆算子由 Neumann 级数给出：
+设 $X$ 是一个复Banach空间，$T \in \mathcal{L}^c(X)$ 是一个有界线性算子，且其算子范数满足 $\|T\| < 1$。则恒等算子与 $T$ 的差 $I - T$ 是可逆的，其逆算子由 Neumann 级数给出：
 $$
 (I - T)^{-1} = \sum_{n=0}^{\infty} T^n,
 $$
@@ -212,11 +215,9 @@ $$
 因此，$S = (I - T)^{-1}$，且范数估计成立。证毕。
 
 
-# 5.2. 谱
+## 预解恒等式
 
-## 谱的性质
-
-设 $X$ 是一个复巴拿赫空间，$A \in \mathcal{L}^c(X)$ 是一个有界线性算子。对于 $\lambda \in \rho(A)$，定义预解式 $R(\lambda; A) := (\lambda I_X - A)^{-1}$。则以下性质成立：
+设 $X$ 是一个复Banach空间，$A \in \mathcal{L}^c(X)$ 是一个有界线性算子。对于 $\lambda \in \rho(A)$，定义预解式 $R(\lambda; A) := (\lambda I_X - A)^{-1}$。则以下性质成立：
 
 1. **外部区域包含在预解集中**：若 $|\lambda| > \|A\|$，则 $\lambda \in \rho(A)$，且
    $$
@@ -300,13 +301,13 @@ $$
 # 谱半径
 
 ## 引理：谱不空定理
-设 $X$ 是一个非零的复巴拿赫空间，$A \in \mathcal{L}^c(X)$ 是一个有界线性算子。则算子 $A$ 的谱 $\sigma(A)$ 是非空的紧集。
+设 $X$ 是一个非零的复Banach空间，$A \in \mathcal{L}^c(X)$ 是一个有界线性算子。则算子 $A$ 的谱 $\sigma(A)$ 是非空的紧集。
 
 ### 证明
 
 谱的紧性已在谱的性质中证明：由预解集为开集且谱包含在半径为 $\|A\|$ 的闭圆盘内，可知 $\sigma(A)$ 是 $\mathbb{C}$ 中的有界闭集，从而是紧集。
 
-假设相反，即 $\sigma(A) = \emptyset$，那么特别地，$A$ 是可逆的。任取一个非零元素 $x \in X$，则 $A^{-1}x \neq 0$，因此由哈恩-巴拿赫定理（关于线性泛函范数实现的推论），存在一个元素 $x^* \in X^*$ 使得 $\langle x^*, A^{-1}x \rangle = -1$。定义函数 $f: \mathbb{C} \to \mathbb{C}$ 为
+假设相反，即 $\sigma(A) = \emptyset$，那么特别地，$A$ 是可逆的。任取一个非零元素 $x \in X$，则 $A^{-1}x \neq 0$，因此由哈恩-Banach定理（关于线性泛函范数实现的推论），存在一个元素 $x^* \in X^*$ 使得 $\langle x^*, A^{-1}x \rangle = -1$。定义函数 $f: \mathbb{C} \to \mathbb{C}$ 为
 $$f(\lambda) := \langle x^*, (\lambda \mathbb{1} - A)^{-1}x \rangle \quad \text{对 } \lambda \in \mathbb{C} = \rho(A).$$
 则 $f$ 是全纯的（由预解恒等式引理），$f(0) = 1$（由定义），且对所有满足 $|\lambda| > \|A\|$ 的 $\lambda \in \mathbb{C}$，有
 $$|f(\lambda)| \le \|x^*\| \|x\| \|(\lambda \mathbb{1} - A)^{-1}\| \le \frac{\|x^*\| \|x\|}{|\lambda| - \|A\|}.$$
@@ -315,10 +316,64 @@ $$|f(\lambda)| \le \|x^*\| \|x\| \|(\lambda \mathbb{1} - A)^{-1}\| \le \frac{\|x
 
 ## 谱半径定理
 
-设 $X$ 是一个非零的复巴拿赫空间，且令 $A \in \mathcal{L}^c(X)$。则 $\sigma(A) \neq \emptyset$，且
+设 $X$ 是一个非零的复Banach空间，且令 $A \in \mathcal{L}^c(X)$。则 $\sigma(A) \neq \emptyset$，且
 $$
 r_A := \lim_{n \to \infty} \|A^n\|^{1/n} = \sup_{\lambda \in \sigma(A)} |\lambda|.
 $$
+
+### 对于有限维情形
+设 $X$ 是 $n$ 维复向量空间（$\dim X = n < +\infty$），$A \in M_n(\mathbb{C})$ 是 $n$ 阶复方阵，$\|\cdot\|$ 为任意矩阵范数（通常取算子范数）。
+
+由 Schur 三角化定理（或酉三角化），存在酉矩阵 $U$（即 $U^*U = I$）使得：
+$$A = U^* T U, \quad T = \begin{pmatrix}
+\lambda_1 & * & \cdots & * \\
+0 & \lambda_2 & \cdots & * \\
+\vdots & \ddots & \ddots & \vdots \\
+0 & \cdots & 0 & \lambda_n
+\end{pmatrix},$$
+其中 $\lambda_1, \dots, \lambda_n$ 是 $A$ 的特征值（按任意顺序排列），上三角部分 $*$ 表示可能非零的元素。
+由于酉相似不改变谱，$\sigma(A^k) = \{\lambda^k : \lambda \in \sigma(A)\}$，且谱半径是特征值模的最大值，故：
+$$r_\sigma(A^k) = \bigl(r_\sigma(A)\bigr)^k.$$
+又因为谱半径不超过任何矩阵范数（即 $r_\sigma(B) \le \|B\|$ 对任意方阵 $B$ 成立），取 $B = A^k$，得：
+$$\bigl(r_\sigma(A)\bigr)^k = r_\sigma(A^k) \le \|A^k\|.$$
+于是：
+$$r_\sigma(A) \le \|A^k\|^{1/k} \quad (\forall k \ge 1).$$
+令 $k \to \infty$ 即得：
+$$r_\sigma(A) \le \liminf_{k \to \infty} \|A^k\|^{1/k}. \tag{1}$$
+引入参数 $t > 0$，定义对角矩阵：
+$$D_t = \operatorname{diag}(t, t^2, \dots, t^n), \quad D_t^{-1} = \operatorname{diag}(t^{-1}, t^{-2}, \dots, t^{-n}).$$
+构造矩阵：
+$$B_t := D_t T D_t^{-1} = \begin{pmatrix}
+\lambda_1 & t\lambda_1(*) & t^2\lambda_1(*) & \cdots & t^{n-1}\lambda_1(*) \\
+0 & \lambda_2 & t\lambda_2(*) & \cdots & t^{n-2}\lambda_2(*) \\
+0 & 0 & \lambda_3 & \cdots & t^{n-3}\lambda_3(*) \\
+\vdots & \vdots & \ddots & \ddots & \vdots \\
+0 & 0 & \cdots & 0 & \lambda_n
+\end{pmatrix},$$
+其中 $(*)$ 表示原上三角位置的非零常数（与 $t$ 无关）。
+令 $V_t = D_t U$，则：
+$$A = (D_t U)^{-1} B_t (D_t U) = V_t^{-1} B_t V_t,$$
+故 $A^k = V_t^{-1} B_t^k V_t$。
+由矩阵范数的相容性，存在常数 $C_t = \|V_t^{-1}\|\cdot\|V_t\| > 0$（依赖于 $t$）使得：
+$$\|A^k\| \le C_t \|B_t^k\| \quad (\forall k \ge 1). \tag{2}$$
+现在固定任意 $\varepsilon > 0$。因为 $|\lambda_i| \le r_\sigma(A)$，我们可以选择合适的 $t$ 使得 $B_t$ 的非对角元素足够小。具体地，定义：
+$$M_t := \max_{1 \le i \le j \le n} |(B_t)_{ij}|,$$
+并且注意到当 $t \to 0^+$ 时，$B_t$ 的非对角元趋于 0（因为每个非对角元都乘以 $t$ 的正幂次）。
+因此，存在充分小的 $t_0 > 0$，使得当 $0 < t < t_0$ 时，有：
+$$M_t \le r_\sigma(A) + \varepsilon.$$
+此时，对任意 $k$，利用矩阵幂的估计（例如，通过矩阵元素增长率的界或直接使用范数定义）可得：
+$$\|B_t^k\| \le n \bigl(r_\sigma(A) + \varepsilon\bigr)^k, \quad \forall k \ge 1.$$
+结合 (2) 得：
+$$\|A^k\| \le C_t n \bigl(r_\sigma(A) + \varepsilon\bigr)^k.$$
+取 $k$ 次根并令 $k \to \infty$：
+$$\limsup_{k \to \infty} \|A^k\|^{1/k} \le r_\sigma(A) + \varepsilon.$$
+由于 $\varepsilon > 0$ 任意，有：
+$$\limsup_{k \to \infty} \|A^k\|^{1/k} \le r_\sigma(A). \tag{3}$$
+
+由 (1) 和 (3) 得：
+$$\liminf_{k \to \infty} \|A^k\|^{1/k} \ge r_\sigma(A) \quad \text{且} \quad \limsup_{k \to \infty} \|A^k\|^{1/k} \le r_\sigma(A),$$
+故极限存在且：
+$$\lim_{k \to \infty} \|A^k\|^{1/k} = r_\sigma(A).$$
 
 ### 证明
 非空性已经由引理给出。下面证明恒等式。
@@ -340,7 +395,7 @@ $$
 $$
 R(z) = z(\mathbb{1} - zA)^{-1} = \sum_{k=0}^{\infty} z^{k+1} A^k.
 $$
-因此，$R$ 是全纯的（由全纯函数的刻画引理）。由关于全纯函数导数的练习，$R$ 的第 $n$ 阶导函数 $R^{(n)}: \Omega \to \mathcal{L}^c(X)$ 对每个 $n \in \mathbb{N}$ 都是全纯的。
+因此，$R$ 是全纯的（由全纯函数的刻画引理），于是 $R$ 的第 $n$ 阶导函数 $R^{(n)}: \Omega \to \mathcal{L}^c(X)$ 对每个 $n \in \mathbb{N}$ 都是全纯的。
 
 现在令 $r > \sup_{\lambda \in \sigma(A)} |\lambda|$，则以原点为中心、半径为 $r^{-1}$ 的闭圆盘包含在 $\Omega$ 中。取 $x \in X$ 和 $x^* \in X^*$，并将柯西积分公式（见全纯函数的刻画引理或参考教材）应用于幂级数
 $$
@@ -355,7 +410,7 @@ $$
 $$
 \langle x^*, A^{n-1}x \rangle = \frac{1}{n!} \left. \frac{d^n}{dz^n} \right|_{z=0} \langle x^*, R(z)x \rangle = \frac{1}{2\pi i} \int_\gamma \frac{\langle x^*, R(z)x \rangle}{z^{n+1}} dz.
 $$
-由哈恩-巴拿赫定理（关于线性泛函范数实现的推论），这意味着
+由哈恩-Banach定理（关于线性泛函范数实现的推论），这意味着
 $$
 A^n = \frac{1}{2\pi i} \int_\gamma \frac{R(z)}{z^{n+2}} dz = \frac{1}{2\pi i} \int_0^1 \frac{\dot{\gamma}(t) R(\gamma(t))}{\gamma(t)^{n+2}} dt = \int_0^1 \frac{R(\gamma(t))}{\gamma(t)^{n+1}} dt.
 $$

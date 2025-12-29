@@ -88,7 +88,7 @@ $$
 1. 设 $S_1, S_2 \in \mathcal{S}(|\psi\rangle)$，则：
     $$S_1 S_2 |\psi\rangle = S_1 (S_2 |\psi\rangle) = S_1 |\psi\rangle = |\psi\rangle,$$
     因此 $S_1 S_2 \in \mathcal{S}(|\psi\rangle)$。类似地，$S_2 S_1 |\psi\rangle = |\psi\rangle$，所以 $S_1 S_2 = S_2 S_1$。
-2. 设 $\{S_1, \dots, S_m\}$ 为 $\mathcal{S}(|\psi\rangle)$ 的一组生成元。由于每个 $S_i$ 都是厄米且平方为单位元，$S_i$ 的本征值为 $\pm 1$。因此，$\mathcal{S}(|\psi\rangle)$ 的每个生成元将希尔伯特空间分割为两个子空间：一个对应于本征值 $+1$，另一个对应于本征值 $-1$。每添加一个独立的生成元，稳定子空间的维度至少减半。因此，最多只能有 $n$ 个独立生成元，否则稳定子空间将变得平凡。$\square$
+2. 设 $\{S_1, \dots, S_m\}$ 为 $\mathcal{S}(|\psi\rangle)$ 的一组生成元。由于每个 $S_i$ 都是厄米且平方为单位元，$S_i$ 的本征值为 $\pm 1$。因此，$\mathcal{S}(|\psi\rangle)$ 的每个生成元将Hilbert空间分割为两个子空间：一个对应于本征值 $+1$，另一个对应于本征值 $-1$。每添加一个独立的生成元，稳定子空间的维度至少减半。因此，最多只能有 $n$ 个独立生成元，否则稳定子空间将变得平凡。$\square$
 
 ### 定义：稳定子态
 一个具有恰好 $n$ 个稳定子生成元的 $n$ 量子比特态 $|\psi\rangle$。
@@ -165,7 +165,7 @@ $$
 $$
 [X'_j, X'_k] = [Z'_j, Z'_k] = 0, \quad \{X'_j, Z'_j\} = 0, \quad [X'_j, Z'_k] = 0 \text{ 当 } j \neq k
 $$
-考虑标准生成元 $\{X_k, Z_k\}$。有限群的Stone-von Neumann定理指出，在维度为 $2^n$ 的希尔伯特空间上，这些关系存在唯一的不可约表示（直到酉等价）。由于 $\{X_k, Z_k\}$ 和 $\{X'_k, Z'_k\}$ 都是 $(\mathbb{C}^2)^{\otimes n}$ 上这些关系的表示，因此存在一个酉算子 $U$，使得：
+考虑标准生成元 $\{X_k, Z_k\}$。有限群的Stone-von Neumann定理指出，在维度为 $2^n$ 的Hilbert空间上，这些关系存在唯一的不可约表示（直到酉等价）。由于 $\{X_k, Z_k\}$ 和 $\{X'_k, Z'_k\}$ 都是 $(\mathbb{C}^2)^{\otimes n}$ 上这些关系的表示，因此存在一个酉算子 $U$，使得：
 $$
 U X_k U^\dagger = X'_k \quad \text{和} \quad U Z_k U^\dagger = Z'_k \quad \forall k
 $$

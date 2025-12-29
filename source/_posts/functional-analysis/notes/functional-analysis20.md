@@ -13,9 +13,9 @@ abbrlink: 6d9ec8dc
 date: 2025-12-12 16:35:27
 ---
 # 谱理论
-本章的目的是研究实或复巴拿赫空间上有界线性算子的谱。在线性代数中，一个实矩阵可能具有复特征值，而在无限维情形下情况类似。为了定义实巴拿赫空间上有界实线性算子的特征值，更一般地说，为了定义其谱值，有必要将实巴拿赫空间复化。复巴拿赫空间以及实巴拿赫空间的复化将在预备性的第 1 节中讨论。第 2 节介绍了有界线性算子的谱，考察了其基本性质，证明了谱半径是谱值模的最大值，考察了紧算子的谱，并建立了全纯函数演算。本章其余部分专门讨论 Hilbert 空间上的算子。
+本章的目的是研究实或复Banach空间上有界线性算子的谱。在线性代数中，一个实矩阵可能具有复特征值，而在无限维情形下情况类似。为了定义实Banach空间上有界实线性算子的特征值，更一般地说，为了定义其谱值，有必要将实Banach空间复化。复Banach空间以及实Banach空间的复化将在预备性的第 1 节中讨论。第 2 节介绍了有界线性算子的谱，考察了其基本性质，证明了谱半径是谱值模的最大值，考察了紧算子的谱，并建立了全纯函数演算。本章其余部分专门讨论 Hilbert 空间上的算子。
 
-## 复化巴拿赫空间
+## 复化Banach空间
 
 ### 定义：复 Banach 空间与其上的有界复线性算子
 
@@ -23,19 +23,19 @@ date: 2025-12-12 16:35:27
 $$
 \|\lambda x\| = |\lambda|\, \|x\| \quad \text{对所有 } x \in X \text{ 和所有 } \lambda \in \mathbb{C}。
 $$
-如果复赋范向量空间 $(X, \|\cdot\|)$ 关于其诱导度量是完备的，则称其为**复巴拿赫空间**。
+如果复赋范向量空间 $(X, \|\cdot\|)$ 关于其诱导度量是完备的，则称其为**复Banach空间**。
 
-2. 设 $X$ 和 $Y$ 为复巴拿赫空间，记
+2. 设 $X$ 和 $Y$ 为复Banach空间，记
 $$
 \mathcal{L}^c(X,Y) := \left\{ A: X \to Y \mid A \text{ 是复线性且有界的} \right\}
 $$
-为从 $X$ 到 $Y$ 的有界复线性算子的空间。那么 $\mathcal{L}^c(X,Y)$ 是一个具有算子范数的复巴拿赫空间。当 $X=Y$ 时，我们简记 $\mathcal{L}^c(X) := \mathcal{L}^c(X,X)$。
+为从 $X$ 到 $Y$ 的有界复线性算子的空间。那么 $\mathcal{L}^c(X,Y)$ 是一个具有算子范数的复Banach空间。当 $X=Y$ 时，我们简记 $\mathcal{L}^c(X) := \mathcal{L}^c(X,X)$。
 
-3. 一个复巴拿赫空间 $X$ 的（复）**对偶空间**是空间
+3. 一个复Banach空间 $X$ 的（复）**对偶空间**是空间
 $$
 X^* := \mathcal{L}^c(X,\mathbb{C})
 $$
-由有界复线性泛函 $\Lambda: X \to \mathbb{C}$ 构成。如果 $X$ 和 $Y$ 是复巴拿赫空间，且 $A: X \to Y$ 是一个有界复线性算子，则 $A$ 的（复）**对偶算子**是定义在 $Y^* \to X^*$ 上的有界复线性算子 $A^*$，它由 $A^*y^* := y^* \circ A: X \to \mathbb{C}$ 给出，其中 $y^* \in Y^*$。
+由有界复线性泛函 $\Lambda: X \to \mathbb{C}$ 构成。如果 $X$ 和 $Y$ 是复Banach空间，且 $A: X \to Y$ 是一个有界复线性算子，则 $A$ 的（复）**对偶算子**是定义在 $Y^* \to X^*$ 上的有界复线性算子 $A^*$，它由 $A^*y^* := y^* \circ A: X \to \mathbb{C}$ 给出，其中 $y^* \in Y^*$。
 
 ### 定理：可复化赋范空间的充要条件
 
@@ -56,7 +56,7 @@ $$
 
 ## 复化空间的构造与性质
 
-设 $X=(X,\|\cdot\|;\mathbb{R})$ 为一个实赋范向量空间（或实巴拿赫空间）。其**复化空间** $X^{\mathbb{C}}$ 可按以下步骤构造：
+设 $X=(X,\|\cdot\|;\mathbb{R})$ 为一个实赋范向量空间（或实Banach空间）。其**复化空间** $X^{\mathbb{C}}$ 可按以下步骤构造：
 
 ### 定义（复化空间）
 
@@ -88,7 +88,7 @@ $$
 
 1. **复赋范空间**：$(X^{\mathbb{C}}, \|\cdot\|_{X^{\mathbb{C}}})$ 构成一个复赋范向量空间。
 2. **等距嵌入**：嵌入映射 $I: X \to X^{\mathbb{C}}$ 和 $i: X \to X^{\mathbb{C}}$ 都是等距嵌入，即对任意 $x \in X$，有 $\|Ix\|_{X^{\mathbb{C}}} = \|ix\|_{X^{\mathbb{C}}} = \|x\|_X$。
-3. **完备性**：$(X^{\mathbb{C}}, \|\cdot\|_{X^{\mathbb{C}}})$ 是复巴拿赫空间当且仅当 $(X, \|\cdot\|_X)$ 是实巴拿赫空间。
+3. **完备性**：$(X^{\mathbb{C}}, \|\cdot\|_{X^{\mathbb{C}}})$ 是复Banach空间当且仅当 $(X, \|\cdot\|_X)$ 是实Banach空间。
 4. **算子的复化**：设 $A: X \to Y$ 为两个实赋范空间之间的有界实线性算子。定义其**复化算子** $A^{\mathbb{C}}: X^{\mathbb{C}} \to Y^{\mathbb{C}}$ 为：
    $$
    A^{\mathbb{C}}(x + iy) \overset{\text{def}}{=} Ax + iAy, \quad \forall x+iy \in X^{\mathbb{C}}.
@@ -108,7 +108,7 @@ $$
 $$
 \|z\|_T \le \|z\| \le 2\|z\|_T, \quad \forall z \in X^{\mathbb{C}}.
 $$
-对于 L-T 范数，一个重要的性质是：当 $X=H$ 是一个实希尔伯特空间时，其复化空间 $H^{\mathbb{C}}$ 上的 L-T 范数具有简单的形式：
+对于 L-T 范数，一个重要的性质是：当 $X=H$ 是一个实Hilbert空间时，其复化空间 $H^{\mathbb{C}}$ 上的 L-T 范数具有简单的形式：
 $$
 \|x+iy\|_{X^{\mathbb{C}}}^2 = \|x\|_H^2 + \|y\|_H^2.
 $$
@@ -135,8 +135,8 @@ $$
 $$
 是一个复线性同构。此外：
 1. **一般情况**：$\Phi$ 总是线性同构。
-2. **希尔伯特空间情形**：若 $X$ 是实希尔伯特空间，则 $\Phi$ 是一个等距同构。
-3. **一般巴拿赫空间情形**：对于一般的实巴拿赫空间 $X$，$\Phi$ 可能不是等距的。
+2. **Hilbert空间情形**：若 $X$ 是实Hilbert空间，则 $\Phi$ 是一个等距同构。
+3. **一般Banach空间情形**：对于一般的实Banach空间 $X$，$\Phi$ 可能不是等距的。
 
 ### 注记（复线性泛函的实部）
 
@@ -146,11 +146,11 @@ $$
 $$
 是一个（实线性）等距同构。其逆映射将实线性泛函 $\Lambda_0 \in \mathcal{L}(X; \mathbb{R})$ 映为复线性泛函 $\Lambda(x) = \Lambda_0(x) - i\Lambda_0(ix)$。
 
-这一事实表明，关于实赋范空间对偶理论的结果（如哈恩-巴拿赫定理、对偶算子性质等），可以平行地推广到复赋范空间的情形。
+这一事实表明，关于实赋范空间对偶理论的结果（如哈恩-Banach定理、对偶算子性质等），可以平行地推广到复赋范空间的情形。
 
 ### 例
 
-1. 所有 $n$-元组 $x = (x_1, \dots, x_n)$ 的复数向量空间 $\mathbb{C}^n$ 是一个复巴拿赫空间，其范数为
+1. 所有 $n$-元组 $x = (x_1, \dots, x_n)$ 的复数向量空间 $\mathbb{C}^n$ 是一个复Banach空间，其范数为
 $$
 \|x\|_p := \left( \sum_{i=1}^n |x_i|^p \right)^{1/p}, \quad \|x\|_\infty := \max_{i=1,\dots,n} |x_i|
 $$
@@ -160,11 +160,11 @@ $$
 $$
 \|x\|_p := \left( \sum_{i=1}^\infty |x_i|^p \right)^{1/p}
 $$
-的复巴拿赫空间，其中 $x = (x_i)_{i \in \mathbb{N}} \in \ell^p(\mathbb{N}, \mathbb{C})$。类似地，复数有界序列的空间 $\ell^\infty(\mathbb{N}, \mathbb{C})$ 是一个具有范数
+的复Banach空间，其中 $x = (x_i)_{i \in \mathbb{N}} \in \ell^p(\mathbb{N}, \mathbb{C})$。类似地，复数有界序列的空间 $\ell^\infty(\mathbb{N}, \mathbb{C})$ 是一个具有范数
 $$
 \|x\|_\infty := \sup_{i \in \mathbb{N}} |x_i|
 $$
-的复巴拿赫空间，其中 $x = (x_i)_{i \in \mathbb{N}} \in \ell^\infty(\mathbb{N}, \mathbb{C})$。
+的复Banach空间，其中 $x = (x_i)_{i \in \mathbb{N}} \in \ell^\infty(\mathbb{N}, \mathbb{C})$。
 
 3. 设 $(M, \mathcal{A}, \mu)$ 为一个测度空间，固定常数 $1 \le p < \infty$，并记 $\mathcal{L}^p(\mu, \mathbb{C})$ 为 $M$ 上 $p$-可积复值函数的空间。函数
 $$
@@ -174,19 +174,19 @@ $$
 $$
 L^p(\mu, \mathbb{C}) := \mathcal{L}^p(\mu, \mathbb{C}) / {\sim},
 $$
-其中 $f \sim g$ 当且仅当函数 $f-g$ 几乎处处为零。这个商空间是一个复巴拿赫空间。
+其中 $f \sim g$ 当且仅当函数 $f-g$ 几乎处处为零。这个商空间是一个复Banach空间。
 
 4. 设 $(M, \mathcal{A}, \mu)$ 为一个测度空间，记 $\mathcal{L}^\infty(\mu, \mathbb{C})$ 为从 $M$ 到 $\mathbb{C}$ 的复值有界可测函数 $f: M \to \mathbb{C}$ 的空间。如同前一部分一样，记 $\sim$ 为 $\mathcal{L}^\infty(\mu, \mathbb{C})$ 上由几乎处处相等给出的等价关系。则商空间
 $$
 L^\infty(\mu, \mathbb{C}) := \mathcal{L}^\infty(\mu, \mathbb{C}) / {\sim}
 $$
-是一个复巴拿赫空间，其范数由上确界范数定义。
+是一个复Banach空间，其范数由上确界范数定义。
 
 5. 设 $M$ 为一个紧拓扑空间。则从 $M$ 到 $\mathbb{C}$ 的有界连续函数 $f: M \to \mathbb{C}$ 的空间 $C(M, \mathbb{C})$ 是一个具有上确界范数
 $$
 \|f\|_\infty := \sup_{p \in M} |f(p)|
 $$
-的复巴拿赫空间，其中 $f \in C(M, \mathbb{C})$。
+的复Banach空间，其中 $f \in C(M, \mathbb{C})$。
 
 6. 设 $(M, \mathcal{A})$ 为一个可测空间，即 $M$ 是一个集合，$\mathcal{A} \subset 2^M$ 是一个 $\sigma$-代数。$(M, \mathcal{A})$ 上的一个**复测度**是一个函数
 $$
@@ -200,7 +200,7 @@ $$
 $$
 \mathcal{M}(M, \mathcal{A}, \mathbb{C}) := \left\{ \mu: \mathcal{A} \to \mathbb{C} \mid \mu \text{ 是一个复测度} \right\}
 $$
-是 $(M, \mathcal{A})$ 上复测度的巴拿赫空间，其范数由
+是 $(M, \mathcal{A})$ 上复测度的Banach空间，其范数由
 $$
 \|\mu\| := \sup \left\{ \sum_{i=1}^n |\mu(A_i)| \;\middle|\; \begin{array}{l} n \in \mathbb{N}, \, A_1, \dots, A_n \in \mathcal{A}, \\ A_i \cap A_j = \emptyset \text{ for } i \ne j, \\ \bigcup_{i=1}^n A_i = M \end{array} \right\}
 $$

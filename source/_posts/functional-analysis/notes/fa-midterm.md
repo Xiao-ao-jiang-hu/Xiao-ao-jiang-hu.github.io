@@ -45,7 +45,7 @@ $$
 ## 凸投影定理
 
 ### 核心结论
-设 $H$ 是希尔伯特空间（内积为 $\langle \cdot, \cdot \rangle$，范数为 $\|\cdot\|$），$C \subseteq H$ 是非空闭凸子集。对任意 $x \in H$：
+设 $H$ 是Hilbert空间（内积为 $\langle \cdot, \cdot \rangle$，范数为 $\|\cdot\|$），$C \subseteq H$ 是非空闭凸子集。对任意 $x \in H$：
 
 存在唯一性：存在唯一点 $P_C(x) \in C$，满足：
 $$\|x - P_C(x)\| = \min_{y \in C} \|x - y\|.$$
@@ -57,7 +57,7 @@ $$\langle x - P_C(x),  y - P_C(x) \rangle \leq 0, \quad \forall y \in C.$$
 
 ### 关键条件
 
-希尔伯特空间：完备内积空间（保证存在性）。
+Hilbert空间：完备内积空间（保证存在性）。
 闭集：$C$ 包含所有极限点（确保最小值可达）。
 凸集：$\forall y_1, y_2 \in C, \lambda \in [0,1]$，有 $\lambda y_1 + (1-\lambda)y_2 \in C$（保证唯一性）。
 非空：$C \neq \emptyset$（投影有定义）。
@@ -157,7 +157,7 @@ $X = [a, b]$, $Y = \mathbb{R}$; $\mathcal{F} \subset C([a, b])$ 预紧当且仅�
 ### 关键条件
 定理要求空间满足以下至少一个条件：  
 1. 完备度量空间（Complete Metric Space）：  
-   度量空间中所有柯西列均收敛（如：$\mathbb{R}^n$、希尔伯特空间$l^2$、连续函数空间$C[a,b]$）。  
+   度量空间中所有柯西列均收敛（如：$\mathbb{R}^n$、Hilbert空间$l^2$、连续函数空间$C[a,b]$）。  
 2. 局部紧豪斯多夫空间（Locally Compact Hausdorff Space）：  
    每点有紧邻域（如：$\mathbb{R}^n$、离散空间）。
 
@@ -277,8 +277,8 @@ $$
 1.  定义域是整个空间 ($D(T) = X$)： 这是最常见和最重要的情形。
     - 定理简化： 若 $T: X \to Y$ 是定义在整个Banach空间 $X$ 上的线性算子，且 $T$ 是闭算子（即 $\mathcal{G}(T)$ 在 $X \times Y$ 中闭），则 $T$ 必然是有界算子 ($T \in \mathcal{L}(X, Y)$)。
     - 关键点： 当 $D(T) = X$（$X$ 是闭子集）时，闭性条件单独就足以推出有界性。这是闭图定理最常用的形式。
-2.  Hellinger-Toeplitz 定理： 这是闭图定理在希尔伯特空间 (Hilbert Space) 上对称算子情形的著名应用。
-    - 结论： 设 $H$ 是一个希尔伯特空间，$T: H \to H$ 是一个对称算子（即 $\langle Tx, y \rangle = \langle x, Ty \rangle$ 对所有 $x, y \in D(T)$ 成立），且 $D(T) = H$（定义在整个空间上），则 $T$ 必然是有界算子。
+2.  Hellinger-Toeplitz 定理： 这是闭图定理在Hilbert空间 (Hilbert Space) 上对称算子情形的著名应用。
+    - 结论： 设 $H$ 是一个Hilbert空间，$T: H \to H$ 是一个对称算子（即 $\langle Tx, y \rangle = \langle x, Ty \rangle$ 对所有 $x, y \in D(T)$ 成立），且 $D(T) = H$（定义在整个空间上），则 $T$ 必然是有界算子。
     - 证明思路： 利用对称性可以证明 $T$ 是闭算子（验证 $\mathcal{G}(T)$ 闭），然后应用闭图定理（$D(T)=H$ 是闭的）即得 $T$ 有界。
 3.  闭稠定算子的逆算子： 如果 $T: X \to Y$ 是闭算子，定义域 $D(T)$ 稠密于 $X$（不要求闭），值域 $R(T)$ 稠密于 $Y$，且 $T$ 是单射（即存在逆算子 $T^{-1}: Y \to X$），那么 $T^{-1}$ 也是闭算子。
     - 应用闭图定理： 如果我们能额外证明 $T^{-1}$ 的定义域 $D(T^{-1}) = R(T)$ 是 $Y$ 中的闭子集，那么对 $T^{-1}$ 应用闭图定理（$T^{-1}$ 是闭算子，$D(T^{-1})$ 闭）即可推出 $T^{-1}$ 是有界算子（即 $T$ 有有界逆）。
@@ -404,7 +404,7 @@ $$
 ## 共轭双线性泛函的表示
 
 ### 核心结论
-设 $H$ 是希尔伯特空间，$B: H \times H \rightarrow \mathbb{C}$ 是满足有界性和强制性的共轭双线性泛函，则存在唯一的有界线性算子 $A: H \to H$ 满足：  
+设 $H$ 是Hilbert空间，$B: H \times H \rightarrow \mathbb{C}$ 是满足有界性和强制性的共轭双线性泛函，则存在唯一的有界线性算子 $A: H \to H$ 满足：  
 $$ B(u, v) = (u, Av)_H \quad \forall u, v \in H $$  
 且 $A$ 具有以下性质：  
 1. $A$ 可逆：$A^{-1}$ 存在且是 $H \to H$ 的有界线性算子。  
@@ -420,7 +420,7 @@ $$ B(u, v) = (u, Av)_H \quad \forall u, v \in H $$
    - 对第二变量共轭线性：$B(u, \alpha v_1 + \beta v_2) = \overline{\alpha} B(u, v_1) + \overline{\beta} B(u, v_2)$  
 2. 有界性：存在 $M > 0$ 使得 $ |B(u, v)| \leq M \|u\|_H \|v\|_H \quad \forall u, v \in H $  
 3. 强制性：存在 $\alpha > 0$ 使得 $ |B(u, u)| \geq \alpha \|u\|_H^2 \quad \forall u \in H $ 
-4. 空间完备性：$H$ 必须是希尔伯特空间（完备性保证解的存在性）。  
+4. 空间完备性：$H$ 必须是Hilbert空间（完备性保证解的存在性）。  
 
 ### 直观解释
 1. 算子构造：  

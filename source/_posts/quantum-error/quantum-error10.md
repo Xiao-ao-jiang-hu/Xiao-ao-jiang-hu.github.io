@@ -150,7 +150,7 @@ $$
 
 
 ### 几何意义
-考虑 $n$ 个量子比特的 $2^n$ 维希尔伯特空间 $\mathcal{H}$：
+考虑 $n$ 个量子比特的 $2^n$ 维Hilbert空间 $\mathcal{H}$：
 1. 编码空间构造  
    每个稳定子生成元 $g_i$（$n-k$ 个泡利算子）将 $\mathcal{H}$ 划分为正交子空间：  
    $\mathcal{H}^+(g_i) = \{ |\psi\rangle \mid g_i|\psi\rangle = +|\psi\rangle \}$  
