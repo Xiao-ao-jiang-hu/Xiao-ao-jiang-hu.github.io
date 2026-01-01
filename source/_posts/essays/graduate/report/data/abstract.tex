@@ -1,0 +1,36 @@
+% !TeX root = ../thuthesis-example.tex
+
+% 中英文摘要和关键字
+
+\begin{abstract}
+  量子互联网的核心任务是在多跳网络中为上层应用分发量子纠缠资源。现有量子网络层协议设计通常将链路保真度视为一个二值约束条件，即仅要求其不低于某个应用相关阈值，并在此约束下优化如纠缠生成率或时延等传统指标。然而，对于分布式量子计算中的远程逻辑门操作、分布式量子传感等关键应用而言，其最终性能（如算法成功率、测量精度）与所使用纠缠资源的保真度呈连续正相关。在这些场景中，满足保真度阈值仅为实现功能的基础要求，而进一步提升保真度能够直接、显著地改善应用层性能。因此，有必要在路由机制中探索以主动优化保真度为导向的路径选择策略。
+
+  本研究旨在设计、实现并评估一种将保真度作为核心优化目标之一的量子网络层协议。研究包含两个并重的部分：一是协议与算法的设计，二是在一个能真实反映量子-经典混合网络环境的仿真平台中进行实现与验证。
+
+  在协议设计方面，希望提出一种基于链路状态的路由算法。该算法应能在以保真度衰减为链路权重的路径计算基础上，引入动态保真度评估与路径协调机制。
+
+  在实现与验证方面，我们将选择qns-3作为实验平台。qns-3是首个深度集成于工业级网络模拟框架NS-3的量子网络扩展，其关键特性在于实现了量子物理层事件与经典网络协议栈在统一离散事件时间轴上模拟。这一特性使得在qns-3中实现的协议能够被置于包含经典背景流量、资源共享竞争的真实网络环境中进行测试，这是其他量子专用模拟器所不具备的能力。在本研究中，我们将为qns-3实现网络层协议，并基于此设计对比实验，评估所提协议与仅以跳数或静态保真度阈值为基准的路由策略之间的性能差异。评估将重点聚焦于端到端纠缠的平均保真度、高保真纠缠交付的成功率等直接反映优化目标的指标，以验证在路由决策中系统性考虑保真度优化的必要性与有效性。
+
+  % 关键词用“英文逗号”分隔，输出时会自动处理为正确的分隔符
+  \thusetup{
+    keywords = {量子网络, 网络层协议, 路由算法, 保真度优化, qns-3, 混合网络仿真},
+  }
+\end{abstract}
+
+% \begin{abstract*}
+%   An abstract of a dissertation is a summary and extraction of research work and contributions.
+%   Included in an abstract should be description of research topic and research objective, brief introduction to methodology and research process, and summary of conclusion and contributions of the research.
+%   An abstract should be characterized by independence and clarity and carry identical information with the dissertation.
+%   It should be such that the general idea and major contributions of the dissertation are conveyed without reading the dissertation.
+
+%   An abstract should be concise and to the point.
+%   It is a misunderstanding to make an abstract an outline of the dissertation and words “the first chapter”, “the second chapter” and the like should be avoided in the abstract.
+
+%   Keywords are terms used in a dissertation for indexing, reflecting core information of the dissertation.
+%   An abstract may contain a maximum of 5 keywords, with semi-colons used in between to separate one another.
+
+%   % Use comma as separator when inputting
+%   \thusetup{
+%     keywords* = {keyword 1, keyword 2, keyword 3, keyword 4, keyword 5},
+%   }
+% \end{abstract*}
