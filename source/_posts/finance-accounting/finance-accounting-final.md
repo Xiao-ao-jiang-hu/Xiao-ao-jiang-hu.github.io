@@ -1,5 +1,5 @@
 ---
-title: 'Financial Accounting Final Summary'
+title: Financial Accounting Final Summary
 tags:
   - finance
 categories:
@@ -7,6 +7,7 @@ categories:
 excerpt: 本文档为期末复习提纲
 index_img: /img/accounting.png
 banner_img: /img/accounting.png
+abbrlink: ed491dd2
 date: 2025-12-31 13:42:03
 ---
 ### **Class 3: Operating Decisions and the Accounting System (经营决策与会计系统)**

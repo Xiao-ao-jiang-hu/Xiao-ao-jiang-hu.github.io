@@ -5,6 +5,7 @@ tags:
 categories:
   - uncategorized
 excerpt: no excerpt
+abbrlink: c76cab81
 date: 2025-12-23 21:38:16
 ---
 # **保真度感知的多路径路由用于量子网络中的多方态分发**

@@ -1,97 +1,49 @@
 % !TeX root = ../thuthesis-example.tex
 
-\chapter{数学符号和公式}
+\chapter{研究方法}
 
-\section{数学符号}
+本研究旨在应对当前量子网络路由协议将保真度视为静态约束的局限性，探索将保真度作为核心优化目标的新型路由策略，并在一个能够真实反映量子-经典混合网络动态特性的仿真平台中进行实现与验证。研究遵循“问题建模-算法设计-系统实现-性能评估”的技术路线，核心在于解决如何动态优化保真度以及在混合仿真环境中实现协议栈两大关键技术问题。
 
-中文论文的数学符号默认遵循 GB/T 3102.11—1993《物理科学和技术中使用的数学符号》
-\footnote{原 GB 3102.11—1993，自 2017 年 3 月 23 日起，该标准转为推荐性标准。}。
-该标准参照采纳 ISO 31-11:1992 \footnote{目前已更新为 ISO 80000-2:2019。}，
-但是与 \TeX{} 默认的美国数学学会（AMS）的符号习惯有所区别。
-具体地来说主要有以下差异：
-\begin{enumerate}
-  \item 大写希腊字母默认为斜体，如
-    \begin{equation*}
-      \Gamma \Delta \Theta \Lambda \Xi \Pi \Sigma \Upsilon \Phi \Psi \Omega.
-    \end{equation*}
-    注意有限增量符号 $\increment$ 固定使用正体，模板提供了 \cs{increment} 命令。
-  \item 小于等于号和大于等于号使用倾斜的字形 $\le$、$\ge$。
-  \item 积分号使用正体，比如 $\int$、$\oint$。
-  \item
-    偏微分符号 $\partial$ 使用正体。
-  \item
-    省略号 \cs{dots} 按照中文的习惯固定居中，比如
-    \begin{equation*}
-      1, 2, \dots, n \quad 1 + 2 + \dots + n.
-    \end{equation*}
-  \item
-    实部 $\Re$ 和虚部 $\Im$ 的字体使用罗马体。
-\end{enumerate}
+\section{面向保真度优化的路由算法设计}
+本部分旨在设计一种能够动态权衡保真度与资源消耗的路由算法，其关键在于建立准确的保真度衰减模型并据此设计自适应的路径选择机制。
 
-以上数学符号样式的差异可以在模板中统一设置。
-另外国标还有一些与 AMS 不同的符号使用习惯，需要用户在写作时进行处理：
-\begin{enumerate}
-  \item 数学常数和特殊函数名用正体，如
-    \begin{equation*}
-      \uppi = 3.14\dots; \quad
-      \symup{i}^2 = -1; \quad
-      \symup{e} = \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n.
-    \end{equation*}
-  \item 微分号使用正体，比如 $\dif y / \dif x$。
-  \item 向量、矩阵和张量用粗斜体（\cs{symbf}），如 $\symbf{x}$、$\symbf{\Sigma}$、$\symbfsf{T}$。
-  \item 自然对数用 $\ln x$ 不用 $\log x$。
-\end{enumerate}
+\subsection{保真度衰减模型与路径度量}
+量子纠缠在路径建立过程中的保真度衰减主要源于两个方面：一是各跳链路固有噪声及纠缠交换操作引入的固定衰减；二是量子存储器在等待与中继过程中的退相干效应。本研究采用一个综合模型来刻画路径 \(P\) 的预期保真度 \(F_{est}(P)\)：
 
-
-英文论文的数学符号使用 \TeX{} 默认的样式。
-如果有必要，也可以通过设置 \verb|math-style| 选择数学符号样式。
-
-关于量和单位推荐使用
-\href{http://mirrors.ctan.org/macros/latex/contrib/siunitx/siunitx.pdf}{\pkg{siunitx}}
-宏包，
-可以方便地处理希腊字母以及数字与单位之间的空白，
-比如：
-\SI{6.4e6}{m}，
-\SI{9}{\micro\meter}，
-\si{kg.m.s^{-1}}，
-\SIrange{10}{20}{\degreeCelsius}。
-
-
-
-\section{数学公式}
-
-数学公式可以使用 \env{equation} 和 \env{equation*} 环境。
-注意数学公式的引用应前后带括号，通常使用 \cs{eqref} 命令，比如式\eqref{eq:example}。
 \begin{equation}
-  \frac{1}{2 \uppi \symup{i}} \int_\gamma f = \sum_{k=1}^m n(\gamma; a_k) \mathscr{R}(f; a_k).
-  \label{eq:example}
+F_{est}(P) = F_0 \cdot \left(\prod_{e \in P} \eta_e \right) \cdot \exp\left(-\frac{T_{total}(P)}{\tau}\right)
+\label{eq:fidelity_decay}
 \end{equation}
 
-多行公式尽可能在“=”处对齐，推荐使用 \env{align} 环境。
-\begin{align}
-  a & = b + c + d + e \\
-    & = f + g
-\end{align}
+其中，\(F_0\) 为理想贝尔态保真度，\(\eta_e\) 为链路 \(e\) 的纠缠生成与交换操作保真度因子，\(T_{total}(P)\) 为路径 \(P\) 的估计建立总时延，\(\tau\) 为量子存储器的相干时间。该模型量化了路径长度（通过连乘项）和建立时延（通过指数衰减项）对最终保真度的联合影响，是算法评估不同路径“质量”的基础。
 
+\subsection{自适应权重调整机制}
+基于上述模型，路由算法的核心挑战是如何在路径选择中动态平衡保真度与建立成功率（或时延）。本研究拟在经典最短路径算法框架内，引入一个动态链路权重函数：
 
+\begin{equation}
+w_e(t) = \alpha(t) \cdot \left[-\log(\eta_e \cdot e^{-t_{e, wait}/\tau})\right] + (1-\alpha(t)) \cdot \left[-\log(p_e)\right]
+\label{eq:dynamic_weight}
+\end{equation}
 
-\section{数学定理}
+其中，\(p_e\) 为链路 \(e\) 的纠缠生成成功率，\(t_{e, wait}\) 为链路在当前网络状态下的预估排队等待时间。关键技术参数 \(\alpha(t) \in [0,1]\) 是一个随时间或网络状态变化的权衡因子。
 
-定理环境的格式可以使用 \pkg{amsthm} 或者 \pkg{ntheorem} 宏包配置。
-用户在导言区载入这两者之一后，模板会自动配置 \env{theorem}、\env{proof} 等环境。
+该机制的核心思想是：\(\alpha(t)\) 的值并非固定，而是根据网络全局状态（如平均存储器利用率、链路拥塞程度）和业务需求特征（如请求是否对保真度敏感）进行动态调整。当网络负载较轻或业务要求高保真度时，可增大 \(\alpha\)，使算法优先选择保真度衰减更小的路径；当网络拥塞时，则减小 \(\alpha\)，促使算法选择建立更快、成功率更高的路径，以避免因长时间排队导致所有路径的保真度均因退相干而严重劣化。此机制旨在解决静态策略在动态网络中表现僵化的问题。
 
-\begin{theorem}[Lindeberg--Lévy 中心极限定理]
-  设随机变量 $X_1, X_2, \dots, X_n$ 独立同分布， 且具有期望 $\mu$ 和有限的方差 $\sigma^2 \ne 0$，
-  记 $\bar{X}_n = \frac{1}{n} \sum_{i+1}^n X_i$，则
-  \begin{equation}
-    \lim_{n \to \infty} P \left(\frac{\sqrt{n} \left( \bar{X}_n - \mu \right)}{\sigma} \le z \right) = \Phi(z),
-  \end{equation}
-  其中 $\Phi(z)$ 是标准正态分布的分布函数。
-\end{theorem}
-\begin{proof}
-  Trivial.
-\end{proof}
+\section{基于qns-3的混合网络协议栈实现与验证}
+算法设计的有效性需在贴近实际的混合网络环境中验证。选择qns-3作为实现与验证平台，其根本原因在于它是目前唯一能将量子物理层事件与经典TCP/IP协议栈纳入同一离散事件时间轴进行仿真的工具。本研究将在此平台上解决量子网络层协议栈的实现问题。
 
-同时模板还提供了 \env{assumption}、\env{definition}、\env{proposition}、
-\env{lemma}、\env{theorem}、\env{axiom}、\env{corollary}、\env{exercise}、
-\env{example}、\env{remar}、\env{problem}、\env{conjecture} 这些相关的环境。
+\subsection{协议栈实现的关键技术问题}
+在qns-3/NS-3框架内实现量子网络层，需解决以下工程与技术问题：
+1.  量子-经典控制平面集成：如何利用NS-3成熟的IP协议栈（如套接字、数据包转发）来承载量子路由信令（如链路状态通告）。这要求设计专用的量子控制报文格式，并确保其能无缝嵌入经典网络流中传输。
+2.  与量子物理层的接口：如何定义清晰的接口，使得网络层模块能够调用qns-3底层提供的纠缠生成、存储、操作（如Bell态测量）等量子原语。这涉及量子资源（如存储器地址、纠缠对句柄）的抽象与管理。
+3.  混合事件调度的一致性：如何确保量子纠缠尝试、经典控制报文处理、以及可能的经典背景流量等不同类型事件，在NS-3的全局事件队列中正确、有序地被执行，以模拟真实的时间同步关系。
+
+\subsection{系统性仿真评估设计}
+为验证算法性能，将设计对比仿真实验，重点考察算法在混合环境下的表现。
+\begin{itemize}
+    \item \textbf{对比基准}：设置两种基准算法：(1) 最小跳数路由；(2) 静态保真度阈值路由（筛选 \(F_{est} \geq F_{th}\) 的最短路径）。
+    \item \textbf{评估场景}：构建包含经典背景流量（如CBR流）的网络场景，模拟量子与经典业务共享信道资源（通过WDM模型）的情形。引入随机的链路参数波动（模拟环境噪声变化）或节点失效，测试动态适应性。
+    \item \textbf{核心指标}：除纠缠建立成功率与吞吐量外，将重点分析平均保真度以及保真度分布的尾部改善情况（如95分位数保真度），以证明算法对高保真业务的有效支撑。同时，监测在网络动态变化时，算法通过调整 \(\alpha(t)\) 来维持服务稳定性的能力。
+\end{itemize}
+
+通过上述方法，本研究旨在不仅提出一种具有自适应能力的保真度优化路由思路，更通过在高保真混合仿真平台qns-3上的首次完整实现与系统性评估，为量子网络协议的实用化发展提供兼具理论价值和工程可行性的参考。

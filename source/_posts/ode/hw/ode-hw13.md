@@ -9,6 +9,7 @@ categories:
 excerpt: ODE第十三次作业
 index_img: /img/ode.jpg
 banner_img: /img/ode.jpg
+abbrlink: 23950f9f
 date: 2025-12-28 19:05:58
 ---
 # 习题 1

@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析第二十五次作业
+abbrlink: c3fac386
 date: 2025-12-28 18:07:04
 ---
 # 25.1
