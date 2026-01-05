@@ -18,25 +18,25 @@
     }
 }
 
-/* 在大屏幕上调整布局，隐藏左侧空栏，加宽中间内容栏 */
+/* 在大屏幕上调整布局，将目录放到左边，加宽中间内容栏 */
 @media (min-width: 992px) {
 
-    /* 隐藏左侧空白侧边栏 */
+    /* 调整左侧侧边栏(目录)宽度，使其变窄 */
     .row.nomargin-x>.side-col.d-none.d-lg-block.col-lg-2:first-child {
-        flex: 0 0 10% !important;
-        max-width: 10% !important;
+        flex: 0 0 15% !important;
+        max-width: 15% !important;
     }
 
     /* 调整中间内容区域宽度，使其占据更多空间 */
     .row.nomargin-x>.col-lg-8 {
-        flex: 0 0 80% !important;
-        max-width: 80% !important;
+        flex: 0 0 85% !important;
+        max-width: 85% !important;
     }
 
-    /* 调整右侧侧边栏(目录)宽度，使其变窄 */
+    /* 隐藏右侧空白侧边栏 */
     .row.nomargin-x>.side-col.d-none.d-lg-block.col-lg-2:last-child {
-        flex: 0 0 10% !important;
-        max-width: 10% !important;
+        flex: 0 0 0% !important;
+        max-width: 0% !important;
     }
 
     /* 关键：去除中间容器的 Bootstrap 默认最大宽度限制，使其填满列宽 */
