@@ -9,6 +9,7 @@ categories:
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
 excerpt: 泛函分析课程期末复习笔记
+abbrlink: 1b2b099a
 date: 2026-01-06 21:53:55
 ---
 # 弱拓扑
