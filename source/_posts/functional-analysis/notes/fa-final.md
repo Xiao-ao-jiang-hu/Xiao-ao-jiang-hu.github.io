@@ -141,3 +141,81 @@ $$\mathrm{ind}(T) = \dim(\ker(T)) - \dim(Y / \mathrm{im}(T)).$$
 $$
 \text{index}(BA) = \text{index}(A) + \text{index}(B).
 $$
+
+# 复Banach空间
+## 充要条件
+一个实赋范向量空间 $X$ 可以赋予复结构当且仅当存在一个线性算子 $J \in B(X)$ 使得 $J^2 = -\mathbb{I}$。
+
+## 构造步骤
+1. 定义复数乘法：对任意 $x \in X$ 和复数 $a + bi$，定义 $(a + bi)x = ax + bJx$。
+2. 定义复范数：对任意 $x \in X$，定义 $\|x\|_{\mathbb{C}} = \sup_{0 \le \theta < 2\pi} \|\cos\theta x + \sin\theta Jx\|$。
+
+# 全纯函数
+## 刻画引理
+设 $X$ 和 $Y$ 为复Banach空间，且令 $A: \Omega \to \mathcal{L}^c(X,Y)$ 为一个在开集 $\Omega \subset \mathbb{C}$ 上定义的弱连续函数。则以下命题等价：
+
+1. 函数 $A$ 是全纯的。
+2. 对任意 $x \in X$ 和任意 $y^* \in Y^*$，函数
+   $$
+   \Omega \to \mathbb{C}: z \mapsto \langle y^*, A(z)x \rangle
+   $$
+   是全纯的。
+3. 设环路 $\gamma: [0,1] \to \Omega$ 包含于 $\Omega$ ，那么对所有 $x \in X$，所有 $y^* \in Y^*$，以及所有 $w \in \mathbb{C}$，有
+   $$
+   |w - z_0| < r \quad \Longrightarrow \quad \langle y^*, A(w)x \rangle = \frac{1}{2\pi i} \int_\gamma \frac{\langle y^*, A(z)x \rangle}{z - w} \, dz.
+   $$
+
+# 谱
+## 定义
+设 $X$ 是复巴拿赫空间，$T: X \to X$ 是有界线性算子。
+- 预解集：$\rho(T) = \{\lambda \in \mathbb{C} : \lambda I - T \text{ 可逆且有界}\}$。
+- 谱集：$\sigma(T) = \mathbb{C} \setminus \rho(T)$。
+
+谱分为互不相交的三部分：
+
+- 点谱 $\sigma_p(T)$：$\lambda I - T$ 不是单射，即存在 $x \neq 0$ 使 $Tx = \lambda x$，$\lambda$ 称为特征值。
+- 连续谱 $\sigma_c(T)$：$\lambda I - T$ 是单射且值域稠密但不是满射。
+- 剩余谱 $\sigma_r(T)$：$\lambda I - T$ 是单射但值域不稠密。
+
+## 基本性质
+1. 非空紧性：$\sigma(T)$ 是 $\mathbb{C}$ 中的非空紧集。
+2. 有界性：$\sigma(T) \subseteq \{\lambda : |\lambda| \leq \|T\|\}$。
+3. 谱半径公式：
+$$r(T) = \sup_{\lambda \in \sigma(T)} |\lambda| = \lim_{n \to \infty} \|T^n\|^{1/n} = \inf_{n \geq 1} \|T^n\|^{1/n}.$$
+
+4. 预解式的解析性：预解式 $R(\lambda, T) = (\lambda I - T)^{-1}$ 在 $\rho(T)$ 上为算子值全纯函数，满足预解方程：
+$$R(\lambda, T) - R(\mu, T) = (\mu - \lambda) R(\lambda, T) R(\mu, T).$$
+
+
+## 紧算子的谱性质
+1. 除 $0$ 外，谱点均为特征值，且特征值重数有限。
+2. 非零特征值至多可数，且若有无穷多个，则以 $0$ 为唯一聚点。
+3. 若 $T$ 自伴紧，则存在标准正交基由特征向量构成，且谱为实数集。
+
+## 正规算子的谱性质
+### 三类算子
+1. 正规算子：$T$ 满足 $TT^* = T^*T$。
+2. 自伴算子：$T$ 满足 $T = T^*$。
+3. 酉算子：$T$ 满足 $T^*T = TT^* = I$。
+
+后两种包含于第一种。
+
+### 三种算子的刻画
+1. 正规算子：$\|Tx\| = \|T^*x\|$ 对所有 $x \in X$ 成立。
+2. 自伴算子：$\langle Tx, x \rangle$ 为实数对所有 $x \in X$ 成立。
+3. 酉算子：$\|Tx\| = \|T^*x\| = \|x\|$ 对所有 $x \in X$ 成立。
+
+
+### 谱性质
+设 $A$ 是正规算子。则
+1. $\|A^n\| = \|A\|^n$ 对所有整数 $n \geq 1$ 成立。
+2. 谱半径等于算子范数：$r(A) = \|A\|$。
+3. 剩余谱及其对偶算子的剩余谱均为空。
+4. 点谱和对偶算子的点谱互为共轭：$\sigma_p(A^*) = \{\overline{\lambda} : \lambda \in \sigma_p(A)\}$。
+5. 酉算子的谱包含于单位圆上。
+6. 设 $A$ 是紧的，则存在正交归一基由特征向量构成，且谱为实数集（若 $A$ 自伴）或包含于单位圆上（若 $A$ 酉）。
+
+### 方法：预解式
+在 $\rho(T)$ 上，$R(\lambda, T)$ 全纯，且当 $|\lambda| > r(T)$ 时有 Neumann 级数展开：
+$$R(\lambda, T) = \sum_{n=0}^\infty \frac{T^n}{\lambda^{n+1}}.$$
+通过分析预解式的奇点来研究谱。
