@@ -38,16 +38,16 @@ $$|\tilde{f}(y)| = |f(x)| \leq \|f\| \|x\| \leq \|f\| \|T^{-1}\| \|y\|.$$
 假设 $X, Y$ 是 Banach 空间，$S, T \in \mathcal{L}(X; Y)$。若存在 $c > 0$ 使得 $\|Sx\| \le c\|Tx\|, \forall x \in X$，且 $\ker(T) = \ker(S)$，则 $\text{Ran}(T)$ 是闭的如果 $\text{Ran}(S)$ 是闭的。
 
 ## 解答
-由闭值域定理，由于 $S$ 闭，存在 $c_1 > 0$ 使得 $\forall x \in X, \inf_{z \in \ker(T)} \|x - z\| \le c_1 \|Tx\|$。
+由闭值域定理，由于 $S$ 闭，存在 $c_1 > 0$ 使得 $\forall x \in X, \inf_{z \in \ker(T)} \|x + z\| \le c_1 \|Tx\|$。
 由于 $\ker(T) = \ker(S)$，所以 $\inf_{z \in \ker(S)} \|x + z\| \le c_1 \|Tx\|$。
 又因为 $\|Sx\| \le c \|Tx\|$，所以 $\inf_{z \in \ker(S)} \|x + z\| \le c c_1 \|Sx\|$。
 于是由闭值域定理 $\text{Ran}(T)$ 闭。
 
 
 # 21.4
+假设 $X, Y$ 是 Hilbert 空间，$S, T \in \mathcal{L}(X; Y)$。若存在 $c > 0$ 使得 $\|Sx\| \le c\|Tx\|, \forall x \in X$，且 $T(\ker(S)) \subset T(\ker(S)^\perp)$，则 $\operatorname{Ran}(T)$ 是闭的，如果 $\operatorname{Ran}(S)$ 是闭的。
 
-
-**证明**：  
+## 解答
 设 $N = \ker(S)$。由于 $S$ 有闭值域，$N$ 是闭子空间，故 $X = N \oplus N^\perp$（Hilbert 空间的正交分解）。由开映射定理，$S|_{N^\perp} : N^\perp \to \operatorname{Ran}(S)$ 是有界线性双射，且其逆有界，故存在常数 $m > 0$ 使得  
 $$
 \|S x\| \ge m \|x\|, \quad \forall x \in N^\perp.

@@ -109,34 +109,18 @@ $$(L_A)^* y = A^\top y, \quad \text{即} \quad (L_A)^* = L_{A^\top}.$$
 1. $ \pi^*: (X/Y)^* \to Y^\perp $ 是等距同构的；  
 2. $ \ell^* $ 是满射且 $ \ker(\ell^*) = Y^\perp $，从而 $ \ell^*: X^*/Y^\perp \to Y^* $ 是等距同构。
 
-## 1
-设 $X$ 为 Banach 空间，$Y \subset X$ 为闭子空间，$\pi: X \to X/Y$ 为商映射 $\pi(x) = [x] = x + Y$。
-对于 $f \in (X/Y)^*$，其伴随 $\pi^* f \in X^*$ 满足
-$$\langle x, \pi^* f \rangle = \langle \pi x, f \rangle, \quad \forall x \in X.$$
-对任意 $y \in Y$，有 $\pi y = 0$，因此 $\langle y, \pi^* f \rangle = 0$，即 $\pi^* f \in Y^\perp$，其中
-$$Y^\perp = \{ x^* \in X^* : \langle y, x^* \rangle = 0 \ \forall y \in Y \}.$$
+## 解答
+### 1
+对任意 $\varphi \in (X/Y)^*$，定义 $\pi^*(\varphi) = \varphi \circ \pi \in X^*$。由于 $\pi(Y) = 0$，有 $\pi^*(\varphi)|_Y = 0$，故 $\pi^*(\varphi) \in Y^\perp$。  
+反之，对任意 $f \in Y^\perp$，定义 $\tilde{f}([x]) = f(x)$，则 $\tilde{f} \in (X/Y)^*$ 且 $\pi^*(\tilde{f}) = f$，故 $\pi^*$ 是双射。  
+等距性：由商范数定义，对任意 $\varphi \in (X/Y)^*$，有 $\|\pi^*(\varphi)\| = \|\varphi \circ \pi\| = \|\varphi\|$。
 
-单射性：若 $\pi^* f = 0$，则对任意 $x \in X$，$\langle \pi x, f \rangle = 0$；由于 $\pi$ 是满射，得 $f = 0$，故 $\pi^*$ 是单射。
-满射性：设 $g \in Y^\perp$。定义 $f: X/Y \to \mathbb{K}$（$\mathbb{K} = \mathbb{R}$ 或 $\mathbb{C}$）为
-$$f([x]) = g(x).$$
-若 $[x_1] = [x_2]$，则 $x_1 - x_2 \in Y$，故 $g(x_1 - x_2) = 0$，即 $g(x_1) = g(x_2)$，因此 $f$ 良定义且线性。对任意 $[x] \in X/Y$，有
-$$|f([x])| = |g(x)| \le \|g\| \|x\|,$$
-取 $x$ 为陪集中范数最小者（由商范数定义），可得 $|f([x])| \le \|g\| \|[x]\|$，于是 $f$ 连续且 $\|f\| \le \|g\|$。反之，对任意 $\varepsilon > 0$，存在 $x \in X$ 使 $|g(x)| \ge (\|g\| - \varepsilon) \|x\|$，且由商范数定义可取 $x$ 使 $\|x\| \le \|[x]\| + \varepsilon$，从而
-$$\|f\| \ge \frac{|g(x)|}{\|[x]\|} \ge \frac{\|g\| - \varepsilon}{1 + \varepsilon} \|x\|,$$
-令 $\varepsilon \to 0$ 得 $\|f\| \ge \|g\|$。因此 $\|f\| = \|g\|$，且 $\pi^* f = g$，故 $\pi^*$ 是满射。
-等距性：由上述过程，$\|\pi^* f\| = \|g\| = \|f\|$，因此 $\pi^*$ 是等距同构。
-
-## 2
-设 $\ell: Y \to X$ 为包含映射 $\ell(y) = y$。其伴随 $\ell^*: X^* \to Y^*$ 定义为
-$$\langle y, \ell^* x^* \rangle = \langle \ell(y), x^* \rangle = \langle y, x^* \rangle,$$
-即 $\ell^* x^* = x^*|_Y$。
-
-核：$\ker(\ell^*) = \{ x^* \in X^* : x^*|_Y = 0 \} = Y^\perp$。
-满射性：对任意 $y^* \in Y^*$，由 Hahn-Banach 定理，存在 $x^* \in X^*$ 使得 $x^*|_Y = y^*$ 且 $\|x^*\| = \|y^*\|$，于是 $\ell^* x^* = y^*$，故 $\ell^*$ 是满射。
-诱导等距同构：由于 $\ell^*$ 是满射且 $\ker(\ell^*) = Y^\perp$，由标准同构定理，诱导映射 $\hat{\ell^*}: X^*/Y^\perp \to Y^*$ 为线性双射。对任意 $\hat{x^*} \in X^*/Y^\perp$，
-$$\|\hat{\ell^*}(\hat{x^*})\| = \|\ell^* x^*\| = \|x^*|_Y\| \le \|x^*\|,$$
-取下确界得 $\|\hat{\ell^*}(\hat{x^*})\| \le \inf\{\|x^*\| : x^* \in \hat{x^*}\} = \|\hat{x^*}\|_{X^*/Y^\perp}$。反之，对任意 $y^* \in Y^*$，由 Hahn-Banach 定理存在延拓 $x^*$ 满足 $\|x^*\| = \|y^*\|$，于是
-$$\|\hat{x^*}\|_{X^*/Y^\perp} \le \|x^*\| = \|y^*\| = \|\hat{\ell^*}(\hat{x^*})\|,$$
-因此 $\hat{\ell^*}$ 是等距同构。
-
-综上，结论得证。
+### 2
+$\ell^*(f) = f|_Y$，显然 $\ker(\ell^*) = \{ f \in X^* : f|_Y = 0 \} = Y^\perp$。  
+由 Hahn-Banach 定理，任意 $g \in Y^*$ 可延拓为 $f \in X^*$，故 $\ell^*$ 是满射。  
+考虑诱导映射 $\tilde{\ell}^*: X^*/Y^\perp \to Y^*$，$\tilde{\ell}^*([f]) = f|_Y$，这是良定义的线性双射。  
+等距性：对任意 $[f] \in X^*/Y^\perp$，有  
+$$
+\| [f] \| = \inf_{g \in Y^\perp} \| f + g \| = \| f|_Y \| = \| \tilde{\ell}^*([f]) \|,
+$$
+故 $\tilde{\ell}^*$ 是等距同构。

@@ -109,6 +109,19 @@ qns-3 is the first quantum-network extension that fully complies with ns-3’s a
 
 算法实现为线性松弛（整数规划松弛为连续规划）和贪婪路径分配并动态调整（先按优先级选，如果某条路径在当前时间槽失效，会立即在候选路径集中根据权重切换到下一条路径）
 
+
+Routing entanglement in the quantum internet - npj Quantum Information - Mihir Pant - 该论文提出了一种通过利用网络中的多路径多样性和准直策略（quasi-greedy strategies），在具有损耗的量子网络中实现多用户间高效率、高通量纠缠分发的路由协议。
+
+Entanglement Distribution in a Quantum Network: A Multicommodity Flow-Based Approach - IEEE Transactions on Quantum Engineering - Kaushik Chakraborty - 该论文将量子网络中的多对用户纠缠分发问题建模为多商品流问题，提出了一种能够根据网络拓扑和资源约束优化纠缠分发速率的框架。
+
+
+Concurrent Entanglement Routing for Quantum Networks: Model and Designs - IEEE Transactions on Communications - Shouqian Shi - 该论文针对量子网络中的多请求并发路由问题，提出了一个基于时间扩展图的分析模型，并设计了名为 Q-Cast 的吞吐量最优路由协议，以解决纠缠分发中的资源竞争和时隙限制问题。
+
+Redundant Entanglement Provisioning and Selection for Throughput Maximization in Quantum Networks - IEEE INFOCOM 2021 - Yangming Zhao - 该论文提出了REPS机制，通过为相邻节点间预备冗余的纠缠链路资源，并灵活选择成功创建的链路来建立端到端连接，从而有效应对量子操作的概率性失败并最大化网络总吞吐量。
+
+E2E Fidelity Aware Routing and Purification for Throughput Maximization in Quantum Networks - IEEE INFOCOM 2022 - Yangming Zhao (赵阳明) - 该论文首次量化了端到端（E2E）纠缠保真度，并提出了 EFiRAP 算法，通过协同优化路由选择与链路纯化策略，在满足保真度阈值的前提下最大化量子网络的多用户吞吐量。
+
+
 # 已有的代码实现
 ### NetSquid-Routing（Python）  
 仓库：https://gitlab.com/netsquid/netsquid-routing  
