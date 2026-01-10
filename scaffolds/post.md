@@ -5,5 +5,4 @@ tags:
 - no tags
 categories:
 - uncategorized
-excerpt: no excerpt
 ---

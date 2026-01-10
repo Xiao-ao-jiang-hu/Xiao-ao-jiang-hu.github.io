@@ -50,9 +50,29 @@ hexo.extend.filter.register('after_post_render', function (data) {
         const blockPlaceholder = `MATHBLOCK_PLACEHOLDER_${index}_ENDMARK`;
         const inlinePlaceholder = `MATHINLINE_PLACEHOLDER_${index}_ENDMARK`;
 
+        let tex = '';
+        let isDisplay = false;
+
+        if (formula.startsWith('$$') && formula.endsWith('$$')) {
+            tex = formula.slice(2, -2);
+            isDisplay = true;
+        } else if (formula.startsWith('$') && formula.endsWith('$')) {
+            tex = formula.slice(1, -1);
+            isDisplay = false;
+        } else {
+            tex = formula;
+        }
+
+        // 转义 HTML 属性中的特殊字符
+        const safeTex = tex.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+
+        // 使用 span 包裹并附加元数据
+        // 这将作为 MathJax 渲染后的父容器，我们的复制脚本将直接从此节点提取数据
+        const wrapped = `<span class="math-source" data-tex="${safeTex}" data-display="${isDisplay}">${formula}</span>`;
+
         // 全局替换
-        content = content.split(blockPlaceholder).join(formula);
-        content = content.split(inlinePlaceholder).join(formula);
+        content = content.split(blockPlaceholder).join(wrapped);
+        content = content.split(inlinePlaceholder).join(wrapped);
     });
 
     formulaStorage.delete(fileKey);
