@@ -9,6 +9,8 @@ categories:
   - functional analysis homework
 index_img: /img/fa.jpg
 banner_img: /img/fa.jpg
+excerpt: 泛函分析各次作业汇总
+abbrlink: d8be9b47
 date: 2026-01-10 12:00:00
 ---
 
@@ -923,7 +925,7 @@ $$\lim_{n\to\infty}\|x_n\|=0,\ C\subset\overline{\mathrm{conv}}(\{x_n:n\in\mathb
     证明对每个$c\in C$ ，存在序列$x_{k}\in A_{k}$ 使得$x=\sum_{k=1}^{\infty}2^{-k}x_{k}$ ，注意当$x\in A_{k+1}$ 时 $\|x\|\leq4^{-k}$
 
 ### 22.3
-设$1\leq p<q<\infty$ ，按照如下流程证明所有有界线性算子$A:l^{q}\rightarrow l^{p}$ 都是紧的：
+设 $1 \leq p < q < \infty$, 按照如下流程证明所有有界线性算子 $A:l^{q} \rightarrow l^{p}$ 都是紧的：
 
 1. 固定有界线性算子A：$l^{q}\rightarrow l^{p},\left\|A\right\|=1$ 和$l^{q}$ 中弱收敛于0的序列$(x_n)_{n\in\mathbb{N}}$ 则只需证明$\lim_{n\to\infty}\|Ax_n\|_p=0$ 
 

@@ -102,7 +102,7 @@ $$\mathrm{conv}(\{x_n\}) \subset \bigcup_{y \in F} B_{2\varepsilon}(y).$$
 
 
 # 22.3
-设$1\leq p<q<\infty$ ，按照如下流程证明所有有界线性算子$A:l^{q}\rightarrow l^{p}$ 都是紧的：
+设 $1 \leq p < q < \infty$, 按照如下流程证明所有有界线性算子 $A:l^{q} \rightarrow l^{p}$ 都是紧的：
 
 1. 固定有界线性算子A：$l^{q}\rightarrow l^{p},\left\|A\right\|=1$ 和$l^{q}$ 中弱收敛于0的序列$(x_n)_{n\in\mathbb{N}}$ 则只需证明$\lim_{n\to\infty}\|Ax_n\|_p=0$ 
 
