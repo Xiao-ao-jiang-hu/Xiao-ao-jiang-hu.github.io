@@ -13,8 +13,12 @@ abbrlink: 772b99c1
 date: 2025-12-28 18:13:56
 ---
 # 26.1
+设 $X$ 为复 Banach 空间，$A \in \mathcal{L}^c(X)$ 为双射且是有界复线性算子，实数 $\varepsilon, r$ 使得
+$$
+0 < \varepsilon < \|A^{-1}\|^{-1} \le \|A\| < r.
+$$
 
-对应于 25.2，证明
+证明
 $$
 A^{-1} = \frac{1}{2\pi i} \int_{|z|=r} \frac{R(z, A)}{z} dz - \frac{1}{2\pi i} \int_{|z|=\varepsilon} \frac{R(z, A)}{z} dz.
 $$
