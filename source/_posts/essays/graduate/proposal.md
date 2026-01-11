@@ -11,6 +11,7 @@ index_img: /img/reading.jpg
 banner_img: /img/reading.jpg
 excerpt: 开题报告
 abbrlink: e338e25d
+password: "114514"
 date: 2026-01-04 16:48:14
 ---
 <embed src="e338e25d/thuthesis-example.pdf" width="100%" height="1200px" type="application/pdf">
