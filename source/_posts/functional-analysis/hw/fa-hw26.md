@@ -25,18 +25,17 @@ $$
 
 
 ## 解答
-取 $r > \|A\|$ 及充分小的 $\varepsilon > 0$ 使得 $\sigma(A) \subset \{z: |z| < r\}$ 且 $\{z: |z| \le \varepsilon\} \subset \rho(A)$. 在 $|z|=r$ 上，$R(z,A) = \sum_{n=0}^\infty \frac{A^n}{z^{n+1}}$ 一致收敛，代入积分得
-$$
-\frac{1}{2\pi i} \int_{|z|=r} \frac{R(z,A)}{z} dz = \sum_{n=0}^\infty A^n \cdot \frac{1}{2\pi i} \int_{|z|=r} \frac{1}{z^{n+2}} dz = 0,
-$$
-因为 $n+2 \ge 2$ 时积分值为零。在 $|z|=\varepsilon$ 上，$R(z,A)/z$ 在 $z=0$ 处有一阶极点，留数为 $R(0,A) = -A^{-1}$，故
-$$
-\frac{1}{2\pi i} \int_{|z|=\varepsilon} \frac{R(z,A)}{z} dz = -A^{-1}.
-$$
-因此，
-$$
-\frac{1}{2\pi i} \int_{|z|=r} \frac{R(z,A)}{z} dz - \frac{1}{2\pi i} \int_{|z|=\varepsilon} \frac{R(z,A)}{z} dz = 0 - (-A^{-1}) = A^{-1}.
-$$
+首先由25.2，$\sigma(A)$ 严格地位于开圆环
+$$U = \{z \in \mathbb{C} : \varepsilon < |z| < r\}$$
+内。特别地，圆周 $|z|=r$ 和 $|z|=\varepsilon$ 均属于预解集 $\rho(A)$。
+
+考虑函数 $f(z) = \frac{1}{z}$，它在 $\mathbb{C}\setminus\{0\}$ 上全纯。由于 $\sigma(A) \subset U$ 且 $0 \notin \overline{U}$，$f$在包含$\sigma(A)$ 的开集上全纯。根据 Riesz-Dunford 全纯函数演算，
+$$f(A) = \frac{1}{2\pi i} \int_{\Gamma} f(z) R(z, A) \, dz,$$
+其中 $\Gamma$ 是 $U$ 内任意一条正向、可求长、包围 $\sigma(A)$ 的闭曲线，$R(z,A) = (zI - A)^{-1}$ 为预解式。
+取 $\Gamma$ 为两圆周的并：外圆 $C_r: |z|=r$（正向）和内圆 $C_\varepsilon: |z|=\varepsilon$（负向），即 $\Gamma = C_r \cup (-C_\varepsilon)$。则
+$$f(A) = \frac{1}{2\pi i} \int_{C_r} \frac{R(z,A)}{z} \, dz + \frac{1}{2\pi i} \int_{-C_\varepsilon} \frac{R(z,A)}{z} \, dz
+     = \frac{1}{2\pi i} \int_{|z|=r} \frac{R(z,A)}{z} \, dz - \frac{1}{2\pi i} \int_{|z|=\varepsilon} \frac{R(z,A)}{z} \, dz.$$
+由于 $f(z) = 1/z$，函数演算保证 $f(A) = A^{-1}$（因为 $f(z) \cdot z = 1$ 推出 $f(A)A = I = Af(A)$）。代入上式即得所证恒等式。
 
 # 26.2
 
