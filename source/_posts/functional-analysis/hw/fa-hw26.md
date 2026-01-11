@@ -73,7 +73,7 @@ $$
 若 $x \in \ker(T^m)$，则 $x = P_\lambda x + (I - P_\lambda)x$. 由交换性，$T^m (I - P_\lambda)x = (I - P_\lambda) T^m x = 0$，故 $(I - P_\lambda)x \in Z \cap \ker(T^m)$. 但 $T^m|_Z$ 可逆，故 $(I - P_\lambda)x = 0$，即 $x \in Y$. 所以 $\ker(T^m) \subset Y$. 显然 $\ker(T^m|_Y) = Y \cap \ker(T^m) = \ker(T^m)$. 等式得证.
 
 # 26.5
-证明 $\sigma_p(A)$ 是至多可数集。
+若 $A$ 是紧算子，证明 $\sigma_p(A)$ 是至多可数集。
 
 ## 解答
 要证紧算子 $A$ 的点谱 $\sigma_p(A)$ 至多可数.  
