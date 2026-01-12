@@ -151,21 +151,36 @@ $A + A^*$ 是双射当且仅当 $0 \notin \sigma(A + A^*)$，当且仅当对任�
 由正规算子的谱映射定理，对连续函数 $f(\lambda) = \lambda + \overline{\lambda}$，有 $\sigma(f(A)) = f(\sigma(A))$，即 $\sigma(A + A^*) = \{\lambda + \overline{\lambda} : \lambda \in \sigma(A)\}$。  
 
 ### 5
-考虑 $H = \mathbb{C}^2$，取非正规矩阵  
-$$
-A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}.
-$$  
-其谱 $\sigma(A) = \{0\}$，故 $\operatorname{Re}\lambda = 0$ 对所有 $\lambda \in \sigma(A)$ 成立。  
-取 $x = \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right)^T$，则 $\|x\|=1$，且  
-$$
-\langle x, Ax \rangle = \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right) \begin{pmatrix} 1/\sqrt{2} \\ 0 \end{pmatrix} = \frac{1}{2} > 0,
-$$  
-所以并非对所有 $x$ 有 $\operatorname{Re}\langle x, Ax \rangle \geq 0$（例如取 $x = \left( \frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}} \right)^T$ 可得负值）。因此 (1) 的等价性不成立。  
-对于 (2)，$\sup_{\|x\|=1} \operatorname{Re}\langle x, Ax \rangle = \frac{1}{2}$，而 $\sup_{\lambda \in \sigma(A)} \operatorname{Re}\lambda = 0$，等式不成立。  
-对于 (3)，$\sigma(A) \cap i\mathbb{R} = \{0\} \neq \varnothing$，但  
-$$
-A + A^* = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
-$$  
-可逆（特征值为 $\pm 1$），是双射，故等价性不成立。  
-对于 (4)，$\sigma(A + A^*) = \{1, -1\}$，而 $\{\lambda + \overline{\lambda} : \lambda \in \sigma(A)\} = \{0\}$，不相等。  
-这表明正规性假设在 (1)–(4) 中均不可省略。
+取非零复 Hilbert 空间 $H=\mathbb C^{2}$，在其标准正交基底下定义线性算子
+$$A=\begin{pmatrix}0&1\\0&0\end{pmatrix}.$$
+
+
+$A$ 不是正规算子：
+$$AA^{*}=\begin{pmatrix}1&0\\0&0\end{pmatrix}\neq A^{*}A=\begin{pmatrix}0&0\\0&1\end{pmatrix}.$$
+
+
+谱：$\sigma(A)=\{0\}$，于是 $\operatorname{Re}\lambda=0$ 对所有 $\lambda\in\sigma(A)$ 成立。
+
+
+(1) 不成立：取单位向量 $x=\frac{1}{\sqrt2}(1,-1)$，则
+$$\langle x,Ax\rangle=\frac{1}{\sqrt2}(1,-1)\cdot\frac{1}{\sqrt2}(-1,0)=-\frac12,
+\qquad\operatorname{Re}\langle x,Ax\rangle=-\frac12<0.$$
+故 $\operatorname{Re}\lambda\ge0$（$\forall\lambda\in\sigma(A)$）并不能推出 $\operatorname{Re}\langle x,Ax\rangle\ge0$（$\forall x\in H$）。
+
+
+(2) 不成立：数值范围的实部为
+$$\{\operatorname{Re}\langle x,Ax\rangle:\|x\|=1\}=[-\tfrac12,\tfrac12].$$
+因此
+$$\sup_{\|x\|=1}\operatorname{Re}\langle x,Ax\rangle=\frac12>0=\sup_{\lambda\in\sigma(A)}\operatorname{Re}\lambda,
+\qquad
+\inf_{\|x\|=1}\operatorname{Re}\langle x,Ax\rangle=-\frac12<0=\inf_{\lambda\in\sigma(A)}\operatorname{Re}\lambda.$$
+
+
+(3) 不成立：$\sigma(A)\cap i\mathbb R=\{0\}\neq\varnothing$，但
+$$A+A^{*}=\begin{pmatrix}0&1\\1&0\end{pmatrix}$$
+的特征值为 $\pm1$，故 $A+A^{*}$ 是双射（可逆）。
+
+
+(4) 不成立：$\sigma(A+A^{*})=\{1,-1\}$，而
+$$\{\lambda+\overline\lambda:\lambda\in\sigma(A)\}=\{0\}.$$
+两者不相等。
