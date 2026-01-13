@@ -4,10 +4,11 @@
 
 #show: stargazer-theme.with(
   aspect-ratio: "16-9",
+  footer-a: [王思图],
   config-info(
     title: [面向 QNS-3 的保真度感知自适应量子路由协议研究与实现],
-    author: [王思图],
-    date: datetime(year: 2026, month: 1, day: 16),
+    author: [王思图 \ 导师：施新刚老师],
+    date: datetime(year: 2026, month: 1, day: 14),
     institution: [计算机科学与技术系],
   ),
 )
@@ -18,6 +19,9 @@
 
 = 研究背景与意义
 #slide(title: [量子互联网的愿景与挑战])[
+  #align(center)[
+  #image("quan-net.png", width: 70%)
+  ]
   *愿景*：在分布式节点间建立高质量量子纠缠，支撑分布式量子计算、QKD和量子传感网络。
 
   *核心需求*：
@@ -47,7 +51,7 @@
 
 #slide(title: [现有工作 I：多路径与流规划路由])[
   *Mihir Pant (npj QI) & K. Chakraborty (IEEE TQE)*
-  - *机制*：利用多路径多样性 (Multipath Diversity) 进行准直路由；或将纠缠分发建模为多商品流 (Multicommodity Flow) 问题。
+  - *机制*：利用多路径多样性 (Multipath Diversity) 进行准贪婪路由；或将纠缠分发建模为多商品流 (Multicommodity Flow) 问题。
   - *分析*：主要侧重于挖掘网络拓扑的*连通性*与*速率*潜力。其模型通常假设链路属性相对静态，忽略了节点排队时延引入的*动态存储退相干*对保真度的影响。
 
   *ERA (Caleffi, TWC) & SLGR (Chakraborty, INFOCOM)*
@@ -67,7 +71,7 @@
 
 #slide(title: [现有工作 III：保真度感知与纯化策略])[
   *EFiRAP (Yangming Zhao, INFOCOM 2022)*
-  - *机制*：首次量化 E2E 保真度，协同优化路由选择与链路纯化 (Purification) 策略。
+  - *机制*：首次量化 E2E 保真度，协同优化路由选择与链路纯化策略。
   - *局限 A*：*目标偏差*。仍遵循 "Maximize Throughput s.t. Fidelity > Threshold" 范式，而非直接最大化保真度。
   - *局限 B*：*仿真失真*。纯化需要复杂的经典协商，现有纯量子仿真无法评估*经典控制平面拥塞*导致的信令高时延对纯化协议的影响。
 
@@ -77,7 +81,7 @@
 #slide(title: [仿真平台：隔离与融合])[
   *现有工具（NetSquid, SeQUeNCe）*：
   - *优势*：物理层模型精细（如密度矩阵演化）。
-  - *致命缺陷*：*模拟隔离*。量子事件调度与经典网络协议栈（TCP/IP）分离。
+  - *缺陷*：*模拟隔离*。量子事件调度与经典网络协议栈（TCP/IP）分离。
   - *后果*：无法模拟路由控制报文丢包、拥塞导致的时延抖动对量子纠缠（存储退相干）的连锁反应。
 
   *QNS-3 平台*：

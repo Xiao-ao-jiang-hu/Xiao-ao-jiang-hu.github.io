@@ -195,9 +195,9 @@ $$
 
 $$A=P D P^{-1},\quad 其中 \quad D=\begin{bmatrix}\lambda&\\ &\bar{\lambda}\end{bmatrix}.$$
 
-通过直接计算证明：$ 若 c\in\mathbb{R}^2$ 则 刂 IVP:$\dot{X}=A X;X(0)=c$ 的解
+通过直接计算证明：$ 若 c\in\mathbb{R}^2$ 则 IVP:$\dot{X}=A X;X(0)=c$ 的解
 
-$$X(t)=P\begin{bmatrix}e^{\bar{\lambda}t}&\\ &e^{\bar{\lambda}t}\end{bmatrix}P^{-1}c.$$
+$$X(t)=P\begin{bmatrix}e^{\lambda t}&\\ &e^{\bar{\lambda}t}\end{bmatrix}P^{-1}c.$$
 
 是一个实解（即其虚部为零)）。
 
@@ -240,9 +240,9 @@ $$\|A\|:=\sup\{|A x|:|x|=1\}.$$
 
 $$S_{n}=I+A+\cdots+A^{n}.$$
 
-3. 设$\|A\|<1$ ，证明$I-A 可$ 逆，且其逆为S。
+3. 设$\|A\|<1$ ，证明 $I-A$ 可逆，且其逆为 $S$。
 
-4. 对一般的m阶方阵，以上结论对吗?
+4. 对一般的 $m$ 阶方阵，以上结论对吗?
 
 ### 解答
 

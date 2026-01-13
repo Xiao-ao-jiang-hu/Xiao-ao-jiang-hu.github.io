@@ -239,7 +239,7 @@ $x(t) = C_1 e^{(1+\sqrt{2})t} + C_2 e^{(1-\sqrt{2})t}$
 ## 习题 7 
 设 $\lambda \in \mathbb{R}$。考虑如下一阶二维系统  
 $$
-\dot{X} = \begin{bmatrix} \lambda & 1 \\ 1 & \lambda \end{bmatrix} X.
+\dot{X} = \begin{bmatrix} \lambda & 1 \\ 0 & \lambda \end{bmatrix} X.
 $$  
 1) 分 $\lambda > 0, \lambda = 0, \lambda < 0$ 画出系统的相图。  
 2) 求解此方程（先求解 $y$ 分量，然后代入 $x$ 分量满足的方程，进而求解 $x$ 分量）。  
