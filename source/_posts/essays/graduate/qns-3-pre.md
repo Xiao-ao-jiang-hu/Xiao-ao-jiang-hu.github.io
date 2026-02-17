@@ -121,6 +121,9 @@ Redundant Entanglement Provisioning and Selection for Throughput Maximization in
 
 E2E Fidelity Aware Routing and Purification for Throughput Maximization in Quantum Networks - IEEE INFOCOM 2022 - Yangming Zhao (赵阳明) - 该论文首次量化了端到端（E2E）纠缠保真度，并提出了 EFiRAP 算法，通过协同优化路由选择与链路纯化策略，在满足保真度阈值的前提下最大化量子网络的多用户吞吐量。
 
+# 其他相关文献
+https://ieeexplore.ieee.org/document/10896573
+
 
 # 已有的代码实现
 ### NetSquid-Routing（Python）  
@@ -168,8 +171,30 @@ E2E Fidelity Aware Routing and Purification for Throughput Maximization in Quant
 另外例如，有用户 Alice（发送方）、用户 Bob（接收方）以及两个中继节点 R1 和 R2。 Alice 和 Bob 正在通过旧路径 $P_{old}$（经过 R1）建立纠缠。控制器检测到 R1 出现故障或拥塞，立即下达重路由指令，要求切换到新路径 $P_{new}$（经过 R2）。控制器发出的“重路由到 R2”指令，Alice 在 $t_1$ 时刻收到了，但 Bob 因为距离远或信道拥堵，直到 $t_3$ 时刻才收到。Alice 在 $t_1$ 时刻收到指令后，立即中断了与旧中继 R1 的联系，并按照新指令开始与新中继 R2 进行纠缠准备。此时，Alice 的存储器中已经存入了一对属于新路径的量子比特。在 $t_2$ 时刻（此时 Alice 已经在跑新路径了），Bob 还没收到更新指令，仍然在尝试与旧中继 R1 建立物理链路，并成功生成了一对属于旧路径的量子比特。传统网络中发现丢包，会触发重传。但是在量子网络中，是中继器向两方发光子，
 
 
+# 建模
+## 保真度的理想模型
+假设有 $n$ 个量子中继器，第 $i$ 个中继器的量子内存退相干参数是 $\tau_i$ 。假设在 $0$ 时刻，第 $i$ 个和第 $i+1$ 个中继器间的纠缠态同时建立好。现在希望建立第一个到第 $n$ 个中继器的端到端纠缠。方法是第 $i$ 个中继器对持有的 $i-1$ 和 $i+1$ 的量子做联合测量以建立 $i-1$ 到 $i+1$ 的纠缠态。假设联合测量不降低保真度也不需要时间，但第 $i$ 个中继器完成了联合测量后需要通过经典网络通知第 $i+1$ 个中继器。第 $i$ 个中继器到第 $i+1$ 个中继器的经典网络延迟为 $\delta_i$ 。
 
+**计算最终建立的纠缠态的保真度**
+$$
+F = \prod_{k=2}^{n-1} e^{-T(k)/\tau_k}
+= \exp\left( -\sum_{k=2}^{n-1} \frac{T(k)}{\tau_k} \right)
+$$
 
+$T(k) = \sum_{i=2}^{k-1} \delta_i$，则端到端纠缠态的保真度为：
+$$
+F = \exp\left( -\sum_{k=2}^{n-1} \frac{1}{\tau_k} \sum_{i=2}^{k-1} \delta_i \right)
+$$
+
+**确定保序性**
+令路径的度量 $-F(p)$ 为路径的保真度，保真度越高，度量越小，路径越优。任取节点 $A,B,C，D$，路径 $p_1$ 从 $A$ 到 $C$，路径 $p_2$ 从 $B$ 到 $C$，路径 $p_3$ 从 $C$ 到 $D$。假设计算 $F(p_1) > F(p_2)$。计算 $F(p_1 \oplus p_3)$ 和 $F(p_2 \oplus p_3)$:
+
+首先确定连接两条路后的度量公式：
+$$F(p \oplus q) = F(p) F(q) \exp\left( -\frac{\Delta_p}{\tau_C} - (\Delta_p + \delta_{q,1}) Q \right),$$
+其中 $\Delta_p = \sum_{i=2}^{L_p-1} \delta_{p,i}$ 是路径 $p$ 上所有内部经典延迟之和，$\tau_C$ 是节点 $C$ 的退相干参数，$\delta_{q,1}$ 是路径 $q$ 上第一条边的经典延迟，$Q = \sum_{t=2}^{L_q-1} \frac{1}{\tau_{q,t}}$。
+
+$$\frac{F(p_1 \oplus p_3)}{F(p_2 \oplus p_3)} = \frac{F(p_1)}{F(p_2)} \exp\left( -(\Delta_{p_1} - \Delta_{p_2}) \left( \frac{1}{\tau_C} + Q \right) \right).$$
+若 $F(p_1) > F(p_2)$，即 $\frac{F(p_1)}{F(p_2)} > 1$，若 $\Delta_{p_1} - \Delta_{p_2}$ 足够大，可使整个比值小于 1，即 $F(p_1 \oplus p_3) < F(p_2 \oplus p_3)$
 
 # 计划
 ~~整理一下到底要干什么~~
