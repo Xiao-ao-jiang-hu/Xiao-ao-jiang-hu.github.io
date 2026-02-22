@@ -10,7 +10,8 @@ categories:
 index_img: /img/reading.jpg
 banner_img: /img/reading.jpg
 excerpt: 代码实现
-date: 2026-01-20
+abbrlink: 7a6a7d9a
+date: 2026-01-20 00:00:00
 ---
 # 量子网络栈设计文档
 

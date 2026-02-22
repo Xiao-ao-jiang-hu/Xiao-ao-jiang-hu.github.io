@@ -10,5 +10,6 @@ categories:
 index_img: /img/reading.jpg
 banner_img: /img/reading.jpg
 excerpt: 预备知识
+abbrlink: 37c9153b
 date: 2025-12-10 23:28:15
 ---
