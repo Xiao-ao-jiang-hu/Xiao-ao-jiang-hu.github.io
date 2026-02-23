@@ -220,11 +220,11 @@ Thinking: medium
 
 **代码位置**：`src/gateway/agent-prompt.ts`
 
-### 2.5 Model Inference
+### Model Inference
 
 **代码位置**：`src/agents/pi-embedded-runner/`
 
-### 2.6 工具执行 (Tool Execution)
+### 工具执行 (Tool Execution)
 
 **流程**：
 ```
