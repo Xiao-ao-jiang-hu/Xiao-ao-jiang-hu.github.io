@@ -1,3 +1,53 @@
+/* 霞鹜文楷 - 与等宽编程字体相性好的中文字体 */
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1/style.css');
+
+/* JetBrains Mono - 加载完整字符集（包含 box-drawing 字符 U+2500-U+257F） */
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-all-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-all-700-normal.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'JetBrains Mono';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5/files/jetbrains-mono-all-400-italic.woff2') format('woff2');
+}
+
+/* 全局字体：JetBrains Mono 处理 ASCII/Latin，霞鹜文楷处理中文，排除 LaTeX 及 iconfont */
+body,
+body *:not(.iconfont):not([class*="icon-"]):not(.katex):not(.katex *):not(.katex-html):not(.katex-html *):not(.MathJax):not(.MathJax *):not(.MathJax_Display):not(.MathJax_Display *):not(mjx-container):not(mjx-container *) {
+    font-family: 'JetBrains Mono', 'LXGW WenKai', monospace !important;
+    font-variant-ligatures: common-ligatures !important;
+}
+
+/* 代码块额外保证 */
+pre,
+pre *,
+code,
+code.hljs,
+.hljs,
+.code-area>pre,
+figure.highlight,
+figure.highlight pre,
+figure.highlight .code,
+figure.highlight td.code pre {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-variant-ligatures: common-ligatures !important;
+}
+
 /* 减小文章内容的左右内边距，使文字显示更宽 */
 .post-content {
     padding-left: 2rem !important;
