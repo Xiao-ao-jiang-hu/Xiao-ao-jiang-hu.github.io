@@ -158,7 +158,7 @@ figure.highlight {
 
 /* 收起状态 */
 figure.highlight.code-collapsed table,
-figure.highlight.code-collapsed > pre {
+figure.highlight.code-collapsed>pre {
     display: none;
 }
 
@@ -168,9 +168,17 @@ figure.highlight.code-collapsed .code-toggle-header {
     cursor: pointer;
 }
 
-figure.highlight.code-collapsed .collapsed-hint  { display: inline-flex; }
-figure.highlight.code-collapsed .code-toggle-expand-btn { display: none; }
-figure.highlight.code-collapsed .code-toggle-lang { display: inline; }
+figure.highlight.code-collapsed .collapsed-hint {
+    display: inline-flex;
+}
+
+figure.highlight.code-collapsed .code-toggle-expand-btn {
+    display: none;
+}
+
+figure.highlight.code-collapsed .code-toggle-lang {
+    display: inline;
+}
 
 /* 展开状态 */
 figure.highlight.code-expanded .code-toggle-header {
@@ -179,6 +187,14 @@ figure.highlight.code-expanded .code-toggle-header {
     cursor: default;
 }
 
-figure.highlight.code-expanded .collapsed-hint   { display: none; }
-figure.highlight.code-expanded .code-toggle-expand-btn { display: inline-flex; }
-figure.highlight.code-expanded .code-toggle-lang { display: none; }
+figure.highlight.code-expanded .collapsed-hint {
+    display: none;
+}
+
+figure.highlight.code-expanded .code-toggle-expand-btn {
+    display: inline-flex;
+}
+
+figure.highlight.code-expanded .code-toggle-lang {
+    display: none;
+}
