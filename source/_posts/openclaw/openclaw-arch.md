@@ -102,7 +102,7 @@ date: 2026-02-23 15:57:02
 - iOS：`apps/ios/`
 - Android：`apps/android/`
 
-### 3.4 Channels
+### Channels
 
 **内置渠道**：
 - WhatsApp (Baileys)
@@ -118,14 +118,9 @@ date: 2026-02-23 15:57:02
 - Matrix
 - Zalo / Zalo Personal
 
-**安全策略**：
-- DM 配对模式（未知发送者需配对码）
-- 群组提及门控
-- 白名单控制
-
 **代码位置**：`src/telegram/`, `src/discord/`, `src/slack/`, `extensions/`
 
-### 3.5 Skills
+### Skills
 类似自定义prompt，用自然语言指导Agent执行特定任务。
 **来源**：
 1. Bundled（安装包附带）
@@ -141,7 +136,7 @@ date: 2026-02-23 15:57:02
 
 **代码位置**：`src/agents/skills/`
 
-### 3.6 Tools
+### Tools
 Agent 可调用的功能接口，抽象外部能力。分为系统工具（如文件操作、运行时命令）和设备工具（如 screen recording, camera）。工具调用通过 Gateway 直接执行或转发到 Nodes 执行，结果返回 Agent 进行后续处理。可以通过自己写ts代码实现，也可以通过 Skills 封装成更高层次的能力。
 
 **分类**：
@@ -224,7 +219,7 @@ WhatsApp/Telegram/etc.
    User
 ```
 
-### 5.2 设备控制流
+### 设备控制流
 
 ```
 Agent Tool Call (nodes)

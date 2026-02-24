@@ -103,3 +103,113 @@ figure.highlight td.code pre {
 .tikzjax {
     zoom: 2.5;
 }
+
+/* 代码块折叠/展开 */
+figure.highlight {
+    position: relative;
+    overflow: hidden;
+}
+
+/* header 条 - 收起状态：整行可点击，居中展示语言+提示 */
+.code-toggle-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 7px 14px;
+    cursor: pointer;
+    user-select: none;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.12);
+    transition: background 0.2s;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.code-toggle-header:hover {
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.code-toggle-lang {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+}
+
+.code-toggle-hint {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.2s;
+}
+
+.code-toggle-header:hover .code-toggle-hint {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 展开状态：header 变为左对齐窄条，只显示收起按钮，不遮挡右侧复制按钮 */
+.code-toggle-expand-btn {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: 1px solid rgba(130, 180, 255, 0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: rgba(130, 180, 255, 0.75);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    line-height: 1.6;
+}
+
+.code-toggle-expand-btn:hover {
+    background: rgba(130, 180, 255, 0.15);
+    color: rgba(130, 180, 255, 1);
+    border-color: rgba(130, 180, 255, 0.6);
+}
+
+/* 收起状态 */
+figure.highlight.code-collapsed table,
+figure.highlight.code-collapsed>pre {
+    display: none;
+}
+
+figure.highlight.code-collapsed .code-toggle-header {
+    justify-content: center;
+    border-bottom: 2px dashed rgba(255, 255, 255, 0.12);
+}
+
+figure.highlight.code-collapsed .code-toggle-lang {
+    display: inline;
+}
+
+figure.highlight.code-collapsed .collapsed-hint {
+    display: inline;
+}
+
+figure.highlight.code-collapsed .code-toggle-expand-btn {
+    display: none;
+}
+
+/* 展开状态：header 左对齐，只显示收起按钮 */
+figure.highlight.code-expanded .code-toggle-header {
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: transparent;
+    padding: 5px 10px;
+    cursor: default;
+}
+
+figure.highlight.code-expanded .code-toggle-lang {
+    display: none;
+}
+
+figure.highlight.code-expanded .collapsed-hint {
+    display: none;
+}
+
+figure.highlight.code-expanded .code-toggle-expand-btn {
+    display: inline-flex;
+}

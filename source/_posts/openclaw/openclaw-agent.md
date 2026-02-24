@@ -10,7 +10,7 @@ date: 2026-02-23 16:57:51
 ---
 ## Agent Loop 概述
 
-OpenClaw 的 Agent 是基于 pi-mono 的嵌入式运行时，每个会话独立执行。
+OpenClaw 的 Agent 是基于 pi-mono 的嵌入式运行时，每个会话隔离执行。
 
 ### 生命周期图
 

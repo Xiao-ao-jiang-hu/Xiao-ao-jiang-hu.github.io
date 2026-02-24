@@ -273,6 +273,27 @@ exec 调用
 
 ## 设备操控实现
 
+OpenClaw 通过以下方式实现屏幕捕获和输入控制：
+
+| 功能 | 实现方式 | 平台 |
+|------|----------|------|
+| 屏幕捕获 | ScreenCaptureKit (SCStream) | macOS |
+| 屏幕录制 | ScreenCaptureKit + AVAssetWriter | macOS |
+| 鼠标/键盘模拟 | 无直接实现，通过 Shell 命令间接实现 | 所有平台 |
+| 浏览器自动化 | Playwright | 所有平台 |
+| AppleScript 自动化 | NSAppleScript | macOS |
+| 命令行执行 | Node.js child_process.spawn | 所有平台 |
+
+### 跨平台支持
+
+OpenClaw 在 **Windows** 和 **Linux** 上使用相同的架构实现命令执行，但**没有原生屏幕捕获功能**：
+
+| 平台 | 屏幕捕获 | 输入控制 | 命令执行 |
+|------|----------|----------|----------|
+| **macOS** | ✅ ScreenCaptureKit | ✅ AppleScript / 辅助功能 | ✅ ShellExecutor.swift |
+| **Windows** | ❌ 不支持 | ❌ 不支持（可通过外部工具） | ✅ child_process.spawn |
+| **Linux** | ❌ 不支持 | ❌ 不支持（可通过外部工具） | ✅ child_process.spawn |
+
 ### system.run 实现
 
 **Gateway 端流程**：
@@ -312,58 +333,111 @@ async function handleNodeInvoke(params) {
 }
 ```
 
-**macOS Node 端实现**：
-```swift
-// apps/macos/Sources/Nodes/NodeCommandHandler.swift
+**macOS Node 端实现 (ShellExecutor.swift)**：
 
-func executeSystemRun(params: RunParams) async throws -> RunResult {
-  // 1. 检查 TCC 权限
-  if params.needsScreenRecording {
-    guard hasScreenRecordingPermission() else {
-      throw NodeError.PERMISSION_MISSING("Screen Recording")
+```swift
+// apps/macos/Sources/OpenClaw/ShellExecutor.swift
+
+enum ShellExecutor {
+    struct ShellResult {
+        var stdout: String
+        var stderr: String
+        var exitCode: Int?
+        var timedOut: Bool
+        var success: Bool
+        var errorMessage: String?
     }
-  }
-  
-  // 2. 检查 Exec 审批
-  let approvalStatus = execApprovals.check(params.command)
-  switch approvalStatus {
-  case .denied:
-    throw NodeError.SYSTEM_RUN_DENIED
-  case .ask:
-    // 显示审批对话框（用户交互）
-    guard await userApprove(params.command) else {
-      throw NodeError.SYSTEM_RUN_DENIED
+    
+    static func runDetailed(
+        command: [String],
+        cwd: String?,
+        env: [String: String]?,
+        timeout: Double?
+    ) async -> ShellResult {
+        guard !command.isEmpty else {
+            return ShellResult(stdout: "", stderr: "", exitCode: nil,
+                             timedOut: false, success: false,
+                             errorMessage: "empty command")
+        }
+        
+        // 使用 /usr/bin/env 执行命令
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+        process.arguments = command
+        if let cwd { process.currentDirectoryURL = URL(fileURLWithPath: cwd) }
+        if let env { process.environment = env }
+        
+        let stdoutPipe = Pipe()
+        let stderrPipe = Pipe()
+        process.standardOutput = stdoutPipe
+        process.standardError = stderrPipe
+        
+        try process.run()
+        
+        // 异步读取输出
+        let outTask = Task { stdoutPipe.fileHandleForReading.readToEndSafely() }
+        let errTask = Task { stderrPipe.fileHandleForReading.readToEndSafely() }
+        
+        // 等待完成或超时
+        let waitTask = Task { () -> ShellResult in
+            process.waitUntilExit()
+            let out = await outTask.value
+            let err = await errTask.value
+            let status = Int(process.terminationStatus)
+            return ShellResult(
+                stdout: String(bytes: out, encoding: .utf8) ?? "",
+                stderr: stderr: String(bytes: err, encoding: .utf8) ?? "",
+                exitCode: status,
+                timedOut: false,
+                success: status == 0,
+                errorMessage: status == 0 ? nil : "exit \(status)"
+            )
+        }
+        
+        if let timeout, timeout > 0 {
+            let nanos = UInt64(timeout * 1_000_000_000)
+            return await withTaskGroup(of: ShellResult.self) { group in
+                group.addTask { await waitTask.value }
+                group.addTask {
+                    try? await Task.sleep(nanoseconds: nanos)
+                    if process.isRunning { process.terminate() }
+                    _ = await waitTask.value
+                    return ShellResult(stdout: "", stderr: "", exitCode: nil,
+                                     timedOut: true, success: false,
+                                     errorMessage: "timeout")
+                }
+                let first = await group.next()!
+                group.cancelAll()
+                return first
+            }
+        }
+        
+        return await waitTask.value
     }
-  case .allowed:
-    break
-  }
-  
-  // 3. 准备进程
-  let process = Process()
-  process.executableURL = URL(fileURLWithPath: params.command[0])
-  process.arguments = Array(params.command.dropFirst())
-  process.currentDirectoryURL = URL(fileURLWithPath: params.cwd)
-  process.environment = parseEnv(params.env)
-  
-  // 4. 捕获输出
-  let stdoutPipe = Pipe()
-  let stderrPipe = Pipe()
-  process.standardOutput = stdoutPipe
-  process.standardError = stderrPipe
-  
-  // 5. 执行并等待
-  try process.run()
-  process.waitUntilExit()
-  
-  // 6. 读取输出
-  let stdout = stdoutPipe.readString()
-  let stderr = stderrPipe.readString()
-  
-  return RunResult(
-    stdout: stdout,
-    stderr: stderr,
-    exitCode: process.terminationStatus
-  )
+}
+```
+
+#### 权限检查 (PermissionManager.swift)
+
+```swift
+import CoreGraphics
+
+enum ScreenRecordingProbe {
+    /// 预检屏幕录制权限
+    static func isAuthorized() -> Bool {
+        if #available(macOS 10.15, *) {
+            return CGPreflightScreenCaptureAccess()
+        }
+        return true
+    }
+    
+    /// 请求屏幕录制权限（弹出系统对话框）
+    @MainActor
+    static func requestAuthorization() async {
+        if #available(macOS 10.15, *) {
+            _ = CGRequestScreenCaptureAccess()
+        }
+    }
 }
 ```
 
@@ -500,66 +574,159 @@ case "screen_record": {
 }
 ```
 
-**macOS Node 端实现**：
+**macOS Node 端实现 (ScreenRecordService.swift)**：
+
 ```swift
-// apps/macos/Sources/Screen/ScreenRecorder.swift
+import ScreenCaptureKit
+import AVFoundation
 
-func recordScreen(duration: TimeInterval) async throws -> Data {
-  // 1. 检查前景
-  guard appState.isForeground else {
-    throw NodeError.NODE_BACKGROUND_UNAVAILABLE
-  }
-  
-  // 2. 检查屏幕录制权限
-  guard hasScreenRecordingPermission() else {
-    throw NodeError.PERMISSION_MISSING("Screen Recording")
-  }
-  
-  // 3. 使用 ScreenCaptureKit
-  let content = try await SCShareableContent.excludingDesktopWindows(
-    false,
-    onScreenWindowsOnly: true
-  )
-  
-  guard let display = content.displays.first else {
-    throw NodeError.SCREEN_NOT_AVAILABLE
-  }
-  
-  // 4. 配置录制
-  let stream = try SCStream(
-    filter: createFilter(for: display),
-    configuration: createConfiguration(fps: 10),
-    delegate: nil
-  )
-  
-  // 5. 开始录制
-  let recorder = ScreenRecorder(stream: stream)
-  try await stream.addStreamOutput(
-    recorder,
-    type: .screen,
-    sampleHandlerQueue: .main
-  )
-  
-  try await stream.startCapture()
-  
-  // 6. 等待指定时长
-  try await Task.sleep(nanoseconds: UInt64(duration * 1_000_000_000))
-  
-  // 7. 停止录制
-  try await stream.stopCapture()
-  
-  // 8. 返回视频数据
-  return recorder.videoData
+@MainActor
+final class ScreenRecordService {
+    func record(
+        screenIndex: Int?,
+        durationMs: Int?,
+        fps: Double?,
+        includeAudio: Bool?,
+        outPath: String?
+    ) async throws -> (path: String, hasAudio: Bool) {
+        
+        // 1. 参数标准化
+        let durationMs = min(60000, max(250, durationMs ?? 10000))  // 250ms - 60s
+        let fps = min(60.0, max(1.0, fps ?? 10))  // 1-60 FPS
+        
+        // 2. 输出路径
+        let outURL: URL = {
+            if let outPath, !outPath.isEmpty {
+                return URL(fileURLWithPath: outPath)
+            }
+            return FileManager().temporaryDirectory
+                .appendingPathComponent("openclaw-screen-record-\(UUID().uuidString).mp4")
+        }()
+        
+        // 3. 获取显示器列表
+        let content = try await SCShareableContent.current
+        let displays = content.displays.sorted { $0.displayID < $1.displayID }
+        guard !displays.isEmpty else {
+            throw ScreenRecordError.noDisplays
+        }
+        
+        // 4. 选择目标显示器
+        let idx = screenIndex ?? 0
+        guard idx >= 0, idx < displays.count else {
+            throw ScreenRecordError.invalidScreenIndex(idx)
+        }
+        let display = displays[idx]
+        
+        // 5. 创建内容过滤器
+        let filter = SCContentFilter(display: display, excludingWindows: [])
+        
+        // 6. 配置录制流
+        let config = SCStreamConfiguration()
+        config.width = display.width
+        config.height = display.height
+        config.queueDepth = 8
+        config.showsCursor = true  // 显示鼠标光标
+        config.minimumFrameInterval = CMTime(
+            value: 1,
+            timescale: CMTimeScale(Int32(fps.rounded()))
+        )
+        if includeAudio ?? false {
+            config.capturesAudio = true
+        }
+        
+        // 7. 创建录制器
+        let recorder = try StreamRecorder(
+            outputURL: outURL,
+            width: display.width,
+            height: display.height,
+            includeAudio: includeAudio ?? false,
+            logger: self.logger
+        )
+        
+        // 8. 启动捕获
+        let stream = SCStream(filter: filter, configuration: config, delegate: recorder)
+        try stream.addStreamOutput(recorder, type: .screen, sampleHandlerQueue: recorder.queue)
+        if includeAudio ?? false {
+            try stream.addStreamOutput(recorder, type: .audio, sampleHandlerQueue: recorder.queue)
+        }
+        
+        try await stream.startCapture()
+        try await Task.sleep(nanoseconds: UInt64(durationMs) * 1_000_000)
+        try await stream.stopCapture()
+        
+        // 9. 完成录制
+        try await recorder.finish()
+        return (path: outURL.path, hasAudio: recorder.hasAudio)
+    }
 }
+```
 
-// 权限检查
-func hasScreenRecordingPermission() -> Bool {
-  let status = CGPreflightScreenCaptureAccess()
-  return status
+#### StreamRecorder 类 (视频编码)
+
+```swift
+private final class StreamRecorder: NSObject, SCStreamOutput, SCStreamDelegate {
+    let queue = DispatchQueue(label: "ai.openclaw.screenRecord.writer")
+    private let logger: Logger
+    private let writer: AVAssetWriter
+    private let input: AVAssetWriterInput
+    private let audioInput: AVAssetWriterInput?
+    let hasAudio: Bool
+    
+    init(outputURL: URL, width: Int, height: Int, includeAudio: Bool, logger: Logger) throws {
+        self.logger = logger
+        self.writer = try AVAssetWriter(outputURL: outputURL, fileType: .mp4)
+        
+        // H.264 视频编码配置
+        let settings: [String: Any] = [
+            AVVideoCodecKey: AVVideoCodecType.h264,
+            AVVideoWidthKey: width,
+            AVVideoHeightKey: height,
+        ]
+        self.input = AVAssetWriterInput(mediaType: .video, outputSettings: settings)
+        self.input.expectsMediaDataInRealTime = true
+        self.writer.add(self.input)
+        
+        // AAC 音频编码配置
+        if includeAudio {
+            let audioSettings: [String: Any] = [
+                AVFormatIDKey: kAudioFormatMPEG4AAC,
+                AVNumberOfChannelsKey: 1,
+                AVSampleRateKey: 44100,
+                AVEncoderBitRateKey: 96000,
+            ]
+            let audioInput = AVAssetWriterInput(mediaType: .audio, outputSettings: audioSettings)
+            audioInput.expectsMediaDataInRealTime = true
+            if self.writer.canAdd(audioInput) {
+                self.writer.add(audioInput)
+                self.audioInput = audioInput
+                self.hasAudio = true
+            } else {
+                self.audioInput = nil
+                self.hasAudio = false
+            }
+        } else {
+            self.audioInput = nil
+            self.hasAudio = false
+        }
+        super.init()
+    }
+    // ... 后续处理逻辑省略
 }
+```
 
-func requestScreenRecordingPermission() {
-  CGRequestScreenCaptureAccess()
+#### IPC 协议定义
+
+```swift
+// apps/macos/Sources/OpenClawIPC/IPC.swift
+
+public enum Request: Sendable {
+    case screenRecord(
+        screenIndex: Int?,      // 显示器索引（多显示器场景）
+        durationMs: Int?,       // 录制时长（毫秒）
+        fps: Double?,           // 帧率
+        includeAudio: Bool,     // 是否包含音频
+        outPath: String?        // 输出路径
+    )
 }
 ```
 
@@ -671,6 +838,65 @@ func pushA2UI(jsonl: String) throws {
       self.webView.evaluateJavaScript(command.js)
     }
   }
+}
+```
+
+### 鼠标/键盘控制实现
+
+#### 设计
+
+OpenClaw **不直接模拟鼠标/键盘事件**，通过以下方式实现自动化：
+
+1. **Shell 命令执行** (`system.run`) - 调用系统工具
+2. **AppleScript 自动化** - 控制 macOS 应用（仅限 macOS，提供了通过命令行实现类似点击按钮等的功能）
+3. **浏览器自动化** (Playwright) - 控制浏览器
+4. **节点命令** - 通过 IPC 调用原生功能
+
+#### AppleScript 自动化
+
+##### 权限检查 (PermissionManager.swift)
+
+```swift
+// apps/macos/Sources/OpenClaw/PermissionManager.swift
+
+enum AppleScriptPermission {
+    /// 检查 Automation 权限
+    @MainActor
+    static func isAuthorized() -> Bool {
+        let script = "tell application \"Terminal\" to return \"ok\""
+        var error: NSDictionary?
+        let appleScript = NSAppleScript(source: script)
+        let result = appleScript?.executeAndReturnError(&error)
+        return result != nil
+    }
+}
+```
+
+##### 使用示例
+
+通过 `system.run` 执行 AppleScript 实现鼠标点击：
+
+```bash
+# 点击窗口按钮
+osascript -e 'tell application "System Events" to click button "OK" of window 1 of process "Safari"'
+
+# 模拟键盘输入
+osascript -e 'tell application "System Events" to keystroke "Hello World"'
+```
+
+#### 浏览器自动化 (Playwright)
+
+OpenClaw 使用 Playwright 实现深度的网页交互：
+
+```typescript
+// src/browser/pw-tools-core.interactions.ts
+
+export async function click(opts: { page: Page; selector: string }) {
+  await opts.page.click(opts.selector);
+}
+
+export async function type(opts: { page: Page; selector: string; text: string }) {
+  await opts.page.type(opts.selector, opts.text);
 }
 ```
 
