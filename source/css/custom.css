@@ -122,7 +122,7 @@ figure.highlight {
     transition: background 0.2s;
 }
 
-/* 收起/展开通用按钮样式 */
+/* 收起/展开通用按钮样式 —— 默认（亮色模式） */
 .code-toggle-expand-btn,
 .collapsed-hint {
     display: inline-flex;
@@ -136,36 +136,40 @@ figure.highlight {
     font-family: inherit;
     line-height: 1.6;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .code-toggle-expand-btn:hover,
 .code-toggle-header:hover .collapsed-hint {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.9);
-    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.85);
+    border-color: rgba(0, 0, 0, 0.4);
 }
 
 .code-toggle-lang {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
     margin-left: 4px;
 }
 
-/* 收起状态 */
+/* 收起状态 —— 亮色模式 */
 figure.highlight.code-collapsed table,
 figure.highlight.code-collapsed>pre {
     display: none;
 }
 
 figure.highlight.code-collapsed .code-toggle-header {
-    border-bottom: 2px dashed rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.02);
     cursor: pointer;
+}
+
+figure.highlight.code-collapsed .code-toggle-header:hover {
+    background: rgba(0, 0, 0, 0.05);
 }
 
 figure.highlight.code-collapsed .collapsed-hint {
@@ -180,9 +184,9 @@ figure.highlight.code-collapsed .code-toggle-lang {
     display: inline;
 }
 
-/* 展开状态 */
+/* 展开状态 —— 亮色模式 */
 figure.highlight.code-expanded .code-toggle-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     background: transparent;
     cursor: default;
 }
@@ -197,4 +201,35 @@ figure.highlight.code-expanded .code-toggle-expand-btn {
 
 figure.highlight.code-expanded .code-toggle-lang {
     display: none;
+}
+
+/* ===== 暗色模式覆盖 ===== */
+[data-user-color-scheme="dark"] .code-toggle-expand-btn,
+[data-user-color-scheme="dark"] .collapsed-hint {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.55);
+}
+
+[data-user-color-scheme="dark"] .code-toggle-expand-btn:hover,
+[data-user-color-scheme="dark"] .code-toggle-header:hover .collapsed-hint {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-user-color-scheme="dark"] .code-toggle-lang {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+[data-user-color-scheme="dark"] figure.highlight.code-collapsed .code-toggle-header {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+[data-user-color-scheme="dark"] figure.highlight.code-collapsed .code-toggle-header:hover {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+[data-user-color-scheme="dark"] figure.highlight.code-expanded .code-toggle-header {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
 }
