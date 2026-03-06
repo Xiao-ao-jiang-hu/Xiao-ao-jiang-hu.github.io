@@ -10,6 +10,7 @@ categories:
 index_img: /img/reading.jpg
 banner_img: /img/reading.jpg
 excerpt: 当前物理实现调研
+abbrlink: 93abed16
 date: 2026-02-13 21:32:31
 ---
 ## 2026.2 Long-lived remote ion-ion entanglement for scalable quantum repeaters
