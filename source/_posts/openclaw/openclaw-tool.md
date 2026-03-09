@@ -390,7 +390,7 @@ enum ShellExecutor {
                 exitCode: status,
                 timedOut: false,
                 success: status == 0,
-                errorMessage: status == 0 ? nil : "exit \(status)"
+                errorMessage: status == 0 ? nil : "exit $status)"
             )
         }
         
@@ -600,7 +600,7 @@ final class ScreenRecordService {
                 return URL(fileURLWithPath: outPath)
             }
             return FileManager().temporaryDirectory
-                .appendingPathComponent("openclaw-screen-record-\(UUID().uuidString).mp4")
+                .appendingPathComponent("openclaw-screen-record-$UUID().uuidString).mp4")
         }()
         
         // 3. 获取显示器列表
