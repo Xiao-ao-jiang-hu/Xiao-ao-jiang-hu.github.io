@@ -6,7 +6,9 @@ tags:
 categories:
   - complex-analysis
   - homework
-abbrlink: 31fbe909
+index_img: /img/complex.jpg
+banner_img: /img/complex.jpg
+excerpt: 复分析第一次作业
 date: 2026-03-06 13:33:57
 ---
 # Ch1.Ex7

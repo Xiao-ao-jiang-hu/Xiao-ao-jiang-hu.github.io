@@ -1,5 +1,5 @@
 ---
-title: 实变函数积分技巧
+title: 复数与复平面
 tags:
   - complex-analysis
   - math
@@ -8,6 +8,7 @@ categories:
   - complex-analysis
 index_img: /img/complex.jpg
 banner_img: /img/complex.jpg
+excerpt: 复数与复平面的基本性质、收敛性以及集合的拓扑性质。
 date: 2026-03-02 12:56:34
 ---
 ## 1 复数与复平面
