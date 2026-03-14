@@ -164,9 +164,7 @@ double fidelity = m_qphyent->GetFidelity("God", {srcQubit, dstQubit}, "QNS_STATE
 - **网络拓扑**：8,12,20,30节点的E-R、RG、SF三种类型随机图
 - **链路设置**：每条边的物理链路成功率随机分布在 [0.7, 0.9]，经典链路延迟随机分布，丢包率从0-30%。每条链路单独设置随机数生成器，保证每次运行的链路状态一致。
 - **请求设置**：每次运行随机生成多个端到端纠缠请求，源目的对随机选择。
-
-#### 结果
-**实验配置**: 30 Runs/Config · 30 Requests/Run · $T_{coh} = 100$ ms
+30 Runs/Config · 30 Requests/Run · $T_{coh} = 100$ ms
 
 **列说明**:
 - **D-Succ / Q-Succ**: Dijkstra / Q-CAST 成功率（吞吐量）
@@ -174,6 +172,7 @@ double fidelity = m_qphyent->GetFidelity("God", {srcQubit, dstQubit}, "QNS_STATE
 - **D-Fid / Q-Fid**: Dijkstra / Q-CAST 端到端量子保真度
 - **ΔFid**: 保真度变化量（Q-CAST − Dijkstra）
 
+#### 结果
 **ErdosRenyi**
 
 - 8 节点

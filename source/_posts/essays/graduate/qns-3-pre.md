@@ -213,8 +213,4 @@ $$\frac{F(p_1 \oplus p_3)}{F(p_2 \oplus p_3)} = \frac{F(p_1)}{F(p_2)} \exp\left(
 
 ~~阅读qns-3的示例，先在本地跑通流程~~
 
-实现抽象的网络层，并实现Dijkstra
-
-实现qcast
-
-
+~~实现抽象的网络层，并实现Dijkstra~~
